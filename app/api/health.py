@@ -15,6 +15,11 @@ def live() -> dict[str, str]:
     return {"status": "live"}
 
 
+@router.get("/health/resources")
+def resources(request: Request) -> JSONResponse:
+    return JSONResponse(content=container(request).resources_snapshot())
+
+
 @router.get("/health/ready")
 def ready(request: Request) -> JSONResponse:
     services = container(request)

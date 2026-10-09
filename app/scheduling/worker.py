@@ -58,7 +58,12 @@ class WorkerResponse(FrozenModel):
     build_report: SolverBuildReport | None = None
 
 
-def _worker_loop(inbox: Queue[WorkerJob | str], outbox: Queue[WorkerResponse]) -> None:
+def _worker_loop(
+    inbox: Queue[WorkerJob | str],
+    outbox: Queue[WorkerResponse],
+    *,
+    clear_input_cache: Callable[[], None] | None = None,
+) -> None:
     from ortools.sat.python import cp_model
 
     from app.scheduling.build_report import warmup_build_reporting
@@ -76,6 +81,11 @@ def _worker_loop(inbox: Queue[WorkerJob | str], outbox: Queue[WorkerResponse]) -
         job = inbox.get()
         if job == "shutdown":
             return
+        if job == "release_problem":
+            scheduler.clear_cache()
+            if clear_input_cache is not None:
+                clear_input_cache()
+            continue
         if not isinstance(job, WorkerJob):
             raise TypeError("进程收到非法调度消息")
         try:
@@ -135,6 +145,8 @@ class SolverWorker:
         self.build_reports: list[SolverBuildReport] = []
         self.startup_ms = 0
         self.restart_count = 0
+        self.cache_release_requests = 0
+        self.cache_release_failures = 0
         self._startup_started_ns: int | None = None
         self._estimated_problem_hash: str | None = None
         self._wire_problem_hash: str | None = None
@@ -153,6 +165,28 @@ class SolverWorker:
     @property
     def is_ready(self) -> bool:
         return self.is_alive and self._ready
+
+    def release_problem(self) -> None:
+        """完整计算结束后按队列顺序释放子进程缓存，不重新冷启动进程。"""
+        if not self._lock.acquire(blocking=False):
+            logger.warning("求解进程仍忙，本次问题缓存释放未入队")
+            return
+        try:
+            if self._inbox is None or not self.is_ready:
+                return
+            # 无论释放消息是否成功，下一作业都必须重新完整传输并核验。
+            self._wire_problem_hash = None
+            self._estimated_problem_hash = None
+            self._minimum_job_ns = 50_000_000
+            self._minimum_cached_job_ns = 50_000_000
+            try:
+                self._inbox.put("release_problem")
+                self.cache_release_requests += 1
+            except (OSError, ValueError):
+                self.cache_release_failures += 1
+                logger.exception("问题缓存释放消息未入队，后续作业将重新传输完整问题")
+        finally:
+            self._lock.release()
 
     def warmup(self, deadline: Deadline | None = None) -> bool:
         # 生命周期预热使用独立启动上限；请求内恢复仍服从调用方的共享截止时间。

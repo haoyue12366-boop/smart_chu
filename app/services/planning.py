@@ -1,6 +1,7 @@
 """先落账再重排；单作业合并最新状态，冲突至多重算一次。"""
 
 from _thread import LockType
+from collections.abc import Callable
 from threading import Lock
 
 from sqlalchemy.exc import OperationalError
@@ -26,10 +27,16 @@ from app.storage.repositories import RuntimeRepository
 
 class PlanningService:
     def __init__(
-        self, runtime: RuntimeService, solver: CpSatScheduler, *, job_lock: LockType | None = None
+        self,
+        runtime: RuntimeService,
+        solver: CpSatScheduler,
+        *,
+        job_lock: LockType | None = None,
+        on_compute_finished: Callable[[], None] | None = None,
     ) -> None:
         self.runtime, self.solver = runtime, solver
         self._job_lock = job_lock if job_lock is not None else Lock()
+        self._on_compute_finished = on_compute_finished
 
     def apply_event(
         self,
@@ -116,7 +123,11 @@ class PlanningService:
                 update={"elapsed_ms": (self.runtime.clock.monotonic_ns() - started_ns) // 1_000_000}
             )
         finally:
-            self._job_lock.release()
+            try:
+                if self._on_compute_finished is not None:
+                    self._on_compute_finished()
+            finally:
+                self._job_lock.release()
 
     def _plan(self, session: RuntimeSession) -> PublishedPlan | None:
         with self.runtime.store.engine.connect() as tx:

@@ -58,6 +58,37 @@ def test_invalid_json_cannot_become_ready_or_a_candidate(decode):
         decode('{"job_id":"wrong","ready":true}')
 
 
+def test_release_problem_reuses_warm_pid_and_next_job_has_full_verified_input():
+    knowledge, state, problem, candidate = example()
+    with JsonSolverWorker() as worker:
+        first = worker.solve(problem, candidate, deadline())
+        assert first.status == "OPTIMAL"
+        pid, restarts = worker.process_id, worker.restart_count
+        assert worker._wire_problem_hash == problem.problem_hash
+        worker.release_problem()
+        assert worker._wire_problem_hash is None
+        assert worker.is_ready and worker.process_id == pid
+        second = worker.solve(problem, candidate, deadline())
+        assert second.status == "OPTIMAL"
+        assert second.problem_hash == problem.problem_hash
+        assert worker.process_id == pid and worker.restart_count == restarts
+        assert worker.last_build_report.constraint_mappings
+        assert ScheduleValidator().validate(knowledge, state, problem, second.candidate).valid
+
+
+def test_cleared_json_input_rejects_old_cache_reference():
+    _, _, problem, candidate = example()
+    first = WorkerJob(job_id="clear-input", problem=problem, hint=candidate, deadline=deadline())
+    decode, full = _encode_job(first)
+    decode(*full)
+    cached = first.model_copy(update={"job_id": "stale-after-clear", "use_cached_problem": True})
+    decode, small = _encode_job(cached)
+    json_worker._clear_input_cache()
+    assert json_worker._cached_problem is None
+    with pytest.raises(ValueError):
+        decode(*small)
+
+
 def test_cached_wire_reference_preserves_full_problem_and_rejects_missing_identity(monkeypatch):
     _, _, problem, candidate = example()
     job = WorkerJob(job_id="full-first", problem=problem, hint=candidate, deadline=deadline())

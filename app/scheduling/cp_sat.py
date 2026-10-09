@@ -46,10 +46,18 @@ class CpSatScheduler:
         self.last_build_report: SolverBuildReport | None = None
         self._base_builder: ModelBuilder | None = None
 
+    def clear_cache(self) -> None:
+        """仅释放计算缓存；已发布计划和完整建模归档不由此对象持有。"""
+        self._base_builder = None
+        self.last_build_report = None
+
     def _builder(self, problem: SchedulingProblem, deadline: Deadline) -> ModelBuilder:
         """仅缓存一个完整身份匹配的基础模型；每轮独立克隆目标与附加约束。"""
         base = self._base_builder
         if base is None or base.problem.problem_hash != problem.problem_hash:
+            # 新问题不能使用旧身份模型；先释放它，避免两份基础模型同时驻留。
+            self.clear_cache()
+            base = None
             base = ModelBuilder(problem, deadline)
             base.build()
             self._base_builder = base

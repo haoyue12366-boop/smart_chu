@@ -67,9 +67,14 @@ def _encode_response(message: WorkerResponse) -> tuple[Callable[[str], WorkerRes
     return _decode_response, (message.model_dump_json(),)
 
 
+def _clear_input_cache() -> None:
+    global _cached_problem
+    _cached_problem = None
+
+
 def _json_worker_loop(inbox: Queue[WorkerJob | str], outbox: Queue[WorkerResponse]) -> None:
     ForkingPickler.register(WorkerResponse, _encode_response)
-    _worker_loop(inbox, outbox)
+    _worker_loop(inbox, outbox, clear_input_cache=_clear_input_cache)
 
 
 class JsonSolverWorker(SolverWorker):

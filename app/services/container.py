@@ -23,6 +23,7 @@ from app.scheduling.json_worker import JsonSolverWorker
 from app.services.deployment_policy import deployment_policy
 from app.services.planning import PlanningService
 from app.services.recovery_guard import isolated_recovery
+from app.services.resource_monitor import ResourceMonitor
 from app.storage import models
 from app.storage.repositories import RuntimeRepository
 from app.storage.solver_reports import SolverReportArchive
@@ -34,6 +35,7 @@ logger = logging.getLogger(__name__)
 class ServiceContainer:
     def __init__(self, settings: AppSettings) -> None:
         self.settings = settings
+        self._resource_monitor = ResourceMonitor()
         self.clock = SystemClock()
         self.repository = SnapshotKnowledgeRepository(settings.release_root)
         self.worker = JsonSolverWorker(
@@ -88,7 +90,10 @@ class ServiceContainer:
             runtime = RuntimeService(self.store, knowledge, self.clock)
             self.runtimes[release_id] = runtime
             self.planners[release_id] = PlanningService(
-                runtime, self.worker, job_lock=self.job_lock
+                runtime,
+                self.worker,
+                job_lock=self.job_lock,
+                on_compute_finished=self.worker.release_problem,
             )
         self.knowledge = self.runtimes[self.settings.release_id].knowledge
         if not self.worker.warmup():
@@ -102,6 +107,19 @@ class ServiceContainer:
     @property
     def runtime(self) -> RuntimeService:
         return self.runtimes[self.settings.release_id]
+
+    def resources_snapshot(self) -> dict[str, object]:
+        result = self._resource_monitor.read(
+            worker_process_id=self.worker.process_id if self.worker.is_alive else None
+        )
+        result.update(
+            solver_ready=self.worker.is_ready,
+            solver_restarts=self.worker.restart_count,
+            retained_build_reports=len(self.worker.build_reports),
+            cache_release_requests=self.worker.cache_release_requests,
+            cache_release_failures=self.worker.cache_release_failures,
+        )
+        return result
 
     @property
     def planner(self) -> PlanningService:
@@ -136,7 +154,12 @@ class ServiceContainer:
             if session_id not in self.simulated_sessions:
                 clock = SimulationClock(datetime.fromisoformat(row.origin))
                 runtime = RuntimeService(self.store, self.runtimes[release_id].knowledge, clock)
-                planner = PlanningService(runtime, self.worker, job_lock=self.job_lock)
+                planner = PlanningService(
+                    runtime,
+                    self.worker,
+                    job_lock=self.job_lock,
+                    on_compute_finished=self.worker.release_problem,
+                )
                 self.simulated_sessions[session_id] = runtime, planner
             runtime, planner = self.simulated_sessions[session_id]
             assert isinstance(runtime.clock, SimulationClock)

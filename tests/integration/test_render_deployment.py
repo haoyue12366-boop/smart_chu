@@ -32,6 +32,21 @@ def menu(client, names):
     return [{"id": by_name[name]["recipe_id"], "name": name} for name in names]
 
 
+def test_resource_diagnostics_are_read_only_and_exclude_other_environment(
+    cloud_client, monkeypatch
+):
+    monkeypatch.setenv("RESOURCE_DIAGNOSTIC_SECRET", "do-not-expose")
+    response = cloud_client.get("/health/resources")
+    assert response.status_code == 200
+    data = response.json()
+    assert len(data["boot_id"]) == 32
+    assert data["solver_ready"] is True
+    assert data["retained_build_reports"] == 0
+    assert data["cache_release_requests"] == 0
+    assert "do-not-expose" not in response.text
+    assert cloud_client.get("/health/ready").status_code == 200
+
+
 def check_publication(client, result, count):
     assert result["status"] == "PUBLISHED", result.get("planning")
     sid = result.get("session_id") or result["plan"]["session_id"]
@@ -49,6 +64,8 @@ def check_publication(client, result, count):
     assert proof.valid, proof.violations
     assert result["planning"]["serial_reference_validation"]["valid"]
     assert len(services.worker.build_reports) == 1
+    assert services.worker.cache_release_requests > 0
+    assert services.worker._wire_problem_hash is None
     archive = services.settings.database_path.parent / "solver-build-reports"
     for stage in result["planning"]["stage_results"]:
         reference = stage.get("build_report_ref")
