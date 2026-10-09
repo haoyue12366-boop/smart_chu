@@ -1,0 +1,683 @@
+{
+  "$defs": {
+    "ConfigurationValue": {
+      "additionalProperties": false,
+      "properties": {
+        "parameter": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Parameter",
+          "type": "string"
+        },
+        "value": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "title": "Value"
+        }
+      },
+      "required": [
+        "parameter",
+        "value"
+      ],
+      "title": "ConfigurationValue",
+      "type": "object"
+    },
+    "DevicePayload": {
+      "additionalProperties": false,
+      "properties": {
+        "device_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Device Id",
+          "type": "string"
+        },
+        "execution_id": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ExecutionId"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "reason": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Reason"
+        },
+        "expected_recovery_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Expected Recovery At"
+        },
+        "recovery_estimate_source": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Recovery Estimate Source"
+        },
+        "configuration": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/ConfigurationValue"
+          },
+          "title": "Configuration",
+          "type": "array"
+        }
+      },
+      "required": [
+        "device_id"
+      ],
+      "title": "DevicePayload",
+      "type": "object"
+    },
+    "EventId": {
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "EventId",
+      "type": "string"
+    },
+    "EventRecipe": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/RecipeId"
+        },
+        "name": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Name",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "name"
+      ],
+      "title": "EventRecipe",
+      "type": "object"
+    },
+    "EventSource": {
+      "enum": [
+        "SIMULATED",
+        "SCHEDULE_CLOCK",
+        "MANUAL_CONFIRM",
+        "DEVICE_FEEDBACK",
+        "COMPETITION_PROFILE"
+      ],
+      "title": "EventSource",
+      "type": "string"
+    },
+    "EventType": {
+      "enum": [
+        "START_SESSION",
+        "ADD_RECIPE",
+        "CANCEL_RECIPE",
+        "DELAY_RECIPE",
+        "OPERATION_STARTED",
+        "OPERATION_COMPLETED",
+        "DURATION_UPDATED",
+        "OPERATION_FAILED",
+        "DEVICE_UNAVAILABLE",
+        "DEVICE_RECOVERED",
+        "DEVICE_RELEASE_CONFIRMED",
+        "DEVICE_STATE_UPDATED",
+        "MATERIAL_SHORTAGE",
+        "MATERIAL_ADJUSTED",
+        "MANUAL_OVERRIDE",
+        "OPERATION_RETRY_REQUESTED",
+        "ADVANCE_SIMULATION",
+        "RESET_SESSION",
+        "REPLAN_REQUESTED"
+      ],
+      "title": "EventType",
+      "type": "string"
+    },
+    "ExecutionId": {
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "ExecutionId",
+      "type": "string"
+    },
+    "ExecutionPayload": {
+      "additionalProperties": false,
+      "properties": {
+        "task_id": {
+          "$ref": "#/$defs/TaskId"
+        },
+        "execution_id": {
+          "$ref": "#/$defs/ExecutionId"
+        },
+        "reason": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Reason"
+        },
+        "consumed": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/LotMovement"
+          },
+          "title": "Consumed",
+          "type": "array"
+        },
+        "produced": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/LotMovement"
+          },
+          "title": "Produced",
+          "type": "array"
+        },
+        "output_status": {
+          "default": "UNKNOWN",
+          "enum": [
+            "QUALIFIED",
+            "UNKNOWN",
+            "WASTE"
+          ],
+          "title": "Output Status",
+          "type": "string"
+        },
+        "resource_release_status": {
+          "default": "UNCONFIRMED",
+          "enum": [
+            "UNCONFIRMED",
+            "CONFIRMED"
+          ],
+          "title": "Resource Release Status",
+          "type": "string"
+        },
+        "remaining_sec": {
+          "anyOf": [
+            {
+              "maximum": 1152921504606846976,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Remaining Sec"
+        },
+        "recovery_rule_id": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Recovery Rule Id"
+        },
+        "resource_ids": {
+          "default": [],
+          "items": {
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "title": "Resource Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "task_id",
+        "execution_id"
+      ],
+      "title": "ExecutionPayload",
+      "type": "object"
+    },
+    "LotMovement": {
+      "additionalProperties": false,
+      "properties": {
+        "lot_id": {
+          "$ref": "#/$defs/MaterialLotId"
+        },
+        "quantity": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ScaledQuantity"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "spec_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Spec Id",
+          "type": "string"
+        },
+        "batch_share": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/RationalAmount"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "required": [
+        "lot_id",
+        "spec_id"
+      ],
+      "title": "LotMovement",
+      "type": "object"
+    },
+    "MaterialLotId": {
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "MaterialLotId",
+      "type": "string"
+    },
+    "MaterialPayload": {
+      "additionalProperties": false,
+      "properties": {
+        "lot_id": {
+          "$ref": "#/$defs/MaterialLotId"
+        },
+        "before": {
+          "$ref": "#/$defs/ScaledQuantity"
+        },
+        "after": {
+          "$ref": "#/$defs/ScaledQuantity"
+        },
+        "reason": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Reason",
+          "type": "string"
+        },
+        "evidence_refs": {
+          "items": {
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "title": "Evidence Refs",
+          "type": "array"
+        }
+      },
+      "required": [
+        "lot_id",
+        "before",
+        "after",
+        "reason",
+        "evidence_refs"
+      ],
+      "title": "MaterialPayload",
+      "type": "object"
+    },
+    "MenuPayload": {
+      "additionalProperties": false,
+      "properties": {
+        "recipes": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/EventRecipe"
+          },
+          "title": "Recipes",
+          "type": "array"
+        },
+        "recipe_instance_id": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/RecipeInstanceId"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "earliest_start_sec": {
+          "anyOf": [
+            {
+              "maximum": 1152921504606846976,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Earliest Start Sec"
+        }
+      },
+      "title": "MenuPayload",
+      "type": "object"
+    },
+    "OverridePayload": {
+      "additionalProperties": false,
+      "properties": {
+        "correction_type": {
+          "enum": [
+            "PLAN_PREFERENCE",
+            "REMAINING_DURATION"
+          ],
+          "title": "Correction Type",
+          "type": "string"
+        },
+        "target_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Target Id",
+          "type": "string"
+        },
+        "before_value": {
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "Before Value",
+          "type": "integer"
+        },
+        "after_value": {
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "After Value",
+          "type": "integer"
+        },
+        "reason": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Reason",
+          "type": "string"
+        },
+        "operator": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Operator",
+          "type": "string"
+        },
+        "evidence_refs": {
+          "items": {
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "title": "Evidence Refs",
+          "type": "array"
+        }
+      },
+      "required": [
+        "correction_type",
+        "target_id",
+        "before_value",
+        "after_value",
+        "reason",
+        "operator",
+        "evidence_refs"
+      ],
+      "title": "OverridePayload",
+      "type": "object"
+    },
+    "RationalAmount": {
+      "additionalProperties": false,
+      "properties": {
+        "numerator": {
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "Numerator",
+          "type": "integer"
+        },
+        "denominator": {
+          "default": 1,
+          "exclusiveMinimum": 0,
+          "maximum": 1152921504606846976,
+          "title": "Denominator",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "numerator"
+      ],
+      "title": "RationalAmount",
+      "type": "object"
+    },
+    "RecipeId": {
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "RecipeId",
+      "type": "string"
+    },
+    "RecipeInstanceId": {
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "RecipeInstanceId",
+      "type": "string"
+    },
+    "ReplanPayload": {
+      "additionalProperties": false,
+      "properties": {
+        "reason": {
+          "default": "请求重排剩余操作",
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Reason",
+          "type": "string"
+        }
+      },
+      "title": "ReplanPayload",
+      "type": "object"
+    },
+    "ScaledQuantity": {
+      "additionalProperties": false,
+      "properties": {
+        "value": {
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "Value",
+          "type": "integer"
+        },
+        "unit": {
+          "enum": [
+            "g",
+            "kg",
+            "ml",
+            "L",
+            "个",
+            "片",
+            "根",
+            "张",
+            "瓣",
+            "朵",
+            "汤匙",
+            "茶匙"
+          ],
+          "title": "Unit",
+          "type": "string"
+        },
+        "scale": {
+          "exclusiveMinimum": 0,
+          "maximum": 1152921504606846976,
+          "title": "Scale",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "value",
+        "unit",
+        "scale"
+      ],
+      "title": "ScaledQuantity",
+      "type": "object"
+    },
+    "SessionId": {
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "SessionId",
+      "type": "string"
+    },
+    "SessionPayload": {
+      "additionalProperties": false,
+      "properties": {
+        "reason": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Reason",
+          "type": "string"
+        }
+      },
+      "required": [
+        "reason"
+      ],
+      "title": "SessionPayload",
+      "type": "object"
+    },
+    "SimulationPayload": {
+      "additionalProperties": false,
+      "properties": {
+        "advance_sec": {
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "Advance Sec",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "advance_sec"
+      ],
+      "title": "SimulationPayload",
+      "type": "object"
+    },
+    "TaskId": {
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "TaskId",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "event_id": {
+      "$ref": "#/$defs/EventId"
+    },
+    "session_id": {
+      "$ref": "#/$defs/SessionId"
+    },
+    "event_type": {
+      "$ref": "#/$defs/EventType"
+    },
+    "occurred_at": {
+      "format": "date-time",
+      "title": "Occurred At",
+      "type": "string"
+    },
+    "received_at": {
+      "format": "date-time",
+      "title": "Received At",
+      "type": "string"
+    },
+    "source": {
+      "$ref": "#/$defs/EventSource"
+    },
+    "expected_state_revision": {
+      "maximum": 1152921504606846976,
+      "minimum": 0,
+      "title": "Expected State Revision",
+      "type": "integer"
+    },
+    "base_plan_version": {
+      "maximum": 1152921504606846976,
+      "minimum": 0,
+      "title": "Base Plan Version",
+      "type": "integer"
+    },
+    "payload": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/MenuPayload"
+        },
+        {
+          "$ref": "#/$defs/ExecutionPayload"
+        },
+        {
+          "$ref": "#/$defs/DevicePayload"
+        },
+        {
+          "$ref": "#/$defs/MaterialPayload"
+        },
+        {
+          "$ref": "#/$defs/OverridePayload"
+        },
+        {
+          "$ref": "#/$defs/SimulationPayload"
+        },
+        {
+          "$ref": "#/$defs/SessionPayload"
+        },
+        {
+          "$ref": "#/$defs/ReplanPayload"
+        }
+      ],
+      "title": "Payload"
+    }
+  },
+  "required": [
+    "event_id",
+    "session_id",
+    "event_type",
+    "occurred_at",
+    "received_at",
+    "source",
+    "expected_state_revision",
+    "base_plan_version",
+    "payload"
+  ],
+  "title": "RuntimeEvent",
+  "type": "object"
+}

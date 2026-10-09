@@ -1,0 +1,49 @@
+[project]
+name = "smart-cooking-scheduler"
+version = "0.1.0"
+description = "智能烹饪调度领域契约与离线验收"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+  "fastapi==0.141.1",
+  "uvicorn==0.53.0",
+  "pydantic==2.13.5",
+  "ortools==9.15.6755",
+  "neo4j==6.3.1",
+  "sqlalchemy==2.0.54",
+  "alembic==1.20.0",
+  "tzdata==2026.4",
+  "httpx==0.28.1",
+]
+
+[dependency-groups]
+dev = ["ruff==0.16.8", "mypy==2.3.1", "pytest==9.1.1", "hypothesis==6.168.0"]
+
+[tool.uv]
+package = false
+cache-dir = ".uv-cache"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-ra --strict-markers"
+markers = ["review_gate: 真实人工审核门槛，缺少输入必须失败", "real_neo4j: 显式连接真实 Neo4j", "offline_neo4j: 显式停止真实 Neo4j 后执行"]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+include = ["*.py", "*.pyi", "*.ipynb", "pyproject.toml"]
+extend-exclude = [
+  ".tools", ".python", ".uv-cache", ".tmp",
+  "benchmarks/reports", "data/releases", "data/preparations",
+  "data/delivery", "data/verification",
+]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+plugins = ["pydantic.mypy"]
+
+

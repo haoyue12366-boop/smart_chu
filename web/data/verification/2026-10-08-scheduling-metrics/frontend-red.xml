@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites name="vitest tests" tests="11" failures="1" errors="0" time="0.1670531">
+    <testsuite name="tests/unit/clock_workbench.test.ts" timestamp="2026-10-08T11:42:41.236Z" hostname="DESKTOP-1BMGGP9" tests="11" failures="1" errors="0" skipped="10" time="0.1670531">
+        <testcase classname="tests/unit/clock_workbench.test.ts" name="authoritative plan clock workbench &gt; shows persisted system overhead for initial and updated plans" time="0.1635617">
+            <failure message="Unable to get [data-testid=planning-overhead] within: &lt;div class=&quot;app-shell&quot;&gt;
+  &lt;header class=&quot;topbar&quot;&gt;&lt;a class=&quot;brand&quot; href=&quot;#&quot;&gt;&lt;span class=&quot;brand-mark&quot;&gt;◷&lt;/span&gt;&lt;span&gt;烹饪工作台&lt;small&gt;把每一步安排清楚&lt;/small&gt;&lt;/span&gt;&lt;/a&gt;
+    &lt;div class=&quot;header-actions&quot;&gt;&lt;span class=&quot;connection-dot&quot;&gt;&lt;/span&gt; 知识库已就绪&lt;button&gt; 新的一桌 &lt;/button&gt;&lt;/div&gt;
+  &lt;/header&gt;
+  &lt;main&gt;
+    &lt;div class=&quot;page-heading&quot;&gt;
+      &lt;div&gt;
+        &lt;p class=&quot;eyebrow&quot;&gt;这桌菜的安排&lt;/p&gt;
+        &lt;h1&gt;1 道菜，按步推进&lt;/h1&gt;
+        &lt;p class=&quot;muted&quot;&gt;合成菜&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;session-version&quot; data-testid=&quot;session-version&quot;&gt;&lt;strong&gt;v1&lt;/strong&gt;&lt;small&gt;状态 2 · 计划时钟推算&lt;/small&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;nav class=&quot;tabs&quot; aria-label=&quot;工作台页面&quot;&gt;&lt;button class=&quot;active&quot;&gt;安排&lt;/button&gt;&lt;button class=&quot;&quot;&gt; 执行与反馈&lt;/button&gt;&lt;button class=&quot;&quot;&gt; 历史版本&lt;/button&gt;&lt;button class=&quot;&quot;&gt; 接口测试 &lt;/button&gt;&lt;/nav&gt;
+    &lt;!--v-if--&gt;
+    &lt;!--v-if--&gt;
+    &lt;!--v-if--&gt;
+    &lt;!--v-if--&gt;
+    &lt;section class=&quot;panel session-progress&quot;&gt;
+      &lt;div class=&quot;section-heading&quot;&gt;
+        &lt;h2&gt;当前进度&lt;/h2&gt;&lt;span class=&quot;tag&quot;&gt;计划时钟推算&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;p class=&quot;muted&quot;&gt; 首次发布后自动推进；开始和完成由服务端计划时钟推算，实际情况可在执行与反馈中修正。 &lt;/p&gt;
+      &lt;div class=&quot;progress-values&quot;&gt;
+        &lt;p data-testid=&quot;clock-progress&quot;&gt;&lt;span&gt;计划时钟&lt;/span&gt;&lt;strong&gt;0 分 30 秒&lt;/strong&gt;&lt;small&gt;计时起点 2026/10/08 08:00:00&lt;/small&gt;&lt;/p&gt;
+        &lt;p data-testid=&quot;execution-progress&quot;&gt;&lt;span&gt;完成操作（含库存满足）&lt;/span&gt;&lt;strong&gt;0 / 2&lt;/strong&gt;&lt;progress max=&quot;2&quot; aria-label=&quot;已完成操作进度&quot; value=&quot;0&quot;&gt;&lt;/progress&gt;&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div data-testid=&quot;running-operations&quot;&gt;&lt;strong&gt;当前执行&lt;/strong&gt;
+        &lt;ul class=&quot;notice-list&quot;&gt;
+          &lt;li&gt;合成菜 · 切配&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;!--v-if--&gt;&lt;button data-testid=&quot;replan-remaining&quot;&gt;重新优化剩余操作&lt;/button&gt;
+    &lt;/section&gt;
+    &lt;div class=&quot;metrics&quot;&gt;
+      &lt;article&gt;&lt;small&gt;预计结束&lt;/small&gt;&lt;strong&gt;2026/10/08 08:02:00&lt;/strong&gt;&lt;/article&gt;
+      &lt;article&gt;&lt;small&gt;总流程&lt;/small&gt;&lt;strong&gt;2.0 &lt;em&gt;分钟&lt;/em&gt;&lt;/strong&gt;&lt;/article&gt;
+      &lt;article&gt;&lt;small&gt;较串行节省&lt;/small&gt;&lt;strong&gt;— &lt;em&gt;分钟&lt;/em&gt;&lt;/strong&gt;&lt;/article&gt;
+      &lt;article&gt;&lt;small&gt;全流程完成差（旧版）&lt;/small&gt;&lt;strong&gt;0.0 &lt;em&gt;分钟&lt;/em&gt;&lt;/strong&gt;
+        &lt;!--v-if--&gt;
+      &lt;/article&gt;
+      &lt;article&gt;&lt;small&gt;最长连续人工&lt;/small&gt;&lt;strong&gt;1.0 &lt;em&gt;分钟&lt;/em&gt;&lt;/strong&gt;&lt;/article&gt;
+    &lt;/div&gt;
+    &lt;!--v-if--&gt;
+    &lt;schedule-gantt-stub envelope=&quot;[object Object]&quot; session=&quot;[object Object]&quot; timezone=&quot;Asia/Shanghai&quot; historical=&quot;false&quot;&gt;&lt;/schedule-gantt-stub&gt;
+    &lt;!--v-if--&gt;
+    &lt;section class=&quot;panel&quot;&gt;
+      &lt;div class=&quot;section-heading&quot;&gt;
+        &lt;div&gt;
+          &lt;p class=&quot;eyebrow&quot;&gt;菜单&lt;/p&gt;
+          &lt;h2&gt;为这桌菜追加一道&lt;/h2&gt;
+        &lt;/div&gt;&lt;span class=&quot;tag&quot;&gt;1 道已发布菜谱&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;!--v-if--&gt;
+      &lt;!--v-if--&gt;
+      &lt;div class=&quot;toolbar&quot;&gt;&lt;input aria-label=&quot;搜索菜谱&quot; placeholder=&quot;搜索菜名、食材或菜谱 ID&quot; type=&quot;search&quot;&gt;
+        &lt;!--v-if--&gt;
+      &lt;/div&gt;
+      &lt;!--v-if--&gt;
+      &lt;!--v-if--&gt;
+      &lt;div class=&quot;recipe-grid&quot;&gt;
+        &lt;article class=&quot;recipe-card&quot;&gt;&lt;label&gt;&lt;input type=&quot;checkbox&quot; aria-label=&quot;合成菜 toy-recipe&quot; value=&quot;toy-recipe&quot;&gt;&lt;span&gt;&lt;strong&gt;合成菜&lt;/strong&gt;&lt;small&gt;2 道工序 · y-recipe&lt;/small&gt;&lt;/span&gt;&lt;/label&gt;
+          &lt;p class=&quot;ingredients&quot;&gt;&lt;/p&gt;&lt;button class=&quot;text-button&quot; type=&quot;button&quot;&gt; 查看工艺 → &lt;/button&gt;
+        &lt;/article&gt;
+      &lt;/div&gt;
+      &lt;!--v-if--&gt;
+      &lt;!--v-if--&gt;
+      &lt;div class=&quot;selection-bar&quot;&gt;&lt;span&gt;已选 0 道，每次追加一道&lt;/span&gt;&lt;button class=&quot;primary&quot; data-testid=&quot;create-plan&quot; disabled=&quot;&quot;&gt;追加并重排&lt;/button&gt;&lt;/div&gt;
+    &lt;/section&gt;
+    &lt;!--v-if--&gt;
+    &lt;!--v-if--&gt;
+    &lt;!--v-if--&gt;
+  &lt;/main&gt;
+  &lt;footer&gt;固定知识快照 · 计划经独立校验后发布 · 进度注明计划时钟推算或反馈来源&lt;/footer&gt;
+&lt;/div&gt;
+&lt;!--v-if--&gt;" type="Error">
+Error: Unable to get [data-testid=planning-overhead] within: &lt;div class=&quot;app-shell&quot;&gt;
+  &lt;header class=&quot;topbar&quot;&gt;&lt;a class=&quot;brand&quot; href=&quot;#&quot;&gt;&lt;span class=&quot;brand-mark&quot;&gt;◷&lt;/span&gt;&lt;span&gt;烹饪工作台&lt;small&gt;把每一步安排清楚&lt;/small&gt;&lt;/span&gt;&lt;/a&gt;
+    &lt;div class=&quot;header-actions&quot;&gt;&lt;span class=&quot;connection-dot&quot;&gt;&lt;/span&gt; 知识库已就绪&lt;button&gt; 新的一桌 &lt;/button&gt;&lt;/div&gt;
+  &lt;/header&gt;
+  &lt;main&gt;
+    &lt;div class=&quot;page-heading&quot;&gt;
+      &lt;div&gt;
+        &lt;p class=&quot;eyebrow&quot;&gt;这桌菜的安排&lt;/p&gt;
+        &lt;h1&gt;1 道菜，按步推进&lt;/h1&gt;
+        &lt;p class=&quot;muted&quot;&gt;合成菜&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;session-version&quot; data-testid=&quot;session-version&quot;&gt;&lt;strong&gt;v1&lt;/strong&gt;&lt;small&gt;状态 2 · 计划时钟推算&lt;/small&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;nav class=&quot;tabs&quot; aria-label=&quot;工作台页面&quot;&gt;&lt;button class=&quot;active&quot;&gt;安排&lt;/button&gt;&lt;button class=&quot;&quot;&gt; 执行与反馈&lt;/button&gt;&lt;button class=&quot;&quot;&gt; 历史版本&lt;/button&gt;&lt;button class=&quot;&quot;&gt; 接口测试 &lt;/button&gt;&lt;/nav&gt;
+    &lt;!--v-if--&gt;
+    &lt;!--v-if--&gt;
+    &lt;!--v-if--&gt;
+    &lt;!--v-if--&gt;
+    &lt;section class=&quot;panel session-progress&quot;&gt;
+      &lt;div class=&quot;section-heading&quot;&gt;
+        &lt;h2&gt;当前进度&lt;/h2&gt;&lt;span class=&quot;tag&quot;&gt;计划时钟推算&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;p class=&quot;muted&quot;&gt; 首次发布后自动推进；开始和完成由服务端计划时钟推算，实际情况可在执行与反馈中修正。 &lt;/p&gt;
+      &lt;div class=&quot;progress-values&quot;&gt;
+        &lt;p data-testid=&quot;clock-progress&quot;&gt;&lt;span&gt;计划时钟&lt;/span&gt;&lt;strong&gt;0 分 30 秒&lt;/strong&gt;&lt;small&gt;计时起点 2026/10/08 08:00:00&lt;/small&gt;&lt;/p&gt;
+        &lt;p data-testid=&quot;execution-progress&quot;&gt;&lt;span&gt;完成操作（含库存满足）&lt;/span&gt;&lt;strong&gt;0 / 2&lt;/strong&gt;&lt;progress max=&quot;2&quot; aria-label=&quot;已完成操作进度&quot; value=&quot;0&quot;&gt;&lt;/progress&gt;&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div data-testid=&quot;running-operations&quot;&gt;&lt;strong&gt;当前执行&lt;/strong&gt;
+        &lt;ul class=&quot;notice-list&quot;&gt;
+          &lt;li&gt;合成菜 · 切配&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;!--v-if--&gt;&lt;button data-testid=&quot;replan-remaining&quot;&gt;重新优化剩余操作&lt;/button&gt;
+    &lt;/section&gt;
+    &lt;div class=&quot;metrics&quot;&gt;
+      &lt;article&gt;&lt;small&gt;预计结束&lt;/small&gt;&lt;strong&gt;2026/10/08 08:02:00&lt;/strong&gt;&lt;/article&gt;
+      &lt;article&gt;&lt;small&gt;总流程&lt;/small&gt;&lt;strong&gt;2.0 &lt;em&gt;分钟&lt;/em&gt;&lt;/strong&gt;&lt;/article&gt;
+      &lt;article&gt;&lt;small&gt;较串行节省&lt;/small&gt;&lt;strong&gt;— &lt;em&gt;分钟&lt;/em&gt;&lt;/strong&gt;&lt;/article&gt;
+      &lt;article&gt;&lt;small&gt;全流程完成差（旧版）&lt;/small&gt;&lt;strong&gt;0.0 &lt;em&gt;分钟&lt;/em&gt;&lt;/strong&gt;
+        &lt;!--v-if--&gt;
+      &lt;/article&gt;
+      &lt;article&gt;&lt;small&gt;最长连续人工&lt;/small&gt;&lt;strong&gt;1.0 &lt;em&gt;分钟&lt;/em&gt;&lt;/strong&gt;&lt;/article&gt;
+    &lt;/div&gt;
+    &lt;!--v-if--&gt;
+    &lt;schedule-gantt-stub envelope=&quot;[object Object]&quot; session=&quot;[object Object]&quot; timezone=&quot;Asia/Shanghai&quot; historical=&quot;false&quot;&gt;&lt;/schedule-gantt-stub&gt;
+    &lt;!--v-if--&gt;
+    &lt;section class=&quot;panel&quot;&gt;
+      &lt;div class=&quot;section-heading&quot;&gt;
+        &lt;div&gt;
+          &lt;p class=&quot;eyebrow&quot;&gt;菜单&lt;/p&gt;
+          &lt;h2&gt;为这桌菜追加一道&lt;/h2&gt;
+        &lt;/div&gt;&lt;span class=&quot;tag&quot;&gt;1 道已发布菜谱&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;!--v-if--&gt;
+      &lt;!--v-if--&gt;
+      &lt;div class=&quot;toolbar&quot;&gt;&lt;input aria-label=&quot;搜索菜谱&quot; placeholder=&quot;搜索菜名、食材或菜谱 ID&quot; type=&quot;search&quot;&gt;
+        &lt;!--v-if--&gt;
+      &lt;/div&gt;
+      &lt;!--v-if--&gt;
+      &lt;!--v-if--&gt;
+      &lt;div class=&quot;recipe-grid&quot;&gt;
+        &lt;article class=&quot;recipe-card&quot;&gt;&lt;label&gt;&lt;input type=&quot;checkbox&quot; aria-label=&quot;合成菜 toy-recipe&quot; value=&quot;toy-recipe&quot;&gt;&lt;span&gt;&lt;strong&gt;合成菜&lt;/strong&gt;&lt;small&gt;2 道工序 · y-recipe&lt;/small&gt;&lt;/span&gt;&lt;/label&gt;
+          &lt;p class=&quot;ingredients&quot;&gt;&lt;/p&gt;&lt;button class=&quot;text-button&quot; type=&quot;button&quot;&gt; 查看工艺 → &lt;/button&gt;
+        &lt;/article&gt;
+      &lt;/div&gt;
+      &lt;!--v-if--&gt;
+      &lt;!--v-if--&gt;
+      &lt;div class=&quot;selection-bar&quot;&gt;&lt;span&gt;已选 0 道，每次追加一道&lt;/span&gt;&lt;button class=&quot;primary&quot; data-testid=&quot;create-plan&quot; disabled=&quot;&quot;&gt;追加并重排&lt;/button&gt;&lt;/div&gt;
+    &lt;/section&gt;
+    &lt;!--v-if--&gt;
+    &lt;!--v-if--&gt;
+    &lt;!--v-if--&gt;
+  &lt;/main&gt;
+  &lt;footer&gt;固定知识快照 · 计划经独立校验后发布 · 进度注明计划时钟推算或反馈来源&lt;/footer&gt;
+&lt;/div&gt;
+&lt;!--v-if--&gt;
+ ❯ VueWrapper.BaseWrapper.get node_modules/@vue/test-utils/dist/vue-test-utils.cjs.js:7279:15
+ ❯ tests/unit/clock_workbench.test.ts:234:20
+            </failure>
+        </testcase>
+        <testcase classname="tests/unit/clock_workbench.test.ts" name="authoritative plan clock workbench &gt; explains immediate optimization without waiting for active cooking to finish" time="0">
+            <skipped/>
+        </testcase>
+        <testcase classname="tests/unit/clock_workbench.test.ts" name="authoritative plan clock workbench &gt; publishes current plan and keeps polling while optional parent history is slow or fails" time="0">
+            <skipped/>
+        </testcase>
+        <testcase classname="tests/unit/clock_workbench.test.ts" name="authoritative plan clock workbench &gt; shows active server executions while a requested replan computes, then reflects publication" time="0">
+            <skipped/>
+        </testcase>
+        <testcase classname="tests/unit/clock_workbench.test.ts" name="authoritative plan clock workbench &gt; uses server progress even when the browser clock or schedule time has advanced" time="0">
+            <skipped/>
+        </testcase>
+        <testcase classname="tests/unit/clock_workbench.test.ts" name="authoritative plan clock workbench &gt; refreshes a rejected event before a user retries and never silently rewrites its version" time="0">
+            <skipped/>
+        </testcase>
+        <testcase classname="tests/unit/clock_workbench.test.ts" name="authoritative plan clock workbench &gt; loads a newly published plan from its notification before the next polling tick" time="0">
+            <skipped/>
+        </testcase>
+        <testcase classname="tests/unit/clock_workbench.test.ts" name="authoritative plan clock workbench &gt; announces each completion once, retains it after replan and restores the reconnect cursor" time="0">
+            <skipped/>
+        </testcase>
+        <testcase classname="tests/unit/clock_workbench.test.ts" name="authoritative plan clock workbench &gt; attaches the competition task stream and presents actual progress, notices and replan" time="0">
+            <skipped/>
+        </testcase>
+        <testcase classname="tests/unit/clock_workbench.test.ts" name="authoritative plan clock workbench &gt; keeps an accepted competition addition pending until the new plan publishes and retrieves it by the same identity" time="0">
+            <skipped/>
+        </testcase>
+        <testcase classname="tests/unit/clock_workbench.test.ts" name="authoritative plan clock workbench &gt; clears the previous five-field response when connecting a different competition task" time="0">
+            <skipped/>
+        </testcase>
+    </testsuite>
+</testsuites>

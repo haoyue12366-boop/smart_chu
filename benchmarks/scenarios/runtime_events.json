@@ -1,0 +1,312 @@
+{
+  "suite_id": "p4-runtime-v1",
+  "definition_kind": "EXECUTABLE_TEST_MAPPING_AND_BENCHMARK_INPUTS",
+  "release_id": "delegated-v3-p4-preparation-v1-all",
+  "prepared_scenarios_artifact": {
+    "path": "data/preparations/p4-v1/runtime_scenarios.json",
+    "sha256": "dd0774c9f3bab6a1ecaa407c4af6d317197ce4d4fe98679b379e0befa0c6f86f"
+  },
+  "cases": [
+    {
+      "case_id": "manual-marinade-release",
+      "source_kind": "SYNTHETIC",
+      "task_id": "P4-02",
+      "input": {
+        "active_sec": 180,
+        "wait_sec": 1200,
+        "complete_active_at_sec": 180
+      },
+      "expected_assertions": [
+        "确认拌料完成后释放human_1",
+        "180秒可开始另一菜主动任务",
+        "腌制不得早于1380秒结束"
+      ],
+      "test_ref": "tests/integration/test_p4_prepared_scenarios.py::test_prepared_runtime_scenario[manual-marinade-release]"
+    },
+    {
+      "case_id": "real-marinade-chain",
+      "source_kind": "REAL_PUBLISHED_RECIPE",
+      "task_id": "P4-02",
+      "input": {
+        "recipe_id": "65795250c458a177d8438dea",
+        "active_ops": [
+          "op_007_01",
+          "op_008_01"
+        ],
+        "wait_op": "op_009_01",
+        "wait_sec": 1800,
+        "next_active_op": "op_011_01"
+      },
+      "expected_assertions": [
+        "等待不占人",
+        "冷藏温区占用保留",
+        "装入重新预约人工"
+      ],
+      "test_ref": "tests/integration/test_p4_prepared_scenarios.py::test_prepared_runtime_scenario[real-marinade-chain]"
+    },
+    {
+      "case_id": "manual-overdue",
+      "source_kind": "SYNTHETIC",
+      "task_id": "P4-04",
+      "input": {
+        "planned_end_sec": 180,
+        "now_sec": 240,
+        "completion_event": null
+      },
+      "expected_assertions": [
+        "提醒待确认",
+        "不得自动释放人工或设备"
+      ],
+      "test_ref": "tests/integration/test_p4_prepared_scenarios.py::test_prepared_runtime_scenario[manual-overdue]"
+    },
+    {
+      "case_id": "two-human-starts",
+      "source_kind": "SYNTHETIC",
+      "task_id": "P4-02",
+      "input": {
+        "resource_id": "human_1",
+        "overlapping_starts": 2
+      },
+      "expected_assertions": [
+        "第二主动开始不合法",
+        "记录矛盾反馈，不增加操作者"
+      ],
+      "test_ref": "tests/integration/test_p4_prepared_scenarios.py::test_prepared_runtime_scenario[two-human-starts]"
+    },
+    {
+      "case_id": "marinade-add-recipe",
+      "source_kind": "SYNTHETIC",
+      "task_id": "P4-05",
+      "input": {
+        "actual_wait_start_sec": 180,
+        "now_sec": 780,
+        "required_wait_sec": 1200
+      },
+      "expected_assertions": [
+        "已等待600秒保留",
+        "剩余等待600秒",
+        "不重新等待1200秒"
+      ],
+      "test_ref": "tests/integration/test_p4_prepared_scenarios.py::test_prepared_runtime_scenario[marinade-add-recipe]"
+    },
+    {
+      "case_id": "hot-batch-add-member",
+      "source_kind": "REAL_RULE_SYNTHETIC_EVENT",
+      "task_id": "P4-05",
+      "input": {
+        "rule_id": "P3-H02-delegated-v1",
+        "event_type": "ADD_RECIPE"
+      },
+      "expected_assertions": [
+        "正在运行批次成员不变",
+        "新菜单独合法安排"
+      ],
+      "test_ref": "tests/integration/test_p4_prepared_scenarios.py::test_prepared_runtime_scenario[hot-batch-add-member]"
+    },
+    {
+      "case_id": "device-recovered-not-released",
+      "source_kind": "SYNTHETIC",
+      "task_id": "P4-08",
+      "input": {
+        "events": [
+          "DEVICE_UNAVAILABLE",
+          "DEVICE_RECOVERED"
+        ]
+      },
+      "expected_assertions": [
+        "可用性与占用分开",
+        "未确认释放不得复用"
+      ],
+      "test_ref": "tests/integration/test_p4_prepared_scenarios.py::test_prepared_runtime_scenario[device-recovered-not-released]"
+    },
+    {
+      "case_id": "duplicate-completion",
+      "source_kind": "SYNTHETIC",
+      "task_id": "P4-02",
+      "input": {
+        "same_event_repetitions": 2
+      },
+      "expected_assertions": [
+        "物料消费一次",
+        "资源释放一次",
+        "重复不再次求解"
+      ],
+      "test_ref": "tests/integration/test_p4_prepared_scenarios.py::test_prepared_runtime_scenario[duplicate-completion]"
+    },
+    {
+      "case_id": "same-event-id-different-payload",
+      "source_kind": "SYNTHETIC",
+      "task_id": "P4-02",
+      "input": {
+        "same_id": true,
+        "different_payload": true
+      },
+      "expected_assertions": [
+        "返回冲突",
+        "账本无二次修改"
+      ],
+      "test_ref": "tests/integration/test_p4_prepared_scenarios.py::test_prepared_runtime_scenario[same-event-id-different-payload]"
+    },
+    {
+      "case_id": "event-during-solving",
+      "source_kind": "SYNTHETIC",
+      "task_id": "P4-07",
+      "input": {
+        "solve_revision": 10,
+        "latest_revision": 11
+      },
+      "expected_assertions": [
+        "拒绝旧结果发布",
+        "预算内最多重算一次"
+      ],
+      "test_ref": "tests/integration/test_p4_prepared_scenarios.py::test_prepared_runtime_scenario[event-during-solving]"
+    },
+    {
+      "case_id": "qualitative-inventory",
+      "source_kind": "SYNTHETIC",
+      "task_id": "P4-03",
+      "input": {
+        "available": "整批",
+        "requested_grams": 50
+      },
+      "expected_assertions": [
+        "不能虚构克数供新菜分配",
+        "保留实际物料事实"
+      ],
+      "test_ref": "tests/integration/test_p4_prepared_scenarios.py::test_prepared_runtime_scenario[qualitative-inventory]"
+    },
+    {
+      "case_id": "restart-no-auto-complete",
+      "source_kind": "SYNTHETIC",
+      "task_id": "P4-07",
+      "input": {
+        "execution_mode": "MANUAL_CONFIRM",
+        "restart_after_planned_end": true
+      },
+      "expected_assertions": [
+        "恢复RUNNING事实",
+        "不以时钟补完成",
+        "保留固定知识版本"
+      ],
+      "test_ref": "tests/integration/test_p4_prepared_scenarios.py::test_prepared_runtime_scenario[restart-no-auto-complete]"
+    },
+    {
+      "case_id": "notification-cancel",
+      "source_kind": "SYNTHETIC",
+      "task_id": "P4-10",
+      "input": {
+        "old_plan_version": 1,
+        "new_plan_version": 2
+      },
+      "expected_assertions": [
+        "撤销旧计划未发送提醒",
+        "保留已发送记录",
+        "事务提交前不发送"
+      ],
+      "test_ref": "tests/integration/test_p4_prepared_scenarios.py::test_prepared_runtime_scenario[notification-cancel]"
+    },
+    {
+      "case_id": "total-vs-continuous-human",
+      "source_kind": "SYNTHETIC_OBJECTIVE_WITNESS",
+      "task_id": "P4-06",
+      "input": {
+        "same_upper_objectives": true,
+        "option_a": {
+          "total_human_sec": 480,
+          "max_busy_sec": 480
+        },
+        "option_b": {
+          "total_human_sec": 600,
+          "max_busy_sec": 300
+        }
+      },
+      "expected_assertions": [
+        "D1先选择A",
+        "不得以较短连续忙碌换更多累计人工",
+        "未执行D1报告未优化"
+      ],
+      "test_ref": "tests/integration/test_p4_prepared_scenarios.py::test_prepared_runtime_scenario[total-vs-continuous-human]"
+    },
+    {
+      "case_id": "retry-without-rule",
+      "source_kind": "SYNTHETIC",
+      "task_id": "P4-09",
+      "input": {
+        "event_type": "OPERATION_RETRY_REQUESTED",
+        "recovery_rule_id": null
+      },
+      "expected_assertions": [
+        "拒绝创建新尝试",
+        "保留失败和占用历史"
+      ],
+      "test_ref": "tests/integration/test_p4_prepared_scenarios.py::test_prepared_runtime_scenario[retry-without-rule]"
+    }
+  ],
+  "architecture_recovery_cases": [
+    {
+      "number": 1,
+      "case_id": "shared-preparation-failed",
+      "test_ref": "tests/fault_injection/test_runtime_recovery.py::test_architecture_recovery_case[shared-preparation-failed]"
+    },
+    {
+      "number": 2,
+      "case_id": "oven-unavailable-not-cleared",
+      "test_ref": "tests/fault_injection/test_runtime_recovery.py::test_architecture_recovery_case[oven-unavailable-not-cleared]"
+    },
+    {
+      "number": 3,
+      "case_id": "recovered-result-still-unknown",
+      "test_ref": "tests/fault_injection/test_runtime_recovery.py::test_architecture_recovery_case[recovered-result-still-unknown]"
+    },
+    {
+      "number": 4,
+      "case_id": "stock-below-reservation",
+      "test_ref": "tests/fault_injection/test_runtime_recovery.py::test_architecture_recovery_case[stock-below-reservation]"
+    },
+    {
+      "number": 5,
+      "case_id": "duplicate-failure",
+      "test_ref": "tests/fault_injection/test_runtime_recovery.py::test_architecture_recovery_case[duplicate-failure]"
+    },
+    {
+      "number": 6,
+      "case_id": "remake-has-two-execution-identities",
+      "test_ref": "tests/fault_injection/test_runtime_recovery.py::test_architecture_recovery_case[remake-has-two-execution-identities]"
+    },
+    {
+      "number": 7,
+      "case_id": "replan-failure-preserves-exception-facts",
+      "test_ref": "tests/fault_injection/test_runtime_recovery.py::test_architecture_recovery_case[replan-failure-preserves-exception-facts]"
+    }
+  ],
+  "performance_cases": [
+    {
+      "case_id": "add-at-zero",
+      "source_kind": "REAL_RULE_SYNTHETIC_EVENT",
+      "initial_recipe_ids": [
+        "5c8200d96dc6e123a037a202"
+      ],
+      "event_type": "ADD_RECIPE",
+      "recipe_id": "5fe197175f8f38795ea6fe77"
+    },
+    {
+      "case_id": "delay-at-zero",
+      "source_kind": "REAL_RULE_SYNTHETIC_EVENT",
+      "initial_recipe_ids": [
+        "5c8200d96dc6e123a037a202",
+        "5fe197175f8f38795ea6fe77"
+      ],
+      "event_type": "DELAY_RECIPE",
+      "earliest_start_sec": 300
+    },
+    {
+      "case_id": "cancel-at-zero",
+      "source_kind": "REAL_RULE_SYNTHETIC_EVENT",
+      "initial_recipe_ids": [
+        "5c8200d96dc6e123a037a202",
+        "5fe197175f8f38795ea6fe77"
+      ],
+      "event_type": "CANCEL_RECIPE"
+    }
+  ]
+}

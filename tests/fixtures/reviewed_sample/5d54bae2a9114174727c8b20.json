@@ -1,0 +1,4096 @@
+{
+  "source_kind": "REAL_SOURCE",
+  "recipe_id": "5d54bae2a9114174727c8b20",
+  "name": "鸡翅包饭",
+  "source_file": "docs/recipes_100.csv",
+  "source_hash": "96626b4bc7bebc6170a18177a326918728b67f9264eea0d5a820562b0107dc5c",
+  "csv_line": 2,
+  "source_record": {
+    "菜谱id": "5d54bae2a9114174727c8b20",
+    "名称": "鸡翅包饭",
+    "食材清单": "主料：鸡翅3个；去皮胡萝卜60克；洋葱1个；火腿肠1根；米饭150克；辅料：韩式辣椒酱20克；食用油10毫升；料酒5毫升；盐3克；胡椒粉5克",
+    "烹饪步骤": "第1步：洋葱、胡萝卜均洗净切碎；火腿肠先切细条，再切碎。；第2步：鸡翅洗净，去骨，翅尖处留骨，装入碗中。；第3步：碗中加盐、油、胡椒粉、料酒腌渍。；第4步：锅中注油烧热，放入蔬菜、火腿肠、米饭炒匀。；第5步：加盐、胡椒粉、韩式辣椒酱拌炒片刻，盛出装碗。；第6步：将炒饭装入鸡翅中，用牙签封口，翅尖用锡纸包住。；第7步：烤盘内铺上一层锡纸，在锡纸上刷油，放入鸡翅，鸡翅表面刷油。；第8步：将烤盘放入烤箱中。；第9步：关上烤箱门，选择“常规烘焙”模式，以180℃烤15分钟。；第10步：打开烤箱门，将烤好的鸡翅包饭取出即可。"
+  },
+  "evidence": [
+    {
+      "provenance_id": "csv:5d54bae2a9114174727c8b20:step:1",
+      "source_file": "docs/recipes_100.csv",
+      "source_hash": "96626b4bc7bebc6170a18177a326918728b67f9264eea0d5a820562b0107dc5c",
+      "record_id": "5d54bae2a9114174727c8b20",
+      "csv_line": 2,
+      "step_number": 1,
+      "text_span": "洋葱、胡萝卜均洗净切碎；火腿肠先切细条，再切碎。；",
+      "origin": "SOURCE_EXPLICIT",
+      "duration_mentions": []
+    },
+    {
+      "provenance_id": "csv:5d54bae2a9114174727c8b20:step:2",
+      "source_file": "docs/recipes_100.csv",
+      "source_hash": "96626b4bc7bebc6170a18177a326918728b67f9264eea0d5a820562b0107dc5c",
+      "record_id": "5d54bae2a9114174727c8b20",
+      "csv_line": 2,
+      "step_number": 2,
+      "text_span": "鸡翅洗净，去骨，翅尖处留骨，装入碗中。；",
+      "origin": "SOURCE_EXPLICIT",
+      "duration_mentions": []
+    },
+    {
+      "provenance_id": "csv:5d54bae2a9114174727c8b20:step:3",
+      "source_file": "docs/recipes_100.csv",
+      "source_hash": "96626b4bc7bebc6170a18177a326918728b67f9264eea0d5a820562b0107dc5c",
+      "record_id": "5d54bae2a9114174727c8b20",
+      "csv_line": 2,
+      "step_number": 3,
+      "text_span": "碗中加盐、油、胡椒粉、料酒腌渍。；",
+      "origin": "SOURCE_EXPLICIT",
+      "duration_mentions": []
+    },
+    {
+      "provenance_id": "csv:5d54bae2a9114174727c8b20:step:4",
+      "source_file": "docs/recipes_100.csv",
+      "source_hash": "96626b4bc7bebc6170a18177a326918728b67f9264eea0d5a820562b0107dc5c",
+      "record_id": "5d54bae2a9114174727c8b20",
+      "csv_line": 2,
+      "step_number": 4,
+      "text_span": "锅中注油烧热，放入蔬菜、火腿肠、米饭炒匀。；",
+      "origin": "SOURCE_EXPLICIT",
+      "duration_mentions": []
+    },
+    {
+      "provenance_id": "csv:5d54bae2a9114174727c8b20:step:5",
+      "source_file": "docs/recipes_100.csv",
+      "source_hash": "96626b4bc7bebc6170a18177a326918728b67f9264eea0d5a820562b0107dc5c",
+      "record_id": "5d54bae2a9114174727c8b20",
+      "csv_line": 2,
+      "step_number": 5,
+      "text_span": "加盐、胡椒粉、韩式辣椒酱拌炒片刻，盛出装碗。；",
+      "origin": "SOURCE_EXPLICIT",
+      "duration_mentions": []
+    },
+    {
+      "provenance_id": "csv:5d54bae2a9114174727c8b20:step:6",
+      "source_file": "docs/recipes_100.csv",
+      "source_hash": "96626b4bc7bebc6170a18177a326918728b67f9264eea0d5a820562b0107dc5c",
+      "record_id": "5d54bae2a9114174727c8b20",
+      "csv_line": 2,
+      "step_number": 6,
+      "text_span": "将炒饭装入鸡翅中，用牙签封口，翅尖用锡纸包住。；",
+      "origin": "SOURCE_EXPLICIT",
+      "duration_mentions": []
+    },
+    {
+      "provenance_id": "csv:5d54bae2a9114174727c8b20:step:7",
+      "source_file": "docs/recipes_100.csv",
+      "source_hash": "96626b4bc7bebc6170a18177a326918728b67f9264eea0d5a820562b0107dc5c",
+      "record_id": "5d54bae2a9114174727c8b20",
+      "csv_line": 2,
+      "step_number": 7,
+      "text_span": "烤盘内铺上一层锡纸，在锡纸上刷油，放入鸡翅，鸡翅表面刷油。；",
+      "origin": "SOURCE_EXPLICIT",
+      "duration_mentions": []
+    },
+    {
+      "provenance_id": "csv:5d54bae2a9114174727c8b20:step:8",
+      "source_file": "docs/recipes_100.csv",
+      "source_hash": "96626b4bc7bebc6170a18177a326918728b67f9264eea0d5a820562b0107dc5c",
+      "record_id": "5d54bae2a9114174727c8b20",
+      "csv_line": 2,
+      "step_number": 8,
+      "text_span": "将烤盘放入烤箱中。；",
+      "origin": "SOURCE_EXPLICIT",
+      "duration_mentions": []
+    },
+    {
+      "provenance_id": "csv:5d54bae2a9114174727c8b20:step:9",
+      "source_file": "docs/recipes_100.csv",
+      "source_hash": "96626b4bc7bebc6170a18177a326918728b67f9264eea0d5a820562b0107dc5c",
+      "record_id": "5d54bae2a9114174727c8b20",
+      "csv_line": 2,
+      "step_number": 9,
+      "text_span": "关上烤箱门，选择“常规烘焙”模式，以180℃烤15分钟。；",
+      "origin": "SOURCE_EXPLICIT",
+      "duration_mentions": [
+        "15分钟"
+      ]
+    },
+    {
+      "provenance_id": "csv:5d54bae2a9114174727c8b20:step:10",
+      "source_file": "docs/recipes_100.csv",
+      "source_hash": "96626b4bc7bebc6170a18177a326918728b67f9264eea0d5a820562b0107dc5c",
+      "record_id": "5d54bae2a9114174727c8b20",
+      "csv_line": 2,
+      "step_number": 10,
+      "text_span": "打开烤箱门，将烤好的鸡翅包饭取出即可。",
+      "origin": "SOURCE_EXPLICIT",
+      "duration_mentions": []
+    },
+    {
+      "provenance_id": "csv:5d54bae2a9114174727c8b20",
+      "origin": "SOURCE_EXPLICIT",
+      "source_file": "docs/recipes_100.csv",
+      "source_hash": "96626b4bc7bebc6170a18177a326918728b67f9264eea0d5a820562b0107dc5c",
+      "record_id": "5d54bae2a9114174727c8b20",
+      "field_path": "/",
+      "step_number": null,
+      "text_span": "{\"菜谱id\": \"5d54bae2a9114174727c8b20\", \"名称\": \"鸡翅包饭\", \"食材清单\": \"主料：鸡翅3个；去皮胡萝卜60克；洋葱1个；火腿肠1根；米饭150克；辅料：韩式辣椒酱20克；食用油10毫升；料酒5毫升；盐3克；胡椒粉5克\", \"烹饪步骤\": \"第1步：洋葱、胡萝卜均洗净切碎；火腿肠先切细条，再切碎。；第2步：鸡翅洗净，去骨，翅尖处留骨，装入碗中。；第3步：碗中加盐、油、胡椒粉、料酒腌渍。；第4步：锅中注油烧热，放入蔬菜、火腿肠、米饭炒匀。；第5步：加盐、胡椒粉、韩式辣椒酱拌炒片刻，盛出装碗。；第6步：将炒饭装入鸡翅中，用牙签封口，翅尖用锡纸包住。；第7步：烤盘内铺上一层锡纸，在锡纸上刷油，放入鸡翅，鸡翅表面刷油。；第8步：将烤盘放入烤箱中。；第9步：关上烤箱门，选择“常规烘焙”模式，以180℃烤15分钟。；第10步：打开烤箱门，将烤好的鸡翅包饭取出即可。\"}",
+      "artifact_ref": {
+        "path": "docs/recipes_100.csv",
+        "sha256": "96626b4bc7bebc6170a18177a326918728b67f9264eea0d5a820562b0107dc5c",
+        "media_type": "text/csv"
+      },
+      "extraction_run_id": null,
+      "review_status": "NEEDS_REVIEW",
+      "approved_review_ref": null,
+      "confidence": null,
+      "confidence_kind": null
+    },
+    {
+      "approved_review_ref": null,
+      "artifact_ref": {
+        "media_type": "text/csv",
+        "path": "docs/recipes_100.csv",
+        "sha256": "96626b4bc7bebc6170a18177a326918728b67f9264eea0d5a820562b0107dc5c"
+      },
+      "confidence": null,
+      "confidence_kind": null,
+      "extraction_run_id": null,
+      "field_path": "/食材清单",
+      "origin": "SOURCE_EXPLICIT",
+      "provenance_id": "ingredient:5d54bae2a9114174727c8b20:001",
+      "record_id": "5d54bae2a9114174727c8b20",
+      "review_status": "NEEDS_REVIEW",
+      "source_file": "docs/recipes_100.csv",
+      "source_hash": "96626b4bc7bebc6170a18177a326918728b67f9264eea0d5a820562b0107dc5c",
+      "step_number": null,
+      "text_span": "主料：鸡翅3个"
+    },
+    {
+      "approved_review_ref": null,
+      "artifact_ref": {
+        "media_type": "text/csv",
+        "path": "docs/recipes_100.csv",
+        "sha256": "96626b4bc7bebc6170a18177a326918728b67f9264eea0d5a820562b0107dc5c"
+      },
+      "confidence": null,
+      "confidence_kind": null,
+      "extraction_run_id": null,
+      "field_path": "/食材清单",
+      "origin": "SOURCE_EXPLICIT",
+      "provenance_id": "ingredient:5d54bae2a9114174727c8b20:002",
+      "record_id": "5d54bae2a9114174727c8b20",
+      "review_status": "NEEDS_REVIEW",
+      "source_file": "docs/recipes_100.csv",
+      "source_hash": "96626b4bc7bebc6170a18177a326918728b67f9264eea0d5a820562b0107dc5c",
+      "step_number": null,
+      "text_span": "去皮胡萝卜60克"
+    },
+    {
+      "approved_review_ref": null,
+      "artifact_ref": {
+        "media_type": "text/csv",
+        "path": "docs/recipes_100.csv",
+        "sha256": "96626b4bc7bebc6170a18177a326918728b67f9264eea0d5a820562b0107dc5c"
+      },
+      "confidence": null,
+      "confidence_kind": null,
+      "extraction_run_id": null,
+      "field_path": "/食材清单",
+      "origin": "SOURCE_EXPLICIT",
+      "provenance_id": "ingredient:5d54bae2a9114174727c8b20:003",
+      "record_id": "5d54bae2a9114174727c8b20",
+      "review_status": "NEEDS_REVIEW",
+      "source_file": "docs/recipes_100.csv",
+      "source_hash": "96626b4bc7bebc6170a18177a326918728b67f9264eea0d5a820562b0107dc5c",
+      "step_number": null,
+      "text_span": "洋葱1个"
+    },
+    {
+      "approved_review_ref": null,
+      "artifact_ref": {
+        "media_type": "text/csv",
+        "path": "docs/recipes_100.csv",
+        "sha256": "96626b4bc7bebc6170a18177a326918728b67f9264eea0d5a820562b0107dc5c"
+      },
+      "confidence": null,
+      "confidence_kind": null,
+      "extraction_run_id": null,
+      "field_path": "/食材清单",
+      "origin": "SOURCE_EXPLICIT",
+      "provenance_id": "ingredient:5d54bae2a9114174727c8b20:004",
+      "record_id": "5d54bae2a9114174727c8b20",
+      "review_status": "NEEDS_REVIEW",
+      "source_file": "docs/recipes_100.csv",
+      "source_hash": "96626b4bc7bebc6170a18177a326918728b67f9264eea0d5a820562b0107dc5c",
+      "step_number": null,
+      "text_span": "火腿肠1根"
+    },
+    {
+      "approved_review_ref": null,
+      "artifact_ref": {
+        "media_type": "text/csv",
+        "path": "docs/recipes_100.csv",
+        "sha256": "96626b4bc7bebc6170a18177a326918728b67f9264eea0d5a820562b0107dc5c"
+      },
+      "confidence": null,
+      "confidence_kind": null,
+      "extraction_run_id": null,
+      "field_path": "/食材清单",
+      "origin": "SOURCE_EXPLICIT",
+      "provenance_id": "ingredient:5d54bae2a9114174727c8b20:007",
+      "record_id": "5d54bae2a9114174727c8b20",
+      "review_status": "NEEDS_REVIEW",
+      "source_file": "docs/recipes_100.csv",
+      "source_hash": "96626b4bc7bebc6170a18177a326918728b67f9264eea0d5a820562b0107dc5c",
+      "step_number": null,
+      "text_span": "辅料：韩式辣椒酱20克"
+    },
+    {
+      "approved_review_ref": null,
+      "artifact_ref": {
+        "media_type": "text/csv",
+        "path": "docs/recipes_100.csv",
+        "sha256": "96626b4bc7bebc6170a18177a326918728b67f9264eea0d5a820562b0107dc5c"
+      },
+      "confidence": null,
+      "confidence_kind": null,
+      "extraction_run_id": null,
+      "field_path": "/食材清单",
+      "origin": "SOURCE_EXPLICIT",
+      "provenance_id": "ingredient:5d54bae2a9114174727c8b20:008",
+      "record_id": "5d54bae2a9114174727c8b20",
+      "review_status": "NEEDS_REVIEW",
+      "source_file": "docs/recipes_100.csv",
+      "source_hash": "96626b4bc7bebc6170a18177a326918728b67f9264eea0d5a820562b0107dc5c",
+      "step_number": null,
+      "text_span": "食用油10毫升"
+    },
+    {
+      "approved_review_ref": null,
+      "artifact_ref": {
+        "media_type": "text/csv",
+        "path": "docs/recipes_100.csv",
+        "sha256": "96626b4bc7bebc6170a18177a326918728b67f9264eea0d5a820562b0107dc5c"
+      },
+      "confidence": null,
+      "confidence_kind": null,
+      "extraction_run_id": null,
+      "field_path": "/食材清单",
+      "origin": "SOURCE_EXPLICIT",
+      "provenance_id": "ingredient:5d54bae2a9114174727c8b20:009",
+      "record_id": "5d54bae2a9114174727c8b20",
+      "review_status": "NEEDS_REVIEW",
+      "source_file": "docs/recipes_100.csv",
+      "source_hash": "96626b4bc7bebc6170a18177a326918728b67f9264eea0d5a820562b0107dc5c",
+      "step_number": null,
+      "text_span": "料酒5毫升"
+    },
+    {
+      "approved_review_ref": null,
+      "artifact_ref": {
+        "media_type": "text/csv",
+        "path": "docs/recipes_100.csv",
+        "sha256": "96626b4bc7bebc6170a18177a326918728b67f9264eea0d5a820562b0107dc5c"
+      },
+      "confidence": null,
+      "confidence_kind": null,
+      "extraction_run_id": null,
+      "field_path": "/食材清单",
+      "origin": "SOURCE_EXPLICIT",
+      "provenance_id": "ingredient:5d54bae2a9114174727c8b20:010",
+      "record_id": "5d54bae2a9114174727c8b20",
+      "review_status": "NEEDS_REVIEW",
+      "source_file": "docs/recipes_100.csv",
+      "source_hash": "96626b4bc7bebc6170a18177a326918728b67f9264eea0d5a820562b0107dc5c",
+      "step_number": null,
+      "text_span": "盐3克"
+    },
+    {
+      "approved_review_ref": null,
+      "artifact_ref": {
+        "media_type": "text/csv",
+        "path": "docs/recipes_100.csv",
+        "sha256": "96626b4bc7bebc6170a18177a326918728b67f9264eea0d5a820562b0107dc5c"
+      },
+      "confidence": null,
+      "confidence_kind": null,
+      "extraction_run_id": null,
+      "field_path": "/食材清单",
+      "origin": "SOURCE_EXPLICIT",
+      "provenance_id": "ingredient:5d54bae2a9114174727c8b20:011",
+      "record_id": "5d54bae2a9114174727c8b20",
+      "review_status": "NEEDS_REVIEW",
+      "source_file": "docs/recipes_100.csv",
+      "source_hash": "96626b4bc7bebc6170a18177a326918728b67f9264eea0d5a820562b0107dc5c",
+      "step_number": null,
+      "text_span": "胡椒粉5克"
+    },
+    {
+      "approved_review_ref": null,
+      "artifact_ref": {
+        "media_type": "application/json",
+        "path": "data/revisions/recipes_v3/ingredient_inputs.json",
+        "sha256": "0fd362c928c845d42e98927cdede673953f6af0072ecd8123566ca099e00075d"
+      },
+      "confidence": null,
+      "confidence_kind": null,
+      "extraction_run_id": null,
+      "field_path": "/食材清单",
+      "origin": "MODEL_SUGGESTION",
+      "provenance_id": "ingredient:5d54bae2a9114174727c8b20:005",
+      "record_id": "5d54bae2a9114174727c8b20",
+      "review_status": "NEEDS_REVIEW",
+      "source_file": "data/revisions/recipes_v3/ingredient_inputs.json",
+      "source_hash": "0fd362c928c845d42e98927cdede673953f6af0072ecd8123566ca099e00075d",
+      "step_number": null,
+      "text_span": "生米60克"
+    },
+    {
+      "approved_review_ref": null,
+      "artifact_ref": {
+        "media_type": "application/json",
+        "path": "data/revisions/recipes_v3/ingredient_inputs.json",
+        "sha256": "0fd362c928c845d42e98927cdede673953f6af0072ecd8123566ca099e00075d"
+      },
+      "confidence": null,
+      "confidence_kind": null,
+      "extraction_run_id": null,
+      "field_path": "/食材清单",
+      "origin": "MODEL_SUGGESTION",
+      "provenance_id": "ingredient:5d54bae2a9114174727c8b20:006",
+      "record_id": "5d54bae2a9114174727c8b20",
+      "review_status": "NEEDS_REVIEW",
+      "source_file": "data/revisions/recipes_v3/ingredient_inputs.json",
+      "source_hash": "0fd362c928c845d42e98927cdede673953f6af0072ecd8123566ca099e00075d",
+      "step_number": null,
+      "text_span": "水90克"
+    },
+    {
+      "approved_review_ref": null,
+      "artifact_ref": {
+        "media_type": "application/json",
+        "path": "data/revisions/recipes_v3/scheduling_dataset.json",
+        "sha256": "82a2f3c6bddbd4aba8f3ab96562883a983b104c30017a016c0c9f61f28e6a694"
+      },
+      "field_path": "/provenance/0",
+      "origin": "MODEL_SUGGESTION",
+      "provenance_id": "ai-timing:5d54bae2a9114174727c8b20",
+      "record_id": "5d54bae2a9114174727c8b20",
+      "review_status": "NEEDS_REVIEW",
+      "source_file": "data/revisions/recipes_v3/scheduling_dataset.json",
+      "source_hash": "82a2f3c6bddbd4aba8f3ab96562883a983b104c30017a016c0c9f61f28e6a694",
+      "text_span": "现存 V3 派生记录；历史来源有缺口，待人工核对。"
+    },
+    {
+      "field_path": "/stages",
+      "origin": "MODEL_SUGGESTION",
+      "provenance_id": "ai-material:5d54bae2a9114174727c8b20",
+      "record_id": "5d54bae2a9114174727c8b20",
+      "review_status": "NEEDS_REVIEW",
+      "source_file": "data/revisions/recipes_v3/material_map_01_25.json",
+      "source_hash": "509643d03f2564439573ebba3841c10ee374d587510987a9c186994c7f34b710",
+      "text_span": "逐菜原料份额、半成品与必需前置；用户授权AI补全，未作人工批准"
+    },
+    {
+      "provenance_id": "scheduling-v3:5d54bae2a9114174727c8b20",
+      "origin": "MODEL_SUGGESTION",
+      "source_file": "data/development/development-v3-rebased-v1/dataset.json",
+      "source_hash": "74d8cb914ed6c76a6c583a2af65dd033f27b4ce30335a40c78dbab1789944c75",
+      "record_id": "5d54bae2a9114174727c8b20",
+      "field_path": "/recipes/canonical",
+      "step_number": null,
+      "text_span": "V3 AI建议工艺、数值时长及物料流；未经人工批准。",
+      "artifact_ref": {
+        "path": "data/development/development-v3-rebased-v1/dataset.json",
+        "sha256": "74d8cb914ed6c76a6c583a2af65dd033f27b4ce30335a40c78dbab1789944c75",
+        "media_type": "application/json"
+      },
+      "extraction_run_id": null,
+      "review_status": "NEEDS_REVIEW",
+      "approved_review_ref": null,
+      "confidence": null,
+      "confidence_kind": null
+    }
+  ],
+  "knowledge_version": "development-v3-rebased-v1",
+  "review_status": "NEEDS_REVIEW",
+  "review_records": [],
+  "unresolved_issue_ids": [
+    "sample-5d54bae2a9114174727c8b20-HUMAN_REVIEW"
+  ],
+  "canonical_draft": {
+    "schema_version": "1.0",
+    "recipe_id": "5d54bae2a9114174727c8b20",
+    "name": "鸡翅包饭",
+    "recipe_version": "development-scheduling-v3",
+    "ingredient_requirements": [
+      {
+        "requirement_id": "demand_001",
+        "spec_id": "ingredient_001",
+        "quantity_kind": "EXACT",
+        "quantity": {
+          "value": 3,
+          "unit": "个",
+          "scale": 1
+        },
+        "upper_quantity": null,
+        "qualitative_quantity": null,
+        "provenance_refs": [
+          "ingredient:5d54bae2a9114174727c8b20:001"
+        ]
+      },
+      {
+        "requirement_id": "demand_002",
+        "spec_id": "ingredient_002",
+        "quantity_kind": "EXACT",
+        "quantity": {
+          "value": 60,
+          "unit": "g",
+          "scale": 1
+        },
+        "upper_quantity": null,
+        "qualitative_quantity": null,
+        "provenance_refs": [
+          "ingredient:5d54bae2a9114174727c8b20:002"
+        ]
+      },
+      {
+        "requirement_id": "demand_003",
+        "spec_id": "ingredient_003",
+        "quantity_kind": "EXACT",
+        "quantity": {
+          "value": 1,
+          "unit": "个",
+          "scale": 1
+        },
+        "upper_quantity": null,
+        "qualitative_quantity": null,
+        "provenance_refs": [
+          "ingredient:5d54bae2a9114174727c8b20:003"
+        ]
+      },
+      {
+        "requirement_id": "demand_004",
+        "spec_id": "ingredient_004",
+        "quantity_kind": "EXACT",
+        "quantity": {
+          "value": 1,
+          "unit": "根",
+          "scale": 1
+        },
+        "upper_quantity": null,
+        "qualitative_quantity": null,
+        "provenance_refs": [
+          "ingredient:5d54bae2a9114174727c8b20:004"
+        ]
+      },
+      {
+        "requirement_id": "demand_005",
+        "spec_id": "ingredient_005",
+        "quantity_kind": "EXACT",
+        "quantity": {
+          "value": 60,
+          "unit": "g",
+          "scale": 1
+        },
+        "upper_quantity": null,
+        "qualitative_quantity": null,
+        "provenance_refs": [
+          "ingredient:5d54bae2a9114174727c8b20:005"
+        ]
+      },
+      {
+        "requirement_id": "demand_006",
+        "spec_id": "ingredient_006",
+        "quantity_kind": "EXACT",
+        "quantity": {
+          "value": 90,
+          "unit": "g",
+          "scale": 1
+        },
+        "upper_quantity": null,
+        "qualitative_quantity": null,
+        "provenance_refs": [
+          "ingredient:5d54bae2a9114174727c8b20:006"
+        ]
+      },
+      {
+        "requirement_id": "demand_007",
+        "spec_id": "ingredient_007",
+        "quantity_kind": "EXACT",
+        "quantity": {
+          "value": 20,
+          "unit": "g",
+          "scale": 1
+        },
+        "upper_quantity": null,
+        "qualitative_quantity": null,
+        "provenance_refs": [
+          "ingredient:5d54bae2a9114174727c8b20:007"
+        ]
+      },
+      {
+        "requirement_id": "demand_008",
+        "spec_id": "ingredient_008",
+        "quantity_kind": "EXACT",
+        "quantity": {
+          "value": 10,
+          "unit": "ml",
+          "scale": 1
+        },
+        "upper_quantity": null,
+        "qualitative_quantity": null,
+        "provenance_refs": [
+          "ingredient:5d54bae2a9114174727c8b20:008"
+        ]
+      },
+      {
+        "requirement_id": "demand_009",
+        "spec_id": "ingredient_009",
+        "quantity_kind": "EXACT",
+        "quantity": {
+          "value": 5,
+          "unit": "ml",
+          "scale": 1
+        },
+        "upper_quantity": null,
+        "qualitative_quantity": null,
+        "provenance_refs": [
+          "ingredient:5d54bae2a9114174727c8b20:009"
+        ]
+      },
+      {
+        "requirement_id": "demand_010",
+        "spec_id": "ingredient_010",
+        "quantity_kind": "EXACT",
+        "quantity": {
+          "value": 3,
+          "unit": "g",
+          "scale": 1
+        },
+        "upper_quantity": null,
+        "qualitative_quantity": null,
+        "provenance_refs": [
+          "ingredient:5d54bae2a9114174727c8b20:010"
+        ]
+      },
+      {
+        "requirement_id": "demand_011",
+        "spec_id": "ingredient_011",
+        "quantity_kind": "EXACT",
+        "quantity": {
+          "value": 5,
+          "unit": "g",
+          "scale": 1
+        },
+        "upper_quantity": null,
+        "qualitative_quantity": null,
+        "provenance_refs": [
+          "ingredient:5d54bae2a9114174727c8b20:011"
+        ]
+      }
+    ],
+    "material_specs": [
+      {
+        "spec_id": "ingredient_001",
+        "ingredient_id": "5d54bae2a9114174727c8b20:ingredient_001",
+        "name": "鸡翅",
+        "state": "配方采购原料：鸡翅；清洗、切配及熟制见后续工序",
+        "shape": null,
+        "size_mm": null,
+        "treatment": null,
+        "composition": [],
+        "provenance_refs": [
+          "ingredient:5d54bae2a9114174727c8b20:001"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      },
+      {
+        "spec_id": "ingredient_002",
+        "ingredient_id": "5d54bae2a9114174727c8b20:ingredient_002",
+        "name": "去皮胡萝卜",
+        "state": "配方采购原料：去皮胡萝卜；清洗、切配及熟制见后续工序",
+        "shape": null,
+        "size_mm": null,
+        "treatment": null,
+        "composition": [],
+        "provenance_refs": [
+          "ingredient:5d54bae2a9114174727c8b20:002"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      },
+      {
+        "spec_id": "ingredient_003",
+        "ingredient_id": "5d54bae2a9114174727c8b20:ingredient_003",
+        "name": "洋葱",
+        "state": "配方采购原料：洋葱；清洗、切配及熟制见后续工序",
+        "shape": null,
+        "size_mm": null,
+        "treatment": null,
+        "composition": [],
+        "provenance_refs": [
+          "ingredient:5d54bae2a9114174727c8b20:003"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      },
+      {
+        "spec_id": "ingredient_004",
+        "ingredient_id": "5d54bae2a9114174727c8b20:ingredient_004",
+        "name": "火腿肠",
+        "state": "配方采购原料：火腿肠；清洗、切配及熟制见后续工序",
+        "shape": null,
+        "size_mm": null,
+        "treatment": null,
+        "composition": [],
+        "provenance_refs": [
+          "ingredient:5d54bae2a9114174727c8b20:004"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      },
+      {
+        "spec_id": "ingredient_005",
+        "ingredient_id": "5d54bae2a9114174727c8b20:ingredient_005",
+        "name": "生米",
+        "state": "配方采购原料：生米；清洗、切配及熟制见后续工序",
+        "shape": null,
+        "size_mm": null,
+        "treatment": null,
+        "composition": [],
+        "provenance_refs": [
+          "ingredient:5d54bae2a9114174727c8b20:005"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      },
+      {
+        "spec_id": "ingredient_006",
+        "ingredient_id": "5d54bae2a9114174727c8b20:ingredient_006",
+        "name": "水",
+        "state": "配方采购原料：水；清洗、切配及熟制见后续工序",
+        "shape": null,
+        "size_mm": null,
+        "treatment": null,
+        "composition": [],
+        "provenance_refs": [
+          "ingredient:5d54bae2a9114174727c8b20:006"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      },
+      {
+        "spec_id": "ingredient_007",
+        "ingredient_id": "5d54bae2a9114174727c8b20:ingredient_007",
+        "name": "韩式辣椒酱",
+        "state": "配方采购原料：韩式辣椒酱；清洗、切配及熟制见后续工序",
+        "shape": null,
+        "size_mm": null,
+        "treatment": null,
+        "composition": [],
+        "provenance_refs": [
+          "ingredient:5d54bae2a9114174727c8b20:007"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      },
+      {
+        "spec_id": "ingredient_008",
+        "ingredient_id": "5d54bae2a9114174727c8b20:ingredient_008",
+        "name": "食用油",
+        "state": "配方采购原料：食用油；清洗、切配及熟制见后续工序",
+        "shape": null,
+        "size_mm": null,
+        "treatment": null,
+        "composition": [],
+        "provenance_refs": [
+          "ingredient:5d54bae2a9114174727c8b20:008"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      },
+      {
+        "spec_id": "ingredient_009",
+        "ingredient_id": "5d54bae2a9114174727c8b20:ingredient_009",
+        "name": "料酒",
+        "state": "配方采购原料：料酒；清洗、切配及熟制见后续工序",
+        "shape": null,
+        "size_mm": null,
+        "treatment": null,
+        "composition": [],
+        "provenance_refs": [
+          "ingredient:5d54bae2a9114174727c8b20:009"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      },
+      {
+        "spec_id": "ingredient_010",
+        "ingredient_id": "5d54bae2a9114174727c8b20:ingredient_010",
+        "name": "盐",
+        "state": "配方采购原料：盐；清洗、切配及熟制见后续工序",
+        "shape": null,
+        "size_mm": null,
+        "treatment": null,
+        "composition": [],
+        "provenance_refs": [
+          "ingredient:5d54bae2a9114174727c8b20:010"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      },
+      {
+        "spec_id": "ingredient_011",
+        "ingredient_id": "5d54bae2a9114174727c8b20:ingredient_011",
+        "name": "胡椒粉",
+        "state": "配方采购原料：胡椒粉；清洗、切配及熟制见后续工序",
+        "shape": null,
+        "size_mm": null,
+        "treatment": null,
+        "composition": [],
+        "provenance_refs": [
+          "ingredient:5d54bae2a9114174727c8b20:011"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      },
+      {
+        "spec_id": "flow_001_00_00",
+        "ingredient_id": "5d54bae2a9114174727c8b20:flow_001_00_00",
+        "name": "生米",
+        "state": "淘洗60克生米，加入90克水，制成约150克熟米饭后的食物状态",
+        "shape": null,
+        "size_mm": null,
+        "treatment": null,
+        "composition": [
+          "ingredient_005"
+        ],
+        "provenance_refs": [
+          "ai-material:5d54bae2a9114174727c8b20"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      },
+      {
+        "spec_id": "flow_001_00_01",
+        "ingredient_id": "5d54bae2a9114174727c8b20:flow_001_00_01",
+        "name": "水",
+        "state": "淘洗60克生米，加入90克水，制成约150克熟米饭后的食物状态",
+        "shape": null,
+        "size_mm": null,
+        "treatment": null,
+        "composition": [
+          "ingredient_006"
+        ],
+        "provenance_refs": [
+          "ai-material:5d54bae2a9114174727c8b20"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      },
+      {
+        "spec_id": "flow_001_01_00",
+        "ingredient_id": "5d54bae2a9114174727c8b20:flow_001_01_00",
+        "name": "生米",
+        "state": "米水装入蒸箱后的食物状态",
+        "shape": null,
+        "size_mm": null,
+        "treatment": null,
+        "composition": [
+          "ingredient_005"
+        ],
+        "provenance_refs": [
+          "ai-material:5d54bae2a9114174727c8b20"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      },
+      {
+        "spec_id": "flow_001_01_01",
+        "ingredient_id": "5d54bae2a9114174727c8b20:flow_001_01_01",
+        "name": "水",
+        "state": "米水装入蒸箱后的食物状态",
+        "shape": null,
+        "size_mm": null,
+        "treatment": null,
+        "composition": [
+          "ingredient_006"
+        ],
+        "provenance_refs": [
+          "ai-material:5d54bae2a9114174727c8b20"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      },
+      {
+        "spec_id": "flow_001_02_00",
+        "ingredient_id": "5d54bae2a9114174727c8b20:flow_001_02_00",
+        "name": "生米",
+        "state": "普通蒸100℃蒸米饭后的食物状态",
+        "shape": null,
+        "size_mm": null,
+        "treatment": null,
+        "composition": [
+          "ingredient_005"
+        ],
+        "provenance_refs": [
+          "ai-material:5d54bae2a9114174727c8b20"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      },
+      {
+        "spec_id": "flow_001_02_01",
+        "ingredient_id": "5d54bae2a9114174727c8b20:flow_001_02_01",
+        "name": "水",
+        "state": "普通蒸100℃蒸米饭后的食物状态",
+        "shape": null,
+        "size_mm": null,
+        "treatment": null,
+        "composition": [
+          "ingredient_006"
+        ],
+        "provenance_refs": [
+          "ai-material:5d54bae2a9114174727c8b20"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      },
+      {
+        "spec_id": "rice",
+        "ingredient_id": "5d54bae2a9114174727c8b20:rice",
+        "name": "蒸熟并拨松的米饭",
+        "state": "蒸熟并拨松的米饭",
+        "shape": null,
+        "size_mm": null,
+        "treatment": null,
+        "composition": [
+          "ingredient_005",
+          "ingredient_006"
+        ],
+        "provenance_refs": [
+          "ai-material:5d54bae2a9114174727c8b20"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      },
+      {
+        "spec_id": "veg",
+        "ingredient_id": "5d54bae2a9114174727c8b20:veg",
+        "name": "洗净切碎的洋葱胡萝卜",
+        "state": "洗净切碎的洋葱胡萝卜",
+        "shape": null,
+        "size_mm": null,
+        "treatment": null,
+        "composition": [
+          "ingredient_002",
+          "ingredient_003"
+        ],
+        "provenance_refs": [
+          "ai-material:5d54bae2a9114174727c8b20"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      },
+      {
+        "spec_id": "ham",
+        "ingredient_id": "5d54bae2a9114174727c8b20:ham",
+        "name": "切碎火腿肠",
+        "state": "切碎火腿肠",
+        "shape": null,
+        "size_mm": null,
+        "treatment": null,
+        "composition": [
+          "ingredient_004"
+        ],
+        "provenance_refs": [
+          "ai-material:5d54bae2a9114174727c8b20"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      },
+      {
+        "spec_id": "wings",
+        "ingredient_id": "5d54bae2a9114174727c8b20:wings",
+        "name": "洗净去骨鸡翅",
+        "state": "洗净去骨鸡翅",
+        "shape": null,
+        "size_mm": null,
+        "treatment": null,
+        "composition": [
+          "ingredient_001"
+        ],
+        "provenance_refs": [
+          "ai-material:5d54bae2a9114174727c8b20"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      },
+      {
+        "spec_id": "seasoned",
+        "ingredient_id": "5d54bae2a9114174727c8b20:seasoned",
+        "name": "拌匀调料的鸡翅",
+        "state": "拌匀调料的鸡翅",
+        "shape": null,
+        "size_mm": null,
+        "treatment": null,
+        "composition": [
+          "ingredient_001",
+          "ingredient_008",
+          "ingredient_009",
+          "ingredient_010",
+          "ingredient_011"
+        ],
+        "provenance_refs": [
+          "ai-material:5d54bae2a9114174727c8b20"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      },
+      {
+        "spec_id": "marinated",
+        "ingredient_id": "5d54bae2a9114174727c8b20:marinated",
+        "name": "腌好的鸡翅",
+        "state": "腌好的鸡翅",
+        "shape": null,
+        "size_mm": null,
+        "treatment": null,
+        "composition": [
+          "ingredient_001",
+          "ingredient_008",
+          "ingredient_009",
+          "ingredient_010",
+          "ingredient_011"
+        ],
+        "provenance_refs": [
+          "ai-material:5d54bae2a9114174727c8b20"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      },
+      {
+        "spec_id": "fried_rice",
+        "ingredient_id": "5d54bae2a9114174727c8b20:fried_rice",
+        "name": "炒匀的蔬菜火腿米饭",
+        "state": "炒匀的蔬菜火腿米饭",
+        "shape": null,
+        "size_mm": null,
+        "treatment": null,
+        "composition": [
+          "ingredient_002",
+          "ingredient_003",
+          "ingredient_004",
+          "ingredient_005",
+          "ingredient_006",
+          "ingredient_008"
+        ],
+        "provenance_refs": [
+          "ai-material:5d54bae2a9114174727c8b20"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      },
+      {
+        "spec_id": "filling",
+        "ingredient_id": "5d54bae2a9114174727c8b20:filling",
+        "name": "调味炒饭馅",
+        "state": "调味炒饭馅",
+        "shape": null,
+        "size_mm": null,
+        "treatment": null,
+        "composition": [
+          "ingredient_002",
+          "ingredient_003",
+          "ingredient_004",
+          "ingredient_005",
+          "ingredient_006",
+          "ingredient_007",
+          "ingredient_008",
+          "ingredient_010",
+          "ingredient_011"
+        ],
+        "provenance_refs": [
+          "ai-material:5d54bae2a9114174727c8b20"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      },
+      {
+        "spec_id": "stuffed",
+        "ingredient_id": "5d54bae2a9114174727c8b20:stuffed",
+        "name": "填饭并封口的鸡翅",
+        "state": "填饭并封口的鸡翅",
+        "shape": null,
+        "size_mm": null,
+        "treatment": null,
+        "composition": [
+          "ingredient_001",
+          "ingredient_002",
+          "ingredient_003",
+          "ingredient_004",
+          "ingredient_005",
+          "ingredient_006",
+          "ingredient_007",
+          "ingredient_008",
+          "ingredient_009",
+          "ingredient_010",
+          "ingredient_011"
+        ],
+        "provenance_refs": [
+          "ai-material:5d54bae2a9114174727c8b20"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      },
+      {
+        "spec_id": "oiled",
+        "ingredient_id": "5d54bae2a9114174727c8b20:oiled",
+        "name": "刷油的鸡翅包饭生坯",
+        "state": "刷油的鸡翅包饭生坯",
+        "shape": null,
+        "size_mm": null,
+        "treatment": null,
+        "composition": [
+          "ingredient_001",
+          "ingredient_002",
+          "ingredient_003",
+          "ingredient_004",
+          "ingredient_005",
+          "ingredient_006",
+          "ingredient_007",
+          "ingredient_008",
+          "ingredient_009",
+          "ingredient_010",
+          "ingredient_011"
+        ],
+        "provenance_refs": [
+          "ai-material:5d54bae2a9114174727c8b20"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      },
+      {
+        "spec_id": "loaded",
+        "ingredient_id": "5d54bae2a9114174727c8b20:loaded",
+        "name": "装入烤箱的鸡翅包饭",
+        "state": "装入烤箱的鸡翅包饭",
+        "shape": null,
+        "size_mm": null,
+        "treatment": null,
+        "composition": [
+          "ingredient_001",
+          "ingredient_002",
+          "ingredient_003",
+          "ingredient_004",
+          "ingredient_005",
+          "ingredient_006",
+          "ingredient_007",
+          "ingredient_008",
+          "ingredient_009",
+          "ingredient_010",
+          "ingredient_011"
+        ],
+        "provenance_refs": [
+          "ai-material:5d54bae2a9114174727c8b20"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      },
+      {
+        "spec_id": "cooked",
+        "ingredient_id": "5d54bae2a9114174727c8b20:cooked",
+        "name": "烤熟鸡翅包饭",
+        "state": "烤熟鸡翅包饭",
+        "shape": null,
+        "size_mm": null,
+        "treatment": null,
+        "composition": [
+          "ingredient_001",
+          "ingredient_002",
+          "ingredient_003",
+          "ingredient_004",
+          "ingredient_005",
+          "ingredient_006",
+          "ingredient_007",
+          "ingredient_008",
+          "ingredient_009",
+          "ingredient_010",
+          "ingredient_011"
+        ],
+        "provenance_refs": [
+          "ai-material:5d54bae2a9114174727c8b20"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      },
+      {
+        "spec_id": "dish",
+        "ingredient_id": "5d54bae2a9114174727c8b20:dish",
+        "name": "取出的鸡翅包饭",
+        "state": "取出的鸡翅包饭",
+        "shape": null,
+        "size_mm": null,
+        "treatment": null,
+        "composition": [
+          "ingredient_001",
+          "ingredient_002",
+          "ingredient_003",
+          "ingredient_004",
+          "ingredient_005",
+          "ingredient_006",
+          "ingredient_007",
+          "ingredient_008",
+          "ingredient_009",
+          "ingredient_010",
+          "ingredient_011"
+        ],
+        "provenance_refs": [
+          "ai-material:5d54bae2a9114174727c8b20"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      },
+      {
+        "spec_id": "finaldish",
+        "ingredient_id": "5d54bae2a9114174727c8b20:finaldish",
+        "name": "鸡翅包饭",
+        "state": "全部必需食物分支完成并装盘上桌",
+        "shape": null,
+        "size_mm": null,
+        "treatment": null,
+        "composition": [
+          "ingredient_001",
+          "ingredient_002",
+          "ingredient_003",
+          "ingredient_004",
+          "ingredient_005",
+          "ingredient_006",
+          "ingredient_007",
+          "ingredient_008",
+          "ingredient_009",
+          "ingredient_010",
+          "ingredient_011"
+        ],
+        "provenance_refs": [
+          "ai-material:5d54bae2a9114174727c8b20"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      }
+    ],
+    "operations": [
+      {
+        "operation_id": "op_001_01",
+        "action": "CUT",
+        "description": "洋葱、胡萝卜均洗净切碎。",
+        "required": true,
+        "duration": {
+          "nominal_sec": 180,
+          "execution_sec": 180,
+          "lower_sec": null,
+          "upper_sec": null,
+          "model_id": null,
+          "quantity_basis": null,
+          "source_ref": "ai-timing:5d54bae2a9114174727c8b20",
+          "fixed_process_time": false
+        },
+        "material_inputs": [
+          {
+            "requirement_id": "material_in_00016",
+            "spec_id": "ingredient_002",
+            "quantity_kind": "EXACT",
+            "quantity": {
+              "value": 60,
+              "unit": "g",
+              "scale": 1
+            },
+            "upper_quantity": null,
+            "qualitative_quantity": null,
+            "provenance_refs": [
+              "ai-material:5d54bae2a9114174727c8b20"
+            ]
+          },
+          {
+            "requirement_id": "material_in_00017",
+            "spec_id": "ingredient_003",
+            "quantity_kind": "EXACT",
+            "quantity": {
+              "value": 1,
+              "unit": "个",
+              "scale": 1
+            },
+            "upper_quantity": null,
+            "qualitative_quantity": null,
+            "provenance_refs": [
+              "ai-material:5d54bae2a9114174727c8b20"
+            ]
+          }
+        ],
+        "material_outputs": [
+          {
+            "requirement_id": "material_out_00018",
+            "spec_id": "veg",
+            "quantity_kind": "QUALITATIVE",
+            "quantity": null,
+            "upper_quantity": null,
+            "qualitative_quantity": "原配方本物料整批的1；实际产量未测定",
+            "provenance_refs": [
+              "ai-material:5d54bae2a9114174727c8b20"
+            ]
+          }
+        ],
+        "losses": [],
+        "resource_requirements": [
+          {
+            "resource_type": "HUMAN",
+            "resource_id": "human_1",
+            "units": 1,
+            "physical_resource_id": null,
+            "component_id": null,
+            "profile_options": [],
+            "configuration": [],
+            "conflict_policy": "UNARY",
+            "occupation_policy": "WHOLE_INTERVAL",
+            "carrier_id": null,
+            "phase_id": null,
+            "presence_condition": null,
+            "occupancy": null,
+            "human_interventions": [],
+            "rule_version": "unreviewed",
+            "evidence_refs": [
+              "ai-timing:5d54bae2a9114174727c8b20"
+            ],
+            "review_status": "NEEDS_REVIEW"
+          }
+        ],
+        "execution_policy": {
+          "interruptible": false,
+          "interventions": [],
+          "batch_policy": "STANDALONE",
+          "fixed_batch_id": null,
+          "thermal_group_id": null,
+          "shared_prep_rule_ids": [],
+          "holding_min_sec": null,
+          "holding_max_sec": null
+        },
+        "provenance_refs": [
+          "ai-timing:5d54bae2a9114174727c8b20"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      },
+      {
+        "operation_id": "op_002_01",
+        "action": "CUT",
+        "description": "火腿肠先切细条，再切碎。",
+        "required": true,
+        "duration": {
+          "nominal_sec": 180,
+          "execution_sec": 180,
+          "lower_sec": null,
+          "upper_sec": null,
+          "model_id": null,
+          "quantity_basis": null,
+          "source_ref": "ai-timing:5d54bae2a9114174727c8b20",
+          "fixed_process_time": false
+        },
+        "material_inputs": [
+          {
+            "requirement_id": "material_in_00019",
+            "spec_id": "ingredient_004",
+            "quantity_kind": "EXACT",
+            "quantity": {
+              "value": 1,
+              "unit": "根",
+              "scale": 1
+            },
+            "upper_quantity": null,
+            "qualitative_quantity": null,
+            "provenance_refs": [
+              "ai-material:5d54bae2a9114174727c8b20"
+            ]
+          }
+        ],
+        "material_outputs": [
+          {
+            "requirement_id": "material_out_00020",
+            "spec_id": "ham",
+            "quantity_kind": "QUALITATIVE",
+            "quantity": null,
+            "upper_quantity": null,
+            "qualitative_quantity": "原配方本物料整批的1；实际产量未测定",
+            "provenance_refs": [
+              "ai-material:5d54bae2a9114174727c8b20"
+            ]
+          }
+        ],
+        "losses": [],
+        "resource_requirements": [
+          {
+            "resource_type": "HUMAN",
+            "resource_id": "human_1",
+            "units": 1,
+            "physical_resource_id": null,
+            "component_id": null,
+            "profile_options": [],
+            "configuration": [],
+            "conflict_policy": "UNARY",
+            "occupation_policy": "WHOLE_INTERVAL",
+            "carrier_id": null,
+            "phase_id": null,
+            "presence_condition": null,
+            "occupancy": null,
+            "human_interventions": [],
+            "rule_version": "unreviewed",
+            "evidence_refs": [
+              "ai-timing:5d54bae2a9114174727c8b20"
+            ],
+            "review_status": "NEEDS_REVIEW"
+          }
+        ],
+        "execution_policy": {
+          "interruptible": false,
+          "interventions": [],
+          "batch_policy": "STANDALONE",
+          "fixed_batch_id": null,
+          "thermal_group_id": null,
+          "shared_prep_rule_ids": [],
+          "holding_min_sec": null,
+          "holding_max_sec": null
+        },
+        "provenance_refs": [
+          "ai-timing:5d54bae2a9114174727c8b20"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      },
+      {
+        "operation_id": "op_003_01",
+        "action": "WASH",
+        "description": "鸡翅洗净，去骨，翅尖处留骨，装入碗中。",
+        "required": true,
+        "duration": {
+          "nominal_sec": 540,
+          "execution_sec": 540,
+          "lower_sec": null,
+          "upper_sec": null,
+          "model_id": null,
+          "quantity_basis": null,
+          "source_ref": "ai-timing:5d54bae2a9114174727c8b20",
+          "fixed_process_time": false
+        },
+        "material_inputs": [
+          {
+            "requirement_id": "material_in_00021",
+            "spec_id": "ingredient_001",
+            "quantity_kind": "EXACT",
+            "quantity": {
+              "value": 3,
+              "unit": "个",
+              "scale": 1
+            },
+            "upper_quantity": null,
+            "qualitative_quantity": null,
+            "provenance_refs": [
+              "ai-material:5d54bae2a9114174727c8b20"
+            ]
+          }
+        ],
+        "material_outputs": [
+          {
+            "requirement_id": "material_out_00022",
+            "spec_id": "wings",
+            "quantity_kind": "QUALITATIVE",
+            "quantity": null,
+            "upper_quantity": null,
+            "qualitative_quantity": "原配方本物料整批的1；实际产量未测定",
+            "provenance_refs": [
+              "ai-material:5d54bae2a9114174727c8b20"
+            ]
+          }
+        ],
+        "losses": [],
+        "resource_requirements": [
+          {
+            "resource_type": "HUMAN",
+            "resource_id": "human_1",
+            "units": 1,
+            "physical_resource_id": null,
+            "component_id": null,
+            "profile_options": [],
+            "configuration": [],
+            "conflict_policy": "UNARY",
+            "occupation_policy": "WHOLE_INTERVAL",
+            "carrier_id": null,
+            "phase_id": null,
+            "presence_condition": null,
+            "occupancy": null,
+            "human_interventions": [],
+            "rule_version": "unreviewed",
+            "evidence_refs": [
+              "ai-timing:5d54bae2a9114174727c8b20"
+            ],
+            "review_status": "NEEDS_REVIEW"
+          }
+        ],
+        "execution_policy": {
+          "interruptible": false,
+          "interventions": [],
+          "batch_policy": "STANDALONE",
+          "fixed_batch_id": null,
+          "thermal_group_id": null,
+          "shared_prep_rule_ids": [],
+          "holding_min_sec": null,
+          "holding_max_sec": null
+        },
+        "provenance_refs": [
+          "ai-timing:5d54bae2a9114174727c8b20"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      },
+      {
+        "operation_id": "op_004_01",
+        "action": "PREPARE",
+        "description": "碗中加盐、油、胡椒粉、料酒。",
+        "required": true,
+        "duration": {
+          "nominal_sec": 120,
+          "execution_sec": 120,
+          "lower_sec": null,
+          "upper_sec": null,
+          "model_id": null,
+          "quantity_basis": null,
+          "source_ref": "ai-timing:5d54bae2a9114174727c8b20",
+          "fixed_process_time": false
+        },
+        "material_inputs": [
+          {
+            "requirement_id": "material_in_00023",
+            "spec_id": "wings",
+            "quantity_kind": "QUALITATIVE",
+            "quantity": null,
+            "upper_quantity": null,
+            "qualitative_quantity": "原配方本物料整批的1；实际产量未测定",
+            "provenance_refs": [
+              "ai-material:5d54bae2a9114174727c8b20"
+            ]
+          },
+          {
+            "requirement_id": "material_in_00024",
+            "spec_id": "ingredient_008",
+            "quantity_kind": "EXACT",
+            "quantity": {
+              "value": 5,
+              "unit": "ml",
+              "scale": 2
+            },
+            "upper_quantity": null,
+            "qualitative_quantity": null,
+            "provenance_refs": [
+              "ai-material:5d54bae2a9114174727c8b20"
+            ]
+          },
+          {
+            "requirement_id": "material_in_00025",
+            "spec_id": "ingredient_009",
+            "quantity_kind": "EXACT",
+            "quantity": {
+              "value": 5,
+              "unit": "ml",
+              "scale": 1
+            },
+            "upper_quantity": null,
+            "qualitative_quantity": null,
+            "provenance_refs": [
+              "ai-material:5d54bae2a9114174727c8b20"
+            ]
+          },
+          {
+            "requirement_id": "material_in_00026",
+            "spec_id": "ingredient_010",
+            "quantity_kind": "EXACT",
+            "quantity": {
+              "value": 3,
+              "unit": "g",
+              "scale": 2
+            },
+            "upper_quantity": null,
+            "qualitative_quantity": null,
+            "provenance_refs": [
+              "ai-material:5d54bae2a9114174727c8b20"
+            ]
+          },
+          {
+            "requirement_id": "material_in_00027",
+            "spec_id": "ingredient_011",
+            "quantity_kind": "EXACT",
+            "quantity": {
+              "value": 5,
+              "unit": "g",
+              "scale": 2
+            },
+            "upper_quantity": null,
+            "qualitative_quantity": null,
+            "provenance_refs": [
+              "ai-material:5d54bae2a9114174727c8b20"
+            ]
+          }
+        ],
+        "material_outputs": [
+          {
+            "requirement_id": "material_out_00028",
+            "spec_id": "seasoned",
+            "quantity_kind": "QUALITATIVE",
+            "quantity": null,
+            "upper_quantity": null,
+            "qualitative_quantity": "原配方本物料整批的1；实际产量未测定",
+            "provenance_refs": [
+              "ai-material:5d54bae2a9114174727c8b20"
+            ]
+          }
+        ],
+        "losses": [],
+        "resource_requirements": [
+          {
+            "resource_type": "HUMAN",
+            "resource_id": "human_1",
+            "units": 1,
+            "physical_resource_id": null,
+            "component_id": null,
+            "profile_options": [],
+            "configuration": [],
+            "conflict_policy": "UNARY",
+            "occupation_policy": "WHOLE_INTERVAL",
+            "carrier_id": null,
+            "phase_id": null,
+            "presence_condition": null,
+            "occupancy": null,
+            "human_interventions": [],
+            "rule_version": "unreviewed",
+            "evidence_refs": [
+              "ai-timing:5d54bae2a9114174727c8b20"
+            ],
+            "review_status": "NEEDS_REVIEW"
+          }
+        ],
+        "execution_policy": {
+          "interruptible": false,
+          "interventions": [],
+          "batch_policy": "STANDALONE",
+          "fixed_batch_id": null,
+          "thermal_group_id": null,
+          "shared_prep_rule_ids": [],
+          "holding_min_sec": null,
+          "holding_max_sec": null
+        },
+        "provenance_refs": [
+          "ai-timing:5d54bae2a9114174727c8b20"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      },
+      {
+        "operation_id": "op_005_01",
+        "action": "MARINATE",
+        "description": "腌渍。",
+        "required": true,
+        "duration": {
+          "nominal_sec": 900,
+          "execution_sec": 900,
+          "lower_sec": null,
+          "upper_sec": null,
+          "model_id": null,
+          "quantity_basis": null,
+          "source_ref": "ai-timing:5d54bae2a9114174727c8b20",
+          "fixed_process_time": false
+        },
+        "material_inputs": [
+          {
+            "requirement_id": "material_in_00029",
+            "spec_id": "seasoned",
+            "quantity_kind": "QUALITATIVE",
+            "quantity": null,
+            "upper_quantity": null,
+            "qualitative_quantity": "原配方本物料整批的1；实际产量未测定",
+            "provenance_refs": [
+              "ai-material:5d54bae2a9114174727c8b20"
+            ]
+          }
+        ],
+        "material_outputs": [
+          {
+            "requirement_id": "material_out_00030",
+            "spec_id": "marinated",
+            "quantity_kind": "QUALITATIVE",
+            "quantity": null,
+            "upper_quantity": null,
+            "qualitative_quantity": "原配方本物料整批的1；实际产量未测定",
+            "provenance_refs": [
+              "ai-material:5d54bae2a9114174727c8b20"
+            ]
+          }
+        ],
+        "losses": [],
+        "resource_requirements": [
+          {
+            "resource_type": "DEVICE",
+            "resource_id": "fridge_cold_1",
+            "units": 1,
+            "physical_resource_id": "fridge_1",
+            "component_id": "cold_zone",
+            "profile_options": [],
+            "configuration": [
+              {
+                "parameter": "temperature_c",
+                "value": 4
+              },
+              {
+                "parameter": "mode",
+                "value": "冷藏"
+              }
+            ],
+            "conflict_policy": "STATE_COMPATIBLE",
+            "occupation_policy": "WHOLE_INTERVAL",
+            "carrier_id": null,
+            "phase_id": null,
+            "presence_condition": null,
+            "occupancy": null,
+            "human_interventions": [],
+            "rule_version": "development-scheduling-v3",
+            "evidence_refs": [
+              "ai-timing:5d54bae2a9114174727c8b20"
+            ],
+            "review_status": "NEEDS_REVIEW"
+          }
+        ],
+        "execution_policy": {
+          "interruptible": false,
+          "interventions": [],
+          "batch_policy": "STANDALONE",
+          "fixed_batch_id": null,
+          "thermal_group_id": null,
+          "shared_prep_rule_ids": [],
+          "holding_min_sec": null,
+          "holding_max_sec": null
+        },
+        "provenance_refs": [
+          "ai-timing:5d54bae2a9114174727c8b20"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      },
+      {
+        "operation_id": "op_1000_01",
+        "action": "WASH",
+        "description": "淘洗60克生米，加入90克水，制成约150克熟米饭",
+        "required": true,
+        "duration": {
+          "nominal_sec": 120,
+          "execution_sec": 120,
+          "lower_sec": null,
+          "upper_sec": null,
+          "model_id": null,
+          "quantity_basis": null,
+          "source_ref": "ai-timing:5d54bae2a9114174727c8b20",
+          "fixed_process_time": false
+        },
+        "material_inputs": [
+          {
+            "requirement_id": "material_in_00001",
+            "spec_id": "ingredient_005",
+            "quantity_kind": "EXACT",
+            "quantity": {
+              "value": 60,
+              "unit": "g",
+              "scale": 1
+            },
+            "upper_quantity": null,
+            "qualitative_quantity": null,
+            "provenance_refs": [
+              "ai-material:5d54bae2a9114174727c8b20"
+            ]
+          },
+          {
+            "requirement_id": "material_in_00002",
+            "spec_id": "ingredient_006",
+            "quantity_kind": "EXACT",
+            "quantity": {
+              "value": 90,
+              "unit": "g",
+              "scale": 1
+            },
+            "upper_quantity": null,
+            "qualitative_quantity": null,
+            "provenance_refs": [
+              "ai-material:5d54bae2a9114174727c8b20"
+            ]
+          }
+        ],
+        "material_outputs": [
+          {
+            "requirement_id": "material_out_00003",
+            "spec_id": "flow_001_00_00",
+            "quantity_kind": "QUALITATIVE",
+            "quantity": null,
+            "upper_quantity": null,
+            "qualitative_quantity": "原配方本物料整批的1；实际产量未测定",
+            "provenance_refs": [
+              "ai-material:5d54bae2a9114174727c8b20"
+            ]
+          },
+          {
+            "requirement_id": "material_out_00004",
+            "spec_id": "flow_001_00_01",
+            "quantity_kind": "QUALITATIVE",
+            "quantity": null,
+            "upper_quantity": null,
+            "qualitative_quantity": "原配方本物料整批的1；实际产量未测定",
+            "provenance_refs": [
+              "ai-material:5d54bae2a9114174727c8b20"
+            ]
+          }
+        ],
+        "losses": [],
+        "resource_requirements": [
+          {
+            "resource_type": "HUMAN",
+            "resource_id": "human_1",
+            "units": 1,
+            "physical_resource_id": null,
+            "component_id": null,
+            "profile_options": [],
+            "configuration": [],
+            "conflict_policy": "UNARY",
+            "occupation_policy": "WHOLE_INTERVAL",
+            "carrier_id": null,
+            "phase_id": null,
+            "presence_condition": null,
+            "occupancy": null,
+            "human_interventions": [],
+            "rule_version": "unreviewed",
+            "evidence_refs": [
+              "ai-timing:5d54bae2a9114174727c8b20"
+            ],
+            "review_status": "NEEDS_REVIEW"
+          }
+        ],
+        "execution_policy": {
+          "interruptible": false,
+          "interventions": [],
+          "batch_policy": "STANDALONE",
+          "fixed_batch_id": null,
+          "thermal_group_id": null,
+          "shared_prep_rule_ids": [],
+          "holding_min_sec": null,
+          "holding_max_sec": null
+        },
+        "provenance_refs": [
+          "ai-timing:5d54bae2a9114174727c8b20"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      },
+      {
+        "operation_id": "op_1000_02",
+        "action": "LOAD",
+        "description": "米水装入蒸箱",
+        "required": true,
+        "duration": {
+          "nominal_sec": 60,
+          "execution_sec": 60,
+          "lower_sec": null,
+          "upper_sec": null,
+          "model_id": null,
+          "quantity_basis": null,
+          "source_ref": "ai-timing:5d54bae2a9114174727c8b20",
+          "fixed_process_time": false
+        },
+        "material_inputs": [
+          {
+            "requirement_id": "material_in_00005",
+            "spec_id": "flow_001_00_00",
+            "quantity_kind": "QUALITATIVE",
+            "quantity": null,
+            "upper_quantity": null,
+            "qualitative_quantity": "原配方本物料整批的1；实际产量未测定",
+            "provenance_refs": [
+              "ai-material:5d54bae2a9114174727c8b20"
+            ]
+          },
+          {
+            "requirement_id": "material_in_00006",
+            "spec_id": "flow_001_00_01",
+            "quantity_kind": "QUALITATIVE",
+            "quantity": null,
+            "upper_quantity": null,
+            "qualitative_quantity": "原配方本物料整批的1；实际产量未测定",
+            "provenance_refs": [
+              "ai-material:5d54bae2a9114174727c8b20"
+            ]
+          }
+        ],
+        "material_outputs": [
+          {
+            "requirement_id": "material_out_00007",
+            "spec_id": "flow_001_01_00",
+            "quantity_kind": "QUALITATIVE",
+            "quantity": null,
+            "upper_quantity": null,
+            "qualitative_quantity": "原配方本物料整批的1；实际产量未测定",
+            "provenance_refs": [
+              "ai-material:5d54bae2a9114174727c8b20"
+            ]
+          },
+          {
+            "requirement_id": "material_out_00008",
+            "spec_id": "flow_001_01_01",
+            "quantity_kind": "QUALITATIVE",
+            "quantity": null,
+            "upper_quantity": null,
+            "qualitative_quantity": "原配方本物料整批的1；实际产量未测定",
+            "provenance_refs": [
+              "ai-material:5d54bae2a9114174727c8b20"
+            ]
+          }
+        ],
+        "losses": [],
+        "resource_requirements": [
+          {
+            "resource_type": "HUMAN",
+            "resource_id": "human_1",
+            "units": 1,
+            "physical_resource_id": null,
+            "component_id": null,
+            "profile_options": [],
+            "configuration": [],
+            "conflict_policy": "UNARY",
+            "occupation_policy": "WHOLE_INTERVAL",
+            "carrier_id": null,
+            "phase_id": null,
+            "presence_condition": null,
+            "occupancy": null,
+            "human_interventions": [],
+            "rule_version": "unreviewed",
+            "evidence_refs": [
+              "ai-timing:5d54bae2a9114174727c8b20"
+            ],
+            "review_status": "NEEDS_REVIEW"
+          },
+          {
+            "resource_type": "DEVICE",
+            "resource_id": "steam_oven_1",
+            "units": 1,
+            "physical_resource_id": "steam_oven_1",
+            "component_id": "chamber",
+            "profile_options": [],
+            "configuration": [
+              {
+                "parameter": "temperature_c",
+                "value": 100
+              },
+              {
+                "parameter": "mode",
+                "value": "普通蒸"
+              }
+            ],
+            "conflict_policy": "UNARY",
+            "occupation_policy": "WHOLE_INTERVAL",
+            "carrier_id": null,
+            "phase_id": null,
+            "presence_condition": null,
+            "occupancy": null,
+            "human_interventions": [],
+            "rule_version": "development-scheduling-v3",
+            "evidence_refs": [
+              "ai-timing:5d54bae2a9114174727c8b20"
+            ],
+            "review_status": "NEEDS_REVIEW"
+          }
+        ],
+        "execution_policy": {
+          "interruptible": false,
+          "interventions": [],
+          "batch_policy": "STANDALONE",
+          "fixed_batch_id": null,
+          "thermal_group_id": null,
+          "shared_prep_rule_ids": [],
+          "holding_min_sec": null,
+          "holding_max_sec": null
+        },
+        "provenance_refs": [
+          "ai-timing:5d54bae2a9114174727c8b20"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      },
+      {
+        "operation_id": "op_1000_03",
+        "action": "HEAT",
+        "description": "普通蒸100℃蒸米饭",
+        "required": true,
+        "duration": {
+          "nominal_sec": 1500,
+          "execution_sec": 1500,
+          "lower_sec": null,
+          "upper_sec": null,
+          "model_id": null,
+          "quantity_basis": null,
+          "source_ref": "ai-timing:5d54bae2a9114174727c8b20",
+          "fixed_process_time": true
+        },
+        "material_inputs": [
+          {
+            "requirement_id": "material_in_00009",
+            "spec_id": "flow_001_01_00",
+            "quantity_kind": "QUALITATIVE",
+            "quantity": null,
+            "upper_quantity": null,
+            "qualitative_quantity": "原配方本物料整批的1；实际产量未测定",
+            "provenance_refs": [
+              "ai-material:5d54bae2a9114174727c8b20"
+            ]
+          },
+          {
+            "requirement_id": "material_in_00010",
+            "spec_id": "flow_001_01_01",
+            "quantity_kind": "QUALITATIVE",
+            "quantity": null,
+            "upper_quantity": null,
+            "qualitative_quantity": "原配方本物料整批的1；实际产量未测定",
+            "provenance_refs": [
+              "ai-material:5d54bae2a9114174727c8b20"
+            ]
+          }
+        ],
+        "material_outputs": [
+          {
+            "requirement_id": "material_out_00011",
+            "spec_id": "flow_001_02_00",
+            "quantity_kind": "QUALITATIVE",
+            "quantity": null,
+            "upper_quantity": null,
+            "qualitative_quantity": "原配方本物料整批的1；实际产量未测定",
+            "provenance_refs": [
+              "ai-material:5d54bae2a9114174727c8b20"
+            ]
+          },
+          {
+            "requirement_id": "material_out_00012",
+            "spec_id": "flow_001_02_01",
+            "quantity_kind": "QUALITATIVE",
+            "quantity": null,
+            "upper_quantity": null,
+            "qualitative_quantity": "原配方本物料整批的1；实际产量未测定",
+            "provenance_refs": [
+              "ai-material:5d54bae2a9114174727c8b20"
+            ]
+          }
+        ],
+        "losses": [],
+        "resource_requirements": [
+          {
+            "resource_type": "DEVICE",
+            "resource_id": "steam_oven_1",
+            "units": 1,
+            "physical_resource_id": "steam_oven_1",
+            "component_id": "chamber",
+            "profile_options": [],
+            "configuration": [
+              {
+                "parameter": "temperature_c",
+                "value": 100
+              },
+              {
+                "parameter": "mode",
+                "value": "普通蒸"
+              }
+            ],
+            "conflict_policy": "UNARY",
+            "occupation_policy": "WHOLE_INTERVAL",
+            "carrier_id": null,
+            "phase_id": null,
+            "presence_condition": null,
+            "occupancy": null,
+            "human_interventions": [],
+            "rule_version": "development-scheduling-v3",
+            "evidence_refs": [
+              "ai-timing:5d54bae2a9114174727c8b20"
+            ],
+            "review_status": "NEEDS_REVIEW"
+          }
+        ],
+        "execution_policy": {
+          "interruptible": false,
+          "interventions": [],
+          "batch_policy": "STANDALONE",
+          "fixed_batch_id": null,
+          "thermal_group_id": null,
+          "shared_prep_rule_ids": [],
+          "holding_min_sec": null,
+          "holding_max_sec": null
+        },
+        "provenance_refs": [
+          "ai-timing:5d54bae2a9114174727c8b20"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      },
+      {
+        "operation_id": "op_1000_04",
+        "action": "UNLOAD",
+        "description": "取出并拨松米饭",
+        "required": true,
+        "duration": {
+          "nominal_sec": 60,
+          "execution_sec": 60,
+          "lower_sec": null,
+          "upper_sec": null,
+          "model_id": null,
+          "quantity_basis": null,
+          "source_ref": "ai-timing:5d54bae2a9114174727c8b20",
+          "fixed_process_time": false
+        },
+        "material_inputs": [
+          {
+            "requirement_id": "material_in_00013",
+            "spec_id": "flow_001_02_00",
+            "quantity_kind": "QUALITATIVE",
+            "quantity": null,
+            "upper_quantity": null,
+            "qualitative_quantity": "原配方本物料整批的1；实际产量未测定",
+            "provenance_refs": [
+              "ai-material:5d54bae2a9114174727c8b20"
+            ]
+          },
+          {
+            "requirement_id": "material_in_00014",
+            "spec_id": "flow_001_02_01",
+            "quantity_kind": "QUALITATIVE",
+            "quantity": null,
+            "upper_quantity": null,
+            "qualitative_quantity": "原配方本物料整批的1；实际产量未测定",
+            "provenance_refs": [
+              "ai-material:5d54bae2a9114174727c8b20"
+            ]
+          }
+        ],
+        "material_outputs": [
+          {
+            "requirement_id": "material_out_00015",
+            "spec_id": "rice",
+            "quantity_kind": "QUALITATIVE",
+            "quantity": null,
+            "upper_quantity": null,
+            "qualitative_quantity": "原配方本物料整批的1；实际产量未测定",
+            "provenance_refs": [
+              "ai-material:5d54bae2a9114174727c8b20"
+            ]
+          }
+        ],
+        "losses": [],
+        "resource_requirements": [
+          {
+            "resource_type": "HUMAN",
+            "resource_id": "human_1",
+            "units": 1,
+            "physical_resource_id": null,
+            "component_id": null,
+            "profile_options": [],
+            "configuration": [],
+            "conflict_policy": "UNARY",
+            "occupation_policy": "WHOLE_INTERVAL",
+            "carrier_id": null,
+            "phase_id": null,
+            "presence_condition": null,
+            "occupancy": null,
+            "human_interventions": [],
+            "rule_version": "unreviewed",
+            "evidence_refs": [
+              "ai-timing:5d54bae2a9114174727c8b20"
+            ],
+            "review_status": "NEEDS_REVIEW"
+          },
+          {
+            "resource_type": "DEVICE",
+            "resource_id": "steam_oven_1",
+            "units": 1,
+            "physical_resource_id": "steam_oven_1",
+            "component_id": "chamber",
+            "profile_options": [],
+            "configuration": [
+              {
+                "parameter": "temperature_c",
+                "value": 100
+              },
+              {
+                "parameter": "mode",
+                "value": "普通蒸"
+              }
+            ],
+            "conflict_policy": "UNARY",
+            "occupation_policy": "WHOLE_INTERVAL",
+            "carrier_id": null,
+            "phase_id": null,
+            "presence_condition": null,
+            "occupancy": null,
+            "human_interventions": [],
+            "rule_version": "development-scheduling-v3",
+            "evidence_refs": [
+              "ai-timing:5d54bae2a9114174727c8b20"
+            ],
+            "review_status": "NEEDS_REVIEW"
+          }
+        ],
+        "execution_policy": {
+          "interruptible": false,
+          "interventions": [],
+          "batch_policy": "STANDALONE",
+          "fixed_batch_id": null,
+          "thermal_group_id": null,
+          "shared_prep_rule_ids": [],
+          "holding_min_sec": null,
+          "holding_max_sec": null
+        },
+        "provenance_refs": [
+          "ai-timing:5d54bae2a9114174727c8b20"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      },
+      {
+        "operation_id": "op_006_01",
+        "action": "HEAT",
+        "description": "锅中注油烧热，放入蔬菜、火腿肠、米饭炒匀。",
+        "required": true,
+        "duration": {
+          "nominal_sec": 240,
+          "execution_sec": 240,
+          "lower_sec": null,
+          "upper_sec": null,
+          "model_id": null,
+          "quantity_basis": null,
+          "source_ref": "ai-timing:5d54bae2a9114174727c8b20",
+          "fixed_process_time": true
+        },
+        "material_inputs": [
+          {
+            "requirement_id": "material_in_00031",
+            "spec_id": "veg",
+            "quantity_kind": "QUALITATIVE",
+            "quantity": null,
+            "upper_quantity": null,
+            "qualitative_quantity": "原配方本物料整批的1；实际产量未测定",
+            "provenance_refs": [
+              "ai-material:5d54bae2a9114174727c8b20"
+            ]
+          },
+          {
+            "requirement_id": "material_in_00032",
+            "spec_id": "ham",
+            "quantity_kind": "QUALITATIVE",
+            "quantity": null,
+            "upper_quantity": null,
+            "qualitative_quantity": "原配方本物料整批的1；实际产量未测定",
+            "provenance_refs": [
+              "ai-material:5d54bae2a9114174727c8b20"
+            ]
+          },
+          {
+            "requirement_id": "material_in_00033",
+            "spec_id": "rice",
+            "quantity_kind": "QUALITATIVE",
+            "quantity": null,
+            "upper_quantity": null,
+            "qualitative_quantity": "原配方本物料整批的1；实际产量未测定",
+            "provenance_refs": [
+              "ai-material:5d54bae2a9114174727c8b20"
+            ]
+          },
+          {
+            "requirement_id": "material_in_00034",
+            "spec_id": "ingredient_008",
+            "quantity_kind": "EXACT",
+            "quantity": {
+              "value": 5,
+              "unit": "ml",
+              "scale": 1
+            },
+            "upper_quantity": null,
+            "qualitative_quantity": null,
+            "provenance_refs": [
+              "ai-material:5d54bae2a9114174727c8b20"
+            ]
+          }
+        ],
+        "material_outputs": [
+          {
+            "requirement_id": "material_out_00035",
+            "spec_id": "fried_rice",
+            "quantity_kind": "QUALITATIVE",
+            "quantity": null,
+            "upper_quantity": null,
+            "qualitative_quantity": "原配方本物料整批的1；实际产量未测定",
+            "provenance_refs": [
+              "ai-material:5d54bae2a9114174727c8b20"
+            ]
+          }
+        ],
+        "losses": [],
+        "resource_requirements": [
+          {
+            "resource_type": "HUMAN",
+            "resource_id": "human_1",
+            "units": 1,
+            "physical_resource_id": null,
+            "component_id": null,
+            "profile_options": [],
+            "configuration": [],
+            "conflict_policy": "UNARY",
+            "occupation_policy": "WHOLE_INTERVAL",
+            "carrier_id": null,
+            "phase_id": null,
+            "presence_condition": null,
+            "occupancy": null,
+            "human_interventions": [],
+            "rule_version": "unreviewed",
+            "evidence_refs": [
+              "ai-timing:5d54bae2a9114174727c8b20"
+            ],
+            "review_status": "NEEDS_REVIEW"
+          },
+          {
+            "resource_type": "DEVICE",
+            "resource_id": "stove_choice",
+            "units": 1,
+            "physical_resource_id": "stove_1",
+            "component_id": "selected_burner",
+            "profile_options": [],
+            "configuration": [
+              {
+                "parameter": "power_level",
+                "value": 7
+              }
+            ],
+            "conflict_policy": "UNARY",
+            "occupation_policy": "WHOLE_INTERVAL",
+            "carrier_id": null,
+            "phase_id": null,
+            "presence_condition": null,
+            "occupancy": null,
+            "human_interventions": [],
+            "rule_version": "development-scheduling-v3",
+            "evidence_refs": [
+              "ai-timing:5d54bae2a9114174727c8b20"
+            ],
+            "review_status": "NEEDS_REVIEW"
+          }
+        ],
+        "execution_policy": {
+          "interruptible": false,
+          "interventions": [],
+          "batch_policy": "STANDALONE",
+          "fixed_batch_id": null,
+          "thermal_group_id": null,
+          "shared_prep_rule_ids": [],
+          "holding_min_sec": null,
+          "holding_max_sec": null
+        },
+        "provenance_refs": [
+          "ai-timing:5d54bae2a9114174727c8b20"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      },
+      {
+        "operation_id": "op_007_01",
+        "action": "HEAT",
+        "description": "加盐、胡椒粉、韩式辣椒酱拌炒片刻，盛出装碗。",
+        "required": true,
+        "duration": {
+          "nominal_sec": 90,
+          "execution_sec": 90,
+          "lower_sec": null,
+          "upper_sec": null,
+          "model_id": null,
+          "quantity_basis": null,
+          "source_ref": "ai-timing:5d54bae2a9114174727c8b20",
+          "fixed_process_time": true
+        },
+        "material_inputs": [
+          {
+            "requirement_id": "material_in_00036",
+            "spec_id": "fried_rice",
+            "quantity_kind": "QUALITATIVE",
+            "quantity": null,
+            "upper_quantity": null,
+            "qualitative_quantity": "原配方本物料整批的1；实际产量未测定",
+            "provenance_refs": [
+              "ai-material:5d54bae2a9114174727c8b20"
+            ]
+          },
+          {
+            "requirement_id": "material_in_00037",
+            "spec_id": "ingredient_007",
+            "quantity_kind": "EXACT",
+            "quantity": {
+              "value": 20,
+              "unit": "g",
+              "scale": 1
+            },
+            "upper_quantity": null,
+            "qualitative_quantity": null,
+            "provenance_refs": [
+              "ai-material:5d54bae2a9114174727c8b20"
+            ]
+          },
+          {
+            "requirement_id": "material_in_00038",
+            "spec_id": "ingredient_010",
+            "quantity_kind": "EXACT",
+            "quantity": {
+              "value": 3,
+              "unit": "g",
+              "scale": 2
+            },
+            "upper_quantity": null,
+            "qualitative_quantity": null,
+            "provenance_refs": [
+              "ai-material:5d54bae2a9114174727c8b20"
+            ]
+          },
+          {
+            "requirement_id": "material_in_00039",
+            "spec_id": "ingredient_011",
+            "quantity_kind": "EXACT",
+            "quantity": {
+              "value": 5,
+              "unit": "g",
+              "scale": 2
+            },
+            "upper_quantity": null,
+            "qualitative_quantity": null,
+            "provenance_refs": [
+              "ai-material:5d54bae2a9114174727c8b20"
+            ]
+          }
+        ],
+        "material_outputs": [
+          {
+            "requirement_id": "material_out_00040",
+            "spec_id": "filling",
+            "quantity_kind": "QUALITATIVE",
+            "quantity": null,
+            "upper_quantity": null,
+            "qualitative_quantity": "原配方本物料整批的1；实际产量未测定",
+            "provenance_refs": [
+              "ai-material:5d54bae2a9114174727c8b20"
+            ]
+          }
+        ],
+        "losses": [],
+        "resource_requirements": [
+          {
+            "resource_type": "HUMAN",
+            "resource_id": "human_1",
+            "units": 1,
+            "physical_resource_id": null,
+            "component_id": null,
+            "profile_options": [],
+            "configuration": [],
+            "conflict_policy": "UNARY",
+            "occupation_policy": "WHOLE_INTERVAL",
+            "carrier_id": null,
+            "phase_id": null,
+            "presence_condition": null,
+            "occupancy": null,
+            "human_interventions": [],
+            "rule_version": "unreviewed",
+            "evidence_refs": [
+              "ai-timing:5d54bae2a9114174727c8b20"
+            ],
+            "review_status": "NEEDS_REVIEW"
+          },
+          {
+            "resource_type": "DEVICE",
+            "resource_id": "stove_choice",
+            "units": 1,
+            "physical_resource_id": "stove_1",
+            "component_id": "selected_burner",
+            "profile_options": [],
+            "configuration": [
+              {
+                "parameter": "power_level",
+                "value": 7
+              }
+            ],
+            "conflict_policy": "UNARY",
+            "occupation_policy": "WHOLE_INTERVAL",
+            "carrier_id": null,
+            "phase_id": null,
+            "presence_condition": null,
+            "occupancy": null,
+            "human_interventions": [],
+            "rule_version": "development-scheduling-v3",
+            "evidence_refs": [
+              "ai-timing:5d54bae2a9114174727c8b20"
+            ],
+            "review_status": "NEEDS_REVIEW"
+          }
+        ],
+        "execution_policy": {
+          "interruptible": false,
+          "interventions": [],
+          "batch_policy": "STANDALONE",
+          "fixed_batch_id": null,
+          "thermal_group_id": null,
+          "shared_prep_rule_ids": [],
+          "holding_min_sec": null,
+          "holding_max_sec": null
+        },
+        "provenance_refs": [
+          "ai-timing:5d54bae2a9114174727c8b20"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      },
+      {
+        "operation_id": "op_008_01",
+        "action": "LOAD",
+        "description": "将炒饭装入鸡翅中，用牙签封口，翅尖用锡纸包住。",
+        "required": true,
+        "duration": {
+          "nominal_sec": 360,
+          "execution_sec": 360,
+          "lower_sec": null,
+          "upper_sec": null,
+          "model_id": null,
+          "quantity_basis": null,
+          "source_ref": "ai-timing:5d54bae2a9114174727c8b20",
+          "fixed_process_time": false
+        },
+        "material_inputs": [
+          {
+            "requirement_id": "material_in_00041",
+            "spec_id": "marinated",
+            "quantity_kind": "QUALITATIVE",
+            "quantity": null,
+            "upper_quantity": null,
+            "qualitative_quantity": "原配方本物料整批的1；实际产量未测定",
+            "provenance_refs": [
+              "ai-material:5d54bae2a9114174727c8b20"
+            ]
+          },
+          {
+            "requirement_id": "material_in_00042",
+            "spec_id": "filling",
+            "quantity_kind": "QUALITATIVE",
+            "quantity": null,
+            "upper_quantity": null,
+            "qualitative_quantity": "原配方本物料整批的1；实际产量未测定",
+            "provenance_refs": [
+              "ai-material:5d54bae2a9114174727c8b20"
+            ]
+          }
+        ],
+        "material_outputs": [
+          {
+            "requirement_id": "material_out_00043",
+            "spec_id": "stuffed",
+            "quantity_kind": "QUALITATIVE",
+            "quantity": null,
+            "upper_quantity": null,
+            "qualitative_quantity": "原配方本物料整批的1；实际产量未测定",
+            "provenance_refs": [
+              "ai-material:5d54bae2a9114174727c8b20"
+            ]
+          }
+        ],
+        "losses": [],
+        "resource_requirements": [
+          {
+            "resource_type": "HUMAN",
+            "resource_id": "human_1",
+            "units": 1,
+            "physical_resource_id": null,
+            "component_id": null,
+            "profile_options": [],
+            "configuration": [],
+            "conflict_policy": "UNARY",
+            "occupation_policy": "WHOLE_INTERVAL",
+            "carrier_id": null,
+            "phase_id": null,
+            "presence_condition": null,
+            "occupancy": null,
+            "human_interventions": [],
+            "rule_version": "unreviewed",
+            "evidence_refs": [
+              "ai-timing:5d54bae2a9114174727c8b20"
+            ],
+            "review_status": "NEEDS_REVIEW"
+          }
+        ],
+        "execution_policy": {
+          "interruptible": false,
+          "interventions": [],
+          "batch_policy": "STANDALONE",
+          "fixed_batch_id": null,
+          "thermal_group_id": null,
+          "shared_prep_rule_ids": [],
+          "holding_min_sec": null,
+          "holding_max_sec": null
+        },
+        "provenance_refs": [
+          "ai-timing:5d54bae2a9114174727c8b20"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      },
+      {
+        "operation_id": "op_009_01",
+        "action": "LOAD",
+        "description": "烤盘内铺上一层锡纸，在锡纸上刷油，放入鸡翅，鸡翅表面刷油。",
+        "required": true,
+        "duration": {
+          "nominal_sec": 120,
+          "execution_sec": 120,
+          "lower_sec": null,
+          "upper_sec": null,
+          "model_id": null,
+          "quantity_basis": null,
+          "source_ref": "ai-timing:5d54bae2a9114174727c8b20",
+          "fixed_process_time": false
+        },
+        "material_inputs": [
+          {
+            "requirement_id": "material_in_00044",
+            "spec_id": "stuffed",
+            "quantity_kind": "QUALITATIVE",
+            "quantity": null,
+            "upper_quantity": null,
+            "qualitative_quantity": "原配方本物料整批的1；实际产量未测定",
+            "provenance_refs": [
+              "ai-material:5d54bae2a9114174727c8b20"
+            ]
+          },
+          {
+            "requirement_id": "material_in_00045",
+            "spec_id": "ingredient_008",
+            "quantity_kind": "EXACT",
+            "quantity": {
+              "value": 5,
+              "unit": "ml",
+              "scale": 2
+            },
+            "upper_quantity": null,
+            "qualitative_quantity": null,
+            "provenance_refs": [
+              "ai-material:5d54bae2a9114174727c8b20"
+            ]
+          }
+        ],
+        "material_outputs": [
+          {
+            "requirement_id": "material_out_00046",
+            "spec_id": "oiled",
+            "quantity_kind": "QUALITATIVE",
+            "quantity": null,
+            "upper_quantity": null,
+            "qualitative_quantity": "原配方本物料整批的1；实际产量未测定",
+            "provenance_refs": [
+              "ai-material:5d54bae2a9114174727c8b20"
+            ]
+          }
+        ],
+        "losses": [],
+        "resource_requirements": [
+          {
+            "resource_type": "HUMAN",
+            "resource_id": "human_1",
+            "units": 1,
+            "physical_resource_id": null,
+            "component_id": null,
+            "profile_options": [],
+            "configuration": [],
+            "conflict_policy": "UNARY",
+            "occupation_policy": "WHOLE_INTERVAL",
+            "carrier_id": null,
+            "phase_id": null,
+            "presence_condition": null,
+            "occupancy": null,
+            "human_interventions": [],
+            "rule_version": "unreviewed",
+            "evidence_refs": [
+              "ai-timing:5d54bae2a9114174727c8b20"
+            ],
+            "review_status": "NEEDS_REVIEW"
+          }
+        ],
+        "execution_policy": {
+          "interruptible": false,
+          "interventions": [],
+          "batch_policy": "STANDALONE",
+          "fixed_batch_id": null,
+          "thermal_group_id": null,
+          "shared_prep_rule_ids": [],
+          "holding_min_sec": null,
+          "holding_max_sec": null
+        },
+        "provenance_refs": [
+          "ai-timing:5d54bae2a9114174727c8b20"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      },
+      {
+        "operation_id": "op_010_01",
+        "action": "LOAD",
+        "description": "将烤盘放入烤箱中。",
+        "required": true,
+        "duration": {
+          "nominal_sec": 30,
+          "execution_sec": 30,
+          "lower_sec": null,
+          "upper_sec": null,
+          "model_id": null,
+          "quantity_basis": null,
+          "source_ref": "ai-timing:5d54bae2a9114174727c8b20",
+          "fixed_process_time": false
+        },
+        "material_inputs": [
+          {
+            "requirement_id": "material_in_00047",
+            "spec_id": "oiled",
+            "quantity_kind": "QUALITATIVE",
+            "quantity": null,
+            "upper_quantity": null,
+            "qualitative_quantity": "原配方本物料整批的1；实际产量未测定",
+            "provenance_refs": [
+              "ai-material:5d54bae2a9114174727c8b20"
+            ]
+          }
+        ],
+        "material_outputs": [
+          {
+            "requirement_id": "material_out_00048",
+            "spec_id": "loaded",
+            "quantity_kind": "QUALITATIVE",
+            "quantity": null,
+            "upper_quantity": null,
+            "qualitative_quantity": "原配方本物料整批的1；实际产量未测定",
+            "provenance_refs": [
+              "ai-material:5d54bae2a9114174727c8b20"
+            ]
+          }
+        ],
+        "losses": [],
+        "resource_requirements": [
+          {
+            "resource_type": "HUMAN",
+            "resource_id": "human_1",
+            "units": 1,
+            "physical_resource_id": null,
+            "component_id": null,
+            "profile_options": [],
+            "configuration": [],
+            "conflict_policy": "UNARY",
+            "occupation_policy": "WHOLE_INTERVAL",
+            "carrier_id": null,
+            "phase_id": null,
+            "presence_condition": null,
+            "occupancy": null,
+            "human_interventions": [],
+            "rule_version": "unreviewed",
+            "evidence_refs": [
+              "ai-timing:5d54bae2a9114174727c8b20"
+            ],
+            "review_status": "NEEDS_REVIEW"
+          },
+          {
+            "resource_type": "DEVICE",
+            "resource_id": "oven_1",
+            "units": 1,
+            "physical_resource_id": "oven_1",
+            "component_id": "chamber",
+            "profile_options": [],
+            "configuration": [
+              {
+                "parameter": "temperature_c",
+                "value": 180
+              },
+              {
+                "parameter": "mode",
+                "value": "上下火"
+              }
+            ],
+            "conflict_policy": "UNARY",
+            "occupation_policy": "WHOLE_INTERVAL",
+            "carrier_id": null,
+            "phase_id": null,
+            "presence_condition": null,
+            "occupancy": null,
+            "human_interventions": [],
+            "rule_version": "development-scheduling-v3",
+            "evidence_refs": [
+              "ai-timing:5d54bae2a9114174727c8b20"
+            ],
+            "review_status": "NEEDS_REVIEW"
+          }
+        ],
+        "execution_policy": {
+          "interruptible": false,
+          "interventions": [],
+          "batch_policy": "STANDALONE",
+          "fixed_batch_id": null,
+          "thermal_group_id": null,
+          "shared_prep_rule_ids": [],
+          "holding_min_sec": null,
+          "holding_max_sec": null
+        },
+        "provenance_refs": [
+          "ai-timing:5d54bae2a9114174727c8b20"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      },
+      {
+        "operation_id": "op_011_01",
+        "action": "PREPARE",
+        "description": "设置设备程序/补水；鸡翅包饭",
+        "required": true,
+        "duration": {
+          "nominal_sec": 60,
+          "execution_sec": 60,
+          "lower_sec": null,
+          "upper_sec": null,
+          "model_id": null,
+          "quantity_basis": null,
+          "source_ref": "ai-timing:5d54bae2a9114174727c8b20",
+          "fixed_process_time": false
+        },
+        "material_inputs": [],
+        "material_outputs": [],
+        "losses": [],
+        "resource_requirements": [
+          {
+            "resource_type": "HUMAN",
+            "resource_id": "human_1",
+            "units": 1,
+            "physical_resource_id": null,
+            "component_id": null,
+            "profile_options": [],
+            "configuration": [],
+            "conflict_policy": "UNARY",
+            "occupation_policy": "WHOLE_INTERVAL",
+            "carrier_id": null,
+            "phase_id": null,
+            "presence_condition": null,
+            "occupancy": null,
+            "human_interventions": [],
+            "rule_version": "unreviewed",
+            "evidence_refs": [
+              "ai-timing:5d54bae2a9114174727c8b20"
+            ],
+            "review_status": "NEEDS_REVIEW"
+          },
+          {
+            "resource_type": "DEVICE",
+            "resource_id": "oven_1",
+            "units": 1,
+            "physical_resource_id": "oven_1",
+            "component_id": "chamber",
+            "profile_options": [],
+            "configuration": [
+              {
+                "parameter": "temperature_c",
+                "value": 180
+              },
+              {
+                "parameter": "mode",
+                "value": "上下火"
+              }
+            ],
+            "conflict_policy": "UNARY",
+            "occupation_policy": "WHOLE_INTERVAL",
+            "carrier_id": null,
+            "phase_id": null,
+            "presence_condition": null,
+            "occupancy": null,
+            "human_interventions": [],
+            "rule_version": "development-scheduling-v3",
+            "evidence_refs": [
+              "ai-timing:5d54bae2a9114174727c8b20"
+            ],
+            "review_status": "NEEDS_REVIEW"
+          }
+        ],
+        "execution_policy": {
+          "interruptible": false,
+          "interventions": [],
+          "batch_policy": "STANDALONE",
+          "fixed_batch_id": null,
+          "thermal_group_id": null,
+          "shared_prep_rule_ids": [],
+          "holding_min_sec": null,
+          "holding_max_sec": null
+        },
+        "provenance_refs": [
+          "ai-timing:5d54bae2a9114174727c8b20"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      },
+      {
+        "operation_id": "op_011_02",
+        "action": "PREHEAT",
+        "description": "预热/升温；鸡翅包饭",
+        "required": true,
+        "duration": {
+          "nominal_sec": 600,
+          "execution_sec": 600,
+          "lower_sec": null,
+          "upper_sec": null,
+          "model_id": null,
+          "quantity_basis": null,
+          "source_ref": "ai-timing:5d54bae2a9114174727c8b20",
+          "fixed_process_time": false
+        },
+        "material_inputs": [],
+        "material_outputs": [],
+        "losses": [],
+        "resource_requirements": [
+          {
+            "resource_type": "DEVICE",
+            "resource_id": "oven_1",
+            "units": 1,
+            "physical_resource_id": "oven_1",
+            "component_id": "chamber",
+            "profile_options": [],
+            "configuration": [
+              {
+                "parameter": "temperature_c",
+                "value": 180
+              },
+              {
+                "parameter": "mode",
+                "value": "上下火"
+              }
+            ],
+            "conflict_policy": "UNARY",
+            "occupation_policy": "WHOLE_INTERVAL",
+            "carrier_id": null,
+            "phase_id": null,
+            "presence_condition": null,
+            "occupancy": null,
+            "human_interventions": [],
+            "rule_version": "development-scheduling-v3",
+            "evidence_refs": [
+              "ai-timing:5d54bae2a9114174727c8b20"
+            ],
+            "review_status": "NEEDS_REVIEW"
+          }
+        ],
+        "execution_policy": {
+          "interruptible": false,
+          "interventions": [],
+          "batch_policy": "STANDALONE",
+          "fixed_batch_id": null,
+          "thermal_group_id": null,
+          "shared_prep_rule_ids": [],
+          "holding_min_sec": null,
+          "holding_max_sec": null
+        },
+        "provenance_refs": [
+          "ai-timing:5d54bae2a9114174727c8b20"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      },
+      {
+        "operation_id": "op_011_03",
+        "action": "HEAT",
+        "description": "关上烤箱门，选择“常规烘焙”模式，以180℃烤15分钟。",
+        "required": true,
+        "duration": {
+          "nominal_sec": 900,
+          "execution_sec": 900,
+          "lower_sec": 900,
+          "upper_sec": 900,
+          "model_id": null,
+          "quantity_basis": null,
+          "source_ref": "ai-timing:5d54bae2a9114174727c8b20",
+          "fixed_process_time": true
+        },
+        "material_inputs": [
+          {
+            "requirement_id": "material_in_00049",
+            "spec_id": "loaded",
+            "quantity_kind": "QUALITATIVE",
+            "quantity": null,
+            "upper_quantity": null,
+            "qualitative_quantity": "原配方本物料整批的1；实际产量未测定",
+            "provenance_refs": [
+              "ai-material:5d54bae2a9114174727c8b20"
+            ]
+          }
+        ],
+        "material_outputs": [
+          {
+            "requirement_id": "material_out_00050",
+            "spec_id": "cooked",
+            "quantity_kind": "QUALITATIVE",
+            "quantity": null,
+            "upper_quantity": null,
+            "qualitative_quantity": "原配方本物料整批的1；实际产量未测定",
+            "provenance_refs": [
+              "ai-material:5d54bae2a9114174727c8b20"
+            ]
+          }
+        ],
+        "losses": [],
+        "resource_requirements": [
+          {
+            "resource_type": "DEVICE",
+            "resource_id": "oven_1",
+            "units": 1,
+            "physical_resource_id": "oven_1",
+            "component_id": "chamber",
+            "profile_options": [],
+            "configuration": [
+              {
+                "parameter": "temperature_c",
+                "value": 180
+              },
+              {
+                "parameter": "mode",
+                "value": "上下火"
+              }
+            ],
+            "conflict_policy": "UNARY",
+            "occupation_policy": "WHOLE_INTERVAL",
+            "carrier_id": null,
+            "phase_id": null,
+            "presence_condition": null,
+            "occupancy": null,
+            "human_interventions": [],
+            "rule_version": "development-scheduling-v3",
+            "evidence_refs": [
+              "ai-timing:5d54bae2a9114174727c8b20"
+            ],
+            "review_status": "NEEDS_REVIEW"
+          }
+        ],
+        "execution_policy": {
+          "interruptible": false,
+          "interventions": [],
+          "batch_policy": "STANDALONE",
+          "fixed_batch_id": null,
+          "thermal_group_id": null,
+          "shared_prep_rule_ids": [],
+          "holding_min_sec": null,
+          "holding_max_sec": null
+        },
+        "provenance_refs": [
+          "ai-timing:5d54bae2a9114174727c8b20"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      },
+      {
+        "operation_id": "op_012_01",
+        "action": "UNLOAD",
+        "description": "打开烤箱门，将烤好的鸡翅包饭取出即可。",
+        "required": true,
+        "duration": {
+          "nominal_sec": 30,
+          "execution_sec": 30,
+          "lower_sec": null,
+          "upper_sec": null,
+          "model_id": null,
+          "quantity_basis": null,
+          "source_ref": "ai-timing:5d54bae2a9114174727c8b20",
+          "fixed_process_time": false
+        },
+        "material_inputs": [
+          {
+            "requirement_id": "material_in_00051",
+            "spec_id": "cooked",
+            "quantity_kind": "QUALITATIVE",
+            "quantity": null,
+            "upper_quantity": null,
+            "qualitative_quantity": "原配方本物料整批的1；实际产量未测定",
+            "provenance_refs": [
+              "ai-material:5d54bae2a9114174727c8b20"
+            ]
+          }
+        ],
+        "material_outputs": [
+          {
+            "requirement_id": "material_out_00052",
+            "spec_id": "dish",
+            "quantity_kind": "QUALITATIVE",
+            "quantity": null,
+            "upper_quantity": null,
+            "qualitative_quantity": "原配方本物料整批的1；实际产量未测定",
+            "provenance_refs": [
+              "ai-material:5d54bae2a9114174727c8b20"
+            ]
+          }
+        ],
+        "losses": [],
+        "resource_requirements": [
+          {
+            "resource_type": "HUMAN",
+            "resource_id": "human_1",
+            "units": 1,
+            "physical_resource_id": null,
+            "component_id": null,
+            "profile_options": [],
+            "configuration": [],
+            "conflict_policy": "UNARY",
+            "occupation_policy": "WHOLE_INTERVAL",
+            "carrier_id": null,
+            "phase_id": null,
+            "presence_condition": null,
+            "occupancy": null,
+            "human_interventions": [],
+            "rule_version": "unreviewed",
+            "evidence_refs": [
+              "ai-timing:5d54bae2a9114174727c8b20"
+            ],
+            "review_status": "NEEDS_REVIEW"
+          },
+          {
+            "resource_type": "DEVICE",
+            "resource_id": "oven_1",
+            "units": 1,
+            "physical_resource_id": "oven_1",
+            "component_id": "chamber",
+            "profile_options": [],
+            "configuration": [
+              {
+                "parameter": "temperature_c",
+                "value": 180
+              },
+              {
+                "parameter": "mode",
+                "value": "上下火"
+              }
+            ],
+            "conflict_policy": "UNARY",
+            "occupation_policy": "WHOLE_INTERVAL",
+            "carrier_id": null,
+            "phase_id": null,
+            "presence_condition": null,
+            "occupancy": null,
+            "human_interventions": [],
+            "rule_version": "development-scheduling-v3",
+            "evidence_refs": [
+              "ai-timing:5d54bae2a9114174727c8b20"
+            ],
+            "review_status": "NEEDS_REVIEW"
+          }
+        ],
+        "execution_policy": {
+          "interruptible": false,
+          "interventions": [],
+          "batch_policy": "STANDALONE",
+          "fixed_batch_id": null,
+          "thermal_group_id": null,
+          "shared_prep_rule_ids": [],
+          "holding_min_sec": null,
+          "holding_max_sec": null
+        },
+        "provenance_refs": [
+          "ai-timing:5d54bae2a9114174727c8b20"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      },
+      {
+        "operation_id": "op_999_01",
+        "action": "FINISH",
+        "description": "确认全部必需分支完成并装盘上桌",
+        "required": true,
+        "duration": {
+          "nominal_sec": 60,
+          "execution_sec": 60,
+          "lower_sec": null,
+          "upper_sec": null,
+          "model_id": null,
+          "quantity_basis": null,
+          "source_ref": "ai-timing:5d54bae2a9114174727c8b20",
+          "fixed_process_time": false
+        },
+        "material_inputs": [
+          {
+            "requirement_id": "material_in_00053",
+            "spec_id": "dish",
+            "quantity_kind": "QUALITATIVE",
+            "quantity": null,
+            "upper_quantity": null,
+            "qualitative_quantity": "原配方本物料整批的1；实际产量未测定",
+            "provenance_refs": [
+              "ai-material:5d54bae2a9114174727c8b20"
+            ]
+          }
+        ],
+        "material_outputs": [
+          {
+            "requirement_id": "material_out_00054",
+            "spec_id": "finaldish",
+            "quantity_kind": "QUALITATIVE",
+            "quantity": null,
+            "upper_quantity": null,
+            "qualitative_quantity": "原配方本物料整批的1；实际产量未测定",
+            "provenance_refs": [
+              "ai-material:5d54bae2a9114174727c8b20"
+            ]
+          }
+        ],
+        "losses": [],
+        "resource_requirements": [
+          {
+            "resource_type": "HUMAN",
+            "resource_id": "human_1",
+            "units": 1,
+            "physical_resource_id": null,
+            "component_id": null,
+            "profile_options": [],
+            "configuration": [],
+            "conflict_policy": "UNARY",
+            "occupation_policy": "WHOLE_INTERVAL",
+            "carrier_id": null,
+            "phase_id": null,
+            "presence_condition": null,
+            "occupancy": null,
+            "human_interventions": [],
+            "rule_version": "unreviewed",
+            "evidence_refs": [
+              "ai-timing:5d54bae2a9114174727c8b20"
+            ],
+            "review_status": "NEEDS_REVIEW"
+          }
+        ],
+        "execution_policy": {
+          "interruptible": false,
+          "interventions": [],
+          "batch_policy": "STANDALONE",
+          "fixed_batch_id": null,
+          "thermal_group_id": null,
+          "shared_prep_rule_ids": [],
+          "holding_min_sec": null,
+          "holding_max_sec": null
+        },
+        "provenance_refs": [
+          "ai-timing:5d54bae2a9114174727c8b20"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      }
+    ],
+    "dependencies": [
+      {
+        "predecessor_id": "op_011_01",
+        "successor_id": "op_011_02",
+        "min_lag_sec": 0,
+        "max_lag_sec": 0,
+        "reason": "同一步骤拆分后的连续执行",
+        "evidence_refs": [
+          "ai-timing:5d54bae2a9114174727c8b20"
+        ]
+      },
+      {
+        "predecessor_id": "op_011_02",
+        "successor_id": "op_011_03",
+        "min_lag_sec": 0,
+        "max_lag_sec": 0,
+        "reason": "同一步骤拆分后的连续执行",
+        "evidence_refs": [
+          "ai-timing:5d54bae2a9114174727c8b20"
+        ]
+      },
+      {
+        "predecessor_id": "op_001_01",
+        "successor_id": "op_006_01",
+        "min_lag_sec": 0,
+        "max_lag_sec": null,
+        "reason": "源工序依赖；明确并行分支保留",
+        "evidence_refs": [
+          "ai-timing:5d54bae2a9114174727c8b20"
+        ]
+      },
+      {
+        "predecessor_id": "op_002_01",
+        "successor_id": "op_006_01",
+        "min_lag_sec": 0,
+        "max_lag_sec": null,
+        "reason": "源工序依赖；明确并行分支保留",
+        "evidence_refs": [
+          "ai-timing:5d54bae2a9114174727c8b20"
+        ]
+      },
+      {
+        "predecessor_id": "op_003_01",
+        "successor_id": "op_004_01",
+        "min_lag_sec": 0,
+        "max_lag_sec": null,
+        "reason": "源工序依赖；明确并行分支保留",
+        "evidence_refs": [
+          "ai-timing:5d54bae2a9114174727c8b20"
+        ]
+      },
+      {
+        "predecessor_id": "op_004_01",
+        "successor_id": "op_005_01",
+        "min_lag_sec": 0,
+        "max_lag_sec": null,
+        "reason": "源工序依赖；明确并行分支保留",
+        "evidence_refs": [
+          "ai-timing:5d54bae2a9114174727c8b20"
+        ]
+      },
+      {
+        "predecessor_id": "op_005_01",
+        "successor_id": "op_008_01",
+        "min_lag_sec": 0,
+        "max_lag_sec": null,
+        "reason": "源工序依赖；明确并行分支保留",
+        "evidence_refs": [
+          "ai-timing:5d54bae2a9114174727c8b20"
+        ]
+      },
+      {
+        "predecessor_id": "op_006_01",
+        "successor_id": "op_007_01",
+        "min_lag_sec": 0,
+        "max_lag_sec": null,
+        "reason": "源工序依赖；明确并行分支保留",
+        "evidence_refs": [
+          "ai-timing:5d54bae2a9114174727c8b20"
+        ]
+      },
+      {
+        "predecessor_id": "op_007_01",
+        "successor_id": "op_008_01",
+        "min_lag_sec": 0,
+        "max_lag_sec": null,
+        "reason": "源工序依赖；明确并行分支保留",
+        "evidence_refs": [
+          "ai-timing:5d54bae2a9114174727c8b20"
+        ]
+      },
+      {
+        "predecessor_id": "op_008_01",
+        "successor_id": "op_009_01",
+        "min_lag_sec": 0,
+        "max_lag_sec": null,
+        "reason": "源工序依赖；明确并行分支保留",
+        "evidence_refs": [
+          "ai-timing:5d54bae2a9114174727c8b20"
+        ]
+      },
+      {
+        "predecessor_id": "op_009_01",
+        "successor_id": "op_010_01",
+        "min_lag_sec": 0,
+        "max_lag_sec": null,
+        "reason": "源工序依赖；明确并行分支保留",
+        "evidence_refs": [
+          "ai-timing:5d54bae2a9114174727c8b20"
+        ]
+      },
+      {
+        "predecessor_id": "op_010_01",
+        "successor_id": "op_011_01",
+        "min_lag_sec": 0,
+        "max_lag_sec": null,
+        "reason": "源工序依赖；明确并行分支保留",
+        "evidence_refs": [
+          "ai-timing:5d54bae2a9114174727c8b20"
+        ]
+      },
+      {
+        "predecessor_id": "op_011_03",
+        "successor_id": "op_012_01",
+        "min_lag_sec": 0,
+        "max_lag_sec": null,
+        "reason": "源工序依赖；明确并行分支保留",
+        "evidence_refs": [
+          "ai-timing:5d54bae2a9114174727c8b20"
+        ]
+      },
+      {
+        "predecessor_id": "op_1000_01",
+        "successor_id": "op_1000_02",
+        "min_lag_sec": 0,
+        "max_lag_sec": 0,
+        "reason": "同一步骤拆分后的连续执行",
+        "evidence_refs": [
+          "ai-timing:5d54bae2a9114174727c8b20"
+        ]
+      },
+      {
+        "predecessor_id": "op_1000_02",
+        "successor_id": "op_1000_03",
+        "min_lag_sec": 0,
+        "max_lag_sec": 0,
+        "reason": "同一步骤拆分后的连续执行",
+        "evidence_refs": [
+          "ai-timing:5d54bae2a9114174727c8b20"
+        ]
+      },
+      {
+        "predecessor_id": "op_1000_03",
+        "successor_id": "op_1000_04",
+        "min_lag_sec": 0,
+        "max_lag_sec": 0,
+        "reason": "同一步骤拆分后的连续执行",
+        "evidence_refs": [
+          "ai-timing:5d54bae2a9114174727c8b20"
+        ]
+      },
+      {
+        "predecessor_id": "op_1000_04",
+        "successor_id": "op_006_01",
+        "min_lag_sec": 0,
+        "max_lag_sec": null,
+        "reason": "前置食材必须准备完成",
+        "evidence_refs": [
+          "ai-timing:5d54bae2a9114174727c8b20"
+        ]
+      },
+      {
+        "predecessor_id": "op_012_01",
+        "successor_id": "op_999_01",
+        "min_lag_sec": 0,
+        "max_lag_sec": null,
+        "reason": "全部必需分支完成后才可出菜",
+        "evidence_refs": [
+          "ai-timing:5d54bae2a9114174727c8b20"
+        ]
+      },
+      {
+        "predecessor_id": "op_010_01",
+        "successor_id": "op_011_03",
+        "min_lag_sec": 0,
+        "max_lag_sec": null,
+        "reason": "真实物料生产完成后方可消费",
+        "evidence_refs": [
+          "ai-material:5d54bae2a9114174727c8b20"
+        ]
+      }
+    ],
+    "provenance_refs": [
+      "ai-timing:5d54bae2a9114174727c8b20",
+      "ai-material:5d54bae2a9114174727c8b20",
+      "csv:5d54bae2a9114174727c8b20",
+      "scheduling-v3:5d54bae2a9114174727c8b20"
+    ],
+    "review_status": "NEEDS_REVIEW",
+    "approval": null,
+    "review_patch_refs": [],
+    "issue_refs": [
+      "sample-5d54bae2a9114174727c8b20-HUMAN_REVIEW"
+    ]
+  },
+  "refinement_source": {
+    "path": "data/development/development-v3-rebased-v1/dataset.json",
+    "sha256": "74d8cb914ed6c76a6c583a2af65dd033f27b4ce30335a40c78dbab1789944c75",
+    "record": {
+      "名称": "鸡翅包饭",
+      "烹饪步骤": "第1步【人工操作｜人工：厨师1人，约3分钟；设备/资源：刀具+砧板；设备占用：与人工同步约3分钟】洋葱、胡萝卜均洗净切碎。第2步【人工操作｜人工：厨师1人，约3分钟；设备/资源：刀具+砧板；设备占用：与人工同步约3分钟】火腿肠先切细条，再切碎。第3步【人工操作｜人工：厨师1人，约6分钟；设备/资源：刀具+砧板；设备占用：与人工同步约6分钟】鸡翅洗净，去骨，翅尖处留骨，装入碗中。第4步【人工操作｜人工：厨师1人，约2分钟；设备/资源：基础厨具/操作台；设备占用：与人工同步约2分钟】碗中加盐、油、胡椒粉、料酒。第5步【等待/被动｜人工：厨师1人，约1分钟；设备/资源：基础厨具/操作台；等待/资源占用：约15分钟，等待期间不占用厨师】腌渍。第6步【烹饪｜人工：厨师1人，约5分钟（需持续/间歇操作）；设备：灶具+锅具；设备占用：约5分钟（建议值）】锅中注油烧热，放入蔬菜、火腿肠、米饭炒匀。第7步【烹饪｜人工：厨师1人，约5分钟（需持续/间歇操作）；设备：基础厨具/操作台；设备占用：约5分钟（建议值）】加盐、胡椒粉、韩式辣椒酱拌炒片刻，盛出装碗。第8步【人工操作｜人工：厨师1人，约2分钟；设备/资源：基础厨具/操作台；设备占用：与人工同步约2分钟】将炒饭装入鸡翅中，用牙签封口，翅尖用锡纸包住。第9步【人工操作｜人工：厨师1人，约2分钟；设备/资源：烤盘/蒸烤盘；设备占用：与人工同步约2分钟】烤盘内铺上一层锡纸，在锡纸上刷油，放入鸡翅，鸡翅表面刷油。第10步【人工操作｜人工：厨师1人，约2分钟；设备/资源：烤箱/蒸烤一体机、烤盘/蒸烤盘；设备占用：与人工同步约2分钟】将烤盘放入烤箱中。第11步【烹饪｜人工：厨师1人，上/下料约2分钟；设备：烤箱/蒸烤一体机；设备占用：约15分钟（原文时间），运行期间通常不占用厨师】关上烤箱门，选择“常规烘焙”模式，以180℃烤15分钟。第12步【人工操作｜人工：厨师1人，约1分钟；设备/资源：基础厨具/操作台；设备占用：与人工同步约1分钟】打开烤箱门，将烤好的鸡翅包饭取出即可。",
+      "菜谱id": "5d54bae2a9114174727c8b20",
+      "食材清单": "主料：鸡翅3个；去皮胡萝卜60克；洋葱1个；火腿肠1根；米饭150克；辅料：韩式辣椒酱20克；食用油10毫升；料酒5毫升；盐3克；胡椒粉5克"
+    }
+  },
+  "refinement_detail": {
+    "path": "data/development/development-v3-rebased-v1/dataset.json",
+    "sha256": "74d8cb914ed6c76a6c583a2af65dd033f27b4ce30335a40c78dbab1789944c75"
+  },
+  "process_constraints": [],
+  "conversion_notes": [
+    "直接承接V3原子操作、依赖、物料和资源，不再按V2重建空物料草稿。",
+    "数值execution_sec为用户授权的AI开发排程建议，保留MODEL_SUGGESTION来源，不代表批准或实测。"
+  ],
+  "scheduling_context": {
+    "source_groups": {
+      "1": [
+        "op_001_01"
+      ],
+      "10": [
+        "op_010_01"
+      ],
+      "1000": [
+        "op_1000_01",
+        "op_1000_02",
+        "op_1000_03",
+        "op_1000_04"
+      ],
+      "11": [
+        "op_011_01",
+        "op_011_02",
+        "op_011_03"
+      ],
+      "12": [
+        "op_012_01"
+      ],
+      "2": [
+        "op_002_01"
+      ],
+      "3": [
+        "op_003_01"
+      ],
+      "4": [
+        "op_004_01"
+      ],
+      "5": [
+        "op_005_01"
+      ],
+      "6": [
+        "op_006_01"
+      ],
+      "7": [
+        "op_007_01"
+      ],
+      "8": [
+        "op_008_01"
+      ],
+      "9": [
+        "op_009_01"
+      ],
+      "999": [
+        "op_999_01"
+      ]
+    },
+    "operation_metadata": {
+      "op_001_01": {
+        "basis": "按原量一批清理切配，操作种类每增加一项预留1分钟。",
+        "batch_reference": "5d54bae2a9114174727c8b20:one_source_batch",
+        "cross_recipe_sharing": false,
+        "ingredient_refs": [
+          "ingredient_002",
+          "ingredient_003"
+        ],
+        "input_state": "配方采购原料：去皮胡萝卜；清洗、切配及熟制见后续工序；配方采购原料：洋葱；清洗、切配及熟制见后续工序",
+        "material_input_specs": [
+          "ingredient_002",
+          "ingredient_003"
+        ],
+        "material_output_specs": [
+          "veg"
+        ],
+        "origin": "MODEL_SUGGESTION",
+        "output_state": "洗净切碎的洋葱胡萝卜",
+        "predecessor_states": [],
+        "source_step": 1,
+        "source_time_constraint": {
+          "lower_sec": null,
+          "relation": "unknown",
+          "text": "待补",
+          "upper_sec": null
+        }
+      },
+      "op_002_01": {
+        "basis": "按原量一批清理切配，操作种类每增加一项预留1分钟。",
+        "batch_reference": "5d54bae2a9114174727c8b20:one_source_batch",
+        "cross_recipe_sharing": false,
+        "ingredient_refs": [
+          "ingredient_004"
+        ],
+        "input_state": "配方采购原料：火腿肠；清洗、切配及熟制见后续工序",
+        "material_input_specs": [
+          "ingredient_004"
+        ],
+        "material_output_specs": [
+          "ham"
+        ],
+        "origin": "MODEL_SUGGESTION",
+        "output_state": "切碎火腿肠",
+        "predecessor_states": [],
+        "source_step": 2,
+        "source_time_constraint": {
+          "lower_sec": null,
+          "relation": "unknown",
+          "text": "待补",
+          "upper_sec": null
+        }
+      },
+      "op_003_01": {
+        "basis": "按本菜配方总量、批量件数和操作复杂度单独估计人工工时。",
+        "batch_reference": "5d54bae2a9114174727c8b20:one_source_batch",
+        "cross_recipe_sharing": false,
+        "ingredient_refs": [
+          "ingredient_001"
+        ],
+        "input_state": "配方采购原料：鸡翅；清洗、切配及熟制见后续工序",
+        "material_input_specs": [
+          "ingredient_001"
+        ],
+        "material_output_specs": [
+          "wings"
+        ],
+        "origin": "MODEL_SUGGESTION",
+        "output_state": "洗净去骨鸡翅",
+        "predecessor_states": [],
+        "source_step": 3,
+        "source_time_constraint": {
+          "lower_sec": null,
+          "relation": "unknown",
+          "text": "待补",
+          "upper_sec": null
+        }
+      },
+      "op_004_01": {
+        "basis": "按本菜一批简单人工操作预留2分钟；属于AI估计。",
+        "batch_reference": "5d54bae2a9114174727c8b20:one_source_batch",
+        "cross_recipe_sharing": false,
+        "ingredient_refs": [
+          "ingredient_001",
+          "ingredient_008",
+          "ingredient_009",
+          "ingredient_010",
+          "ingredient_011"
+        ],
+        "input_state": "洗净去骨鸡翅；配方采购原料：食用油；清洗、切配及熟制见后续工序；配方采购原料：料酒；清洗、切配及熟制见后续工序；配方采购原料：盐；清洗、切配及熟制见后续工序；配方采购原料：胡椒粉；清洗、切配及熟制见后续工序",
+        "material_input_specs": [
+          "wings",
+          "ingredient_008",
+          "ingredient_009",
+          "ingredient_010",
+          "ingredient_011"
+        ],
+        "material_output_specs": [
+          "seasoned"
+        ],
+        "origin": "MODEL_SUGGESTION",
+        "output_state": "拌匀调料的鸡翅",
+        "predecessor_states": [
+          "完成操作：鸡翅洗净，去骨，翅尖处留骨，装入碗中。"
+        ],
+        "source_step": 4,
+        "source_time_constraint": {
+          "lower_sec": null,
+          "relation": "unknown",
+          "text": "待补",
+          "upper_sec": null
+        }
+      },
+      "op_005_01": {
+        "basis": "按本菜原配方一批、步骤终点和工艺类型估计900秒；不是设备预置程序实测值。",
+        "batch_reference": "5d54bae2a9114174727c8b20:one_source_batch",
+        "cross_recipe_sharing": false,
+        "ingredient_refs": [
+          "ingredient_001",
+          "ingredient_008",
+          "ingredient_009",
+          "ingredient_010",
+          "ingredient_011"
+        ],
+        "input_state": "拌匀调料的鸡翅",
+        "material_input_specs": [
+          "seasoned"
+        ],
+        "material_output_specs": [
+          "marinated"
+        ],
+        "origin": "MODEL_SUGGESTION",
+        "output_state": "腌好的鸡翅",
+        "predecessor_states": [
+          "完成操作：碗中加盐、油、胡椒粉、料酒。"
+        ],
+        "source_step": 5,
+        "source_time_constraint": {
+          "lower_sec": null,
+          "relation": "unknown",
+          "text": "待补",
+          "upper_sec": null
+        }
+      },
+      "op_006_01": {
+        "basis": "按本菜原配方一批、步骤终点和工艺类型估计240秒；不是设备预置程序实测值。",
+        "batch_reference": "5d54bae2a9114174727c8b20:one_source_batch",
+        "cross_recipe_sharing": false,
+        "ingredient_refs": [
+          "ingredient_002",
+          "ingredient_003",
+          "ingredient_004",
+          "ingredient_005",
+          "ingredient_006",
+          "ingredient_008"
+        ],
+        "input_state": "洗净切碎的洋葱胡萝卜；切碎火腿肠；蒸熟并拨松的米饭；配方采购原料：食用油；清洗、切配及熟制见后续工序",
+        "material_input_specs": [
+          "veg",
+          "ham",
+          "rice",
+          "ingredient_008"
+        ],
+        "material_output_specs": [
+          "fried_rice"
+        ],
+        "origin": "MODEL_SUGGESTION",
+        "output_state": "炒匀的蔬菜火腿米饭",
+        "predecessor_states": [
+          "完成操作：洋葱、胡萝卜均洗净切碎。",
+          "完成操作：火腿肠先切细条，再切碎。",
+          "已完成：取出并拨松米饭"
+        ],
+        "source_step": 6,
+        "source_time_constraint": {
+          "lower_sec": null,
+          "relation": "unknown",
+          "text": "待补",
+          "upper_sec": null
+        }
+      },
+      "op_007_01": {
+        "basis": "按本菜原配方一批、步骤终点和工艺类型估计90秒；不是设备预置程序实测值。",
+        "batch_reference": "5d54bae2a9114174727c8b20:one_source_batch",
+        "cross_recipe_sharing": false,
+        "ingredient_refs": [
+          "ingredient_002",
+          "ingredient_003",
+          "ingredient_004",
+          "ingredient_005",
+          "ingredient_006",
+          "ingredient_007",
+          "ingredient_008",
+          "ingredient_010",
+          "ingredient_011"
+        ],
+        "input_state": "炒匀的蔬菜火腿米饭；配方采购原料：韩式辣椒酱；清洗、切配及熟制见后续工序；配方采购原料：盐；清洗、切配及熟制见后续工序；配方采购原料：胡椒粉；清洗、切配及熟制见后续工序",
+        "material_input_specs": [
+          "fried_rice",
+          "ingredient_007",
+          "ingredient_010",
+          "ingredient_011"
+        ],
+        "material_output_specs": [
+          "filling"
+        ],
+        "origin": "MODEL_SUGGESTION",
+        "output_state": "调味炒饭馅",
+        "predecessor_states": [
+          "完成操作：锅中注油烧热，放入蔬菜、火腿肠、米饭炒匀。"
+        ],
+        "source_step": 7,
+        "source_time_constraint": {
+          "lower_sec": null,
+          "relation": "unknown",
+          "text": "待补",
+          "upper_sec": null
+        }
+      },
+      "op_008_01": {
+        "basis": "按本菜配方总量、批量件数和操作复杂度单独估计人工工时。",
+        "batch_reference": "5d54bae2a9114174727c8b20:one_source_batch",
+        "cross_recipe_sharing": false,
+        "ingredient_refs": [
+          "ingredient_001",
+          "ingredient_002",
+          "ingredient_003",
+          "ingredient_004",
+          "ingredient_005",
+          "ingredient_006",
+          "ingredient_007",
+          "ingredient_008",
+          "ingredient_009",
+          "ingredient_010",
+          "ingredient_011"
+        ],
+        "input_state": "腌好的鸡翅；调味炒饭馅",
+        "material_input_specs": [
+          "marinated",
+          "filling"
+        ],
+        "material_output_specs": [
+          "stuffed"
+        ],
+        "origin": "MODEL_SUGGESTION",
+        "output_state": "填饭并封口的鸡翅",
+        "predecessor_states": [
+          "完成操作：腌渍。",
+          "完成操作：加盐、胡椒粉、韩式辣椒酱拌炒片刻，盛出装碗。"
+        ],
+        "source_step": 8,
+        "source_time_constraint": {
+          "lower_sec": null,
+          "relation": "unknown",
+          "text": "待补",
+          "upper_sec": null
+        }
+      },
+      "op_009_01": {
+        "basis": "按原量摆盘、刷涂或铺料估计2–3分钟。",
+        "batch_reference": "5d54bae2a9114174727c8b20:one_source_batch",
+        "cross_recipe_sharing": false,
+        "ingredient_refs": [
+          "ingredient_001",
+          "ingredient_002",
+          "ingredient_003",
+          "ingredient_004",
+          "ingredient_005",
+          "ingredient_006",
+          "ingredient_007",
+          "ingredient_008",
+          "ingredient_009",
+          "ingredient_010",
+          "ingredient_011"
+        ],
+        "input_state": "填饭并封口的鸡翅；配方采购原料：食用油；清洗、切配及熟制见后续工序",
+        "material_input_specs": [
+          "stuffed",
+          "ingredient_008"
+        ],
+        "material_output_specs": [
+          "oiled"
+        ],
+        "origin": "MODEL_SUGGESTION",
+        "output_state": "刷油的鸡翅包饭生坯",
+        "predecessor_states": [
+          "完成操作：将炒饭装入鸡翅中，用牙签封口，翅尖用锡纸包住。"
+        ],
+        "source_step": 9,
+        "source_time_constraint": {
+          "lower_sec": null,
+          "relation": "unknown",
+          "text": "待补",
+          "upper_sec": null
+        }
+      },
+      "op_010_01": {
+        "basis": "短时转移、开关门或覆盖操作按30–60秒估计。",
+        "batch_reference": "5d54bae2a9114174727c8b20:one_source_batch",
+        "cross_recipe_sharing": false,
+        "ingredient_refs": [
+          "ingredient_001",
+          "ingredient_002",
+          "ingredient_003",
+          "ingredient_004",
+          "ingredient_005",
+          "ingredient_006",
+          "ingredient_007",
+          "ingredient_008",
+          "ingredient_009",
+          "ingredient_010",
+          "ingredient_011"
+        ],
+        "input_state": "刷油的鸡翅包饭生坯",
+        "material_input_specs": [
+          "oiled"
+        ],
+        "material_output_specs": [
+          "loaded"
+        ],
+        "origin": "MODEL_SUGGESTION",
+        "output_state": "装入烤箱的鸡翅包饭",
+        "predecessor_states": [
+          "完成操作：烤盘内铺上一层锡纸，在锡纸上刷油，放入鸡翅，鸡翅表面刷油。"
+        ],
+        "source_step": 10,
+        "source_time_constraint": {
+          "lower_sec": null,
+          "relation": "unknown",
+          "text": "待补",
+          "upper_sec": null
+        }
+      },
+      "op_011_01": {
+        "basis": "原文明确工艺时间，保持不变。",
+        "batch_reference": "5d54bae2a9114174727c8b20:one_source_batch",
+        "cross_recipe_sharing": false,
+        "ingredient_refs": [],
+        "input_state": "设备/工艺辅助操作，无食物投入",
+        "material_input_specs": [],
+        "material_output_specs": [],
+        "origin": "MODEL_SUGGESTION",
+        "output_state": "设备/工艺辅助操作完成",
+        "predecessor_states": [
+          "完成操作：将烤盘放入烤箱中。"
+        ],
+        "source_step": 11,
+        "source_time_constraint": {
+          "lower_sec": 900,
+          "relation": "exact_source",
+          "text": "15分钟",
+          "upper_sec": 900
+        }
+      },
+      "op_011_02": {
+        "basis": "原文明确工艺时间，保持不变。",
+        "batch_reference": "5d54bae2a9114174727c8b20:one_source_batch",
+        "cross_recipe_sharing": false,
+        "ingredient_refs": [],
+        "input_state": "设备/工艺辅助操作，无食物投入",
+        "material_input_specs": [],
+        "material_output_specs": [],
+        "origin": "MODEL_SUGGESTION",
+        "output_state": "设备/工艺辅助操作完成",
+        "predecessor_states": [
+          "完成操作：设置设备程序/补水；鸡翅包饭"
+        ],
+        "source_step": 11,
+        "source_time_constraint": {
+          "lower_sec": 900,
+          "relation": "exact_source",
+          "text": "15分钟",
+          "upper_sec": 900
+        }
+      },
+      "op_011_03": {
+        "basis": "原文明确工艺时间，保持不变。",
+        "batch_reference": "5d54bae2a9114174727c8b20:one_source_batch",
+        "cross_recipe_sharing": false,
+        "ingredient_refs": [
+          "ingredient_001",
+          "ingredient_002",
+          "ingredient_003",
+          "ingredient_004",
+          "ingredient_005",
+          "ingredient_006",
+          "ingredient_007",
+          "ingredient_008",
+          "ingredient_009",
+          "ingredient_010",
+          "ingredient_011"
+        ],
+        "input_state": "装入烤箱的鸡翅包饭",
+        "material_input_specs": [
+          "loaded"
+        ],
+        "material_output_specs": [
+          "cooked"
+        ],
+        "origin": "MODEL_SUGGESTION",
+        "output_state": "烤熟鸡翅包饭",
+        "predecessor_states": [
+          "完成操作：预热/升温；鸡翅包饭"
+        ],
+        "source_step": 11,
+        "source_time_constraint": {
+          "lower_sec": 900,
+          "relation": "exact_source",
+          "text": "15分钟",
+          "upper_sec": 900
+        }
+      },
+      "op_012_01": {
+        "basis": "短时转移、开关门或覆盖操作按30–60秒估计。",
+        "batch_reference": "5d54bae2a9114174727c8b20:one_source_batch",
+        "cross_recipe_sharing": false,
+        "ingredient_refs": [
+          "ingredient_001",
+          "ingredient_002",
+          "ingredient_003",
+          "ingredient_004",
+          "ingredient_005",
+          "ingredient_006",
+          "ingredient_007",
+          "ingredient_008",
+          "ingredient_009",
+          "ingredient_010",
+          "ingredient_011"
+        ],
+        "input_state": "烤熟鸡翅包饭",
+        "material_input_specs": [
+          "cooked"
+        ],
+        "material_output_specs": [
+          "dish"
+        ],
+        "origin": "MODEL_SUGGESTION",
+        "output_state": "取出的鸡翅包饭",
+        "predecessor_states": [
+          "完成操作：关上烤箱门，选择“常规烘焙”模式，以180℃烤15分钟。"
+        ],
+        "source_step": 12,
+        "source_time_constraint": {
+          "lower_sec": null,
+          "relation": "unknown",
+          "text": "待补",
+          "upper_sec": null
+        }
+      },
+      "op_1000_01": {
+        "basis": "补全源文本中省略的必需前置；时间/未给用量为AI建议",
+        "batch_reference": "5d54bae2a9114174727c8b20:one_source_batch",
+        "cross_recipe_sharing": false,
+        "ingredient_refs": [
+          "ingredient_005",
+          "ingredient_006"
+        ],
+        "input_state": "配方采购原料：生米；清洗、切配及熟制见后续工序；配方采购原料：水；清洗、切配及熟制见后续工序",
+        "material_input_specs": [
+          "ingredient_005",
+          "ingredient_006"
+        ],
+        "material_output_specs": [
+          "flow_001_00_00",
+          "flow_001_00_01"
+        ],
+        "origin": "MODEL_SUGGESTION",
+        "output_state": "淘洗60克生米，加入90克水，制成约150克熟米饭后的食物状态；淘洗60克生米，加入90克水，制成约150克熟米饭后的食物状态",
+        "predecessor_states": [],
+        "source_step": null,
+        "source_time_constraint": null
+      },
+      "op_1000_02": {
+        "basis": "补全源文本中省略的必需前置；时间/未给用量为AI建议",
+        "batch_reference": "5d54bae2a9114174727c8b20:one_source_batch",
+        "cross_recipe_sharing": false,
+        "ingredient_refs": [
+          "ingredient_005",
+          "ingredient_006"
+        ],
+        "input_state": "淘洗60克生米，加入90克水，制成约150克熟米饭后的食物状态；淘洗60克生米，加入90克水，制成约150克熟米饭后的食物状态",
+        "material_input_specs": [
+          "flow_001_00_00",
+          "flow_001_00_01"
+        ],
+        "material_output_specs": [
+          "flow_001_01_00",
+          "flow_001_01_01"
+        ],
+        "origin": "MODEL_SUGGESTION",
+        "output_state": "米水装入蒸箱后的食物状态；米水装入蒸箱后的食物状态",
+        "predecessor_states": [
+          "完成操作：淘洗60克生米，加入90克水，制成约150克熟米饭"
+        ],
+        "source_step": null,
+        "source_time_constraint": null
+      },
+      "op_1000_03": {
+        "basis": "补全源文本中省略的必需前置；时间/未给用量为AI建议",
+        "batch_reference": "5d54bae2a9114174727c8b20:one_source_batch",
+        "cross_recipe_sharing": false,
+        "ingredient_refs": [
+          "ingredient_005",
+          "ingredient_006"
+        ],
+        "input_state": "米水装入蒸箱后的食物状态；米水装入蒸箱后的食物状态",
+        "material_input_specs": [
+          "flow_001_01_00",
+          "flow_001_01_01"
+        ],
+        "material_output_specs": [
+          "flow_001_02_00",
+          "flow_001_02_01"
+        ],
+        "origin": "MODEL_SUGGESTION",
+        "output_state": "普通蒸100℃蒸米饭后的食物状态；普通蒸100℃蒸米饭后的食物状态",
+        "predecessor_states": [
+          "完成操作：米水装入蒸箱"
+        ],
+        "source_step": null,
+        "source_time_constraint": null
+      },
+      "op_1000_04": {
+        "basis": "补全源文本中省略的必需前置；时间/未给用量为AI建议",
+        "batch_reference": "5d54bae2a9114174727c8b20:one_source_batch",
+        "cross_recipe_sharing": false,
+        "ingredient_refs": [
+          "ingredient_005",
+          "ingredient_006"
+        ],
+        "input_state": "普通蒸100℃蒸米饭后的食物状态；普通蒸100℃蒸米饭后的食物状态",
+        "material_input_specs": [
+          "flow_001_02_00",
+          "flow_001_02_01"
+        ],
+        "material_output_specs": [
+          "rice"
+        ],
+        "origin": "MODEL_SUGGESTION",
+        "output_state": "蒸熟并拨松的米饭",
+        "predecessor_states": [
+          "完成操作：普通蒸100℃蒸米饭"
+        ],
+        "source_step": null,
+        "source_time_constraint": null
+      },
+      "op_999_01": {
+        "basis": "补齐设备停止、卸料和最终出菜边界",
+        "batch_reference": "5d54bae2a9114174727c8b20:one_source_batch",
+        "cross_recipe_sharing": false,
+        "ingredient_refs": [
+          "ingredient_001",
+          "ingredient_002",
+          "ingredient_003",
+          "ingredient_004",
+          "ingredient_005",
+          "ingredient_006",
+          "ingredient_007",
+          "ingredient_008",
+          "ingredient_009",
+          "ingredient_010",
+          "ingredient_011"
+        ],
+        "input_state": "取出的鸡翅包饭",
+        "material_input_specs": [
+          "dish"
+        ],
+        "material_output_specs": [
+          "finaldish"
+        ],
+        "origin": "MODEL_SUGGESTION",
+        "output_state": "全部必需食物分支完成并装盘上桌",
+        "predecessor_states": [
+          "完成操作：打开烤箱门，将烤好的鸡翅包饭取出即可。"
+        ],
+        "source_step": null,
+        "source_time_constraint": null
+      }
+    },
+    "source_dependencies": [
+      [
+        1,
+        6
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        5,
+        8
+      ],
+      [
+        6,
+        7
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        8,
+        9
+      ],
+      [
+        9,
+        10
+      ],
+      [
+        10,
+        11
+      ],
+      [
+        11,
+        12
+      ]
+    ],
+    "resource_reservations": [
+      {
+        "members": [
+          "op_006_01",
+          "op_007_01"
+        ],
+        "origin": "MODEL_SUGGESTION",
+        "policy": "UNARY",
+        "reservation_id": "5d54bae2a9114174727c8b20:stove:0",
+        "resource_options": [
+          "burner_1",
+          "burner_2"
+        ],
+        "span": "min_start_to_max_end"
+      },
+      {
+        "members": [
+          "op_1000_02",
+          "op_1000_03",
+          "op_1000_04"
+        ],
+        "origin": "MODEL_SUGGESTION",
+        "policy": "UNARY",
+        "reservation_id": "5d54bae2a9114174727c8b20:steam:1",
+        "resource_options": [
+          "steam_oven_1"
+        ],
+        "span": "min_start_to_max_end"
+      },
+      {
+        "members": [
+          "op_010_01",
+          "op_011_01",
+          "op_011_02",
+          "op_011_03",
+          "op_012_01"
+        ],
+        "origin": "MODEL_SUGGESTION",
+        "policy": "UNARY",
+        "reservation_id": "5d54bae2a9114174727c8b20:oven:2",
+        "resource_options": [
+          "oven_1"
+        ],
+        "span": "min_start_to_max_end"
+      }
+    ],
+    "program_constraints": [],
+    "alternative_paths": [],
+    "adaptations": [],
+    "ingredient_supplements": [
+      "将原150克熟米饭展开为生米60克+水90克的AI用量假设"
+    ],
+    "material_policy": "逐食材及半成品追踪；固定原配方整批；未称重产物为定性批次；禁止跨菜共享"
+  }
+}

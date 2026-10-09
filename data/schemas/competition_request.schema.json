@@ -1,0 +1,38 @@
+{
+  "$defs": {
+    "RecipeSelection": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "minLength": 1,
+              "pattern": "\\S",
+              "type": "string"
+            }
+          ],
+          "title": "Id"
+        },
+        "name": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Name",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "name"
+      ],
+      "title": "RecipeSelection",
+      "type": "object"
+    }
+  },
+  "items": {
+    "$ref": "#/$defs/RecipeSelection"
+  },
+  "type": "array"
+}

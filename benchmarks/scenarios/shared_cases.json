@@ -1,0 +1,42 @@
+{
+  "suite_id": "p3-shared-ablation-v1",
+  "cases": [
+    {
+      "case_id": "real-h02-pair",
+      "source_kind": "REAL_DEVELOPMENT_RELEASE",
+      "recipe_ids": [
+        "5c8200d96dc6e123a037a202",
+        "5fe197175f8f38795ea6fe77"
+      ]
+    },
+    {
+      "case_id": "real-no-sharing",
+      "source_kind": "REAL_DEVELOPMENT_RELEASE",
+      "recipe_ids": [
+        "5c8200d96dc6e123a037a202"
+      ]
+    },
+    {
+      "case_id": "synthetic-late-member",
+      "source_kind": "SYNTHETIC_DEPENDENCY",
+      "recipe_ids": [
+        "5c8200d96dc6e123a037a202",
+        "5fe197175f8f38795ea6fe77"
+      ],
+      "late_recipe_id": "5fe197175f8f38795ea6fe77",
+      "wait_before_operation_id": "op_007_01",
+      "minimum_wait_sec": 10000,
+      "note": "显式合成装入前等待；不修改源工艺时长、不进入发布知识"
+    },
+    {
+      "case_id": "synthetic-unavailable-steam",
+      "source_kind": "SYNTHETIC_RUNTIME",
+      "recipe_ids": [
+        "5c8200d96dc6e123a037a202",
+        "5fe197175f8f38795ea6fe77"
+      ],
+      "unavailable_device_id": "steam_oven_1",
+      "note": "显式合成设备不可用快照，不代表实机故障"
+    }
+  ]
+}

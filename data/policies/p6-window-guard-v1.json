@@ -1,0 +1,75 @@
+{
+  "policy_version": "p6-window-guard-v1",
+  "time_grid_sec": 1,
+  "minute_output_mode": "DECIMAL",
+  "human_count": 1,
+  "human_resource_id": "human_1",
+  "burner_ids": [
+    "burner_1",
+    "burner_2"
+  ],
+  "max_nonstandalone_per_requirement": 12,
+  "max_nonstandalone_per_problem": 256,
+  "preserve_mandatory_recipe_batches": true,
+  "preserve_all_standalone_candidates": true,
+  "shared_prep": true,
+  "allow_delegated_shared_estimates": true,
+  "strict_together_batch": true,
+  "generic_common_start_batch": false,
+  "generic_common_finish_batch": false,
+  "enable_certified_non_equivalent_pruning": false,
+  "duration_policy_id": "NOMINAL",
+  "dispatch_guard_policy_id": "TIGHT_HUMAN_V1",
+  "duration_data_version": "nominal-v1",
+  "initial_budget": {
+    "total_ms": 4200,
+    "greedy_ms": 150,
+    "solver_ms": 3000,
+    "publication_reserve_ms": 400
+  },
+  "replan_budget": {
+    "total_ms": 3000,
+    "greedy_ms": 100,
+    "solver_ms": 2100,
+    "publication_reserve_ms": 300
+  },
+  "objective": {
+    "stages": [
+      "MAKESPAN",
+      "SPREAD",
+      "TOTAL_HUMAN_WORK",
+      "HUMAN_BUSY",
+      "STABILITY"
+    ],
+    "spread_target_sec": 240,
+    "rest_gap_sec": 60,
+    "makespan_extra_basis_points": 500,
+    "makespan_extra_cap_sec": 120
+  },
+  "greedy_search": {
+    "max_variants": 3,
+    "max_placements_per_iteration": 24,
+    "max_gap_checks_per_candidate": 32,
+    "rollback_depth": 3,
+    "rollback_attempts": 8,
+    "max_standalone_restarts": 1
+  },
+  "max_exact_human_phases": 120,
+  "minimum_exact_human_budget_ms": 100,
+  "model_soft_limits": {
+    "total_variables": 6000,
+    "boolean_variables": 4000,
+    "optional_intervals": 1500,
+    "total_constraints": 20000,
+    "sequence_arcs": 8000
+  },
+  "api_instances": 1,
+  "concurrent_planning_jobs": 1,
+  "solver_worker_processes": 1,
+  "max_solver_search_workers": 4,
+  "sqlite_busy_timeout_ms": 100,
+  "sqlite_max_write_retries": 2,
+  "diagnostic_total_budget_ms": 2000,
+  "diagnostic_search_workers": 1,
+  "max_core_shrink_checks": 6
+}

@@ -1,0 +1,2570 @@
+{
+  "source_kind": "REAL_SOURCE",
+  "recipe_id": "5dad486b6601a865649f9c15",
+  "name": "香菇烤芦笋",
+  "source_file": "docs/recipes_100.csv",
+  "source_hash": "96626b4bc7bebc6170a18177a326918728b67f9264eea0d5a820562b0107dc5c",
+  "csv_line": 88,
+  "source_record": {
+    "菜谱id": "5dad486b6601a865649f9c15",
+    "名称": "香菇烤芦笋",
+    "食材清单": "A料：芦笋130克；新鲜香菇3朵；B料：蒜5瓣；盐2克；橄榄油15毫升；黑胡椒3克",
+    "烹饪步骤": "第1步：洗净芦笋，去除根部和硬皮，新鲜香菇去蒂头切片，蒜切成蒜末。；第2步：把芦笋平铺在铺上了锡纸的烤盘上，撒上盐、黑胡椒和一半蒜末，再淋上10毫升橄榄油。；第3步：放入烤箱中。；第4步：选择“完全烧烤”模式，以190℃烤8分钟。；第5步：烤芦笋的同时，用平底锅中火加热，不加油直接加入香菇片和剩余蒜末，改小火煎至，中途需翻面。；第6步：待香菇微缩但未出水时，加入盐、黑胡椒和剩余橄榄油翻搅。；第7步：把芦笋从烤盘中取出，放入长盘中，再放上香菇即可。"
+  },
+  "evidence": [
+    {
+      "provenance_id": "csv:5dad486b6601a865649f9c15:step:1",
+      "source_file": "docs/recipes_100.csv",
+      "source_hash": "96626b4bc7bebc6170a18177a326918728b67f9264eea0d5a820562b0107dc5c",
+      "record_id": "5dad486b6601a865649f9c15",
+      "csv_line": 88,
+      "step_number": 1,
+      "text_span": "洗净芦笋，去除根部和硬皮，新鲜香菇去蒂头切片，蒜切成蒜末。；",
+      "origin": "SOURCE_EXPLICIT",
+      "duration_mentions": []
+    },
+    {
+      "provenance_id": "csv:5dad486b6601a865649f9c15:step:2",
+      "source_file": "docs/recipes_100.csv",
+      "source_hash": "96626b4bc7bebc6170a18177a326918728b67f9264eea0d5a820562b0107dc5c",
+      "record_id": "5dad486b6601a865649f9c15",
+      "csv_line": 88,
+      "step_number": 2,
+      "text_span": "把芦笋平铺在铺上了锡纸的烤盘上，撒上盐、黑胡椒和一半蒜末，再淋上10毫升橄榄油。；",
+      "origin": "SOURCE_EXPLICIT",
+      "duration_mentions": []
+    },
+    {
+      "provenance_id": "csv:5dad486b6601a865649f9c15:step:3",
+      "source_file": "docs/recipes_100.csv",
+      "source_hash": "96626b4bc7bebc6170a18177a326918728b67f9264eea0d5a820562b0107dc5c",
+      "record_id": "5dad486b6601a865649f9c15",
+      "csv_line": 88,
+      "step_number": 3,
+      "text_span": "放入烤箱中。；",
+      "origin": "SOURCE_EXPLICIT",
+      "duration_mentions": []
+    },
+    {
+      "provenance_id": "csv:5dad486b6601a865649f9c15:step:4",
+      "source_file": "docs/recipes_100.csv",
+      "source_hash": "96626b4bc7bebc6170a18177a326918728b67f9264eea0d5a820562b0107dc5c",
+      "record_id": "5dad486b6601a865649f9c15",
+      "csv_line": 88,
+      "step_number": 4,
+      "text_span": "选择“完全烧烤”模式，以190℃烤8分钟。；",
+      "origin": "SOURCE_EXPLICIT",
+      "duration_mentions": [
+        "8分钟"
+      ]
+    },
+    {
+      "provenance_id": "csv:5dad486b6601a865649f9c15:step:5",
+      "source_file": "docs/recipes_100.csv",
+      "source_hash": "96626b4bc7bebc6170a18177a326918728b67f9264eea0d5a820562b0107dc5c",
+      "record_id": "5dad486b6601a865649f9c15",
+      "csv_line": 88,
+      "step_number": 5,
+      "text_span": "烤芦笋的同时，用平底锅中火加热，不加油直接加入香菇片和剩余蒜末，改小火煎至，中途需翻面。；",
+      "origin": "SOURCE_EXPLICIT",
+      "duration_mentions": []
+    },
+    {
+      "provenance_id": "csv:5dad486b6601a865649f9c15:step:6",
+      "source_file": "docs/recipes_100.csv",
+      "source_hash": "96626b4bc7bebc6170a18177a326918728b67f9264eea0d5a820562b0107dc5c",
+      "record_id": "5dad486b6601a865649f9c15",
+      "csv_line": 88,
+      "step_number": 6,
+      "text_span": "待香菇微缩但未出水时，加入盐、黑胡椒和剩余橄榄油翻搅。；",
+      "origin": "SOURCE_EXPLICIT",
+      "duration_mentions": []
+    },
+    {
+      "provenance_id": "csv:5dad486b6601a865649f9c15:step:7",
+      "source_file": "docs/recipes_100.csv",
+      "source_hash": "96626b4bc7bebc6170a18177a326918728b67f9264eea0d5a820562b0107dc5c",
+      "record_id": "5dad486b6601a865649f9c15",
+      "csv_line": 88,
+      "step_number": 7,
+      "text_span": "把芦笋从烤盘中取出，放入长盘中，再放上香菇即可。",
+      "origin": "SOURCE_EXPLICIT",
+      "duration_mentions": []
+    },
+    {
+      "provenance_id": "csv:5dad486b6601a865649f9c15",
+      "origin": "SOURCE_EXPLICIT",
+      "source_file": "docs/recipes_100.csv",
+      "source_hash": "96626b4bc7bebc6170a18177a326918728b67f9264eea0d5a820562b0107dc5c",
+      "record_id": "5dad486b6601a865649f9c15",
+      "field_path": "/",
+      "step_number": null,
+      "text_span": "{\"菜谱id\": \"5dad486b6601a865649f9c15\", \"名称\": \"香菇烤芦笋\", \"食材清单\": \"A料：芦笋130克；新鲜香菇3朵；B料：蒜5瓣；盐2克；橄榄油15毫升；黑胡椒3克\", \"烹饪步骤\": \"第1步：洗净芦笋，去除根部和硬皮，新鲜香菇去蒂头切片，蒜切成蒜末。；第2步：把芦笋平铺在铺上了锡纸的烤盘上，撒上盐、黑胡椒和一半蒜末，再淋上10毫升橄榄油。；第3步：放入烤箱中。；第4步：选择“完全烧烤”模式，以190℃烤8分钟。；第5步：烤芦笋的同时，用平底锅中火加热，不加油直接加入香菇片和剩余蒜末，改小火煎至，中途需翻面。；第6步：待香菇微缩但未出水时，加入盐、黑胡椒和剩余橄榄油翻搅。；第7步：把芦笋从烤盘中取出，放入长盘中，再放上香菇即可。\"}",
+      "artifact_ref": {
+        "path": "docs/recipes_100.csv",
+        "sha256": "96626b4bc7bebc6170a18177a326918728b67f9264eea0d5a820562b0107dc5c",
+        "media_type": "text/csv"
+      },
+      "extraction_run_id": null,
+      "review_status": "NEEDS_REVIEW",
+      "approved_review_ref": null,
+      "confidence": null,
+      "confidence_kind": null
+    },
+    {
+      "approved_review_ref": null,
+      "artifact_ref": {
+        "media_type": "text/csv",
+        "path": "docs/recipes_100.csv",
+        "sha256": "96626b4bc7bebc6170a18177a326918728b67f9264eea0d5a820562b0107dc5c"
+      },
+      "confidence": null,
+      "confidence_kind": null,
+      "extraction_run_id": null,
+      "field_path": "/食材清单",
+      "origin": "SOURCE_EXPLICIT",
+      "provenance_id": "ingredient:5dad486b6601a865649f9c15:001",
+      "record_id": "5dad486b6601a865649f9c15",
+      "review_status": "NEEDS_REVIEW",
+      "source_file": "docs/recipes_100.csv",
+      "source_hash": "96626b4bc7bebc6170a18177a326918728b67f9264eea0d5a820562b0107dc5c",
+      "step_number": null,
+      "text_span": "A料：芦笋130克"
+    },
+    {
+      "approved_review_ref": null,
+      "artifact_ref": {
+        "media_type": "text/csv",
+        "path": "docs/recipes_100.csv",
+        "sha256": "96626b4bc7bebc6170a18177a326918728b67f9264eea0d5a820562b0107dc5c"
+      },
+      "confidence": null,
+      "confidence_kind": null,
+      "extraction_run_id": null,
+      "field_path": "/食材清单",
+      "origin": "SOURCE_EXPLICIT",
+      "provenance_id": "ingredient:5dad486b6601a865649f9c15:002",
+      "record_id": "5dad486b6601a865649f9c15",
+      "review_status": "NEEDS_REVIEW",
+      "source_file": "docs/recipes_100.csv",
+      "source_hash": "96626b4bc7bebc6170a18177a326918728b67f9264eea0d5a820562b0107dc5c",
+      "step_number": null,
+      "text_span": "新鲜香菇3朵"
+    },
+    {
+      "approved_review_ref": null,
+      "artifact_ref": {
+        "media_type": "text/csv",
+        "path": "docs/recipes_100.csv",
+        "sha256": "96626b4bc7bebc6170a18177a326918728b67f9264eea0d5a820562b0107dc5c"
+      },
+      "confidence": null,
+      "confidence_kind": null,
+      "extraction_run_id": null,
+      "field_path": "/食材清单",
+      "origin": "SOURCE_EXPLICIT",
+      "provenance_id": "ingredient:5dad486b6601a865649f9c15:003",
+      "record_id": "5dad486b6601a865649f9c15",
+      "review_status": "NEEDS_REVIEW",
+      "source_file": "docs/recipes_100.csv",
+      "source_hash": "96626b4bc7bebc6170a18177a326918728b67f9264eea0d5a820562b0107dc5c",
+      "step_number": null,
+      "text_span": "B料：蒜5瓣"
+    },
+    {
+      "approved_review_ref": null,
+      "artifact_ref": {
+        "media_type": "text/csv",
+        "path": "docs/recipes_100.csv",
+        "sha256": "96626b4bc7bebc6170a18177a326918728b67f9264eea0d5a820562b0107dc5c"
+      },
+      "confidence": null,
+      "confidence_kind": null,
+      "extraction_run_id": null,
+      "field_path": "/食材清单",
+      "origin": "SOURCE_EXPLICIT",
+      "provenance_id": "ingredient:5dad486b6601a865649f9c15:004",
+      "record_id": "5dad486b6601a865649f9c15",
+      "review_status": "NEEDS_REVIEW",
+      "source_file": "docs/recipes_100.csv",
+      "source_hash": "96626b4bc7bebc6170a18177a326918728b67f9264eea0d5a820562b0107dc5c",
+      "step_number": null,
+      "text_span": "盐2克"
+    },
+    {
+      "approved_review_ref": null,
+      "artifact_ref": {
+        "media_type": "text/csv",
+        "path": "docs/recipes_100.csv",
+        "sha256": "96626b4bc7bebc6170a18177a326918728b67f9264eea0d5a820562b0107dc5c"
+      },
+      "confidence": null,
+      "confidence_kind": null,
+      "extraction_run_id": null,
+      "field_path": "/食材清单",
+      "origin": "SOURCE_EXPLICIT",
+      "provenance_id": "ingredient:5dad486b6601a865649f9c15:005",
+      "record_id": "5dad486b6601a865649f9c15",
+      "review_status": "NEEDS_REVIEW",
+      "source_file": "docs/recipes_100.csv",
+      "source_hash": "96626b4bc7bebc6170a18177a326918728b67f9264eea0d5a820562b0107dc5c",
+      "step_number": null,
+      "text_span": "橄榄油15毫升"
+    },
+    {
+      "approved_review_ref": null,
+      "artifact_ref": {
+        "media_type": "text/csv",
+        "path": "docs/recipes_100.csv",
+        "sha256": "96626b4bc7bebc6170a18177a326918728b67f9264eea0d5a820562b0107dc5c"
+      },
+      "confidence": null,
+      "confidence_kind": null,
+      "extraction_run_id": null,
+      "field_path": "/食材清单",
+      "origin": "SOURCE_EXPLICIT",
+      "provenance_id": "ingredient:5dad486b6601a865649f9c15:006",
+      "record_id": "5dad486b6601a865649f9c15",
+      "review_status": "NEEDS_REVIEW",
+      "source_file": "docs/recipes_100.csv",
+      "source_hash": "96626b4bc7bebc6170a18177a326918728b67f9264eea0d5a820562b0107dc5c",
+      "step_number": null,
+      "text_span": "黑胡椒3克"
+    },
+    {
+      "approved_review_ref": null,
+      "artifact_ref": {
+        "media_type": "application/json",
+        "path": "data/revisions/recipes_v3/scheduling_dataset.json",
+        "sha256": "82a2f3c6bddbd4aba8f3ab96562883a983b104c30017a016c0c9f61f28e6a694"
+      },
+      "field_path": "/provenance/86",
+      "origin": "MODEL_SUGGESTION",
+      "provenance_id": "ai-timing:5dad486b6601a865649f9c15",
+      "record_id": "5dad486b6601a865649f9c15",
+      "review_status": "NEEDS_REVIEW",
+      "source_file": "data/revisions/recipes_v3/scheduling_dataset.json",
+      "source_hash": "82a2f3c6bddbd4aba8f3ab96562883a983b104c30017a016c0c9f61f28e6a694",
+      "text_span": "现存 V3 派生记录；历史来源有缺口，待人工核对。"
+    },
+    {
+      "field_path": "/stages",
+      "origin": "MODEL_SUGGESTION",
+      "provenance_id": "ai-material:5dad486b6601a865649f9c15",
+      "record_id": "5dad486b6601a865649f9c15",
+      "review_status": "NEEDS_REVIEW",
+      "source_file": "data/revisions/recipes_v3/material_map_76_100.json",
+      "source_hash": "9fe8821c7f687b3c49f7d2d3fff0feaf8b14f474bd141528f61e7342cf5820bd",
+      "text_span": "逐菜原料份额、半成品与必需前置；用户授权AI补全，未作人工批准"
+    },
+    {
+      "provenance_id": "scheduling-v3:5dad486b6601a865649f9c15",
+      "origin": "MODEL_SUGGESTION",
+      "source_file": "data/development/development-v3-rebased-v1/dataset.json",
+      "source_hash": "74d8cb914ed6c76a6c583a2af65dd033f27b4ce30335a40c78dbab1789944c75",
+      "record_id": "5dad486b6601a865649f9c15",
+      "field_path": "/recipes/canonical",
+      "step_number": null,
+      "text_span": "V3 AI建议工艺、数值时长及物料流；未经人工批准。",
+      "artifact_ref": {
+        "path": "data/development/development-v3-rebased-v1/dataset.json",
+        "sha256": "74d8cb914ed6c76a6c583a2af65dd033f27b4ce30335a40c78dbab1789944c75",
+        "media_type": "application/json"
+      },
+      "extraction_run_id": null,
+      "review_status": "NEEDS_REVIEW",
+      "approved_review_ref": null,
+      "confidence": null,
+      "confidence_kind": null
+    }
+  ],
+  "knowledge_version": "development-v3-rebased-v1",
+  "review_status": "NEEDS_REVIEW",
+  "review_records": [],
+  "unresolved_issue_ids": [
+    "sample-5dad486b6601a865649f9c15-HUMAN_REVIEW"
+  ],
+  "canonical_draft": {
+    "schema_version": "1.0",
+    "recipe_id": "5dad486b6601a865649f9c15",
+    "name": "香菇烤芦笋",
+    "recipe_version": "development-scheduling-v3",
+    "ingredient_requirements": [
+      {
+        "requirement_id": "demand_001",
+        "spec_id": "ingredient_001",
+        "quantity_kind": "EXACT",
+        "quantity": {
+          "value": 130,
+          "unit": "g",
+          "scale": 1
+        },
+        "upper_quantity": null,
+        "qualitative_quantity": null,
+        "provenance_refs": [
+          "ingredient:5dad486b6601a865649f9c15:001"
+        ]
+      },
+      {
+        "requirement_id": "demand_002",
+        "spec_id": "ingredient_002",
+        "quantity_kind": "EXACT",
+        "quantity": {
+          "value": 3,
+          "unit": "朵",
+          "scale": 1
+        },
+        "upper_quantity": null,
+        "qualitative_quantity": null,
+        "provenance_refs": [
+          "ingredient:5dad486b6601a865649f9c15:002"
+        ]
+      },
+      {
+        "requirement_id": "demand_003",
+        "spec_id": "ingredient_003",
+        "quantity_kind": "EXACT",
+        "quantity": {
+          "value": 5,
+          "unit": "瓣",
+          "scale": 1
+        },
+        "upper_quantity": null,
+        "qualitative_quantity": null,
+        "provenance_refs": [
+          "ingredient:5dad486b6601a865649f9c15:003"
+        ]
+      },
+      {
+        "requirement_id": "demand_004",
+        "spec_id": "ingredient_004",
+        "quantity_kind": "EXACT",
+        "quantity": {
+          "value": 2,
+          "unit": "g",
+          "scale": 1
+        },
+        "upper_quantity": null,
+        "qualitative_quantity": null,
+        "provenance_refs": [
+          "ingredient:5dad486b6601a865649f9c15:004"
+        ]
+      },
+      {
+        "requirement_id": "demand_005",
+        "spec_id": "ingredient_005",
+        "quantity_kind": "EXACT",
+        "quantity": {
+          "value": 15,
+          "unit": "ml",
+          "scale": 1
+        },
+        "upper_quantity": null,
+        "qualitative_quantity": null,
+        "provenance_refs": [
+          "ingredient:5dad486b6601a865649f9c15:005"
+        ]
+      },
+      {
+        "requirement_id": "demand_006",
+        "spec_id": "ingredient_006",
+        "quantity_kind": "EXACT",
+        "quantity": {
+          "value": 3,
+          "unit": "g",
+          "scale": 1
+        },
+        "upper_quantity": null,
+        "qualitative_quantity": null,
+        "provenance_refs": [
+          "ingredient:5dad486b6601a865649f9c15:006"
+        ]
+      }
+    ],
+    "material_specs": [
+      {
+        "spec_id": "ingredient_001",
+        "ingredient_id": "5dad486b6601a865649f9c15:ingredient_001",
+        "name": "芦笋",
+        "state": "配方采购原料：芦笋；清洗、切配及熟制见后续工序",
+        "shape": null,
+        "size_mm": null,
+        "treatment": null,
+        "composition": [],
+        "provenance_refs": [
+          "ingredient:5dad486b6601a865649f9c15:001"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      },
+      {
+        "spec_id": "ingredient_002",
+        "ingredient_id": "5dad486b6601a865649f9c15:ingredient_002",
+        "name": "新鲜香菇",
+        "state": "配方采购原料：新鲜香菇；清洗、切配及熟制见后续工序",
+        "shape": null,
+        "size_mm": null,
+        "treatment": null,
+        "composition": [],
+        "provenance_refs": [
+          "ingredient:5dad486b6601a865649f9c15:002"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      },
+      {
+        "spec_id": "ingredient_003",
+        "ingredient_id": "5dad486b6601a865649f9c15:ingredient_003",
+        "name": "蒜",
+        "state": "配方采购原料：蒜；清洗、切配及熟制见后续工序",
+        "shape": null,
+        "size_mm": null,
+        "treatment": null,
+        "composition": [],
+        "provenance_refs": [
+          "ingredient:5dad486b6601a865649f9c15:003"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      },
+      {
+        "spec_id": "ingredient_004",
+        "ingredient_id": "5dad486b6601a865649f9c15:ingredient_004",
+        "name": "盐",
+        "state": "配方采购原料：盐；清洗、切配及熟制见后续工序",
+        "shape": null,
+        "size_mm": null,
+        "treatment": null,
+        "composition": [],
+        "provenance_refs": [
+          "ingredient:5dad486b6601a865649f9c15:004"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      },
+      {
+        "spec_id": "ingredient_005",
+        "ingredient_id": "5dad486b6601a865649f9c15:ingredient_005",
+        "name": "橄榄油",
+        "state": "配方采购原料：橄榄油；清洗、切配及熟制见后续工序",
+        "shape": null,
+        "size_mm": null,
+        "treatment": null,
+        "composition": [],
+        "provenance_refs": [
+          "ingredient:5dad486b6601a865649f9c15:005"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      },
+      {
+        "spec_id": "ingredient_006",
+        "ingredient_id": "5dad486b6601a865649f9c15:ingredient_006",
+        "name": "黑胡椒",
+        "state": "配方采购原料：黑胡椒；清洗、切配及熟制见后续工序",
+        "shape": null,
+        "size_mm": null,
+        "treatment": null,
+        "composition": [],
+        "provenance_refs": [
+          "ingredient:5dad486b6601a865649f9c15:006"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      },
+      {
+        "spec_id": "asparagus",
+        "ingredient_id": "5dad486b6601a865649f9c15:asparagus",
+        "name": "芦笋",
+        "state": "洗净去硬皮",
+        "shape": null,
+        "size_mm": null,
+        "treatment": null,
+        "composition": [
+          "ingredient_001"
+        ],
+        "provenance_refs": [
+          "ai-material:5dad486b6601a865649f9c15"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      },
+      {
+        "spec_id": "mushrooms",
+        "ingredient_id": "5dad486b6601a865649f9c15:mushrooms",
+        "name": "香菇片",
+        "state": "去蒂切片",
+        "shape": null,
+        "size_mm": null,
+        "treatment": null,
+        "composition": [
+          "ingredient_002"
+        ],
+        "provenance_refs": [
+          "ai-material:5dad486b6601a865649f9c15"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      },
+      {
+        "spec_id": "garlic",
+        "ingredient_id": "5dad486b6601a865649f9c15:garlic",
+        "name": "蒜末",
+        "state": "切碎",
+        "shape": null,
+        "size_mm": null,
+        "treatment": null,
+        "composition": [
+          "ingredient_003"
+        ],
+        "provenance_refs": [
+          "ai-material:5dad486b6601a865649f9c15"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      },
+      {
+        "spec_id": "seasoned",
+        "ingredient_id": "5dad486b6601a865649f9c15:seasoned",
+        "name": "芦笋",
+        "state": "调味淋油装盘",
+        "shape": null,
+        "size_mm": null,
+        "treatment": null,
+        "composition": [
+          "ingredient_001",
+          "ingredient_003",
+          "ingredient_004",
+          "ingredient_005",
+          "ingredient_006"
+        ],
+        "provenance_refs": [
+          "ai-material:5dad486b6601a865649f9c15"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      },
+      {
+        "spec_id": "loaded",
+        "ingredient_id": "5dad486b6601a865649f9c15:loaded",
+        "name": "芦笋",
+        "state": "装炉",
+        "shape": null,
+        "size_mm": null,
+        "treatment": null,
+        "composition": [
+          "ingredient_001",
+          "ingredient_003",
+          "ingredient_004",
+          "ingredient_005",
+          "ingredient_006"
+        ],
+        "provenance_refs": [
+          "ai-material:5dad486b6601a865649f9c15"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      },
+      {
+        "spec_id": "roast",
+        "ingredient_id": "5dad486b6601a865649f9c15:roast",
+        "name": "芦笋",
+        "state": "烤熟",
+        "shape": null,
+        "size_mm": null,
+        "treatment": null,
+        "composition": [
+          "ingredient_001",
+          "ingredient_003",
+          "ingredient_004",
+          "ingredient_005",
+          "ingredient_006"
+        ],
+        "provenance_refs": [
+          "ai-material:5dad486b6601a865649f9c15"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      },
+      {
+        "spec_id": "fried",
+        "ingredient_id": "5dad486b6601a865649f9c15:fried",
+        "name": "蒜香香菇",
+        "state": "干煎翻面",
+        "shape": null,
+        "size_mm": null,
+        "treatment": null,
+        "composition": [
+          "ingredient_002",
+          "ingredient_003"
+        ],
+        "provenance_refs": [
+          "ai-material:5dad486b6601a865649f9c15"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      },
+      {
+        "spec_id": "flow_006_00_00",
+        "ingredient_id": "5dad486b6601a865649f9c15:flow_006_00_00",
+        "name": "蒜香香菇",
+        "state": "待香菇微缩但未出水时，加入盐、黑胡椒和剩余橄榄油翻搅。后的食物状态",
+        "shape": null,
+        "size_mm": null,
+        "treatment": null,
+        "composition": [
+          "ingredient_002",
+          "ingredient_003"
+        ],
+        "provenance_refs": [
+          "ai-material:5dad486b6601a865649f9c15"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      },
+      {
+        "spec_id": "flow_006_00_01",
+        "ingredient_id": "5dad486b6601a865649f9c15:flow_006_00_01",
+        "name": "盐",
+        "state": "待香菇微缩但未出水时，加入盐、黑胡椒和剩余橄榄油翻搅。后的食物状态",
+        "shape": null,
+        "size_mm": null,
+        "treatment": null,
+        "composition": [
+          "ingredient_004"
+        ],
+        "provenance_refs": [
+          "ai-material:5dad486b6601a865649f9c15"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      },
+      {
+        "spec_id": "flow_006_00_02",
+        "ingredient_id": "5dad486b6601a865649f9c15:flow_006_00_02",
+        "name": "黑胡椒",
+        "state": "待香菇微缩但未出水时，加入盐、黑胡椒和剩余橄榄油翻搅。后的食物状态",
+        "shape": null,
+        "size_mm": null,
+        "treatment": null,
+        "composition": [
+          "ingredient_006"
+        ],
+        "provenance_refs": [
+          "ai-material:5dad486b6601a865649f9c15"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      },
+      {
+        "spec_id": "flow_006_00_03",
+        "ingredient_id": "5dad486b6601a865649f9c15:flow_006_00_03",
+        "name": "橄榄油",
+        "state": "待香菇微缩但未出水时，加入盐、黑胡椒和剩余橄榄油翻搅。后的食物状态",
+        "shape": null,
+        "size_mm": null,
+        "treatment": null,
+        "composition": [
+          "ingredient_005"
+        ],
+        "provenance_refs": [
+          "ai-material:5dad486b6601a865649f9c15"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      },
+      {
+        "spec_id": "seasoned_mushrooms",
+        "ingredient_id": "5dad486b6601a865649f9c15:seasoned_mushrooms",
+        "name": "香菇",
+        "state": "调味翻炒",
+        "shape": null,
+        "size_mm": null,
+        "treatment": null,
+        "composition": [
+          "ingredient_002",
+          "ingredient_003",
+          "ingredient_004",
+          "ingredient_005",
+          "ingredient_006"
+        ],
+        "provenance_refs": [
+          "ai-material:5dad486b6601a865649f9c15"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      },
+      {
+        "spec_id": "dish",
+        "ingredient_id": "5dad486b6601a865649f9c15:dish",
+        "name": "香菇烤芦笋",
+        "state": "合盘",
+        "shape": null,
+        "size_mm": null,
+        "treatment": null,
+        "composition": [
+          "ingredient_001",
+          "ingredient_002",
+          "ingredient_003",
+          "ingredient_004",
+          "ingredient_005",
+          "ingredient_006"
+        ],
+        "provenance_refs": [
+          "ai-material:5dad486b6601a865649f9c15"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      },
+      {
+        "spec_id": "finaldish",
+        "ingredient_id": "5dad486b6601a865649f9c15:finaldish",
+        "name": "香菇烤芦笋",
+        "state": "全部必需食物分支完成并装盘上桌",
+        "shape": null,
+        "size_mm": null,
+        "treatment": null,
+        "composition": [
+          "ingredient_001",
+          "ingredient_002",
+          "ingredient_003",
+          "ingredient_004",
+          "ingredient_005",
+          "ingredient_006"
+        ],
+        "provenance_refs": [
+          "ai-material:5dad486b6601a865649f9c15"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      }
+    ],
+    "operations": [
+      {
+        "operation_id": "op_001_01",
+        "action": "CUT",
+        "description": "洗净芦笋，去除根部和硬皮，新鲜香菇去蒂头切片，蒜切成蒜末。",
+        "required": true,
+        "duration": {
+          "nominal_sec": 180,
+          "execution_sec": 180,
+          "lower_sec": null,
+          "upper_sec": null,
+          "model_id": null,
+          "quantity_basis": null,
+          "source_ref": "ai-timing:5dad486b6601a865649f9c15",
+          "fixed_process_time": false
+        },
+        "material_inputs": [
+          {
+            "requirement_id": "material_in_00001",
+            "spec_id": "ingredient_001",
+            "quantity_kind": "EXACT",
+            "quantity": {
+              "value": 130,
+              "unit": "g",
+              "scale": 1
+            },
+            "upper_quantity": null,
+            "qualitative_quantity": null,
+            "provenance_refs": [
+              "ai-material:5dad486b6601a865649f9c15"
+            ]
+          },
+          {
+            "requirement_id": "material_in_00002",
+            "spec_id": "ingredient_002",
+            "quantity_kind": "EXACT",
+            "quantity": {
+              "value": 3,
+              "unit": "朵",
+              "scale": 1
+            },
+            "upper_quantity": null,
+            "qualitative_quantity": null,
+            "provenance_refs": [
+              "ai-material:5dad486b6601a865649f9c15"
+            ]
+          },
+          {
+            "requirement_id": "material_in_00003",
+            "spec_id": "ingredient_003",
+            "quantity_kind": "EXACT",
+            "quantity": {
+              "value": 5,
+              "unit": "瓣",
+              "scale": 1
+            },
+            "upper_quantity": null,
+            "qualitative_quantity": null,
+            "provenance_refs": [
+              "ai-material:5dad486b6601a865649f9c15"
+            ]
+          }
+        ],
+        "material_outputs": [
+          {
+            "requirement_id": "material_out_00004",
+            "spec_id": "asparagus",
+            "quantity_kind": "QUALITATIVE",
+            "quantity": null,
+            "upper_quantity": null,
+            "qualitative_quantity": "原配方本物料整批的1；实际产量未测定",
+            "provenance_refs": [
+              "ai-material:5dad486b6601a865649f9c15"
+            ]
+          },
+          {
+            "requirement_id": "material_out_00005",
+            "spec_id": "mushrooms",
+            "quantity_kind": "QUALITATIVE",
+            "quantity": null,
+            "upper_quantity": null,
+            "qualitative_quantity": "原配方本物料整批的1；实际产量未测定",
+            "provenance_refs": [
+              "ai-material:5dad486b6601a865649f9c15"
+            ]
+          },
+          {
+            "requirement_id": "material_out_00006",
+            "spec_id": "garlic",
+            "quantity_kind": "QUALITATIVE",
+            "quantity": null,
+            "upper_quantity": null,
+            "qualitative_quantity": "原配方本物料整批的1；实际产量未测定",
+            "provenance_refs": [
+              "ai-material:5dad486b6601a865649f9c15"
+            ]
+          }
+        ],
+        "losses": [],
+        "resource_requirements": [
+          {
+            "resource_type": "HUMAN",
+            "resource_id": "human_1",
+            "units": 1,
+            "physical_resource_id": null,
+            "component_id": null,
+            "profile_options": [],
+            "configuration": [],
+            "conflict_policy": "UNARY",
+            "occupation_policy": "WHOLE_INTERVAL",
+            "carrier_id": null,
+            "phase_id": null,
+            "presence_condition": null,
+            "occupancy": null,
+            "human_interventions": [],
+            "rule_version": "unreviewed",
+            "evidence_refs": [
+              "ai-timing:5dad486b6601a865649f9c15"
+            ],
+            "review_status": "NEEDS_REVIEW"
+          }
+        ],
+        "execution_policy": {
+          "interruptible": false,
+          "interventions": [],
+          "batch_policy": "STANDALONE",
+          "fixed_batch_id": null,
+          "thermal_group_id": null,
+          "shared_prep_rule_ids": [],
+          "holding_min_sec": null,
+          "holding_max_sec": null
+        },
+        "provenance_refs": [
+          "ai-timing:5dad486b6601a865649f9c15"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      },
+      {
+        "operation_id": "op_002_01",
+        "action": "PREPARE",
+        "description": "把芦笋平铺在铺上了锡纸的烤盘上，撒上盐、黑胡椒和一半蒜末，再淋上10毫升橄榄油。",
+        "required": true,
+        "duration": {
+          "nominal_sec": 120,
+          "execution_sec": 120,
+          "lower_sec": null,
+          "upper_sec": null,
+          "model_id": null,
+          "quantity_basis": null,
+          "source_ref": "ai-timing:5dad486b6601a865649f9c15",
+          "fixed_process_time": false
+        },
+        "material_inputs": [
+          {
+            "requirement_id": "material_in_00007",
+            "spec_id": "asparagus",
+            "quantity_kind": "QUALITATIVE",
+            "quantity": null,
+            "upper_quantity": null,
+            "qualitative_quantity": "原配方本物料整批的1；实际产量未测定",
+            "provenance_refs": [
+              "ai-material:5dad486b6601a865649f9c15"
+            ]
+          },
+          {
+            "requirement_id": "material_in_00008",
+            "spec_id": "garlic",
+            "quantity_kind": "QUALITATIVE",
+            "quantity": null,
+            "upper_quantity": null,
+            "qualitative_quantity": "原配方本物料整批的1/2；实际产量未测定",
+            "provenance_refs": [
+              "ai-material:5dad486b6601a865649f9c15"
+            ]
+          },
+          {
+            "requirement_id": "material_in_00009",
+            "spec_id": "ingredient_004",
+            "quantity_kind": "EXACT",
+            "quantity": {
+              "value": 1,
+              "unit": "g",
+              "scale": 1
+            },
+            "upper_quantity": null,
+            "qualitative_quantity": null,
+            "provenance_refs": [
+              "ai-material:5dad486b6601a865649f9c15"
+            ]
+          },
+          {
+            "requirement_id": "material_in_00010",
+            "spec_id": "ingredient_006",
+            "quantity_kind": "EXACT",
+            "quantity": {
+              "value": 3,
+              "unit": "g",
+              "scale": 2
+            },
+            "upper_quantity": null,
+            "qualitative_quantity": null,
+            "provenance_refs": [
+              "ai-material:5dad486b6601a865649f9c15"
+            ]
+          },
+          {
+            "requirement_id": "material_in_00011",
+            "spec_id": "ingredient_005",
+            "quantity_kind": "EXACT",
+            "quantity": {
+              "value": 10,
+              "unit": "ml",
+              "scale": 1
+            },
+            "upper_quantity": null,
+            "qualitative_quantity": null,
+            "provenance_refs": [
+              "ai-material:5dad486b6601a865649f9c15"
+            ]
+          }
+        ],
+        "material_outputs": [
+          {
+            "requirement_id": "material_out_00012",
+            "spec_id": "seasoned",
+            "quantity_kind": "QUALITATIVE",
+            "quantity": null,
+            "upper_quantity": null,
+            "qualitative_quantity": "原配方本物料整批的1；实际产量未测定",
+            "provenance_refs": [
+              "ai-material:5dad486b6601a865649f9c15"
+            ]
+          }
+        ],
+        "losses": [],
+        "resource_requirements": [
+          {
+            "resource_type": "HUMAN",
+            "resource_id": "human_1",
+            "units": 1,
+            "physical_resource_id": null,
+            "component_id": null,
+            "profile_options": [],
+            "configuration": [],
+            "conflict_policy": "UNARY",
+            "occupation_policy": "WHOLE_INTERVAL",
+            "carrier_id": null,
+            "phase_id": null,
+            "presence_condition": null,
+            "occupancy": null,
+            "human_interventions": [],
+            "rule_version": "unreviewed",
+            "evidence_refs": [
+              "ai-timing:5dad486b6601a865649f9c15"
+            ],
+            "review_status": "NEEDS_REVIEW"
+          }
+        ],
+        "execution_policy": {
+          "interruptible": false,
+          "interventions": [],
+          "batch_policy": "STANDALONE",
+          "fixed_batch_id": null,
+          "thermal_group_id": null,
+          "shared_prep_rule_ids": [],
+          "holding_min_sec": null,
+          "holding_max_sec": null
+        },
+        "provenance_refs": [
+          "ai-timing:5dad486b6601a865649f9c15"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      },
+      {
+        "operation_id": "op_003_01",
+        "action": "LOAD",
+        "description": "放入烤箱中。",
+        "required": true,
+        "duration": {
+          "nominal_sec": 30,
+          "execution_sec": 30,
+          "lower_sec": null,
+          "upper_sec": null,
+          "model_id": null,
+          "quantity_basis": null,
+          "source_ref": "ai-timing:5dad486b6601a865649f9c15",
+          "fixed_process_time": false
+        },
+        "material_inputs": [
+          {
+            "requirement_id": "material_in_00013",
+            "spec_id": "seasoned",
+            "quantity_kind": "QUALITATIVE",
+            "quantity": null,
+            "upper_quantity": null,
+            "qualitative_quantity": "原配方本物料整批的1；实际产量未测定",
+            "provenance_refs": [
+              "ai-material:5dad486b6601a865649f9c15"
+            ]
+          }
+        ],
+        "material_outputs": [
+          {
+            "requirement_id": "material_out_00014",
+            "spec_id": "loaded",
+            "quantity_kind": "QUALITATIVE",
+            "quantity": null,
+            "upper_quantity": null,
+            "qualitative_quantity": "原配方本物料整批的1；实际产量未测定",
+            "provenance_refs": [
+              "ai-material:5dad486b6601a865649f9c15"
+            ]
+          }
+        ],
+        "losses": [],
+        "resource_requirements": [
+          {
+            "resource_type": "HUMAN",
+            "resource_id": "human_1",
+            "units": 1,
+            "physical_resource_id": null,
+            "component_id": null,
+            "profile_options": [],
+            "configuration": [],
+            "conflict_policy": "UNARY",
+            "occupation_policy": "WHOLE_INTERVAL",
+            "carrier_id": null,
+            "phase_id": null,
+            "presence_condition": null,
+            "occupancy": null,
+            "human_interventions": [],
+            "rule_version": "unreviewed",
+            "evidence_refs": [
+              "ai-timing:5dad486b6601a865649f9c15"
+            ],
+            "review_status": "NEEDS_REVIEW"
+          },
+          {
+            "resource_type": "DEVICE",
+            "resource_id": "oven_1",
+            "units": 1,
+            "physical_resource_id": "oven_1",
+            "component_id": "chamber",
+            "profile_options": [],
+            "configuration": [
+              {
+                "parameter": "temperature_c",
+                "value": 190
+              },
+              {
+                "parameter": "mode",
+                "value": "上下火"
+              }
+            ],
+            "conflict_policy": "UNARY",
+            "occupation_policy": "WHOLE_INTERVAL",
+            "carrier_id": null,
+            "phase_id": null,
+            "presence_condition": null,
+            "occupancy": null,
+            "human_interventions": [],
+            "rule_version": "development-scheduling-v3",
+            "evidence_refs": [
+              "ai-timing:5dad486b6601a865649f9c15"
+            ],
+            "review_status": "NEEDS_REVIEW"
+          }
+        ],
+        "execution_policy": {
+          "interruptible": false,
+          "interventions": [],
+          "batch_policy": "STANDALONE",
+          "fixed_batch_id": null,
+          "thermal_group_id": null,
+          "shared_prep_rule_ids": [],
+          "holding_min_sec": null,
+          "holding_max_sec": null
+        },
+        "provenance_refs": [
+          "ai-timing:5dad486b6601a865649f9c15"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      },
+      {
+        "operation_id": "op_004_01",
+        "action": "PREPARE",
+        "description": "设置设备程序/补水；香菇烤芦笋",
+        "required": true,
+        "duration": {
+          "nominal_sec": 60,
+          "execution_sec": 60,
+          "lower_sec": null,
+          "upper_sec": null,
+          "model_id": null,
+          "quantity_basis": null,
+          "source_ref": "ai-timing:5dad486b6601a865649f9c15",
+          "fixed_process_time": false
+        },
+        "material_inputs": [],
+        "material_outputs": [],
+        "losses": [],
+        "resource_requirements": [
+          {
+            "resource_type": "HUMAN",
+            "resource_id": "human_1",
+            "units": 1,
+            "physical_resource_id": null,
+            "component_id": null,
+            "profile_options": [],
+            "configuration": [],
+            "conflict_policy": "UNARY",
+            "occupation_policy": "WHOLE_INTERVAL",
+            "carrier_id": null,
+            "phase_id": null,
+            "presence_condition": null,
+            "occupancy": null,
+            "human_interventions": [],
+            "rule_version": "unreviewed",
+            "evidence_refs": [
+              "ai-timing:5dad486b6601a865649f9c15"
+            ],
+            "review_status": "NEEDS_REVIEW"
+          },
+          {
+            "resource_type": "DEVICE",
+            "resource_id": "oven_1",
+            "units": 1,
+            "physical_resource_id": "oven_1",
+            "component_id": "chamber",
+            "profile_options": [],
+            "configuration": [
+              {
+                "parameter": "temperature_c",
+                "value": 190
+              },
+              {
+                "parameter": "mode",
+                "value": "上下火"
+              }
+            ],
+            "conflict_policy": "UNARY",
+            "occupation_policy": "WHOLE_INTERVAL",
+            "carrier_id": null,
+            "phase_id": null,
+            "presence_condition": null,
+            "occupancy": null,
+            "human_interventions": [],
+            "rule_version": "development-scheduling-v3",
+            "evidence_refs": [
+              "ai-timing:5dad486b6601a865649f9c15"
+            ],
+            "review_status": "NEEDS_REVIEW"
+          }
+        ],
+        "execution_policy": {
+          "interruptible": false,
+          "interventions": [],
+          "batch_policy": "STANDALONE",
+          "fixed_batch_id": null,
+          "thermal_group_id": null,
+          "shared_prep_rule_ids": [],
+          "holding_min_sec": null,
+          "holding_max_sec": null
+        },
+        "provenance_refs": [
+          "ai-timing:5dad486b6601a865649f9c15"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      },
+      {
+        "operation_id": "op_004_02",
+        "action": "PREHEAT",
+        "description": "预热/升温；香菇烤芦笋",
+        "required": true,
+        "duration": {
+          "nominal_sec": 600,
+          "execution_sec": 600,
+          "lower_sec": null,
+          "upper_sec": null,
+          "model_id": null,
+          "quantity_basis": null,
+          "source_ref": "ai-timing:5dad486b6601a865649f9c15",
+          "fixed_process_time": false
+        },
+        "material_inputs": [],
+        "material_outputs": [],
+        "losses": [],
+        "resource_requirements": [
+          {
+            "resource_type": "DEVICE",
+            "resource_id": "oven_1",
+            "units": 1,
+            "physical_resource_id": "oven_1",
+            "component_id": "chamber",
+            "profile_options": [],
+            "configuration": [
+              {
+                "parameter": "temperature_c",
+                "value": 190
+              },
+              {
+                "parameter": "mode",
+                "value": "上下火"
+              }
+            ],
+            "conflict_policy": "UNARY",
+            "occupation_policy": "WHOLE_INTERVAL",
+            "carrier_id": null,
+            "phase_id": null,
+            "presence_condition": null,
+            "occupancy": null,
+            "human_interventions": [],
+            "rule_version": "development-scheduling-v3",
+            "evidence_refs": [
+              "ai-timing:5dad486b6601a865649f9c15"
+            ],
+            "review_status": "NEEDS_REVIEW"
+          }
+        ],
+        "execution_policy": {
+          "interruptible": false,
+          "interventions": [],
+          "batch_policy": "STANDALONE",
+          "fixed_batch_id": null,
+          "thermal_group_id": null,
+          "shared_prep_rule_ids": [],
+          "holding_min_sec": null,
+          "holding_max_sec": null
+        },
+        "provenance_refs": [
+          "ai-timing:5dad486b6601a865649f9c15"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      },
+      {
+        "operation_id": "op_004_03",
+        "action": "HEAT",
+        "description": "选择“完全烧烤”模式，以190℃烤8分钟。",
+        "required": true,
+        "duration": {
+          "nominal_sec": 480,
+          "execution_sec": 480,
+          "lower_sec": 480,
+          "upper_sec": 480,
+          "model_id": null,
+          "quantity_basis": null,
+          "source_ref": "ai-timing:5dad486b6601a865649f9c15",
+          "fixed_process_time": true
+        },
+        "material_inputs": [
+          {
+            "requirement_id": "material_in_00015",
+            "spec_id": "loaded",
+            "quantity_kind": "QUALITATIVE",
+            "quantity": null,
+            "upper_quantity": null,
+            "qualitative_quantity": "原配方本物料整批的1；实际产量未测定",
+            "provenance_refs": [
+              "ai-material:5dad486b6601a865649f9c15"
+            ]
+          }
+        ],
+        "material_outputs": [
+          {
+            "requirement_id": "material_out_00016",
+            "spec_id": "roast",
+            "quantity_kind": "QUALITATIVE",
+            "quantity": null,
+            "upper_quantity": null,
+            "qualitative_quantity": "原配方本物料整批的1；实际产量未测定",
+            "provenance_refs": [
+              "ai-material:5dad486b6601a865649f9c15"
+            ]
+          }
+        ],
+        "losses": [],
+        "resource_requirements": [
+          {
+            "resource_type": "DEVICE",
+            "resource_id": "oven_1",
+            "units": 1,
+            "physical_resource_id": "oven_1",
+            "component_id": "chamber",
+            "profile_options": [],
+            "configuration": [
+              {
+                "parameter": "temperature_c",
+                "value": 190
+              },
+              {
+                "parameter": "mode",
+                "value": "顶部烤"
+              }
+            ],
+            "conflict_policy": "UNARY",
+            "occupation_policy": "WHOLE_INTERVAL",
+            "carrier_id": null,
+            "phase_id": null,
+            "presence_condition": null,
+            "occupancy": null,
+            "human_interventions": [],
+            "rule_version": "development-scheduling-v3",
+            "evidence_refs": [
+              "ai-timing:5dad486b6601a865649f9c15"
+            ],
+            "review_status": "NEEDS_REVIEW"
+          }
+        ],
+        "execution_policy": {
+          "interruptible": false,
+          "interventions": [],
+          "batch_policy": "STANDALONE",
+          "fixed_batch_id": null,
+          "thermal_group_id": null,
+          "shared_prep_rule_ids": [],
+          "holding_min_sec": null,
+          "holding_max_sec": null
+        },
+        "provenance_refs": [
+          "ai-timing:5dad486b6601a865649f9c15"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      },
+      {
+        "operation_id": "op_005_01",
+        "action": "HEAT",
+        "description": "烤芦笋的同时，用平底锅中火加热，不加油直接加入香菇片和剩余蒜末，改小火煎至，中途需翻面。",
+        "required": true,
+        "duration": {
+          "nominal_sec": 300,
+          "execution_sec": 300,
+          "lower_sec": null,
+          "upper_sec": null,
+          "model_id": null,
+          "quantity_basis": null,
+          "source_ref": "ai-timing:5dad486b6601a865649f9c15",
+          "fixed_process_time": true
+        },
+        "material_inputs": [
+          {
+            "requirement_id": "material_in_00017",
+            "spec_id": "mushrooms",
+            "quantity_kind": "QUALITATIVE",
+            "quantity": null,
+            "upper_quantity": null,
+            "qualitative_quantity": "原配方本物料整批的1；实际产量未测定",
+            "provenance_refs": [
+              "ai-material:5dad486b6601a865649f9c15"
+            ]
+          },
+          {
+            "requirement_id": "material_in_00018",
+            "spec_id": "garlic",
+            "quantity_kind": "QUALITATIVE",
+            "quantity": null,
+            "upper_quantity": null,
+            "qualitative_quantity": "原配方本物料整批的1/2；实际产量未测定",
+            "provenance_refs": [
+              "ai-material:5dad486b6601a865649f9c15"
+            ]
+          }
+        ],
+        "material_outputs": [
+          {
+            "requirement_id": "material_out_00019",
+            "spec_id": "fried",
+            "quantity_kind": "QUALITATIVE",
+            "quantity": null,
+            "upper_quantity": null,
+            "qualitative_quantity": "原配方本物料整批的1；实际产量未测定",
+            "provenance_refs": [
+              "ai-material:5dad486b6601a865649f9c15"
+            ]
+          }
+        ],
+        "losses": [],
+        "resource_requirements": [
+          {
+            "resource_type": "HUMAN",
+            "resource_id": "human_1",
+            "units": 1,
+            "physical_resource_id": null,
+            "component_id": null,
+            "profile_options": [],
+            "configuration": [],
+            "conflict_policy": "UNARY",
+            "occupation_policy": "WHOLE_INTERVAL",
+            "carrier_id": null,
+            "phase_id": null,
+            "presence_condition": null,
+            "occupancy": null,
+            "human_interventions": [],
+            "rule_version": "unreviewed",
+            "evidence_refs": [
+              "ai-timing:5dad486b6601a865649f9c15"
+            ],
+            "review_status": "NEEDS_REVIEW"
+          },
+          {
+            "resource_type": "DEVICE",
+            "resource_id": "stove_choice",
+            "units": 1,
+            "physical_resource_id": "stove_1",
+            "component_id": "selected_burner",
+            "profile_options": [],
+            "configuration": [
+              {
+                "parameter": "power_level",
+                "value": 2
+              }
+            ],
+            "conflict_policy": "UNARY",
+            "occupation_policy": "WHOLE_INTERVAL",
+            "carrier_id": null,
+            "phase_id": null,
+            "presence_condition": null,
+            "occupancy": null,
+            "human_interventions": [],
+            "rule_version": "development-scheduling-v3",
+            "evidence_refs": [
+              "ai-timing:5dad486b6601a865649f9c15"
+            ],
+            "review_status": "NEEDS_REVIEW"
+          }
+        ],
+        "execution_policy": {
+          "interruptible": false,
+          "interventions": [],
+          "batch_policy": "STANDALONE",
+          "fixed_batch_id": null,
+          "thermal_group_id": null,
+          "shared_prep_rule_ids": [],
+          "holding_min_sec": null,
+          "holding_max_sec": null
+        },
+        "provenance_refs": [
+          "ai-timing:5dad486b6601a865649f9c15"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      },
+      {
+        "operation_id": "op_006_01",
+        "action": "HEAT",
+        "description": "待香菇微缩但未出水时，加入盐、黑胡椒和剩余橄榄油翻搅。",
+        "required": true,
+        "duration": {
+          "nominal_sec": 60,
+          "execution_sec": 60,
+          "lower_sec": null,
+          "upper_sec": null,
+          "model_id": null,
+          "quantity_basis": null,
+          "source_ref": "ai-timing:5dad486b6601a865649f9c15",
+          "fixed_process_time": true
+        },
+        "material_inputs": [
+          {
+            "requirement_id": "material_in_00020",
+            "spec_id": "fried",
+            "quantity_kind": "QUALITATIVE",
+            "quantity": null,
+            "upper_quantity": null,
+            "qualitative_quantity": "原配方本物料整批的1；实际产量未测定",
+            "provenance_refs": [
+              "ai-material:5dad486b6601a865649f9c15"
+            ]
+          },
+          {
+            "requirement_id": "material_in_00021",
+            "spec_id": "ingredient_004",
+            "quantity_kind": "EXACT",
+            "quantity": {
+              "value": 1,
+              "unit": "g",
+              "scale": 1
+            },
+            "upper_quantity": null,
+            "qualitative_quantity": null,
+            "provenance_refs": [
+              "ai-material:5dad486b6601a865649f9c15"
+            ]
+          },
+          {
+            "requirement_id": "material_in_00022",
+            "spec_id": "ingredient_006",
+            "quantity_kind": "EXACT",
+            "quantity": {
+              "value": 3,
+              "unit": "g",
+              "scale": 2
+            },
+            "upper_quantity": null,
+            "qualitative_quantity": null,
+            "provenance_refs": [
+              "ai-material:5dad486b6601a865649f9c15"
+            ]
+          },
+          {
+            "requirement_id": "material_in_00023",
+            "spec_id": "ingredient_005",
+            "quantity_kind": "EXACT",
+            "quantity": {
+              "value": 5,
+              "unit": "ml",
+              "scale": 1
+            },
+            "upper_quantity": null,
+            "qualitative_quantity": null,
+            "provenance_refs": [
+              "ai-material:5dad486b6601a865649f9c15"
+            ]
+          }
+        ],
+        "material_outputs": [
+          {
+            "requirement_id": "material_out_00024",
+            "spec_id": "flow_006_00_00",
+            "quantity_kind": "QUALITATIVE",
+            "quantity": null,
+            "upper_quantity": null,
+            "qualitative_quantity": "原配方本物料整批的1；实际产量未测定",
+            "provenance_refs": [
+              "ai-material:5dad486b6601a865649f9c15"
+            ]
+          },
+          {
+            "requirement_id": "material_out_00025",
+            "spec_id": "flow_006_00_01",
+            "quantity_kind": "QUALITATIVE",
+            "quantity": null,
+            "upper_quantity": null,
+            "qualitative_quantity": "原配方本物料整批的1；实际产量未测定",
+            "provenance_refs": [
+              "ai-material:5dad486b6601a865649f9c15"
+            ]
+          },
+          {
+            "requirement_id": "material_out_00026",
+            "spec_id": "flow_006_00_02",
+            "quantity_kind": "QUALITATIVE",
+            "quantity": null,
+            "upper_quantity": null,
+            "qualitative_quantity": "原配方本物料整批的1；实际产量未测定",
+            "provenance_refs": [
+              "ai-material:5dad486b6601a865649f9c15"
+            ]
+          },
+          {
+            "requirement_id": "material_out_00027",
+            "spec_id": "flow_006_00_03",
+            "quantity_kind": "QUALITATIVE",
+            "quantity": null,
+            "upper_quantity": null,
+            "qualitative_quantity": "原配方本物料整批的1；实际产量未测定",
+            "provenance_refs": [
+              "ai-material:5dad486b6601a865649f9c15"
+            ]
+          }
+        ],
+        "losses": [],
+        "resource_requirements": [
+          {
+            "resource_type": "HUMAN",
+            "resource_id": "human_1",
+            "units": 1,
+            "physical_resource_id": null,
+            "component_id": null,
+            "profile_options": [],
+            "configuration": [],
+            "conflict_policy": "UNARY",
+            "occupation_policy": "WHOLE_INTERVAL",
+            "carrier_id": null,
+            "phase_id": null,
+            "presence_condition": null,
+            "occupancy": null,
+            "human_interventions": [],
+            "rule_version": "unreviewed",
+            "evidence_refs": [
+              "ai-timing:5dad486b6601a865649f9c15"
+            ],
+            "review_status": "NEEDS_REVIEW"
+          },
+          {
+            "resource_type": "DEVICE",
+            "resource_id": "stove_choice",
+            "units": 1,
+            "physical_resource_id": "stove_1",
+            "component_id": "selected_burner",
+            "profile_options": [],
+            "configuration": [
+              {
+                "parameter": "power_level",
+                "value": 7
+              }
+            ],
+            "conflict_policy": "UNARY",
+            "occupation_policy": "WHOLE_INTERVAL",
+            "carrier_id": null,
+            "phase_id": null,
+            "presence_condition": null,
+            "occupancy": null,
+            "human_interventions": [],
+            "rule_version": "development-scheduling-v3",
+            "evidence_refs": [
+              "ai-timing:5dad486b6601a865649f9c15"
+            ],
+            "review_status": "NEEDS_REVIEW"
+          }
+        ],
+        "execution_policy": {
+          "interruptible": false,
+          "interventions": [],
+          "batch_policy": "STANDALONE",
+          "fixed_batch_id": null,
+          "thermal_group_id": null,
+          "shared_prep_rule_ids": [],
+          "holding_min_sec": null,
+          "holding_max_sec": null
+        },
+        "provenance_refs": [
+          "ai-timing:5dad486b6601a865649f9c15"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      },
+      {
+        "operation_id": "op_8000_01",
+        "action": "UNLOAD",
+        "description": "本次加工结束，移出食物并释放设备",
+        "required": true,
+        "duration": {
+          "nominal_sec": 60,
+          "execution_sec": 60,
+          "lower_sec": null,
+          "upper_sec": null,
+          "model_id": null,
+          "quantity_basis": null,
+          "source_ref": "ai-timing:5dad486b6601a865649f9c15",
+          "fixed_process_time": false
+        },
+        "material_inputs": [
+          {
+            "requirement_id": "material_in_00028",
+            "spec_id": "flow_006_00_00",
+            "quantity_kind": "QUALITATIVE",
+            "quantity": null,
+            "upper_quantity": null,
+            "qualitative_quantity": "原配方本物料整批的1；实际产量未测定",
+            "provenance_refs": [
+              "ai-material:5dad486b6601a865649f9c15"
+            ]
+          },
+          {
+            "requirement_id": "material_in_00029",
+            "spec_id": "flow_006_00_01",
+            "quantity_kind": "QUALITATIVE",
+            "quantity": null,
+            "upper_quantity": null,
+            "qualitative_quantity": "原配方本物料整批的1；实际产量未测定",
+            "provenance_refs": [
+              "ai-material:5dad486b6601a865649f9c15"
+            ]
+          },
+          {
+            "requirement_id": "material_in_00030",
+            "spec_id": "flow_006_00_02",
+            "quantity_kind": "QUALITATIVE",
+            "quantity": null,
+            "upper_quantity": null,
+            "qualitative_quantity": "原配方本物料整批的1；实际产量未测定",
+            "provenance_refs": [
+              "ai-material:5dad486b6601a865649f9c15"
+            ]
+          },
+          {
+            "requirement_id": "material_in_00031",
+            "spec_id": "flow_006_00_03",
+            "quantity_kind": "QUALITATIVE",
+            "quantity": null,
+            "upper_quantity": null,
+            "qualitative_quantity": "原配方本物料整批的1；实际产量未测定",
+            "provenance_refs": [
+              "ai-material:5dad486b6601a865649f9c15"
+            ]
+          }
+        ],
+        "material_outputs": [
+          {
+            "requirement_id": "material_out_00032",
+            "spec_id": "seasoned_mushrooms",
+            "quantity_kind": "QUALITATIVE",
+            "quantity": null,
+            "upper_quantity": null,
+            "qualitative_quantity": "原配方本物料整批的1；实际产量未测定",
+            "provenance_refs": [
+              "ai-material:5dad486b6601a865649f9c15"
+            ]
+          }
+        ],
+        "losses": [],
+        "resource_requirements": [
+          {
+            "resource_type": "HUMAN",
+            "resource_id": "human_1",
+            "units": 1,
+            "physical_resource_id": null,
+            "component_id": null,
+            "profile_options": [],
+            "configuration": [],
+            "conflict_policy": "UNARY",
+            "occupation_policy": "WHOLE_INTERVAL",
+            "carrier_id": null,
+            "phase_id": null,
+            "presence_condition": null,
+            "occupancy": null,
+            "human_interventions": [],
+            "rule_version": "unreviewed",
+            "evidence_refs": [
+              "ai-timing:5dad486b6601a865649f9c15"
+            ],
+            "review_status": "NEEDS_REVIEW"
+          },
+          {
+            "resource_type": "DEVICE",
+            "resource_id": "stove_choice",
+            "units": 1,
+            "physical_resource_id": "stove_1",
+            "component_id": "selected_burner",
+            "profile_options": [],
+            "configuration": [
+              {
+                "parameter": "power_level",
+                "value": 7
+              }
+            ],
+            "conflict_policy": "UNARY",
+            "occupation_policy": "WHOLE_INTERVAL",
+            "carrier_id": null,
+            "phase_id": null,
+            "presence_condition": null,
+            "occupancy": null,
+            "human_interventions": [],
+            "rule_version": "development-scheduling-v3",
+            "evidence_refs": [
+              "ai-timing:5dad486b6601a865649f9c15"
+            ],
+            "review_status": "NEEDS_REVIEW"
+          }
+        ],
+        "execution_policy": {
+          "interruptible": false,
+          "interventions": [],
+          "batch_policy": "STANDALONE",
+          "fixed_batch_id": null,
+          "thermal_group_id": null,
+          "shared_prep_rule_ids": [],
+          "holding_min_sec": null,
+          "holding_max_sec": null
+        },
+        "provenance_refs": [
+          "ai-timing:5dad486b6601a865649f9c15"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      },
+      {
+        "operation_id": "op_007_01",
+        "action": "UNLOAD",
+        "description": "把芦笋从烤盘中取出，放入长盘中，再放上香菇即可。",
+        "required": true,
+        "duration": {
+          "nominal_sec": 30,
+          "execution_sec": 30,
+          "lower_sec": null,
+          "upper_sec": null,
+          "model_id": null,
+          "quantity_basis": null,
+          "source_ref": "ai-timing:5dad486b6601a865649f9c15",
+          "fixed_process_time": false
+        },
+        "material_inputs": [
+          {
+            "requirement_id": "material_in_00033",
+            "spec_id": "roast",
+            "quantity_kind": "QUALITATIVE",
+            "quantity": null,
+            "upper_quantity": null,
+            "qualitative_quantity": "原配方本物料整批的1；实际产量未测定",
+            "provenance_refs": [
+              "ai-material:5dad486b6601a865649f9c15"
+            ]
+          },
+          {
+            "requirement_id": "material_in_00034",
+            "spec_id": "seasoned_mushrooms",
+            "quantity_kind": "QUALITATIVE",
+            "quantity": null,
+            "upper_quantity": null,
+            "qualitative_quantity": "原配方本物料整批的1；实际产量未测定",
+            "provenance_refs": [
+              "ai-material:5dad486b6601a865649f9c15"
+            ]
+          }
+        ],
+        "material_outputs": [
+          {
+            "requirement_id": "material_out_00035",
+            "spec_id": "dish",
+            "quantity_kind": "QUALITATIVE",
+            "quantity": null,
+            "upper_quantity": null,
+            "qualitative_quantity": "原配方本物料整批的1；实际产量未测定",
+            "provenance_refs": [
+              "ai-material:5dad486b6601a865649f9c15"
+            ]
+          }
+        ],
+        "losses": [],
+        "resource_requirements": [
+          {
+            "resource_type": "HUMAN",
+            "resource_id": "human_1",
+            "units": 1,
+            "physical_resource_id": null,
+            "component_id": null,
+            "profile_options": [],
+            "configuration": [],
+            "conflict_policy": "UNARY",
+            "occupation_policy": "WHOLE_INTERVAL",
+            "carrier_id": null,
+            "phase_id": null,
+            "presence_condition": null,
+            "occupancy": null,
+            "human_interventions": [],
+            "rule_version": "unreviewed",
+            "evidence_refs": [
+              "ai-timing:5dad486b6601a865649f9c15"
+            ],
+            "review_status": "NEEDS_REVIEW"
+          },
+          {
+            "resource_type": "DEVICE",
+            "resource_id": "oven_1",
+            "units": 1,
+            "physical_resource_id": "oven_1",
+            "component_id": "chamber",
+            "profile_options": [],
+            "configuration": [
+              {
+                "parameter": "temperature_c",
+                "value": 190
+              },
+              {
+                "parameter": "mode",
+                "value": "上下火"
+              }
+            ],
+            "conflict_policy": "UNARY",
+            "occupation_policy": "WHOLE_INTERVAL",
+            "carrier_id": null,
+            "phase_id": null,
+            "presence_condition": null,
+            "occupancy": null,
+            "human_interventions": [],
+            "rule_version": "development-scheduling-v3",
+            "evidence_refs": [
+              "ai-timing:5dad486b6601a865649f9c15"
+            ],
+            "review_status": "NEEDS_REVIEW"
+          }
+        ],
+        "execution_policy": {
+          "interruptible": false,
+          "interventions": [],
+          "batch_policy": "STANDALONE",
+          "fixed_batch_id": null,
+          "thermal_group_id": null,
+          "shared_prep_rule_ids": [],
+          "holding_min_sec": null,
+          "holding_max_sec": null
+        },
+        "provenance_refs": [
+          "ai-timing:5dad486b6601a865649f9c15"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      },
+      {
+        "operation_id": "op_999_01",
+        "action": "FINISH",
+        "description": "确认全部必需分支完成并装盘上桌",
+        "required": true,
+        "duration": {
+          "nominal_sec": 60,
+          "execution_sec": 60,
+          "lower_sec": null,
+          "upper_sec": null,
+          "model_id": null,
+          "quantity_basis": null,
+          "source_ref": "ai-timing:5dad486b6601a865649f9c15",
+          "fixed_process_time": false
+        },
+        "material_inputs": [
+          {
+            "requirement_id": "material_in_00036",
+            "spec_id": "dish",
+            "quantity_kind": "QUALITATIVE",
+            "quantity": null,
+            "upper_quantity": null,
+            "qualitative_quantity": "原配方本物料整批的1；实际产量未测定",
+            "provenance_refs": [
+              "ai-material:5dad486b6601a865649f9c15"
+            ]
+          }
+        ],
+        "material_outputs": [
+          {
+            "requirement_id": "material_out_00037",
+            "spec_id": "finaldish",
+            "quantity_kind": "QUALITATIVE",
+            "quantity": null,
+            "upper_quantity": null,
+            "qualitative_quantity": "原配方本物料整批的1；实际产量未测定",
+            "provenance_refs": [
+              "ai-material:5dad486b6601a865649f9c15"
+            ]
+          }
+        ],
+        "losses": [],
+        "resource_requirements": [
+          {
+            "resource_type": "HUMAN",
+            "resource_id": "human_1",
+            "units": 1,
+            "physical_resource_id": null,
+            "component_id": null,
+            "profile_options": [],
+            "configuration": [],
+            "conflict_policy": "UNARY",
+            "occupation_policy": "WHOLE_INTERVAL",
+            "carrier_id": null,
+            "phase_id": null,
+            "presence_condition": null,
+            "occupancy": null,
+            "human_interventions": [],
+            "rule_version": "unreviewed",
+            "evidence_refs": [
+              "ai-timing:5dad486b6601a865649f9c15"
+            ],
+            "review_status": "NEEDS_REVIEW"
+          }
+        ],
+        "execution_policy": {
+          "interruptible": false,
+          "interventions": [],
+          "batch_policy": "STANDALONE",
+          "fixed_batch_id": null,
+          "thermal_group_id": null,
+          "shared_prep_rule_ids": [],
+          "holding_min_sec": null,
+          "holding_max_sec": null
+        },
+        "provenance_refs": [
+          "ai-timing:5dad486b6601a865649f9c15"
+        ],
+        "review_status": "NEEDS_REVIEW"
+      }
+    ],
+    "dependencies": [
+      {
+        "predecessor_id": "op_004_01",
+        "successor_id": "op_004_02",
+        "min_lag_sec": 0,
+        "max_lag_sec": 0,
+        "reason": "同一步骤拆分后的连续执行",
+        "evidence_refs": [
+          "ai-timing:5dad486b6601a865649f9c15"
+        ]
+      },
+      {
+        "predecessor_id": "op_004_02",
+        "successor_id": "op_004_03",
+        "min_lag_sec": 0,
+        "max_lag_sec": 0,
+        "reason": "同一步骤拆分后的连续执行",
+        "evidence_refs": [
+          "ai-timing:5dad486b6601a865649f9c15"
+        ]
+      },
+      {
+        "predecessor_id": "op_001_01",
+        "successor_id": "op_002_01",
+        "min_lag_sec": 0,
+        "max_lag_sec": null,
+        "reason": "源工序依赖；明确并行分支保留",
+        "evidence_refs": [
+          "ai-timing:5dad486b6601a865649f9c15"
+        ]
+      },
+      {
+        "predecessor_id": "op_001_01",
+        "successor_id": "op_005_01",
+        "min_lag_sec": 0,
+        "max_lag_sec": null,
+        "reason": "源工序依赖；明确并行分支保留",
+        "evidence_refs": [
+          "ai-timing:5dad486b6601a865649f9c15"
+        ]
+      },
+      {
+        "predecessor_id": "op_002_01",
+        "successor_id": "op_003_01",
+        "min_lag_sec": 0,
+        "max_lag_sec": null,
+        "reason": "源工序依赖；明确并行分支保留",
+        "evidence_refs": [
+          "ai-timing:5dad486b6601a865649f9c15"
+        ]
+      },
+      {
+        "predecessor_id": "op_003_01",
+        "successor_id": "op_004_01",
+        "min_lag_sec": 0,
+        "max_lag_sec": null,
+        "reason": "源工序依赖；明确并行分支保留",
+        "evidence_refs": [
+          "ai-timing:5dad486b6601a865649f9c15"
+        ]
+      },
+      {
+        "predecessor_id": "op_004_03",
+        "successor_id": "op_007_01",
+        "min_lag_sec": 0,
+        "max_lag_sec": null,
+        "reason": "源工序依赖；明确并行分支保留",
+        "evidence_refs": [
+          "ai-timing:5dad486b6601a865649f9c15"
+        ]
+      },
+      {
+        "predecessor_id": "op_005_01",
+        "successor_id": "op_006_01",
+        "min_lag_sec": 0,
+        "max_lag_sec": null,
+        "reason": "源工序依赖；明确并行分支保留",
+        "evidence_refs": [
+          "ai-timing:5dad486b6601a865649f9c15"
+        ]
+      },
+      {
+        "predecessor_id": "op_8000_01",
+        "successor_id": "op_007_01",
+        "min_lag_sec": 0,
+        "max_lag_sec": null,
+        "reason": "源工序依赖；明确并行分支保留",
+        "evidence_refs": [
+          "ai-timing:5dad486b6601a865649f9c15"
+        ]
+      },
+      {
+        "predecessor_id": "op_006_01",
+        "successor_id": "op_8000_01",
+        "min_lag_sec": 0,
+        "max_lag_sec": null,
+        "reason": "本次加工后卸料释放",
+        "evidence_refs": [
+          "ai-timing:5dad486b6601a865649f9c15"
+        ]
+      },
+      {
+        "predecessor_id": "op_007_01",
+        "successor_id": "op_999_01",
+        "min_lag_sec": 0,
+        "max_lag_sec": null,
+        "reason": "全部必需分支完成后才可出菜",
+        "evidence_refs": [
+          "ai-timing:5dad486b6601a865649f9c15"
+        ]
+      },
+      {
+        "predecessor_id": "op_003_01",
+        "successor_id": "op_004_03",
+        "min_lag_sec": 0,
+        "max_lag_sec": null,
+        "reason": "真实物料生产完成后方可消费",
+        "evidence_refs": [
+          "ai-material:5dad486b6601a865649f9c15"
+        ]
+      }
+    ],
+    "provenance_refs": [
+      "ai-timing:5dad486b6601a865649f9c15",
+      "ai-material:5dad486b6601a865649f9c15",
+      "csv:5dad486b6601a865649f9c15",
+      "scheduling-v3:5dad486b6601a865649f9c15"
+    ],
+    "review_status": "NEEDS_REVIEW",
+    "approval": null,
+    "review_patch_refs": [],
+    "issue_refs": [
+      "sample-5dad486b6601a865649f9c15-HUMAN_REVIEW"
+    ]
+  },
+  "refinement_source": {
+    "path": "data/development/development-v3-rebased-v1/dataset.json",
+    "sha256": "74d8cb914ed6c76a6c583a2af65dd033f27b4ce30335a40c78dbab1789944c75",
+    "record": {
+      "名称": "香菇烤芦笋",
+      "烹饪步骤": "第1步【人工操作｜人工：厨师1人，约3分钟；设备/资源：刀具+砧板；设备占用：与人工同步约3分钟】洗净芦笋，去除根部和硬皮，新鲜香菇去蒂头切片，蒜切成蒜末。第2步【收尾｜人工：厨师1人，约2分钟；设备/资源：烤盘/蒸烤盘；设备占用：与人工同步约2分钟】把芦笋平铺在铺上了锡纸的烤盘上，撒上盐、黑胡椒和一半蒜末，再淋上10毫升橄榄油。第3步【人工操作｜人工：厨师1人，约2分钟；设备/资源：烤箱/蒸烤一体机；设备占用：与人工同步约2分钟】放入烤箱中。第4步【烹饪｜人工：厨师1人，上/下料约2分钟；设备：烤箱/蒸烤一体机；设备占用：约8分钟（原文时间），运行期间通常不占用厨师】选择“完全烧烤”模式，以190℃烤8分钟。第5步【烹饪｜人工：厨师1人，约5分钟（需持续/间歇操作）；设备：灶具+锅具；设备占用：约5分钟（建议值）】烤芦笋的同时，用平底锅中火加热，不加油直接加入香菇片和剩余蒜末，改小火煎至，中途需翻面。第6步【人工操作｜人工：厨师1人，约2分钟；设备/资源：基础厨具/操作台；设备占用：与人工同步约2分钟】待香菇微缩但未出水时，加入盐、黑胡椒和剩余橄榄油翻搅。第7步【人工操作｜人工：厨师1人，约1分钟；设备/资源：烤盘/蒸烤盘；设备占用：与人工同步约1分钟】把芦笋从烤盘中取出，放入长盘中，再放上香菇即可。",
+      "菜谱id": "5dad486b6601a865649f9c15",
+      "食材清单": "A料：芦笋130克；新鲜香菇3朵；B料：蒜5瓣；盐2克；橄榄油15毫升；黑胡椒3克"
+    }
+  },
+  "refinement_detail": {
+    "path": "data/development/development-v3-rebased-v1/dataset.json",
+    "sha256": "74d8cb914ed6c76a6c583a2af65dd033f27b4ce30335a40c78dbab1789944c75"
+  },
+  "process_constraints": [],
+  "conversion_notes": [
+    "烤箱与炒锅可并行，主动人工仍只能human_1；翻面时点和持续时间待审。",
+    "烤箱与炒锅可并行，主动人工仍只能human_1；翻面时点和持续时间待审。",
+    "直接承接V3原子操作、依赖、物料和资源，不再按V2重建空物料草稿。",
+    "数值execution_sec为用户授权的AI开发排程建议，保留MODEL_SUGGESTION来源，不代表批准或实测。"
+  ],
+  "scheduling_context": {
+    "source_groups": {
+      "1": [
+        "op_001_01"
+      ],
+      "2": [
+        "op_002_01"
+      ],
+      "3": [
+        "op_003_01"
+      ],
+      "4": [
+        "op_004_01",
+        "op_004_02",
+        "op_004_03"
+      ],
+      "5": [
+        "op_005_01"
+      ],
+      "6": [
+        "op_006_01",
+        "op_8000_01"
+      ],
+      "7": [
+        "op_007_01"
+      ],
+      "999": [
+        "op_999_01"
+      ]
+    },
+    "operation_metadata": {
+      "op_001_01": {
+        "basis": "按原量一批清理切配，操作种类每增加一项预留1分钟。",
+        "batch_reference": "5dad486b6601a865649f9c15:one_source_batch",
+        "cross_recipe_sharing": false,
+        "ingredient_refs": [
+          "ingredient_001",
+          "ingredient_002",
+          "ingredient_003"
+        ],
+        "input_state": "配方采购原料：芦笋；清洗、切配及熟制见后续工序；配方采购原料：新鲜香菇；清洗、切配及熟制见后续工序；配方采购原料：蒜；清洗、切配及熟制见后续工序",
+        "material_input_specs": [
+          "ingredient_001",
+          "ingredient_002",
+          "ingredient_003"
+        ],
+        "material_output_specs": [
+          "asparagus",
+          "mushrooms",
+          "garlic"
+        ],
+        "origin": "MODEL_SUGGESTION",
+        "output_state": "洗净去硬皮；去蒂切片；切碎",
+        "predecessor_states": [],
+        "source_step": 1,
+        "source_time_constraint": {
+          "lower_sec": null,
+          "relation": "unknown",
+          "text": "待补",
+          "upper_sec": null
+        }
+      },
+      "op_002_01": {
+        "basis": "按原量摆盘、刷涂或铺料估计2–3分钟。",
+        "batch_reference": "5dad486b6601a865649f9c15:one_source_batch",
+        "cross_recipe_sharing": false,
+        "ingredient_refs": [
+          "ingredient_001",
+          "ingredient_003",
+          "ingredient_004",
+          "ingredient_005",
+          "ingredient_006"
+        ],
+        "input_state": "洗净去硬皮；切碎；配方采购原料：盐；清洗、切配及熟制见后续工序；配方采购原料：黑胡椒；清洗、切配及熟制见后续工序；配方采购原料：橄榄油；清洗、切配及熟制见后续工序",
+        "material_input_specs": [
+          "asparagus",
+          "garlic",
+          "ingredient_004",
+          "ingredient_006",
+          "ingredient_005"
+        ],
+        "material_output_specs": [
+          "seasoned"
+        ],
+        "origin": "MODEL_SUGGESTION",
+        "output_state": "调味淋油装盘",
+        "predecessor_states": [
+          "完成操作：洗净芦笋，去除根部和硬皮，新鲜香菇去蒂头切片，蒜切成蒜末。"
+        ],
+        "source_step": 2,
+        "source_time_constraint": {
+          "lower_sec": null,
+          "relation": "unknown",
+          "text": "待补",
+          "upper_sec": null
+        }
+      },
+      "op_003_01": {
+        "basis": "短时转移、开关门或覆盖操作按30–60秒估计。",
+        "batch_reference": "5dad486b6601a865649f9c15:one_source_batch",
+        "cross_recipe_sharing": false,
+        "ingredient_refs": [
+          "ingredient_001",
+          "ingredient_003",
+          "ingredient_004",
+          "ingredient_005",
+          "ingredient_006"
+        ],
+        "input_state": "调味淋油装盘",
+        "material_input_specs": [
+          "seasoned"
+        ],
+        "material_output_specs": [
+          "loaded"
+        ],
+        "origin": "MODEL_SUGGESTION",
+        "output_state": "装炉",
+        "predecessor_states": [
+          "完成操作：把芦笋平铺在铺上了锡纸的烤盘上，撒上盐、黑胡椒和一半蒜末，再淋上10毫升橄榄油。"
+        ],
+        "source_step": 3,
+        "source_time_constraint": {
+          "lower_sec": null,
+          "relation": "unknown",
+          "text": "待补",
+          "upper_sec": null
+        }
+      },
+      "op_004_01": {
+        "basis": "原文明确工艺时间，保持不变。",
+        "batch_reference": "5dad486b6601a865649f9c15:one_source_batch",
+        "cross_recipe_sharing": false,
+        "ingredient_refs": [],
+        "input_state": "设备/工艺辅助操作，无食物投入",
+        "material_input_specs": [],
+        "material_output_specs": [],
+        "origin": "MODEL_SUGGESTION",
+        "output_state": "设备/工艺辅助操作完成",
+        "predecessor_states": [
+          "完成操作：放入烤箱中。"
+        ],
+        "source_step": 4,
+        "source_time_constraint": {
+          "lower_sec": 480,
+          "relation": "exact_source",
+          "text": "8分钟",
+          "upper_sec": 480
+        }
+      },
+      "op_004_02": {
+        "basis": "原文明确工艺时间，保持不变。",
+        "batch_reference": "5dad486b6601a865649f9c15:one_source_batch",
+        "cross_recipe_sharing": false,
+        "ingredient_refs": [],
+        "input_state": "设备/工艺辅助操作，无食物投入",
+        "material_input_specs": [],
+        "material_output_specs": [],
+        "origin": "MODEL_SUGGESTION",
+        "output_state": "设备/工艺辅助操作完成",
+        "predecessor_states": [
+          "完成操作：设置设备程序/补水；香菇烤芦笋"
+        ],
+        "source_step": 4,
+        "source_time_constraint": {
+          "lower_sec": 480,
+          "relation": "exact_source",
+          "text": "8分钟",
+          "upper_sec": 480
+        }
+      },
+      "op_004_03": {
+        "basis": "原文明确工艺时间，保持不变。",
+        "batch_reference": "5dad486b6601a865649f9c15:one_source_batch",
+        "cross_recipe_sharing": false,
+        "ingredient_refs": [
+          "ingredient_001",
+          "ingredient_003",
+          "ingredient_004",
+          "ingredient_005",
+          "ingredient_006"
+        ],
+        "input_state": "装炉",
+        "material_input_specs": [
+          "loaded"
+        ],
+        "material_output_specs": [
+          "roast"
+        ],
+        "origin": "MODEL_SUGGESTION",
+        "output_state": "烤熟",
+        "predecessor_states": [
+          "完成操作：预热/升温；香菇烤芦笋"
+        ],
+        "source_step": 4,
+        "source_time_constraint": {
+          "lower_sec": 480,
+          "relation": "exact_source",
+          "text": "8分钟",
+          "upper_sec": 480
+        }
+      },
+      "op_005_01": {
+        "basis": "按本菜原配方一批、步骤终点和工艺类型估计300秒；不是设备预置程序实测值。",
+        "batch_reference": "5dad486b6601a865649f9c15:one_source_batch",
+        "cross_recipe_sharing": false,
+        "ingredient_refs": [
+          "ingredient_002",
+          "ingredient_003"
+        ],
+        "input_state": "去蒂切片；切碎",
+        "material_input_specs": [
+          "mushrooms",
+          "garlic"
+        ],
+        "material_output_specs": [
+          "fried"
+        ],
+        "origin": "MODEL_SUGGESTION",
+        "output_state": "干煎翻面",
+        "predecessor_states": [
+          "完成操作：洗净芦笋，去除根部和硬皮，新鲜香菇去蒂头切片，蒜切成蒜末。"
+        ],
+        "source_step": 5,
+        "source_time_constraint": {
+          "lower_sec": null,
+          "relation": "unknown",
+          "text": "待补",
+          "upper_sec": null
+        }
+      },
+      "op_006_01": {
+        "basis": "按本菜原配方一批、步骤终点和工艺类型估计60秒；不是设备预置程序实测值。",
+        "batch_reference": "5dad486b6601a865649f9c15:one_source_batch",
+        "cross_recipe_sharing": false,
+        "ingredient_refs": [
+          "ingredient_002",
+          "ingredient_003",
+          "ingredient_004",
+          "ingredient_005",
+          "ingredient_006"
+        ],
+        "input_state": "干煎翻面；配方采购原料：盐；清洗、切配及熟制见后续工序；配方采购原料：黑胡椒；清洗、切配及熟制见后续工序；配方采购原料：橄榄油；清洗、切配及熟制见后续工序",
+        "material_input_specs": [
+          "fried",
+          "ingredient_004",
+          "ingredient_006",
+          "ingredient_005"
+        ],
+        "material_output_specs": [
+          "flow_006_00_00",
+          "flow_006_00_01",
+          "flow_006_00_02",
+          "flow_006_00_03"
+        ],
+        "origin": "MODEL_SUGGESTION",
+        "output_state": "待香菇微缩但未出水时，加入盐、黑胡椒和剩余橄榄油翻搅。后的食物状态；待香菇微缩但未出水时，加入盐、黑胡椒和剩余橄榄油翻搅。后的食物状态；待香菇微缩但未出水时，加入盐、黑胡椒和剩余橄榄油翻搅。后的食物状态；待香菇微缩但未出水时，加入盐、黑胡椒和剩余橄榄油翻搅。后的食物状态",
+        "predecessor_states": [
+          "完成操作：烤芦笋的同时，用平底锅中火加热，不加油直接加入香菇片和剩余蒜末，改小火煎至，中途需翻面。"
+        ],
+        "source_step": 6,
+        "source_time_constraint": {
+          "lower_sec": null,
+          "relation": "unknown",
+          "text": "待补",
+          "upper_sec": null
+        }
+      },
+      "op_007_01": {
+        "basis": "短时转移、开关门或覆盖操作按30–60秒估计。",
+        "batch_reference": "5dad486b6601a865649f9c15:one_source_batch",
+        "cross_recipe_sharing": false,
+        "ingredient_refs": [
+          "ingredient_001",
+          "ingredient_002",
+          "ingredient_003",
+          "ingredient_004",
+          "ingredient_005",
+          "ingredient_006"
+        ],
+        "input_state": "烤熟；调味翻炒",
+        "material_input_specs": [
+          "roast",
+          "seasoned_mushrooms"
+        ],
+        "material_output_specs": [
+          "dish"
+        ],
+        "origin": "MODEL_SUGGESTION",
+        "output_state": "合盘",
+        "predecessor_states": [
+          "完成操作：选择“完全烧烤”模式，以190℃烤8分钟。",
+          "已完成：本次加工结束，移出食物并释放设备"
+        ],
+        "source_step": 7,
+        "source_time_constraint": {
+          "lower_sec": null,
+          "relation": "unknown",
+          "text": "待补",
+          "upper_sec": null
+        }
+      },
+      "op_8000_01": {
+        "basis": "局部加工结束即卸料；不等待其他分支、冷藏或最终出菜",
+        "batch_reference": "5dad486b6601a865649f9c15:one_source_batch",
+        "cross_recipe_sharing": false,
+        "ingredient_refs": [
+          "ingredient_002",
+          "ingredient_003",
+          "ingredient_004",
+          "ingredient_005",
+          "ingredient_006"
+        ],
+        "input_state": "待香菇微缩但未出水时，加入盐、黑胡椒和剩余橄榄油翻搅。后的食物状态；待香菇微缩但未出水时，加入盐、黑胡椒和剩余橄榄油翻搅。后的食物状态；待香菇微缩但未出水时，加入盐、黑胡椒和剩余橄榄油翻搅。后的食物状态；待香菇微缩但未出水时，加入盐、黑胡椒和剩余橄榄油翻搅。后的食物状态",
+        "material_input_specs": [
+          "flow_006_00_00",
+          "flow_006_00_01",
+          "flow_006_00_02",
+          "flow_006_00_03"
+        ],
+        "material_output_specs": [
+          "seasoned_mushrooms"
+        ],
+        "origin": "MODEL_SUGGESTION",
+        "output_state": "调味翻炒",
+        "predecessor_states": [
+          "完成操作：待香菇微缩但未出水时，加入盐、黑胡椒和剩余橄榄油翻搅。"
+        ],
+        "source_step": 6,
+        "source_time_constraint": null
+      },
+      "op_999_01": {
+        "basis": "补齐设备停止、卸料和最终出菜边界",
+        "batch_reference": "5dad486b6601a865649f9c15:one_source_batch",
+        "cross_recipe_sharing": false,
+        "ingredient_refs": [
+          "ingredient_001",
+          "ingredient_002",
+          "ingredient_003",
+          "ingredient_004",
+          "ingredient_005",
+          "ingredient_006"
+        ],
+        "input_state": "合盘",
+        "material_input_specs": [
+          "dish"
+        ],
+        "material_output_specs": [
+          "finaldish"
+        ],
+        "origin": "MODEL_SUGGESTION",
+        "output_state": "全部必需食物分支完成并装盘上桌",
+        "predecessor_states": [
+          "完成操作：把芦笋从烤盘中取出，放入长盘中，再放上香菇即可。"
+        ],
+        "source_step": null,
+        "source_time_constraint": null
+      }
+    },
+    "source_dependencies": [
+      [
+        1,
+        2
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        4,
+        7
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        6,
+        7
+      ]
+    ],
+    "resource_reservations": [
+      {
+        "members": [
+          "op_005_01",
+          "op_006_01",
+          "op_8000_01"
+        ],
+        "origin": "MODEL_SUGGESTION",
+        "policy": "UNARY",
+        "reservation_id": "5dad486b6601a865649f9c15:stove:0",
+        "resource_options": [
+          "burner_1",
+          "burner_2"
+        ],
+        "span": "min_start_to_max_end"
+      },
+      {
+        "members": [
+          "op_003_01",
+          "op_004_01",
+          "op_004_02",
+          "op_004_03",
+          "op_007_01"
+        ],
+        "origin": "MODEL_SUGGESTION",
+        "policy": "UNARY",
+        "reservation_id": "5dad486b6601a865649f9c15:oven:1",
+        "resource_options": [
+          "oven_1"
+        ],
+        "span": "min_start_to_max_end"
+      }
+    ],
+    "program_constraints": [],
+    "alternative_paths": [],
+    "adaptations": [],
+    "ingredient_supplements": [],
+    "material_policy": "逐食材及半成品追踪；固定原配方整批；未称重产物为定性批次；禁止跨菜共享"
+  }
+}

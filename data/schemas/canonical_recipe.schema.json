@@ -1,0 +1,1105 @@
+{
+  "$defs": {
+    "Action": {
+      "enum": [
+        "WASH",
+        "CUT",
+        "MIX",
+        "PREPARE",
+        "MARINATE",
+        "WAIT",
+        "CHILL",
+        "FREEZE",
+        "HEAT",
+        "PREHEAT",
+        "LOAD",
+        "UNLOAD",
+        "ADD",
+        "STIR",
+        "TRANSFER",
+        "FINISH",
+        "MILESTONE",
+        "UNKNOWN"
+      ],
+      "title": "Action",
+      "type": "string"
+    },
+    "BatchPolicy": {
+      "enum": [
+        "STANDALONE",
+        "STRICT_TOGETHER",
+        "FIXED_RECIPE"
+      ],
+      "title": "BatchPolicy",
+      "type": "string"
+    },
+    "CarrierId": {
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "CarrierId",
+      "type": "string"
+    },
+    "ConfigurationValue": {
+      "additionalProperties": false,
+      "properties": {
+        "parameter": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Parameter",
+          "type": "string"
+        },
+        "value": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "title": "Value"
+        }
+      },
+      "required": [
+        "parameter",
+        "value"
+      ],
+      "title": "ConfigurationValue",
+      "type": "object"
+    },
+    "ConflictPolicy": {
+      "enum": [
+        "UNARY",
+        "BATCH_EXCLUSIVE",
+        "STATE_COMPATIBLE",
+        "SHARED_AUXILIARY"
+      ],
+      "title": "ConflictPolicy",
+      "type": "string"
+    },
+    "Dependency": {
+      "additionalProperties": false,
+      "properties": {
+        "predecessor_id": {
+          "$ref": "#/$defs/OperationId"
+        },
+        "successor_id": {
+          "$ref": "#/$defs/OperationId"
+        },
+        "min_lag_sec": {
+          "default": 0,
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "Min Lag Sec",
+          "type": "integer"
+        },
+        "max_lag_sec": {
+          "anyOf": [
+            {
+              "maximum": 1152921504606846976,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Max Lag Sec"
+        },
+        "reason": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Reason",
+          "type": "string"
+        },
+        "evidence_refs": {
+          "items": {
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "title": "Evidence Refs",
+          "type": "array"
+        }
+      },
+      "required": [
+        "predecessor_id",
+        "successor_id",
+        "reason",
+        "evidence_refs"
+      ],
+      "title": "Dependency",
+      "type": "object"
+    },
+    "DurationSpec": {
+      "additionalProperties": false,
+      "properties": {
+        "nominal_sec": {
+          "anyOf": [
+            {
+              "maximum": 1152921504606846976,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Nominal Sec"
+        },
+        "execution_sec": {
+          "anyOf": [
+            {
+              "maximum": 1152921504606846976,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Execution Sec"
+        },
+        "lower_sec": {
+          "anyOf": [
+            {
+              "maximum": 1152921504606846976,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Lower Sec"
+        },
+        "upper_sec": {
+          "anyOf": [
+            {
+              "maximum": 1152921504606846976,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Upper Sec"
+        },
+        "model_id": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Model Id"
+        },
+        "quantity_basis": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/MaterialRequirement"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "source_ref": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Ref"
+        },
+        "fixed_process_time": {
+          "default": false,
+          "title": "Fixed Process Time",
+          "type": "boolean"
+        }
+      },
+      "title": "DurationSpec",
+      "type": "object"
+    },
+    "ExecutionPolicy": {
+      "additionalProperties": false,
+      "properties": {
+        "interruptible": {
+          "default": false,
+          "title": "Interruptible",
+          "type": "boolean"
+        },
+        "interventions": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/Intervention"
+          },
+          "title": "Interventions",
+          "type": "array"
+        },
+        "batch_policy": {
+          "$ref": "#/$defs/BatchPolicy",
+          "default": "STANDALONE"
+        },
+        "fixed_batch_id": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Fixed Batch Id"
+        },
+        "thermal_group_id": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Thermal Group Id"
+        },
+        "shared_prep_rule_ids": {
+          "default": [],
+          "items": {
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "title": "Shared Prep Rule Ids",
+          "type": "array"
+        },
+        "holding_min_sec": {
+          "anyOf": [
+            {
+              "maximum": 1152921504606846976,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Holding Min Sec"
+        },
+        "holding_max_sec": {
+          "anyOf": [
+            {
+              "maximum": 1152921504606846976,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Holding Max Sec"
+        }
+      },
+      "title": "ExecutionPolicy",
+      "type": "object"
+    },
+    "Interval": {
+      "additionalProperties": false,
+      "properties": {
+        "start_sec": {
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "Start Sec",
+          "type": "integer"
+        },
+        "end_sec": {
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "End Sec",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "start_sec",
+        "end_sec"
+      ],
+      "title": "Interval",
+      "type": "object"
+    },
+    "Intervention": {
+      "additionalProperties": false,
+      "properties": {
+        "operation_id": {
+          "$ref": "#/$defs/OperationId"
+        },
+        "offset_min_sec": {
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "Offset Min Sec",
+          "type": "integer"
+        },
+        "offset_max_sec": {
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "Offset Max Sec",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "operation_id",
+        "offset_min_sec",
+        "offset_max_sec"
+      ],
+      "title": "Intervention",
+      "type": "object"
+    },
+    "MaterialLoss": {
+      "additionalProperties": false,
+      "properties": {
+        "spec_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Spec Id",
+          "type": "string"
+        },
+        "quantity": {
+          "$ref": "#/$defs/ScaledQuantity"
+        },
+        "reason": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Reason",
+          "type": "string"
+        },
+        "provenance_refs": {
+          "items": {
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "title": "Provenance Refs",
+          "type": "array"
+        }
+      },
+      "required": [
+        "spec_id",
+        "quantity",
+        "reason",
+        "provenance_refs"
+      ],
+      "title": "MaterialLoss",
+      "type": "object"
+    },
+    "MaterialRequirement": {
+      "additionalProperties": false,
+      "properties": {
+        "requirement_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Requirement Id",
+          "type": "string"
+        },
+        "spec_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Spec Id",
+          "type": "string"
+        },
+        "quantity_kind": {
+          "$ref": "#/$defs/QuantityKind"
+        },
+        "quantity": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ScaledQuantity"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "upper_quantity": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ScaledQuantity"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "qualitative_quantity": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Qualitative Quantity"
+        },
+        "provenance_refs": {
+          "default": [],
+          "items": {
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "title": "Provenance Refs",
+          "type": "array"
+        }
+      },
+      "required": [
+        "requirement_id",
+        "spec_id",
+        "quantity_kind"
+      ],
+      "title": "MaterialRequirement",
+      "type": "object"
+    },
+    "MaterialSpec": {
+      "additionalProperties": false,
+      "properties": {
+        "spec_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Spec Id",
+          "type": "string"
+        },
+        "ingredient_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Ingredient Id",
+          "type": "string"
+        },
+        "name": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Name",
+          "type": "string"
+        },
+        "state": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "State",
+          "type": "string"
+        },
+        "shape": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Shape"
+        },
+        "size_mm": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0,
+              "maximum": 1152921504606846976,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Size Mm"
+        },
+        "treatment": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Treatment"
+        },
+        "composition": {
+          "default": [],
+          "items": {
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "title": "Composition",
+          "type": "array"
+        },
+        "provenance_refs": {
+          "default": [],
+          "items": {
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "title": "Provenance Refs",
+          "type": "array"
+        },
+        "review_status": {
+          "$ref": "#/$defs/ReviewStatus",
+          "default": "DRAFT"
+        }
+      },
+      "required": [
+        "spec_id",
+        "ingredient_id",
+        "name",
+        "state"
+      ],
+      "title": "MaterialSpec",
+      "type": "object"
+    },
+    "OccupationPolicy": {
+      "enum": [
+        "WHOLE_INTERVAL",
+        "PHASE_INTERVAL"
+      ],
+      "title": "OccupationPolicy",
+      "type": "string"
+    },
+    "OperationId": {
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "OperationId",
+      "type": "string"
+    },
+    "OperationTemplate": {
+      "additionalProperties": false,
+      "properties": {
+        "operation_id": {
+          "$ref": "#/$defs/OperationId"
+        },
+        "action": {
+          "$ref": "#/$defs/Action"
+        },
+        "description": {
+          "default": "",
+          "title": "Description",
+          "type": "string"
+        },
+        "required": {
+          "default": true,
+          "title": "Required",
+          "type": "boolean"
+        },
+        "duration": {
+          "$ref": "#/$defs/DurationSpec"
+        },
+        "material_inputs": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/MaterialRequirement"
+          },
+          "title": "Material Inputs",
+          "type": "array"
+        },
+        "material_outputs": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/MaterialRequirement"
+          },
+          "title": "Material Outputs",
+          "type": "array"
+        },
+        "losses": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/MaterialLoss"
+          },
+          "title": "Losses",
+          "type": "array"
+        },
+        "resource_requirements": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/ResourceUse"
+          },
+          "title": "Resource Requirements",
+          "type": "array"
+        },
+        "execution_policy": {
+          "$ref": "#/$defs/ExecutionPolicy",
+          "default": {
+            "interruptible": false,
+            "interventions": [],
+            "batch_policy": "STANDALONE",
+            "fixed_batch_id": null,
+            "thermal_group_id": null,
+            "shared_prep_rule_ids": [],
+            "holding_min_sec": null,
+            "holding_max_sec": null
+          }
+        },
+        "provenance_refs": {
+          "default": [],
+          "items": {
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "title": "Provenance Refs",
+          "type": "array"
+        },
+        "review_status": {
+          "$ref": "#/$defs/ReviewStatus",
+          "default": "DRAFT"
+        }
+      },
+      "required": [
+        "operation_id",
+        "action",
+        "duration"
+      ],
+      "title": "OperationTemplate",
+      "type": "object"
+    },
+    "QuantityKind": {
+      "enum": [
+        "EXACT",
+        "RANGE",
+        "QUALITATIVE",
+        "UNKNOWN"
+      ],
+      "title": "QuantityKind",
+      "type": "string"
+    },
+    "RecipeId": {
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "RecipeId",
+      "type": "string"
+    },
+    "ResourceType": {
+      "enum": [
+        "HUMAN",
+        "DEVICE"
+      ],
+      "title": "ResourceType",
+      "type": "string"
+    },
+    "ResourceUse": {
+      "additionalProperties": false,
+      "properties": {
+        "resource_type": {
+          "$ref": "#/$defs/ResourceType"
+        },
+        "resource_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Resource Id",
+          "type": "string"
+        },
+        "units": {
+          "default": 1,
+          "exclusiveMinimum": 0,
+          "maximum": 1152921504606846976,
+          "title": "Units",
+          "type": "integer"
+        },
+        "layer_index": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0,
+              "maximum": 1152921504606846976,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Layer Index"
+        },
+        "physical_resource_id": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Physical Resource Id"
+        },
+        "component_id": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Component Id"
+        },
+        "profile_options": {
+          "default": [],
+          "items": {
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "title": "Profile Options",
+          "type": "array"
+        },
+        "configuration": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/ConfigurationValue"
+          },
+          "title": "Configuration",
+          "type": "array"
+        },
+        "conflict_policy": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ConflictPolicy"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "occupation_policy": {
+          "$ref": "#/$defs/OccupationPolicy",
+          "default": "WHOLE_INTERVAL"
+        },
+        "carrier_id": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/CarrierId"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "phase_id": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Phase Id"
+        },
+        "presence_condition": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Presence Condition"
+        },
+        "occupancy": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Interval"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "human_interventions": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/OperationId"
+          },
+          "title": "Human Interventions",
+          "type": "array"
+        },
+        "rule_version": {
+          "default": "unreviewed",
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Rule Version",
+          "type": "string"
+        },
+        "evidence_refs": {
+          "default": [],
+          "items": {
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "title": "Evidence Refs",
+          "type": "array"
+        },
+        "review_status": {
+          "$ref": "#/$defs/ReviewStatus",
+          "default": "DRAFT"
+        }
+      },
+      "required": [
+        "resource_type",
+        "resource_id"
+      ],
+      "title": "ResourceUse",
+      "type": "object"
+    },
+    "ReviewStamp": {
+      "additionalProperties": false,
+      "properties": {
+        "review_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Review Id",
+          "type": "string"
+        },
+        "reviewer": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Reviewer",
+          "type": "string"
+        },
+        "reviewed_at": {
+          "format": "date-time",
+          "title": "Reviewed At",
+          "type": "string"
+        },
+        "evidence_refs": {
+          "items": {
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "title": "Evidence Refs",
+          "type": "array"
+        },
+        "approved_content_hash": {
+          "pattern": "^[a-f0-9]{64}$",
+          "title": "Approved Content Hash",
+          "type": "string"
+        }
+      },
+      "required": [
+        "review_id",
+        "reviewer",
+        "reviewed_at",
+        "evidence_refs",
+        "approved_content_hash"
+      ],
+      "title": "ReviewStamp",
+      "type": "object"
+    },
+    "ReviewStatus": {
+      "enum": [
+        "DRAFT",
+        "NEEDS_REVIEW",
+        "APPROVED",
+        "RETIRED"
+      ],
+      "title": "ReviewStatus",
+      "type": "string"
+    },
+    "ScaledQuantity": {
+      "additionalProperties": false,
+      "properties": {
+        "value": {
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "Value",
+          "type": "integer"
+        },
+        "unit": {
+          "enum": [
+            "g",
+            "kg",
+            "ml",
+            "L",
+            "个",
+            "片",
+            "根",
+            "张",
+            "瓣",
+            "朵",
+            "汤匙",
+            "茶匙"
+          ],
+          "title": "Unit",
+          "type": "string"
+        },
+        "scale": {
+          "exclusiveMinimum": 0,
+          "maximum": 1152921504606846976,
+          "title": "Scale",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "value",
+        "unit",
+        "scale"
+      ],
+      "title": "ScaledQuantity",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "recipe_id": {
+      "$ref": "#/$defs/RecipeId"
+    },
+    "name": {
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "Name",
+      "type": "string"
+    },
+    "recipe_version": {
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "Recipe Version",
+      "type": "string"
+    },
+    "ingredient_requirements": {
+      "items": {
+        "$ref": "#/$defs/MaterialRequirement"
+      },
+      "title": "Ingredient Requirements",
+      "type": "array"
+    },
+    "material_specs": {
+      "items": {
+        "$ref": "#/$defs/MaterialSpec"
+      },
+      "title": "Material Specs",
+      "type": "array"
+    },
+    "operations": {
+      "items": {
+        "$ref": "#/$defs/OperationTemplate"
+      },
+      "title": "Operations",
+      "type": "array"
+    },
+    "dependencies": {
+      "items": {
+        "$ref": "#/$defs/Dependency"
+      },
+      "title": "Dependencies",
+      "type": "array"
+    },
+    "provenance_refs": {
+      "items": {
+        "minLength": 1,
+        "pattern": "\\S",
+        "type": "string"
+      },
+      "title": "Provenance Refs",
+      "type": "array"
+    },
+    "review_status": {
+      "$ref": "#/$defs/ReviewStatus",
+      "default": "DRAFT"
+    },
+    "approval": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ReviewStamp"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "review_patch_refs": {
+      "default": [],
+      "items": {
+        "minLength": 1,
+        "pattern": "\\S",
+        "type": "string"
+      },
+      "title": "Review Patch Refs",
+      "type": "array"
+    },
+    "issue_refs": {
+      "default": [],
+      "items": {
+        "minLength": 1,
+        "pattern": "\\S",
+        "type": "string"
+      },
+      "title": "Issue Refs",
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema_version",
+    "recipe_id",
+    "name",
+    "recipe_version",
+    "ingredient_requirements",
+    "material_specs",
+    "operations",
+    "dependencies",
+    "provenance_refs"
+  ],
+  "title": "CanonicalRecipeModel",
+  "type": "object"
+}

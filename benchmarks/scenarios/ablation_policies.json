@@ -1,0 +1,31 @@
+{
+  "experiment_id": "p6-ablation-v1",
+  "repeats": 3,
+  "seed": 20261004,
+  "case_ids": ["boundary-000", "boundary-002", "boundary-004", "boundary-008", "combination-031", "combination-041", "combination-043", "combination-052"],
+  "groups": [
+    {"id": "A_SERIAL", "algorithm": "SERIAL_CP", "shared_prep": false, "strict_together_batch": false},
+    {"id": "B_GREEDY", "algorithm": "GREEDY", "shared_prep": false, "strict_together_batch": false},
+    {"id": "C_CP", "algorithm": "CP", "shared_prep": false, "strict_together_batch": false},
+    {"id": "D_HINT", "algorithm": "CP_HINT", "shared_prep": false, "strict_together_batch": false},
+    {"id": "E_PREP", "algorithm": "CP_HINT", "shared_prep": true, "strict_together_batch": false},
+    {"id": "F_THERMAL", "algorithm": "CP_HINT", "shared_prep": true, "strict_together_batch": true},
+    {"id": "G_NO_BOUNDS", "algorithm": "CP_HINT", "shared_prep": true, "strict_together_batch": true, "graph_bound_preprocessing": false},
+    {"id": "H_NO_DEDUP", "algorithm": "CP_HINT", "shared_prep": true, "strict_together_batch": true, "equivalence_deduplication": false},
+    {"id": "I_CAP1", "algorithm": "CP_HINT", "shared_prep": true, "strict_together_batch": true, "max_nonstandalone_per_requirement": 1, "max_nonstandalone_per_problem": 1},
+    {"id": "J_CAP32", "algorithm": "CP_HINT", "shared_prep": true, "strict_together_batch": true, "max_nonstandalone_per_requirement": 12, "max_nonstandalone_per_problem": 32}
+  ],
+  "comparisons": [
+    {"control": "A_SERIAL", "treatment": "B_GREEDY", "factor": "algorithm"},
+    {"control": "B_GREEDY", "treatment": "C_CP", "factor": "algorithm"},
+    {"control": "C_CP", "treatment": "D_HINT", "factor": "algorithm"},
+    {"control": "D_HINT", "treatment": "E_PREP", "factor": "shared_prep"},
+    {"control": "E_PREP", "treatment": "F_THERMAL", "factor": "strict_together_batch"},
+    {"control": "F_THERMAL", "treatment": "G_NO_BOUNDS", "factor": "graph_bound_preprocessing"},
+    {"control": "F_THERMAL", "treatment": "H_NO_DEDUP", "factor": "equivalence_deduplication"},
+    {"control": "F_THERMAL", "treatment": "I_CAP1", "factor": "candidate_caps"},
+    {"control": "F_THERMAL", "treatment": "J_CAP32", "factor": "candidate_caps"}
+  ],
+  "non_equivalent_pruning": "DISABLED_NO_CERTIFIED_WHITELIST",
+  "scope": "Fixed real recipes; synthetic menus; static scheduling comparison, not SQLite publication or HTTP latency certification"
+}

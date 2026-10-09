@@ -1,0 +1,1531 @@
+{
+  "audit_id": "p4-data-audit-v1",
+  "valid": true,
+  "base_content_hash": "cae611943e691787fa115b12d4f8972c5f4bce12df52e85bf53e7b18e68edeb2",
+  "base_release": "development-v3-p3-thermal-v1-all",
+  "recipe_count": 100,
+  "operation_count": 1562,
+  "marinate_count": 28,
+  "marinate_human_conflicts": [],
+  "process_changes": 0,
+  "rule_decisions": [
+    {
+      "rule_id": "P3-S02-delegated-v1",
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION"
+    },
+    {
+      "rule_id": "P3-H02-delegated-v1",
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION"
+    }
+  ],
+  "profile_count": 27,
+  "accepted_limitations": [
+    "时长与批次参数按现有来源作为计划估计接受，不是现场实测。",
+    "定性物料可用于整份菜谱排程；不能凭定性整批换算可分配克数或安全保存期。",
+    "只接受现有 S02/H02 共享规则；缺少依据的温差转换、跨批复用及失败续做默认关闭。",
+    "旧历史来源缺口保留，固定 V3 原文及现有归档作为本版来源。",
+    "APPROVED 表示本次授权范围内的路径审核通过；不表示官方协议验收或食品工艺实测。"
+  ],
+  "recipes": [
+    {
+      "recipe_id": "5d54bae2a9114174727c8b20",
+      "name": "鸡翅包饭",
+      "semantic_hash": "261352d6a03a7c905ae6cae3eca389134cf4ae4cf84c77a1b523c3dd555d3970",
+      "operation_count": 19,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "6510fb3545256c3ad7c25c9c",
+      "name": "苹果芒果派",
+      "semantic_hash": "3b6094f1bbf9c5da4ad6a443f1b432d65b9f9f8f00a1f2f7130cae6a4aff425a",
+      "operation_count": 16,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "5c8646fe98d5bc7e184a90bc",
+      "name": "鸡仔饼",
+      "semantic_hash": "9ee86b4156cbf6d9a75de2c00f5feafcc6b7aea5032c38f2ddd3a296906cacaf",
+      "operation_count": 11,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "6492a7a5933a4b7277dee0cf",
+      "name": "酿苦瓜",
+      "semantic_hash": "ac35dd7246c860dca658b8fc9a280ca1063d7bea749ce768fbc781c45e25eeb9",
+      "operation_count": 11,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "61e6c51fec6e1d65587067e1",
+      "name": "低温牛排",
+      "semantic_hash": "9bcc90cbe594ea55010e88d3acc3ef594b24df4e0f414d7d4128aae91dae224b",
+      "operation_count": 18,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "6577d480c458a177d8438637",
+      "name": "三味蒸鳗鱼&香茅烤鳗鱼同烹",
+      "semantic_hash": "57d55d0f8f7964a8439350e3a94d001dc77a2f0863532cb1c936e0e1531cebac",
+      "operation_count": 21,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "65433a4245256c3ad7c2697f",
+      "name": "金龙吐瑞",
+      "semantic_hash": "4e40b7b894cd25118defe073c93cadce4f33b7464f410b79ec8751c36c327d3c",
+      "operation_count": 11,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "5c8647b598d5bc7e184a90c3",
+      "name": "椰香苹果香蕉烤燕麦",
+      "semantic_hash": "e7edec696c7dd78fcad24460a808e2e7c61f8cc97ec5da36fe2b1230bd378eda",
+      "operation_count": 13,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "58e70ae1a3fd4a750f4b75af",
+      "name": "双椒鳙鱼头",
+      "semantic_hash": "ba4d9ee142c70d8b9e72ac4e67ed89457dd5ebd2aae4700256f04d7e3297f38f",
+      "operation_count": 16,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "5dad79866601a865649f9cb7",
+      "name": "家常鲈鱼",
+      "semantic_hash": "dedbfd2d87a3fbe4da705ef1bff6345de4f5c894c913155572bdce3773445bdd",
+      "operation_count": 14,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "59cc89b47d21be2a79172c98",
+      "name": "豉汁蒸草鱼",
+      "semantic_hash": "673148650900307f5ef2330eabdd39826bd860f502842b124fb1a1e234b189fc",
+      "operation_count": 15,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "6528fac845256c3ad7c26313",
+      "name": "椰汁红豆砵仔糕",
+      "semantic_hash": "302829ea49daab88d75f622b5d4febe4f8e7740637e197e6af17d70bb0c93b97",
+      "operation_count": 12,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "5d56689fa9114174727c8bfb",
+      "name": "鸡蛋黄油饼干",
+      "semantic_hash": "00515b760013eaf3741e9e2a7876645b436d83b1b862ed118c5655ff1b1cf582",
+      "operation_count": 15,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "661369554b3d03197733ac5a",
+      "name": "香烤排骨",
+      "semantic_hash": "4e1a4878dcaa30c34e3bc86444d65c5990560a2386bde0325a34abd2ed1a0943",
+      "operation_count": 12,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "64f550ff255d3b02f695fd69",
+      "name": "栗子冰皮月饼",
+      "semantic_hash": "41c82b0ebfae182bca59499e1fc4a0e22c024f4b0eda0ec4404b71546fd1c51d",
+      "operation_count": 26,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "58e70b129f6429675ec80601",
+      "name": "麻辣对虾",
+      "semantic_hash": "c8c667a02e6fd960f9e7766a42241057235d079b4e2e13e22f46c114c1ecfc40",
+      "operation_count": 16,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "5c875d0b98d5bc7e184a9166",
+      "name": "香菜黄油烤明虾",
+      "semantic_hash": "62ab99a1334845090ff9be7868adfcf64f2a6d9a410a007c3c6305a15363b8e8",
+      "operation_count": 16,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "5d54ed01a9114174727c8b5c",
+      "name": "黄油小饼干",
+      "semantic_hash": "af89bb5a069e33967ac3e77f196894ee6d90f957196a9095cc38d823f97a071d",
+      "operation_count": 14,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "5c8200d96dc6e123a037a202",
+      "name": "豆豉蒸腐竹",
+      "semantic_hash": "26fc8e29a4b837bbc4a69b5c7328daac45a49bb13315e351c2e3f4e58bb874a6",
+      "operation_count": 16,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "5caf2ea3e78bfc455f2d5cad",
+      "name": "快手香蕉派",
+      "semantic_hash": "11c96366509b3cb3f5dedc77da3e0827f9bf069658c11bca83fae29ec9424ea6",
+      "operation_count": 9,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "657951b7c458a177d84386bc",
+      "name": "芋头蛋卷",
+      "semantic_hash": "e3881eaeb97c86230a6f81dd038cf4e7ba9cfd03467ecd3b85c736a580dabe57",
+      "operation_count": 16,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "5caf2f00e78bfc455f2d5cb7",
+      "name": "拿破仑酥",
+      "semantic_hash": "5e93075fa29e74366ba89e4087d9693e417309778ed6a03db9aac6ef411268e6",
+      "operation_count": 29,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "657951cac458a177d84387a1",
+      "name": "五味乌鸡煲",
+      "semantic_hash": "a4553c32b7d618452f5db234813eb66cd0ac76afc2293f0ef97decaa7678a4c8",
+      "operation_count": 10,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "662f2c398b2aa2265e11548f",
+      "name": "榴莲酥",
+      "semantic_hash": "f79e9fa21da96cb0029372b4925b38ebd8f1bfa436fe60fbb40dfcddaf57ddbd",
+      "operation_count": 6,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "6528fae945256c3ad7c2648f",
+      "name": "小碗蒸肉",
+      "semantic_hash": "1075a4d6fdf13556bf2e93f99dc1e3187e635169b142076044c21712e172f672",
+      "operation_count": 25,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "5fe197175f8f38795ea6fe77",
+      "name": "豆豉蒸腐竹（台式）",
+      "semantic_hash": "e62f2bb63be7762e5c5e8664c55ee147d7205eb82bee8952f5fe32b049931e54",
+      "operation_count": 17,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "5f5ecdaadad9417a1b793a9f",
+      "name": "广式月饼（台式）",
+      "semantic_hash": "526dd5b52ac08276659979c2b9c5d4bdf3f5d7eb2708200671e35c79133e6f84",
+      "operation_count": 16,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "6492a7c6933a4b7277dee237",
+      "name": "Q弹果冻鸡蛋羹",
+      "semantic_hash": "382e02f43c465b8ee68082b2e47446a7ce9d70aa3c293d47c476e99dd99e8431",
+      "operation_count": 11,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "58e70ae1a3fd4a750f4b75b0",
+      "name": "韩式泡菜鸦片鱼头",
+      "semantic_hash": "de77259873211ee24087f800f901cfd646820d38df3b7beb59a80fb503f42a3e",
+      "operation_count": 15,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "65795250c458a177d8438dea",
+      "name": "南瓜鸡腿煲",
+      "semantic_hash": "11f71dff2495d91b2a5a0bdc337246a07bbf420f6d8b5a53232e3dbd86d5407a",
+      "operation_count": 16,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "5caf2ba9e78bfc455f2d5c55",
+      "name": "松子枣泥拉糕",
+      "semantic_hash": "ad59d37f0a9b1ff257b168e707f919967b2e1e1799dad6f6a0c190c10cc2bdfc",
+      "operation_count": 23,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "66715324bfbee338853895c7",
+      "name": "轻松一锅蒸",
+      "semantic_hash": "e70dfa071829aa4519575faa4f7b564af4014a1999cc634cbf03746ebf95d6c7",
+      "operation_count": 20,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "65433d5545256c3ad7c26fbb",
+      "name": "清蒸火焙鱼",
+      "semantic_hash": "6e295e5cb9d707522217a24270155a7421977007f0b71c80df6f0c1c0c67bda3",
+      "operation_count": 10,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "5f73fee8a6daaa3b53ba043c",
+      "name": "美式薯条",
+      "semantic_hash": "57bf518c8da9e8d8bb53692600daab9935df27bcc41e0a46fcf3fbb234209bc0",
+      "operation_count": 6,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "5a38d6b3f254230b76e2b50f",
+      "name": "蒜香烤茄子",
+      "semantic_hash": "5878b9abc6dba726b038c5bdd9df42396a7d16393649a481a91db032b9182cca",
+      "operation_count": 17,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "58e70b139f6429675ec8060c",
+      "name": "葱香土豆泥",
+      "semantic_hash": "cd65880781179ca7c9414a1998dfecfa7320b88f4603106555cd2ef31fc0ceb9",
+      "operation_count": 12,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "6528fad345256c3ad7c2638b",
+      "name": "酿莴苣",
+      "semantic_hash": "c91d33f2790805027e887f1e8f00f4d8d53e090bb3a871c355869e8a2a706d73",
+      "operation_count": 13,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "65795251c458a177d8438e01",
+      "name": "虾米豆豉蒸排骨",
+      "semantic_hash": "4d465843214c9c5abb81241ffff0573229bff534e963bbddde3a40a463e36604",
+      "operation_count": 13,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "64706f256f734220a4e24b47",
+      "name": "祛寒羊肉汤",
+      "semantic_hash": "d648e74db771a69e71e105918cd3e23a66614f34f66aa42a6e66039767f54500",
+      "operation_count": 13,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "5c860d6298d5bc7e184a907c",
+      "name": "雪媚娘",
+      "semantic_hash": "5b0188fe59ed520036f7802cbe04e5a900400518161c2e849792265f6442a49f",
+      "operation_count": 15,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "5d565e87a9114174727c8bad",
+      "name": "半熟芝士蛋糕",
+      "semantic_hash": "f32f5b67a688cf0c4eb7b0a650be3dc4cb26aff2d369961785510f1f15c2026b",
+      "operation_count": 16,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "5cc5508e01ea5c2931c919f5",
+      "name": "黑森林蛋糕",
+      "semantic_hash": "1851793c7fce16cd3a27c1c435314efda3aed387f65dfa60ee3077996e1c0bb4",
+      "operation_count": 19,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "5fe1975b5f8f38795ea6fe81",
+      "name": "双椒鳙鱼头（台式）",
+      "semantic_hash": "1a0c8743316c3ffa9a7b69d7ebbf2dae567c462f8573861bb5136584925bb301",
+      "operation_count": 16,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "5fc5f9e15f8f38795ea6fca6",
+      "name": "广式叉烧",
+      "semantic_hash": "5e0bfaa99d5afc0a9e887f41909be94a8f9bb6ec8b325940e1988c419aaa050a",
+      "operation_count": 13,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "5ff6ba8163f7535cecbfa247",
+      "name": "碳烤基围虾",
+      "semantic_hash": "38587b62ccbbeca6913deb62106a9abc12664e20d8ea47efa727d197fe758136",
+      "operation_count": 11,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "58e70b0e9f6429675ec805d8",
+      "name": "清蒸鲈鱼",
+      "semantic_hash": "4c28c7b07b4328721af675c9fb9698d971e8db9f05953bff9af471c68c74956f",
+      "operation_count": 12,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "6510fb3445256c3ad7c25c93",
+      "name": "芝士番茄土豆泥",
+      "semantic_hash": "4ff8cceb8c6d3066808aa1304031b48bf0cf73a6ed842a0174a92bb36fd09002",
+      "operation_count": 18,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "5d638e17a9114174727c8d77",
+      "name": "草莓蛋挞",
+      "semantic_hash": "c5d72c3a58bbc69c9830e5b4cb1ad6003874d9e5b3021764a16f942b0956b5f3",
+      "operation_count": 16,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "64706f406f734220a4e24b57",
+      "name": "竹荪排骨汤",
+      "semantic_hash": "2531253041273fb80d0f15937d2e3c61e4c34656c38c602e6f95dc1e10a8d3be",
+      "operation_count": 19,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "645c58f7614c1208ae1f5a60",
+      "name": "蒸茄龙",
+      "semantic_hash": "fa7e7697578506d2ef988c2fc8eb156c6c9723f53958c84ffcdaa80287590efe",
+      "operation_count": 14,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "647ea23d85ea9528599ccb51",
+      "name": "香辣烤小龙虾",
+      "semantic_hash": "020366f93c9af8cbd24fd31ae54308c34f9e67e5acd19e6fe4e9ff17d471eb48",
+      "operation_count": 12,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "5cc7e0404a21a4301960aef1",
+      "name": "糯米烧麦",
+      "semantic_hash": "c1ca96ebbfe6af77e2f3b317661f3f9726aab8ebc1d5ea2aa500ed74950cd018",
+      "operation_count": 34,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "5caf2ec7e78bfc455f2d5cb0",
+      "name": "清蒸带鱼",
+      "semantic_hash": "14ebc77499dd57051227e658e4d7db5c7ff931c5c30b4ea2c3673ad2e0a8a361",
+      "operation_count": 13,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "65433d6a45256c3ad7c270ab",
+      "name": "手工鸡蛋豆腐",
+      "semantic_hash": "65327962291956d5ac61602a101abe2915b979474e415161486617c95cf9cb50",
+      "operation_count": 8,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "645c5889614c1208ae1f5a24",
+      "name": "立夏饭",
+      "semantic_hash": "84c789291a5e88bafb2ef142d31898738d5aa9369e1b36e26e79c405b49deeee",
+      "operation_count": 10,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "668759f0bfbee3388538968e",
+      "name": "嫩烤鸡胸肉",
+      "semantic_hash": "6868f62dae7b499be065651a4718f22bfc1285fc0eb41d8a58a93e22c9b79602",
+      "operation_count": 11,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "5e6f131cd8dcd921c6736129",
+      "name": "蒸咸蛋酿苦瓜",
+      "semantic_hash": "417b82e825956dac68732ce06d62382a75aeb8d2d2ca10437d4f7ef03f023172",
+      "operation_count": 10,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "5caf2e8fe78bfc455f2d5caa",
+      "name": "红豆糯米糕",
+      "semantic_hash": "aba711e29045ac8730f73aa5adeeeb55c8f1405206e7187d6deae654e4ba1dc0",
+      "operation_count": 12,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "5caf2ddbe78bfc455f2d5c96",
+      "name": "糖霜饼干",
+      "semantic_hash": "046f807ab44877ebe767079d1c85f6015a5238ba4e252ccf6a34a2ba54a4d314",
+      "operation_count": 19,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "5c86417e98d5bc7e184a90a8",
+      "name": "抹茶红豆白玉卷",
+      "semantic_hash": "3cc7eac3fd1213d42f2a0814a7de377e5a46c1707a5a9cccbcfce52f89c45c90",
+      "operation_count": 38,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "5d664a986601a865649f9aba",
+      "name": "大理石饼干",
+      "semantic_hash": "5e8d6fff077f3b88e3483686c349e2179e962707be3069b88074c0d578ebb43a",
+      "operation_count": 21,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "65433a5545256c3ad7c26a5b",
+      "name": "莲藕虾肉饼",
+      "semantic_hash": "775812b5f32518833df0e40fc71324f8c9465b4510f10a81eac43d8c812af088",
+      "operation_count": 9,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "6889acfbf5dd4d1e1f228e84",
+      "name": "沙参老鸭麦冬汤",
+      "semantic_hash": "0fdeb627aac6cbb2f5a6ba0bcf8a3c289c0a902e935d12c911a398c7f43b30ef",
+      "operation_count": 12,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "5c81cf416dc6e123a037a1f0",
+      "name": "原味墨西哥面包",
+      "semantic_hash": "837471ae90b1f9b073e0107810e21fb91da7008ef0f12fa55968680b835d1c7d",
+      "operation_count": 15,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "64f5510a255d3b02f695fde1",
+      "name": "腊味蒸素鸡",
+      "semantic_hash": "7175d11479442c56256979f8d6da4c0bcb343e2d20fc37368ac16487f499a3ef",
+      "operation_count": 10,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "5c8762bd98d5bc7e184a917c",
+      "name": "烤鱿鱼干",
+      "semantic_hash": "e2375eb567132d3526b7e2c4194d0fd7453d6203ffc97b0551db02992be5b347",
+      "operation_count": 8,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "5fe1972d5f8f38795ea6fe7b",
+      "name": "秘制叉烧",
+      "semantic_hash": "4b6070491f1203304febca66189f084e15ca78e9cb5e2b4d40cc81c7732243c6",
+      "operation_count": 13,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "65f7f4ee85eb6c79dfb992ff",
+      "name": "皂角银耳羹",
+      "semantic_hash": "720165b4567ae25dd387283246bfb704d1ec7f14c91a18d0dd577ee60d7cfa02",
+      "operation_count": 17,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "600e4f733f3ff83ca1e5191a",
+      "name": "柠檬干",
+      "semantic_hash": "a1034dbc5f605f40041f84ab94196b10a6cd7991636b44b6c329292d373a59f5",
+      "operation_count": 7,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "5d5665cea9114174727c8be4",
+      "name": "培根披萨",
+      "semantic_hash": "14fa30d1c4a91ea15f26a4cf36181488256043d9f39e37d8e27c562a9e0072e2",
+      "operation_count": 22,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "5cc7eb394a21a4301960af00",
+      "name": "银鱼蒸蛋",
+      "semantic_hash": "a66bf7920e114eb2b5c041dcd811a2be963ac757911909ff2c388da8a7d47d38",
+      "operation_count": 11,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "5c871bef98d5bc7e184a90dd",
+      "name": "香烤鲫鱼",
+      "semantic_hash": "b9381b42fd9885955b53451e832ac6335c223240c16a25bbc38a203c74b52d61",
+      "operation_count": 11,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "5cc7e58a4a21a4301960aefc",
+      "name": "温州鱼饼",
+      "semantic_hash": "2bc4e81794ca33cd95b98d16773f115d4fe44b25d7abba466afd1a68db52f8a4",
+      "operation_count": 15,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "5d6656036601a865649f9ae1",
+      "name": "豆沙手撕包",
+      "semantic_hash": "c200bdd81e134fdc9e8cc86d44224fc4e8309549f58bbfeb9dfa82029c6e0c47",
+      "operation_count": 25,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "66cec69b1142545e3856e07e",
+      "name": "亲朋欢聚套餐",
+      "semantic_hash": "3ccc0dccf7e9b2e2a946d0bf76ef6f881b9effc2f1dd50a0a54cf985248690ce",
+      "operation_count": 20,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "5e4f4107d8dcd921c6735f7d",
+      "name": "披萨面团",
+      "semantic_hash": "6fa6565bd321341630eaa6c990bc82ae5bd01dc7728e265333c4c02359d163e3",
+      "operation_count": 14,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "63495f5a728bf96da1acfa3a",
+      "name": "油醋汁剁肉饼蒸和乐蟹",
+      "semantic_hash": "ed37121ae648e0f70b6b14315f0cb02baef2134dda9e48d3149b3a8e61cc96c5",
+      "operation_count": 13,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "5c80d49c6dc6e123a037a1c5",
+      "name": "珍珠爆浆蛋糕",
+      "semantic_hash": "d3297d1e8d694b5071bb679f97801169d5824e2c607d0eedcb96dbb7c1b44786",
+      "operation_count": 28,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "6528fa7e45256c3ad7c25fcb",
+      "name": "豆沙松糕",
+      "semantic_hash": "b090c88a3e40b9819312ae0536844bef31daeef529228c6c1df2096e6242ceb5",
+      "operation_count": 17,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "662e07388b2aa2265e115477",
+      "name": "法式羊排",
+      "semantic_hash": "6929b5bfaf4e4874f0c90a819c340ab5577d188726877516bbf7864491d097ad",
+      "operation_count": 6,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "68eefee6f5dd4d1e1f228fee",
+      "name": "茯苓饼干",
+      "semantic_hash": "32fe8bbebd54abd2763f4d3b40c243006c7f7b2f31c84d853ac2aa29dc676ee9",
+      "operation_count": 12,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "6544c6c245256c3ad7c27455",
+      "name": "本帮白切鸡",
+      "semantic_hash": "e0473fb5614cf4b0e7ee61696cd7a068cf191f06301942e4798f804ae3d20187",
+      "operation_count": 31,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "6510fb7845256c3ad7c25cd8",
+      "name": "京韵酱香烤鸡",
+      "semantic_hash": "f5fd6f9019aa1179bbf553466c3e182f9288b288ff7aa30b6db4432f117d25fb",
+      "operation_count": 12,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "65433d7145256c3ad7c270fb",
+      "name": "金银蒜蒸鸡胸肉",
+      "semantic_hash": "2c9120f53a01b07ef3cf2c6d374648e17f66f343b47200d746f19f28fa173e57",
+      "operation_count": 13,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "5caf2ce0e78bfc455f2d5c7a",
+      "name": "土豆焖饭",
+      "semantic_hash": "34be38ca685c835ed4cd1bba519537fe265597d94642f268e65fd6106fa0c591",
+      "operation_count": 14,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "6543408e45256c3ad7c2744b",
+      "name": "蒜蓉粉丝烤茄子",
+      "semantic_hash": "7482c00c9704889a2afb1d2702eef8175821aef161cc8704e227d4c2c01dc9cf",
+      "operation_count": 19,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "5dad486b6601a865649f9c15",
+      "name": "香菇烤芦笋",
+      "semantic_hash": "0a157f238e0e0ecefa9464e4b1bfd0d3b22d77f8838dc4b928b98f504f03c41f",
+      "operation_count": 11,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "5fe197255f8f38795ea6fe79",
+      "name": "麻辣对虾",
+      "semantic_hash": "5712e04a1b87bff490479d352f49530fc024803fe291d343f564b8363727c4e8",
+      "operation_count": 15,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "65795214c458a177d8438b22",
+      "name": "血糯米仙草奶茶",
+      "semantic_hash": "41fbf200e460e539e013bf1894a0deac9845fd114eb5cb393598974ef71c1665",
+      "operation_count": 20,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "5c8622ee98d5bc7e184a908b",
+      "name": "粉蒸藕丁",
+      "semantic_hash": "5568a419a06206a5999ccff844669f9ebaa47bbe87d2ea9d54093dddec0c2ee5",
+      "operation_count": 8,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "66dea6480d586d528ee9dd7c",
+      "name": "烹香酷炒汇",
+      "semantic_hash": "4664445c9a5600083e84be9cc6f10648eb90ce4712416bfee5d1354e09d815e0",
+      "operation_count": 32,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "5c82027a6dc6e123a037a209",
+      "name": "荷叶蒸蟹饭",
+      "semantic_hash": "8b27c13f3633737444d6bf15b5fd65cc170d14cd0ca84eb35f36d32a5fb7c1a4",
+      "operation_count": 22,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "5d54ecfea9114174727c8b5b",
+      "name": "红枣酥饼",
+      "semantic_hash": "430c2aed0068f70c2f422fa1bb7af1d5f2634b6f6828b6dd91a7ee94114dc5bb",
+      "operation_count": 20,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "5c80cea36dc6e123a037a1be",
+      "name": "香辣烤鸡爪",
+      "semantic_hash": "702ed446e705d17a8c3179fbc2ea2cfabe31433383bf022759bf1bc5e98bcf8a",
+      "operation_count": 24,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "5fe197285f8f38795ea6fe7a",
+      "name": "玛格丽特",
+      "semantic_hash": "91171a9ddaa0ee146e181835b84934455b0f3cc4b1910e9c8c25aeccf79da39d",
+      "operation_count": 17,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "6528fa4745256c3ad7c25d61",
+      "name": "紫甘蓝沙拉",
+      "semantic_hash": "bdf13ae09605c400841c834a39e1168fef206ad2d3862a4aa9cad5f17e84ad32",
+      "operation_count": 11,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "65781f17c458a177d8438652",
+      "name": "巴斯克蛋糕",
+      "semantic_hash": "9946e5e66aaf3adecf49a792ca4bf52d914936c0d5dfc44273c50b02d3a9a497",
+      "operation_count": 14,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "58e70b109f6429675ec805ed",
+      "name": "蒜蓉粉丝蒸扇贝",
+      "semantic_hash": "d269772cf9b8b4f612eab3b9da08fdd8cf752a20013b760229187683acd95307",
+      "operation_count": 15,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "5dad41646601a865649f9c06",
+      "name": "蔬菜塔",
+      "semantic_hash": "f2c8c0bb5ce32c1435bd4eabd540797b0e0f45314e9e86840f8ae1aa3f56468c",
+      "operation_count": 14,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    },
+    {
+      "recipe_id": "6492a828933a4b7277dee6aa",
+      "name": "蜜豆卷馒头",
+      "semantic_hash": "bd9c49aa54aafc20fbe477b05c4c5a4fdd4248743a7ef8c8f790fe894335d444",
+      "operation_count": 19,
+      "decision": "APPROVED_FOR_P4_BY_DELEGATION",
+      "checks": [
+        "SCHEMA",
+        "DAG_AND_MATERIAL_PATH",
+        "DURATION_AND_SOURCE",
+        "PHYSICAL_DEVICE_MAPPING",
+        "SINGLE_HUMAN",
+        "PASSIVE_MARINATION"
+      ]
+    }
+  ]
+}

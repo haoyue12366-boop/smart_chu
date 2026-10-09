@@ -1,0 +1,17 @@
+{
+  "authorization_id": "p4-delegated-review-2026-09-29",
+  "recorded_at": "2026-09-29T20:42:05.149363+08:00",
+  "source": "USER_MESSAGE",
+  "actor_kind": "DELEGATED_AGENT",
+  "reviewer": "Codex（用户授权代理审核）",
+  "approve_for_p4": true,
+  "base_content_hash": "cae611943e691787fa115b12d4f8972c5f4bce12df52e85bf53e7b18e68edeb2",
+  "user_instruction": "很好，现在更新docs里面的文档和数据，数据全权授予你代我审核通过即可，开始为P4阶段做准备",
+  "scope": "代理审核固定 V3 的现有100菜执行路径、27个设备配置及已开放S02/H02规则，接受有来源的计划估计，准备P4输入；不要求用户再次逐菜签字。",
+  "limits": [
+    "审核身份如实记录为代理，不伪装HUMAN或实测。",
+    "保留原始CSV及历史发布。",
+    "定性物料不转成虚构数量；没有工艺依据的恢复规则保持关闭。",
+    "P4实现与官方接口验收单独验证。"
+  ]
+}

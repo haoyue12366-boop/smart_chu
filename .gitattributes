@@ -1,0 +1,5 @@
+# 不转换知识发布的换行符：manifest 中的 SHA256 绑定文件原始字节。
+/data/** -text
+
+# Shell 脚本保持 Linux 可执行的行尾格式。
+*.sh text eol=lf

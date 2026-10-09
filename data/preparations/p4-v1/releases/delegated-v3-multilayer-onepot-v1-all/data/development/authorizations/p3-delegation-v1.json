@@ -1,0 +1,15 @@
+{
+  "authorization_id": "delegated-review-2026-09-28",
+  "recorded_at": "2026-09-28T10:25:18.587897+00:00",
+  "source": "USER_MESSAGE",
+  "user_instruction": "现在授权你全权替我完善数据审核和参数设计，尽快开始下一阶段任务，我相信你",
+  "scope": "委托代理复核数据、设计参数并开始P3；沿用已有开发数据许可",
+  "reviewer": "Codex（用户委托的模型审核者）",
+  "actor_kind": "MODEL",
+  "limits": [
+    "估计不是实测",
+    "不伪装HUMAN审核记录",
+    "不覆盖原始CSV或旧发布",
+    "不自动通过competition正式人工审核门槛"
+  ]
+}

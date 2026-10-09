@@ -1,0 +1,236 @@
+{
+  "review_id": "p3-delegated-review-v2",
+  "actor_kind": "MODEL",
+  "authorization_ref": "delegated-review-2026-09-28",
+  "source_knowledge_version": "development-v3-rebased-v2",
+  "source_snapshot_hash": "906eb3ed104f4a91bac17647c70f450b9e75407f9111e216f6a44b1a5c4e933c",
+  "worksheet_sha256": "f68b107717df8d1294423403e71c0318013738f54b655239d5463c0ace6032e1",
+  "review_scope": "8组P3共享候选和5项公共参数；不等于100道菜逐项人工审核",
+  "formal_human_review_complete": false,
+  "runtime_rules_enabled": false,
+  "decisions": [
+    {
+      "id": "P3-S01",
+      "decision": "REQUIRES_SOURCE_RESTRUCTURING",
+      "reason": "拆出纯蒜加工与调酱/分半后再启用；两菜输入名义40g＋50g，暂不设净产率。",
+      "parameters": {
+        "nominal_input_g": 90,
+        "duration_sec": null,
+        "yield": null
+      },
+      "origin": "MODEL_SUGGESTION",
+      "measured": false
+    },
+    {
+      "id": "P3-S02",
+      "decision": "DEVELOPMENT_ESTIMATE_ACCEPTED",
+      "reason": "只覆盖两个原配方各150g、切6cm并按原步骤加水；保留两份身份，泡发独立；240秒是两个原120秒之和，不宣称提速。",
+      "parameters": {
+        "input_g_each": [
+          150,
+          150
+        ],
+        "length_mm": 60,
+        "scope": "whole_source_operations_including_water_addition",
+        "duration_sec": 240,
+        "duration_basis": "120+120; delegated conservative estimate",
+        "allocation": "各自源产物端口的完整1份；不将泡发前后重量混算",
+        "yield": null,
+        "quantity_extrapolation": false
+      },
+      "origin": "MODEL_SUGGESTION",
+      "measured": false
+    },
+    {
+      "id": "P3-S03",
+      "decision": "REQUIRES_SOURCE_RESTRUCTURING",
+      "reason": "先补泡发后净重，分离香菇切丁与其他食材/炒馅；不按份额推克重。",
+      "parameters": {
+        "duration_sec": null,
+        "hydrated_weight_g": null
+      },
+      "origin": "MODEL_SUGGESTION",
+      "measured": false
+    },
+    {
+      "id": "P3-S04",
+      "decision": "REQUIRES_SOURCE_RESTRUCTURING",
+      "reason": "先拆独立胡萝卜切丁端口；40g＋50g仅为名义投入，规格与纯切配耗时未独立记录。",
+      "parameters": {
+        "nominal_input_g": 90,
+        "duration_sec": null,
+        "dice_size_mm": null
+      },
+      "origin": "MODEL_SUGGESTION",
+      "measured": false
+    },
+    {
+      "id": "P3-H01",
+      "decision": "DEFERRED_THERMAL_BOUNDARY",
+      "reason": "480秒加热保持；先拆实际取出与倒汁/点缀，当前不启用两菜同蒸。",
+      "parameters": {
+        "heat_sec": 480,
+        "joint_load_sec": null,
+        "joint_unload_sec": null
+      },
+      "origin": "MODEL_SUGGESTION",
+      "measured": false
+    },
+    {
+      "id": "P3-H02",
+      "decision": "DEVELOPMENT_ESTIMATE_ACCEPTED",
+      "reason": "仅两份腐竹分盘、同普通蒸100℃720秒；采用显式模拟装卸热边界，不宣称实际设备效果已验证。 准备检查修正v1遗漏：另保留2×60秒设置程序/补水，完整预约1500秒。",
+      "parameters": {
+        "physical_resource": "steam_oven_1",
+        "mode": "普通蒸",
+        "temperature_c": 100,
+        "heat_sec": 720,
+        "preheat_sec": 300,
+        "load_sec": 120,
+        "unload_and_finish_sec": 240,
+        "load_basis": "30+90秒，含原装盘加水箱动作",
+        "unload_basis": "120+120秒，保留取出撒葱收尾",
+        "reservation_sec": 1500,
+        "thermal_boundary_model": "开发模拟：两盘装入及预热完成后统一开始有效热计时，程序停止时统一结束；之后单人完成取出和收尾",
+        "residual_heat_verified": false,
+        "source_dependency_rewrite_required": true,
+        "scope": "仅这两菜各原配方一份，不外推批量",
+        "setup_sec": 120,
+        "setup_basis": "保留两个op_008_01各60秒设置程序/补水，不去重"
+      },
+      "origin": "MODEL_SUGGESTION",
+      "measured": false
+    },
+    {
+      "id": "P3-H03",
+      "decision": "DISABLED_PENDING_PROCESS_EVIDENCE",
+      "reason": "饼干与面包同温同时间不构成实际烘焙兼容依据，当前保留分批。",
+      "parameters": {
+        "source_heat_sec": 720,
+        "enabled": false
+      },
+      "origin": "MODEL_SUGGESTION",
+      "measured": false
+    },
+    {
+      "id": "P3-H04",
+      "decision": "DISABLED_PENDING_PROCESS_EVIDENCE",
+      "reason": "鸡翅与饼干同炉缺隔离和工艺依据，作为参数匹配但拒绝合批的案例。",
+      "parameters": {
+        "source_heat_sec": 900,
+        "enabled": false
+      },
+      "origin": "MODEL_SUGGESTION",
+      "measured": false
+    },
+    {
+      "id": "P3-T01",
+      "decision": "DEVELOPMENT_ESTIMATE_ACCEPTED",
+      "reason": "沿用源开发预热估计；普通蒸100℃300秒、上下火180℃600秒；仅明确冷启动模型使用，未知设备状态不能当已就绪。",
+      "parameters": {
+        "steam100_sec": 300,
+        "oven180_sec": 600,
+        "measured": false
+      },
+      "origin": "MODEL_SUGGESTION",
+      "measured": false
+    },
+    {
+      "id": "P3-T02",
+      "decision": "DISABLED_PENDING_STATE_EVIDENCE",
+      "reason": "跨批预热复用暂关闭，免预热时长不填0；在P3-05实现状态门槛后才可启用有依据的规则。",
+      "parameters": {
+        "enabled": false,
+        "reuse_duration_sec": null
+      },
+      "origin": "MODEL_SUGGESTION",
+      "measured": false
+    },
+    {
+      "id": "P3-T03",
+      "decision": "DISABLED_PENDING_STATE_EVIDENCE",
+      "reason": "不采用温差公式，不推断180到200或蒸烤模式转换时长；通用解析器可测试，真实转换表不启用。",
+      "parameters": {
+        "enabled": false,
+        "transition_table": []
+      },
+      "origin": "MODEL_SUGGESTION",
+      "measured": false
+    },
+    {
+      "id": "P3-T04",
+      "decision": "DEVELOPMENT_ESTIMATE_ACCEPTED",
+      "reason": "只给H02提供显式模拟模型：人工装入120秒、取出收尾240秒；预热与有效热720秒单列。模型未代表残余热实测，其他热组不沿用。 两个设置程序/补水动作共120秒另外保留，不能并入预热后消失。",
+      "parameters": {
+        "applies_to": [
+          "P3-H02"
+        ],
+        "load_sec": 120,
+        "unload_and_finish_sec": 240,
+        "human_count": 1,
+        "effective_heat_start": "装入、预热均结束",
+        "effective_heat_end": "模拟程序停止",
+        "measured": false,
+        "setup_sec": 120
+      },
+      "origin": "MODEL_SUGGESTION",
+      "measured": false
+    },
+    {
+      "id": "P3-T05",
+      "decision": "DEVELOPMENT_ESTIMATE_ACCEPTED",
+      "reason": "首批仅S02源配方一份加一份；输出仍按两个原产物端口分别供给，不声明克重出成率，不创建实际库存；整组完成后供后继。",
+      "parameters": {
+        "applies_to": [
+          "P3-S02"
+        ],
+        "input_total_g": 300,
+        "mass_yield": null,
+        "allocation_shares": [
+          1,
+          1
+        ],
+        "allocation_scope": "不同源端口，禁止跨端口相加或混用",
+        "partial_release": false,
+        "holding_max_sec": null,
+        "storage_reuse_enabled": false
+      },
+      "origin": "MODEL_SUGGESTION",
+      "measured": false
+    }
+  ],
+  "processing_rules": [
+    {
+      "rule_id": "P3-S02-delegated-v1",
+      "rule_version": "development-scheduling-v3",
+      "kind": "SHARED_PREP",
+      "input_spec_ids": [],
+      "output_spec_ids": [],
+      "profile_ids": [],
+      "required_configuration": [],
+      "group_compatibility_predicate": "{\"schema_version\":\"group-rule-v1\",\"bindings\":[{\"recipe_id\":\"5c8200d96dc6e123a037a202\",\"operation_id\":\"op_001_01\",\"recipe_hash\":\"3222560f657dfac554250a753c666be0b1a091ad700ca6eaa7277118da9ba02b\",\"operation_hash\":\"d7e0a2795af5c9e0a07b06dd2685b4593025b3202ec1651ef0f25dce62934fc5\",\"processing_spec\":\"原份干腐竹150g切6cm及原步骤加水\",\"configuration_keys\":[\"human_1:cut-and-water\"]},{\"recipe_id\":\"5fe197175f8f38795ea6fe77\",\"operation_id\":\"op_001_01\",\"recipe_hash\":\"9b007f984fece70db6488b528df7581a64f542f1df9e0cfe47982f7163e4ad99\",\"operation_hash\":\"d82e78a395dcf599ebb71cc892724359fd6e676613c6e86bd45f5af4e853371f\",\"processing_spec\":\"原份干腐竹150g切6cm及原步骤加水\",\"configuration_keys\":[\"human_1:cut-and-water\"]}],\"duration_sec\":240,\"authority\":\"DELEGATED_DEVELOPMENT_ESTIMATE\",\"authorization_ref\":\"delegated-review-2026-09-28\",\"scope_note\":\"只覆盖两个原配方各150g、切6cm并按原步骤加水；保留两份身份，泡发独立；240秒是两个原120秒之和，不宣称提速。\"}",
+      "transition_duration_sec": null,
+      "evidence_refs": [
+        "delegated-review-2026-09-28",
+        "p3-delegated-review-v2:P3-S02"
+      ],
+      "review_status": "NEEDS_REVIEW"
+    },
+    {
+      "rule_id": "P3-H02-delegated-v1",
+      "rule_version": "development-scheduling-v3",
+      "kind": "STRICT_TOGETHER",
+      "input_spec_ids": [],
+      "output_spec_ids": [],
+      "profile_ids": [],
+      "required_configuration": [],
+      "group_compatibility_predicate": "{\"schema_version\":\"group-rule-v1\",\"bindings\":[{\"recipe_id\":\"5c8200d96dc6e123a037a202\",\"operation_id\":\"op_008_03\",\"recipe_hash\":\"3222560f657dfac554250a753c666be0b1a091ad700ca6eaa7277118da9ba02b\",\"operation_hash\":\"7cb9a0838af87216edf45c533c33426ace22ac9a7ee32fe47d5ea9a149ffd57e\",\"processing_spec\":\"原份腐竹普通蒸100℃\",\"configuration_keys\":[\"steam_oven_1:普通蒸:100℃\"]},{\"recipe_id\":\"5fe197175f8f38795ea6fe77\",\"operation_id\":\"op_008_03\",\"recipe_hash\":\"9b007f984fece70db6488b528df7581a64f542f1df9e0cfe47982f7163e4ad99\",\"operation_hash\":\"db769632b52956f3c2208191546d8c3acbd3af5ceae0d70f9c295dd406bbb655\",\"processing_spec\":\"原份腐竹普通蒸100℃\",\"configuration_keys\":[\"steam_oven_1:普通蒸:100℃\"]}],\"duration_sec\":720,\"authority\":\"DELEGATED_DEVELOPMENT_ESTIMATE\",\"authorization_ref\":\"delegated-review-2026-09-28\",\"scope_note\":\"仅两份腐竹分盘、同普通蒸100℃720秒；采用显式模拟装卸热边界，不宣称实际设备效果已验证。\"}",
+      "transition_duration_sec": null,
+      "evidence_refs": [
+        "delegated-review-2026-09-28",
+        "p3-delegated-review-v2:P3-H02"
+      ],
+      "review_status": "NEEDS_REVIEW"
+    }
+  ]
+}

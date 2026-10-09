@@ -1,0 +1,138 @@
+{
+  "$defs": {
+    "FieldChange": {
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Path",
+          "type": "string"
+        },
+        "before_json": {
+          "title": "Before Json",
+          "type": "string"
+        },
+        "after_json": {
+          "title": "After Json",
+          "type": "string"
+        }
+      },
+      "required": [
+        "path",
+        "before_json",
+        "after_json"
+      ],
+      "title": "FieldChange",
+      "type": "object"
+    },
+    "RecipeId": {
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "RecipeId",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "patch_id": {
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "Patch Id",
+      "type": "string"
+    },
+    "recipe_id": {
+      "$ref": "#/$defs/RecipeId"
+    },
+    "base_recipe_version": {
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "Base Recipe Version",
+      "type": "string"
+    },
+    "base_content_hash": {
+      "pattern": "^[a-f0-9]{64}$",
+      "title": "Base Content Hash",
+      "type": "string"
+    },
+    "action": {
+      "enum": [
+        "MODIFY",
+        "APPROVE",
+        "RETIRE"
+      ],
+      "title": "Action",
+      "type": "string"
+    },
+    "actor_kind": {
+      "enum": [
+        "HUMAN",
+        "MODEL"
+      ],
+      "title": "Actor Kind",
+      "type": "string"
+    },
+    "reviewer": {
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "Reviewer",
+      "type": "string"
+    },
+    "reviewed_at": {
+      "format": "date-time",
+      "title": "Reviewed At",
+      "type": "string"
+    },
+    "reason": {
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "Reason",
+      "type": "string"
+    },
+    "evidence_refs": {
+      "items": {
+        "minLength": 1,
+        "pattern": "\\S",
+        "type": "string"
+      },
+      "title": "Evidence Refs",
+      "type": "array"
+    },
+    "next_recipe_version": {
+      "anyOf": [
+        {
+          "minLength": 1,
+          "pattern": "\\S",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Next Recipe Version"
+    },
+    "changes": {
+      "default": [],
+      "items": {
+        "$ref": "#/$defs/FieldChange"
+      },
+      "title": "Changes",
+      "type": "array"
+    }
+  },
+  "required": [
+    "patch_id",
+    "recipe_id",
+    "base_recipe_version",
+    "base_content_hash",
+    "action",
+    "actor_kind",
+    "reviewer",
+    "reviewed_at",
+    "reason",
+    "evidence_refs"
+  ],
+  "title": "ReviewPatch",
+  "type": "object"
+}

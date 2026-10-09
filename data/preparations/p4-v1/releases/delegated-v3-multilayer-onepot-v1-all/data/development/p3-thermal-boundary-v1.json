@@ -1,0 +1,26 @@
+{
+  "amendment_id": "p3-thermal-boundary-v1",
+  "base_release_id": "development-v3-p3-preparation-v1-all",
+  "base_content_hash": "0813e09913b7a24bc69e5a903e36effdff7a64eea0b071f5f036b2b21985a702",
+  "authorization_ref": "delegated-review-2026-09-28",
+  "authority": "DELEGATED_DEVELOPMENT_ESTIMATE",
+  "review_status": "NEEDS_REVIEW",
+  "formal_human_review_complete": false,
+  "measured": false,
+  "rule_id": "P3-H02-delegated-v1",
+  "thermal_model": "COLD_LOAD_SETUP_PREHEAT_HEAT_STOP_UNLOAD",
+  "scope_note": "仅开发模拟：冷装入，全部装入后逐项设置/补水，共同预热；到温后两成员各计720秒有效加热；此后停止有效加热并逐一取出。残余热、开门温降与实机同炉效果未测定。不得用于实机安全或正式人工审核结论。",
+  "logical_port_note": "LOAD/PREPARE/UNLOAD各成员逻辑端口以整组阶段开始/完成为边界，所有源人工动作按原时长顺序执行；保留设置后立即预热、预热后立即加热的源约束。",
+  "source_heat_sec": 720,
+  "source_operation_count": 10,
+  "outer_duration_sec": 1500,
+  "stage_durations_sec": {
+    "LOAD": 120,
+    "PREPARE": 120,
+    "PREHEAT": 300,
+    "HEAT": 720,
+    "UNLOAD": 240
+  },
+  "cross_batch_reuse_enabled": false,
+  "unreviewed_temperature_conversion_enabled": false
+}

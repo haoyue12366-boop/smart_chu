@@ -1,0 +1,199 @@
+{
+  "overview": {
+    "finishTime": "12:30",
+    "timeSpent": "40",
+    "timeSave": "40",
+    "recipeCount": 2
+  },
+  "cookingTimeline": [
+    {
+      "name": "照烧鸡腿",
+      "product": "烤箱",
+      "startTime": "11:50",
+      "endTime": "12:30",
+      "timeSpent": "40"
+    },
+    {
+      "name": "清炒西兰花",
+      "product": "灶具",
+      "startTime": "11:50",
+      "endTime": "12:30",
+      "timeSpent": "40"
+    }
+  ],
+  "ingredientsSummary": [
+    {
+      "type": "荤菜",
+      "list": [
+        {
+          "name": "鸡腿",
+          "unit": "500g"
+        }
+      ]
+    },
+    {
+      "type": "素菜",
+      "list": [
+        {
+          "name": "西兰花",
+          "unit": "300g"
+        }
+      ]
+    },
+    {
+      "type": "调味品",
+      "list": [
+        {
+          "name": "照烧酱",
+          "unit": "50g"
+        },
+        {
+          "name": "盐",
+          "unit": "5g"
+        }
+      ]
+    }
+  ],
+  "detailTimeline": [
+    {
+      "timeInterval": "0-10",
+      "title": "食材处理",
+      "type": 1,
+      "list": [
+        "准备鸡腿，清洗并划刀备用",
+        "准备西兰花，清洗并切成小朵备用"
+      ]
+    },
+    {
+      "timeInterval": "10-20",
+      "title": "腌制备料",
+      "type": 2,
+      "list": [
+        "将鸡腿与照烧酱腌制10分钟"
+      ]
+    },
+    {
+      "timeInterval": "30-38",
+      "title": "爆炒",
+      "type": 4,
+      "recipeNames": [
+        "清炒西兰花"
+      ],
+      "list": [
+        "将西兰花放入炒锅，设置大火翻炒8分钟"
+      ],
+      "parameters": [
+        {
+          "recipeName": "清炒西兰花",
+          "temperature": "大火",
+          "time": 8
+        }
+      ]
+    },
+    {
+      "timeInterval": "10-20",
+      "title": "预热",
+      "type": 5,
+      "recipeNames": [
+        "照烧鸡腿"
+      ],
+      "list": [
+        "将烤箱预热，设置烘烤模式200℃，预热10分钟"
+      ],
+      "parameters": [
+        {
+          "recipeName": "照烧鸡腿",
+          "temperature": 200,
+          "time": 10
+        }
+      ]
+    },
+    {
+      "timeInterval": "20-40",
+      "title": "烘烤",
+      "type": 5,
+      "recipeNames": [
+        "照烧鸡腿"
+      ],
+      "list": [
+        "将照烧鸡腿放入烤箱，设置烘烤模式200℃，烹饪20分钟"
+      ]
+    },
+    {
+      "timeInterval": "38-40",
+      "title": "出锅装盘",
+      "type": 6,
+      "list": [
+        "清炒西兰花出锅装盘",
+        "照烧鸡腿取出装盘并浇汁"
+      ]
+    }
+  ],
+  "recipeDetail": [
+    {
+      "name": "照烧鸡腿",
+      "majorIngredients": [
+        {
+          "name": "鸡腿",
+          "unit": "500g"
+        }
+      ],
+      "minorIngredients": [
+        {
+          "name": "照烧酱",
+          "unit": "50g"
+        }
+      ],
+      "cookingSteps": [
+        {
+          "describe": "准备鸡腿，清洗并划刀备用"
+        },
+        {
+          "describe": "将鸡腿与照烧酱腌制10分钟"
+        },
+        {
+          "describe": "将鸡腿放入烤箱，设置烘烤模式200℃，烹饪20分钟",
+          "cookingParameters": {
+            "mode": "烘烤模式",
+            "temperature": "200",
+            "time": "20"
+          }
+        },
+        {
+          "describe": "取出照烧鸡腿，装盘浇汁即可"
+        }
+      ]
+    },
+    {
+      "name": "清炒西兰花",
+      "majorIngredients": [
+        {
+          "name": "西兰花",
+          "unit": "300g"
+        }
+      ],
+      "minorIngredients": [
+        {
+          "name": "盐",
+          "unit": "5g"
+        }
+      ],
+      "cookingSteps": [
+        {
+          "describe": "准备西兰花，清洗并切成小朵备用"
+        },
+        {
+          "describe": "将西兰花放入炒锅，设置大火翻炒8分钟",
+          "cookingParameters": {
+            "mode": "爆炒",
+            "temperature": "大火",
+            "time": "8"
+          }
+        },
+        {
+          "describe": "清炒西兰花出锅装盘即可"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "authorization_id": "layered-devices-v1:user-confirmation:2026-10-08",
+  "source": "USER_MESSAGE",
+  "actor_kind": "DELEGATED_AGENT",
+  "reviewer": "DELEGATED_AGENT:Codex（用户授权代理审核）",
+  "recorded_at": "2026-10-08T10:59:22+08:00",
+  "user_messages": [
+    "两台独立设备，各三层，允许按各菜时长分层进出",
+    "蒸箱和烤箱不同层只有相同温度才能复用",
+    "不用测试，改好了告诉我"
+  ],
+  "base_release_id": "delegated-v3-cook-finish-v1-all",
+  "base_content_hash": "861f8a7cdcb6bfd4c8f681232a488c96f4eeea1f25f18f1e40cb278d31d918d0",
+  "confirmed_devices": [
+    {"device_instance_id": "steam_oven_1", "physical_resource_id": "steam_oven_1", "component_id": "chamber", "capacity": 3},
+    {"device_instance_id": "oven_1", "physical_resource_id": "oven_1", "component_id": "chamber", "capacity": 3}
+  ],
+  "review_scope": "按用户确认更新两个独立腔体的三层容量、同温兼容层位复用规则及其内容绑定；保留全部原菜谱工艺、人工、设备映射和来源。",
+  "compatibility": "同一腔体任何重叠时段必须温度完全相同，且原有模式及湿度等腔体状态兼容；不同层可按各菜原时长独立进出。配置不明确或预约内配置变化时保持整腔独占。",
+  "strict_together_policy_override": "本新版本采用独立层位复用，关闭可选 STRICT_TOGETHER 跨菜完整热流程共批；保留共享前处理和原菜固定工艺。",
+  "new_kitchen_measurements": false,
+  "formal_human_review_complete": false,
+  "tests_requested": false
+}

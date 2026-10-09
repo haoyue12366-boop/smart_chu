@@ -1,0 +1,4200 @@
+[
+  {
+    "row": 1,
+    "recipe_id": "5d54bae2a9114174727c8b20",
+    "stages": [
+      {
+        "step": 1000,
+        "inputs": [
+          "raw_005",
+          "raw_006"
+        ],
+        "outputs": [
+          {
+            "id": "rice",
+            "name": "蒸熟并拨松的米饭",
+            "state": "蒸熟并拨松的米饭"
+          }
+        ]
+      },
+      {
+        "step": 1,
+        "inputs": [
+          "raw_002",
+          "raw_003"
+        ],
+        "outputs": [
+          {
+            "id": "veg",
+            "name": "洗净切碎的洋葱胡萝卜",
+            "state": "洗净切碎的洋葱胡萝卜"
+          }
+        ]
+      },
+      {
+        "step": 2,
+        "inputs": [
+          "raw_004"
+        ],
+        "outputs": [
+          {
+            "id": "ham",
+            "name": "切碎火腿肠",
+            "state": "切碎火腿肠"
+          }
+        ]
+      },
+      {
+        "step": 3,
+        "inputs": [
+          "raw_001"
+        ],
+        "outputs": [
+          {
+            "id": "wings",
+            "name": "洗净去骨鸡翅",
+            "state": "洗净去骨鸡翅"
+          }
+        ]
+      },
+      {
+        "step": 4,
+        "inputs": [
+          "wings",
+          {
+            "id": "raw_008",
+            "fraction": "1/4"
+          },
+          "raw_009",
+          {
+            "id": "raw_010",
+            "fraction": "1/2"
+          },
+          {
+            "id": "raw_011",
+            "fraction": "1/2"
+          }
+        ],
+        "outputs": [
+          {
+            "id": "seasoned",
+            "name": "拌匀调料的鸡翅",
+            "state": "拌匀调料的鸡翅"
+          }
+        ]
+      },
+      {
+        "step": 5,
+        "inputs": [
+          "seasoned"
+        ],
+        "outputs": [
+          {
+            "id": "marinated",
+            "name": "腌好的鸡翅",
+            "state": "腌好的鸡翅"
+          }
+        ]
+      },
+      {
+        "step": 6,
+        "inputs": [
+          "veg",
+          "ham",
+          "rice",
+          {
+            "id": "raw_008",
+            "fraction": "1/2"
+          }
+        ],
+        "outputs": [
+          {
+            "id": "fried_rice",
+            "name": "炒匀的蔬菜火腿米饭",
+            "state": "炒匀的蔬菜火腿米饭"
+          }
+        ]
+      },
+      {
+        "step": 7,
+        "inputs": [
+          "fried_rice",
+          "raw_007",
+          {
+            "id": "raw_010",
+            "fraction": "1/2"
+          },
+          {
+            "id": "raw_011",
+            "fraction": "1/2"
+          }
+        ],
+        "outputs": [
+          {
+            "id": "filling",
+            "name": "调味炒饭馅",
+            "state": "调味炒饭馅"
+          }
+        ]
+      },
+      {
+        "step": 8,
+        "inputs": [
+          "marinated",
+          "filling"
+        ],
+        "outputs": [
+          {
+            "id": "stuffed",
+            "name": "填饭并封口的鸡翅",
+            "state": "填饭并封口的鸡翅"
+          }
+        ]
+      },
+      {
+        "step": 9,
+        "inputs": [
+          "stuffed",
+          {
+            "id": "raw_008",
+            "fraction": "1/4"
+          }
+        ],
+        "outputs": [
+          {
+            "id": "oiled",
+            "name": "刷油的鸡翅包饭生坯",
+            "state": "刷油的鸡翅包饭生坯"
+          }
+        ]
+      },
+      {
+        "step": 10,
+        "inputs": [
+          "oiled"
+        ],
+        "outputs": [
+          {
+            "id": "loaded",
+            "name": "装入烤箱的鸡翅包饭",
+            "state": "装入烤箱的鸡翅包饭"
+          }
+        ]
+      },
+      {
+        "step": 11,
+        "inputs": [
+          "loaded"
+        ],
+        "outputs": [
+          {
+            "id": "cooked",
+            "name": "烤熟鸡翅包饭",
+            "state": "烤熟鸡翅包饭"
+          }
+        ]
+      },
+      {
+        "step": 12,
+        "inputs": [
+          "cooked"
+        ],
+        "outputs": [
+          {
+            "id": "dish",
+            "name": "取出的鸡翅包饭",
+            "state": "取出的鸡翅包饭"
+          }
+        ]
+      }
+    ],
+    "final_outputs": [
+      "dish"
+    ],
+    "notes": [
+      "各新增分配和半成品状态为AI建议；保持源配方整批，禁止跨菜共享。",
+      "油按腌制1/4、炒饭1/2、刷面1/4分配；盐胡椒各半分别腌制和炒饭。"
+    ],
+    "extra_preparation": []
+  },
+  {
+    "row": 2,
+    "recipe_id": "6510fb3545256c3ad7c25c9c",
+    "stages": [
+      {
+        "step": 2,
+        "inputs": [
+          "raw_001",
+          "raw_002",
+          "raw_003"
+        ],
+        "outputs": [
+          {
+            "id": "powders",
+            "name": "混匀的派皮粉料",
+            "state": "混匀的派皮粉料"
+          }
+        ]
+      },
+      {
+        "step": 3,
+        "inputs": [
+          "powders",
+          "raw_004",
+          "raw_014"
+        ],
+        "outputs": [
+          {
+            "id": "butter_mix",
+            "name": "加入黄油和水的粉料",
+            "state": "加入黄油和水的粉料"
+          }
+        ]
+      },
+      {
+        "step": 4,
+        "inputs": [
+          "butter_mix"
+        ],
+        "outputs": [
+          {
+            "id": "crumbs",
+            "name": "搓成面包屑状的粉油混合物",
+            "state": "搓成面包屑状的粉油混合物"
+          }
+        ]
+      },
+      {
+        "step": 5,
+        "inputs": [
+          "crumbs",
+          "raw_005"
+        ],
+        "outputs": [
+          {
+            "id": "dough",
+            "name": "混合成团的派皮",
+            "state": "混合成团的派皮"
+          }
+        ]
+      },
+      {
+        "step": 6,
+        "inputs": [
+          "dough"
+        ],
+        "outputs": [
+          {
+            "id": "wrapped",
+            "name": "分成两份并包裹的派皮",
+            "state": "分成两份并包裹的派皮"
+          }
+        ]
+      },
+      {
+        "step": 7,
+        "inputs": [
+          "wrapped"
+        ],
+        "outputs": [
+          {
+            "id": "cold_dough",
+            "name": "冷藏完成的两份派皮",
+            "state": "冷藏完成的两份派皮"
+          }
+        ]
+      },
+      {
+        "step": 8,
+        "inputs": [
+          "raw_006",
+          "raw_007",
+          "raw_008"
+        ],
+        "outputs": [
+          {
+            "id": "fruit",
+            "name": "处理切片并加香草精的水果",
+            "state": "处理切片并加香草精的水果"
+          }
+        ]
+      },
+      {
+        "step": 9,
+        "inputs": [
+          "fruit",
+          "raw_009",
+          "raw_010"
+        ],
+        "outputs": [
+          {
+            "id": "fruit_filling",
+            "name": "拌匀淀粉糖的水果馅",
+            "state": "拌匀淀粉糖的水果馅"
+          }
+        ]
+      },
+      {
+        "step": 10,
+        "inputs": [
+          "cold_dough"
+        ],
+        "outputs": [
+          {
+            "id": "skins",
+            "name": "擀开的两张派皮",
+            "state": "擀开的两张派皮"
+          }
+        ]
+      },
+      {
+        "step": 11,
+        "inputs": [
+          "skins",
+          "fruit_filling"
+        ],
+        "outputs": [
+          {
+            "id": "raw_pies",
+            "name": "各包一半水果馅的两个派",
+            "state": "各包一半水果馅的两个派"
+          }
+        ]
+      },
+      {
+        "step": 12,
+        "inputs": [
+          "raw_pies",
+          "raw_011",
+          "raw_012"
+        ],
+        "outputs": [
+          {
+            "id": "glazed",
+            "name": "刷蛋液撒粗糖的两个派",
+            "state": "刷蛋液撒粗糖的两个派"
+          }
+        ]
+      },
+      {
+        "step": 13,
+        "inputs": [
+          "glazed"
+        ],
+        "outputs": [
+          {
+            "id": "baked",
+            "name": "烤熟的水果派",
+            "state": "烤熟的水果派"
+          }
+        ]
+      },
+      {
+        "step": 14,
+        "inputs": [
+          "baked",
+          "raw_013"
+        ],
+        "outputs": [
+          {
+            "id": "dish",
+            "name": "刷蜂蜜后的水果派",
+            "state": "刷蜂蜜后的水果派"
+          }
+        ]
+      }
+    ],
+    "final_outputs": [
+      "dish"
+    ],
+    "notes": [
+      "各新增分配和半成品状态为AI建议；保持源配方整批，禁止跨菜共享。",
+      "全部两份派皮分别包一半水果馅，制作两个派；新增水50克为AI建议。"
+    ],
+    "extra_preparation": []
+  },
+  {
+    "row": 3,
+    "recipe_id": "5c8646fe98d5bc7e184a90bc",
+    "stages": [
+      {
+        "step": 1,
+        "inputs": [
+          "raw_001",
+          "raw_002",
+          "raw_003"
+        ],
+        "outputs": [
+          {
+            "id": "meat_mix",
+            "name": "洗净切粒并混入糖酒的猪肥肉",
+            "state": "洗净切粒并混入糖酒的猪肥肉"
+          }
+        ]
+      },
+      {
+        "step": 2,
+        "inputs": [
+          "meat_mix"
+        ],
+        "outputs": [
+          {
+            "id": "ice_meat",
+            "name": "冷冻处理完成的冰肉",
+            "state": "冷冻处理完成的冰肉"
+          }
+        ]
+      },
+      {
+        "step": 3,
+        "inputs": [
+          "ice_meat",
+          "raw_004",
+          "raw_005",
+          "raw_006",
+          "raw_007",
+          "raw_008",
+          "raw_009",
+          "raw_010",
+          "raw_011",
+          "raw_012"
+        ],
+        "outputs": [
+          {
+            "id": "dough",
+            "name": "鸡仔饼面团",
+            "state": "鸡仔饼面团"
+          }
+        ]
+      },
+      {
+        "step": 4,
+        "inputs": [
+          "dough"
+        ],
+        "outputs": [
+          {
+            "id": "blanks",
+            "name": "分割搓圆压扁的鸡仔饼生坯",
+            "state": "分割搓圆压扁的鸡仔饼生坯"
+          }
+        ]
+      },
+      {
+        "step": 5,
+        "inputs": [
+          "blanks",
+          "raw_013"
+        ],
+        "outputs": [
+          {
+            "id": "glazed",
+            "name": "刷蛋黄液的饼坯",
+            "state": "刷蛋黄液的饼坯",
+            "from_inputs": [
+              "blanks",
+              "raw_013"
+            ]
+          },
+          {
+            "id": "egg_white",
+            "name": "分离出的未使用蛋白",
+            "state": "分离出的未使用蛋白",
+            "from_inputs": [
+              "raw_013"
+            ]
+          }
+        ]
+      },
+      {
+        "step": 6,
+        "inputs": [
+          "glazed"
+        ],
+        "outputs": [
+          {
+            "id": "baked",
+            "name": "烤熟鸡仔饼",
+            "state": "烤熟鸡仔饼"
+          }
+        ]
+      },
+      {
+        "step": 7,
+        "inputs": [
+          "baked"
+        ],
+        "outputs": [
+          {
+            "id": "dish",
+            "name": "取出的鸡仔饼",
+            "state": "取出的鸡仔饼"
+          }
+        ]
+      }
+    ],
+    "final_outputs": [
+      "dish"
+    ],
+    "notes": [
+      "各新增分配和半成品状态为AI建议；保持源配方整批，禁止跨菜共享。",
+      "分离出的蛋白为真实余料，不自动消费。"
+    ],
+    "extra_preparation": []
+  },
+  {
+    "row": 4,
+    "recipe_id": "6492a7a5933a4b7277dee0cf",
+    "stages": [
+      {
+        "step": 2,
+        "inputs": [
+          "raw_002",
+          "raw_003",
+          "raw_004",
+          "raw_005",
+          "raw_006"
+        ],
+        "outputs": [
+          {
+            "id": "meat_filling",
+            "name": "搅拌上劲的猪肉馅",
+            "state": "搅拌上劲的猪肉馅"
+          }
+        ]
+      },
+      {
+        "step": 3,
+        "inputs": [
+          "raw_001"
+        ],
+        "outputs": [
+          {
+            "id": "melon",
+            "name": "去头尾瓤籽的苦瓜段",
+            "state": "去头尾瓤籽的苦瓜段"
+          }
+        ]
+      },
+      {
+        "step": 4,
+        "inputs": [
+          "melon"
+        ],
+        "outputs": [
+          {
+            "id": "blanched",
+            "name": "焯熟苦瓜段",
+            "state": "焯熟苦瓜段"
+          }
+        ]
+      },
+      {
+        "step": 5,
+        "inputs": [
+          "blanched"
+        ],
+        "outputs": [
+          {
+            "id": "cooled",
+            "name": "过凉苦瓜段",
+            "state": "过凉苦瓜段"
+          }
+        ]
+      },
+      {
+        "step": 6,
+        "inputs": [
+          "cooled",
+          "meat_filling"
+        ],
+        "outputs": [
+          {
+            "id": "stuffed",
+            "name": "酿肉苦瓜生坯",
+            "state": "酿肉苦瓜生坯"
+          }
+        ]
+      },
+      {
+        "step": 7,
+        "inputs": [
+          "stuffed"
+        ],
+        "outputs": [
+          {
+            "id": "dish",
+            "name": "蒸熟酿苦瓜",
+            "state": "蒸熟酿苦瓜"
+          }
+        ]
+      }
+    ],
+    "final_outputs": [
+      "dish"
+    ],
+    "notes": [
+      "各新增分配和半成品状态为AI建议；保持源配方整批，禁止跨菜共享。"
+    ],
+    "extra_preparation": []
+  },
+  {
+    "row": 5,
+    "recipe_id": "61e6c51fec6e1d65587067e1",
+    "stages": [
+      {
+        "step": 1,
+        "inputs": [
+          "raw_001"
+        ],
+        "outputs": [
+          {
+            "id": "thawed",
+            "name": "解冻牛排",
+            "state": "解冻牛排"
+          }
+        ]
+      },
+      {
+        "step": 2,
+        "inputs": [
+          "thawed",
+          "raw_002",
+          "raw_003"
+        ],
+        "outputs": [
+          {
+            "id": "sealed",
+            "name": "盐胡椒调味并真空密封的牛排",
+            "state": "盐胡椒调味并真空密封的牛排"
+          }
+        ]
+      },
+      {
+        "step": 3,
+        "inputs": [
+          "sealed"
+        ],
+        "outputs": [
+          {
+            "id": "loaded",
+            "name": "装入设备的密封牛排",
+            "state": "装入设备的密封牛排"
+          }
+        ]
+      },
+      {
+        "step": 4,
+        "inputs": [
+          "loaded"
+        ],
+        "outputs": [
+          {
+            "id": "low_cooked",
+            "name": "完成低温处理的牛排",
+            "state": "完成低温处理的牛排"
+          }
+        ]
+      },
+      {
+        "step": 5,
+        "inputs": [
+          "raw_005",
+          "raw_006"
+        ],
+        "outputs": [
+          {
+            "id": "garlic",
+            "name": "蒜片",
+            "state": "蒜片",
+            "from_inputs": [
+              "raw_005"
+            ]
+          },
+          {
+            "id": "onion",
+            "name": "洋葱条",
+            "state": "洋葱条",
+            "from_inputs": [
+              "raw_006"
+            ]
+          }
+        ]
+      },
+      {
+        "step": 6,
+        "inputs": [
+          "low_cooked"
+        ],
+        "outputs": [
+          {
+            "id": "dry_steak",
+            "name": "取出并沥干的牛排",
+            "state": "取出并沥干的牛排"
+          }
+        ]
+      },
+      {
+        "step": 7,
+        "inputs": [
+          "raw_004",
+          "garlic"
+        ],
+        "outputs": [
+          {
+            "id": "garlic_butter",
+            "name": "锅内加热的蒜香黄油",
+            "state": "锅内加热的蒜香黄油"
+          }
+        ]
+      },
+      {
+        "step": 8,
+        "inputs": [
+          "garlic_butter",
+          "dry_steak",
+          "onion"
+        ],
+        "outputs": [
+          {
+            "id": "seared",
+            "name": "两面煎至微焦的牛排和洋葱",
+            "state": "两面煎至微焦的牛排和洋葱"
+          }
+        ]
+      },
+      {
+        "step": 1000,
+        "inputs": [
+          "raw_008"
+        ],
+        "outputs": [
+          {
+            "id": "broccoli",
+            "name": "洗切焯熟沥干的西兰花",
+            "state": "洗切焯熟沥干的西兰花"
+          }
+        ]
+      },
+      {
+        "step": 9,
+        "inputs": [
+          "seared",
+          "broccoli",
+          "raw_007"
+        ],
+        "outputs": [
+          {
+            "id": "dish",
+            "name": "淋汁并配西兰花的牛排",
+            "state": "淋汁并配西兰花的牛排"
+          }
+        ]
+      }
+    ],
+    "final_outputs": [
+      "dish"
+    ],
+    "notes": [
+      "各新增分配和半成品状态为AI建议；保持源配方整批，禁止跨菜共享。"
+    ],
+    "extra_preparation": []
+  },
+  {
+    "row": 6,
+    "recipe_id": "6577d480c458a177d8438637",
+    "stages": [
+      {
+        "step": 1,
+        "inputs": [
+          "raw_001"
+        ],
+        "outputs": [
+          {
+            "id": "eel",
+            "name": "洗净擦干切段的鳗鱼",
+            "state": "洗净擦干切段的鳗鱼"
+          }
+        ]
+      },
+      {
+        "step": 2,
+        "inputs": [
+          "raw_002"
+        ],
+        "outputs": [
+          {
+            "id": "lemongrass",
+            "name": "拍碎香茅草",
+            "state": "拍碎香茅草"
+          }
+        ]
+      },
+      {
+        "step": 3,
+        "inputs": [
+          "eel",
+          "raw_006",
+          "raw_007",
+          "raw_008",
+          "raw_009",
+          "raw_010"
+        ],
+        "outputs": [
+          {
+            "id": "seasoned",
+            "name": "初次调味鳗鱼",
+            "state": "初次调味鳗鱼"
+          }
+        ]
+      },
+      {
+        "step": 4,
+        "inputs": [
+          "seasoned"
+        ],
+        "outputs": [
+          {
+            "id": "marinated",
+            "name": "腌好的鳗鱼",
+            "state": "腌好的鳗鱼"
+          }
+        ]
+      },
+      {
+        "step": 5,
+        "inputs": [
+          "marinated"
+        ],
+        "outputs": [
+          {
+            "id": "eel_a",
+            "name": "蒸味支路半份鳗鱼",
+            "state": "蒸味支路半份鳗鱼",
+            "from_inputs": [
+              "marinated"
+            ]
+          },
+          {
+            "id": "eel_b",
+            "name": "香茅支路半份鳗鱼",
+            "state": "香茅支路半份鳗鱼",
+            "from_inputs": [
+              "marinated"
+            ]
+          }
+        ]
+      },
+      {
+        "step": 6,
+        "inputs": [
+          "raw_011",
+          "raw_012",
+          "raw_013",
+          "raw_014"
+        ],
+        "outputs": [
+          {
+            "id": "sauce_hot",
+            "name": "加热混匀的照烧汁",
+            "state": "加热混匀的照烧汁"
+          }
+        ]
+      },
+      {
+        "step": 7,
+        "inputs": [
+          "sauce_hot"
+        ],
+        "outputs": [
+          {
+            "id": "boiled",
+            "name": "煮沸后盛出的照烧汁",
+            "state": "煮沸后盛出的照烧汁"
+          }
+        ]
+      },
+      {
+        "step": 8,
+        "inputs": [
+          "boiled"
+        ],
+        "outputs": [
+          {
+            "id": "sauce",
+            "name": "放凉的照烧汁",
+            "state": "放凉的照烧汁"
+          }
+        ]
+      },
+      {
+        "step": 9,
+        "inputs": [
+          "eel_a",
+          "raw_003",
+          "raw_004",
+          "raw_005"
+        ],
+        "outputs": [
+          {
+            "id": "three_flavours",
+            "name": "分别加豆豉蒜蓉剁椒的三味鳗鱼",
+            "state": "分别加豆豉蒜蓉剁椒的三味鳗鱼"
+          }
+        ]
+      },
+      {
+        "step": 10,
+        "inputs": [
+          "three_flavours"
+        ],
+        "outputs": [
+          {
+            "id": "tray_a",
+            "name": "装蒸盘的三味鳗鱼",
+            "state": "装蒸盘的三味鳗鱼"
+          }
+        ]
+      },
+      {
+        "step": 11,
+        "inputs": [
+          "eel_b",
+          "sauce"
+        ],
+        "outputs": [
+          {
+            "id": "soaking",
+            "name": "照烧汁中的鳗鱼",
+            "state": "照烧汁中的鳗鱼"
+          }
+        ]
+      },
+      {
+        "step": 12,
+        "inputs": [
+          "soaking"
+        ],
+        "outputs": [
+          {
+            "id": "seasoned_b",
+            "name": "照烧汁浸泡入味的鳗鱼",
+            "state": "照烧汁浸泡入味的鳗鱼"
+          }
+        ]
+      },
+      {
+        "step": 13,
+        "inputs": [
+          "lemongrass"
+        ],
+        "outputs": [
+          {
+            "id": "herb_tray",
+            "name": "铺香茅的烤盘",
+            "state": "铺香茅的烤盘"
+          }
+        ]
+      },
+      {
+        "step": 14,
+        "inputs": [
+          "seasoned_b",
+          "herb_tray"
+        ],
+        "outputs": [
+          {
+            "id": "tray_b",
+            "name": "铺在香茅上的鳗鱼",
+            "state": "铺在香茅上的鳗鱼"
+          }
+        ]
+      },
+      {
+        "step": 15,
+        "inputs": [
+          "tray_a",
+          "tray_b"
+        ],
+        "outputs": [
+          {
+            "id": "cooked_a",
+            "name": "完成同烹的三味鳗鱼",
+            "state": "完成同烹的三味鳗鱼",
+            "from_inputs": [
+              "tray_a"
+            ]
+          },
+          {
+            "id": "cooked_b",
+            "name": "完成同烹的香茅鳗鱼",
+            "state": "完成同烹的香茅鳗鱼",
+            "from_inputs": [
+              "tray_b"
+            ]
+          }
+        ]
+      },
+      {
+        "step": 16,
+        "inputs": [
+          "cooked_a",
+          "cooked_b",
+          "raw_015",
+          "raw_016"
+        ],
+        "outputs": [
+          {
+            "id": "dish",
+            "name": "葱花葱丝装饰的双拼鳗鱼",
+            "state": "葱花葱丝装饰的双拼鳗鱼"
+          }
+        ]
+      }
+    ],
+    "final_outputs": [
+      "dish"
+    ],
+    "notes": [
+      "各新增分配和半成品状态为AI建议；保持源配方整批，禁止跨菜共享。",
+      "同腔180℃中湿替代原蒸烤同烹程序；两类鳗鱼分盘。"
+    ],
+    "extra_preparation": []
+  },
+  {
+    "row": 7,
+    "recipe_id": "65433a4245256c3ad7c2697f",
+    "stages": [
+      {
+        "step": 2,
+        "inputs": [
+          "raw_001",
+          "raw_006",
+          "raw_007"
+        ],
+        "outputs": [
+          {
+            "id": "fish",
+            "name": "划刀鲈鱼",
+            "state": "划刀鲈鱼",
+            "from_inputs": [
+              "raw_001"
+            ]
+          },
+          {
+            "id": "aromatics",
+            "name": "切好的葱姜",
+            "state": "切好的葱姜",
+            "from_inputs": [
+              "raw_006",
+              "raw_007"
+            ]
+          }
+        ]
+      },
+      {
+        "step": 3,
+        "inputs": [
+          "fish",
+          "raw_003",
+          "raw_004"
+        ],
+        "outputs": [
+          {
+            "id": "seasoned",
+            "name": "料酒盐调味的鱼",
+            "state": "料酒盐调味的鱼"
+          }
+        ]
+      },
+      {
+        "step": 4,
+        "inputs": [
+          "seasoned"
+        ],
+        "outputs": [
+          {
+            "id": "marinated",
+            "name": "腌好的鱼",
+            "state": "腌好的鱼"
+          }
+        ]
+      },
+      {
+        "step": 5,
+        "inputs": [
+          "marinated",
+          "aromatics",
+          "raw_008"
+        ],
+        "outputs": [
+          {
+            "id": "raw_dish",
+            "name": "摆好葱姜香菜的鲈鱼盘",
+            "state": "摆好葱姜香菜的鲈鱼盘"
+          }
+        ]
+      },
+      {
+        "step": 6,
+        "inputs": [
+          "raw_dish"
+        ],
+        "outputs": [
+          {
+            "id": "cooked",
+            "name": "蒸熟鲈鱼",
+            "state": "蒸熟鲈鱼"
+          }
+        ]
+      },
+      {
+        "step": 7,
+        "inputs": [
+          "cooked",
+          "raw_005",
+          "raw_002"
+        ],
+        "outputs": [
+          {
+            "id": "dish",
+            "name": "淋豉油并摆圣女果的鲈鱼",
+            "state": "淋豉油并摆圣女果的鲈鱼"
+          }
+        ]
+      }
+    ],
+    "final_outputs": [
+      "dish"
+    ],
+    "notes": [
+      "各新增分配和半成品状态为AI建议；保持源配方整批，禁止跨菜共享。"
+    ],
+    "extra_preparation": []
+  },
+  {
+    "row": 8,
+    "recipe_id": "5c8647b598d5bc7e184a90c3",
+    "stages": [
+      {
+        "step": 1,
+        "inputs": [
+          "raw_004"
+        ],
+        "outputs": [
+          {
+            "id": "apple",
+            "name": "苹果丝",
+            "state": "苹果丝"
+          }
+        ]
+      },
+      {
+        "step": 2,
+        "inputs": [
+          "raw_008"
+        ],
+        "outputs": [
+          {
+            "id": "banana_shreds",
+            "name": "半个香蕉擦丝",
+            "state": "半个香蕉擦丝",
+            "from_inputs": [
+              "raw_008"
+            ]
+          },
+          {
+            "id": "banana_slices",
+            "name": "半个香蕉切片",
+            "state": "半个香蕉切片",
+            "from_inputs": [
+              "raw_008"
+            ]
+          }
+        ]
+      },
+      {
+        "step": 3,
+        "inputs": [
+          "banana_shreds",
+          "raw_003"
+        ],
+        "outputs": [
+          {
+            "id": "egg_banana",
+            "name": "香蕉鸡蛋混合物",
+            "state": "香蕉鸡蛋混合物"
+          }
+        ]
+      },
+      {
+        "step": 4,
+        "inputs": [
+          "egg_banana",
+          "raw_005",
+          "raw_002",
+          "raw_001",
+          "raw_006",
+          "raw_009",
+          "raw_007"
+        ],
+        "outputs": [
+          {
+            "id": "oat_mix",
+            "name": "混匀的燕麦糊",
+            "state": "混匀的燕麦糊"
+          }
+        ]
+      },
+      {
+        "step": 5,
+        "inputs": [
+          "oat_mix",
+          "apple"
+        ],
+        "outputs": [
+          {
+            "id": "batter",
+            "name": "含苹果丝的燕麦糊",
+            "state": "含苹果丝的燕麦糊"
+          }
+        ]
+      },
+      {
+        "step": 6,
+        "inputs": [
+          {
+            "id": "batter",
+            "fraction": "1/2"
+          },
+          {
+            "id": "raw_011",
+            "fraction": "1/2"
+          }
+        ],
+        "outputs": [
+          {
+            "id": "bottom",
+            "name": "抹油烤碗中的半份燕麦糊",
+            "state": "抹油烤碗中的半份燕麦糊"
+          }
+        ]
+      },
+      {
+        "step": 7,
+        "inputs": [
+          "bottom",
+          {
+            "id": "batter",
+            "fraction": "1/2"
+          },
+          "banana_slices"
+        ],
+        "outputs": [
+          {
+            "id": "layered",
+            "name": "分层铺香蕉的燕麦糊",
+            "state": "分层铺香蕉的燕麦糊"
+          }
+        ]
+      },
+      {
+        "step": 8,
+        "inputs": [
+          "layered",
+          {
+            "id": "raw_011",
+            "fraction": "1/2"
+          },
+          "raw_010"
+        ],
+        "outputs": [
+          {
+            "id": "glazed",
+            "name": "刷油撒糖的燕麦碗",
+            "state": "刷油撒糖的燕麦碗"
+          }
+        ]
+      },
+      {
+        "step": 9,
+        "inputs": [
+          "glazed"
+        ],
+        "outputs": [
+          {
+            "id": "loaded",
+            "name": "装入烤箱的燕麦碗",
+            "state": "装入烤箱的燕麦碗"
+          }
+        ]
+      },
+      {
+        "step": 10,
+        "inputs": [
+          "loaded"
+        ],
+        "outputs": [
+          {
+            "id": "baked",
+            "name": "烤熟燕麦",
+            "state": "烤熟燕麦"
+          }
+        ]
+      },
+      {
+        "step": 11,
+        "inputs": [
+          "baked"
+        ],
+        "outputs": [
+          {
+            "id": "dish",
+            "name": "取出的烤燕麦",
+            "state": "取出的烤燕麦"
+          }
+        ]
+      }
+    ],
+    "final_outputs": [
+      "dish"
+    ],
+    "notes": [
+      "各新增分配和半成品状态为AI建议；保持源配方整批，禁止跨菜共享。"
+    ],
+    "extra_preparation": []
+  },
+  {
+    "row": 9,
+    "recipe_id": "58e70ae1a3fd4a750f4b75af",
+    "stages": [
+      {
+        "step": 1,
+        "inputs": [
+          "raw_001"
+        ],
+        "outputs": [
+          {
+            "id": "fish_head",
+            "name": "清理剖开的鳙鱼头",
+            "state": "清理剖开的鳙鱼头"
+          }
+        ]
+      },
+      {
+        "step": 2,
+        "inputs": [
+          "fish_head",
+          {
+            "id": "raw_002",
+            "fraction": "1/2"
+          },
+          "raw_003",
+          "raw_004",
+          "raw_005"
+        ],
+        "outputs": [
+          {
+            "id": "seasoned",
+            "name": "葱姜料酒盐调味鱼头",
+            "state": "葱姜料酒盐调味鱼头"
+          }
+        ]
+      },
+      {
+        "step": 3,
+        "inputs": [
+          "seasoned"
+        ],
+        "outputs": [
+          {
+            "id": "marinated",
+            "name": "腌好鱼头",
+            "state": "腌好鱼头"
+          }
+        ]
+      },
+      {
+        "step": 4,
+        "inputs": [
+          "raw_007",
+          "raw_008",
+          "raw_009"
+        ],
+        "outputs": [
+          {
+            "id": "aromatics",
+            "name": "切好的姜蒜蒜叶",
+            "state": "切好的姜蒜蒜叶"
+          }
+        ]
+      },
+      {
+        "step": 5,
+        "operation_ids": [
+          "op_005_01",
+          "op_005_02"
+        ],
+        "inputs": [
+          "aromatics",
+          {
+            "id": "raw_002",
+            "fraction": "1/2"
+          },
+          "raw_006",
+          "raw_010",
+          "raw_011",
+          "raw_012",
+          "raw_013",
+          "raw_014",
+          "raw_015",
+          "raw_016"
+        ],
+        "outputs": [
+          {
+            "id": "hot_pepper_sauce",
+            "name": "炒熟双椒酱",
+            "state": "仅酱料在锅中煸炒调味勾芡，鱼头仍在盘中"
+          }
+        ]
+      },
+      {
+        "step": 5,
+        "operation_ids": [
+          "op_005_03"
+        ],
+        "inputs": [
+          "hot_pepper_sauce",
+          "marinated"
+        ],
+        "outputs": [
+          {
+            "id": "sauced",
+            "name": "淋上炒制双椒酱汁的鱼头",
+            "state": "热酱淋在盘中生腌鱼头上，鱼头未入炒锅"
+          }
+        ]
+      },
+      {
+        "step": 6,
+        "inputs": [
+          "sauced"
+        ],
+        "outputs": [
+          {
+            "id": "loaded",
+            "name": "装入蒸箱的鱼头",
+            "state": "装入蒸箱的鱼头"
+          }
+        ]
+      },
+      {
+        "step": 7,
+        "inputs": [
+          "loaded"
+        ],
+        "outputs": [
+          {
+            "id": "steamed",
+            "name": "蒸熟鱼头",
+            "state": "蒸熟鱼头"
+          }
+        ]
+      },
+      {
+        "step": 8,
+        "operation_ids": [
+          "op_008_01"
+        ],
+        "inputs": [
+          "steamed"
+        ],
+        "outputs": [
+          {
+            "id": "plated_fish",
+            "name": "取出的蒸鱼头",
+            "state": "蒸箱卸料后置于盘中"
+          }
+        ]
+      },
+      {
+        "step": 8,
+        "operation_ids": [
+          "op_008_02",
+          "op_008_03"
+        ],
+        "inputs": [
+          "raw_017"
+        ],
+        "outputs": [
+          {
+            "id": "hot_chili_oil",
+            "name": "热辣椒油",
+            "state": "锅内仅加热辣椒油"
+          }
+        ]
+      },
+      {
+        "step": 8,
+        "operation_ids": [
+          "op_008_04"
+        ],
+        "inputs": [
+          "plated_fish",
+          "hot_chili_oil"
+        ],
+        "outputs": [
+          {
+            "id": "dish",
+            "name": "淋热辣椒油的鱼头",
+            "state": "关火后热油淋在蒸鱼头上"
+          }
+        ]
+      }
+    ],
+    "final_outputs": [
+      "dish"
+    ],
+    "notes": [
+      "各新增分配和半成品状态为AI建议；保持源配方整批，禁止跨菜共享。",
+      "复合步骤按显式原子operation_ids分配：炒酱/热油时仅处理辅料，主菜到TRANSFER淋浇操作才投入；不得把主菜一同穿过炒锅HEAT。"
+    ],
+    "extra_preparation": []
+  },
+  {
+    "row": 10,
+    "recipe_id": "5dad79866601a865649f9cb7",
+    "stages": [
+      {
+        "step": 1,
+        "inputs": [
+          "raw_001"
+        ],
+        "outputs": [
+          {
+            "id": "fish",
+            "name": "划刀鲈鱼",
+            "state": "划刀鲈鱼"
+          }
+        ]
+      },
+      {
+        "step": 2,
+        "inputs": [
+          "fish",
+          {
+            "id": "raw_004",
+            "fraction": "1/2"
+          },
+          {
+            "id": "raw_005",
+            "fraction": "1/3"
+          }
+        ],
+        "outputs": [
+          {
+            "id": "plated",
+            "name": "葱姜垫底的鲈鱼",
+            "state": "葱姜垫底的鲈鱼"
+          }
+        ]
+      },
+      {
+        "step": 3,
+        "inputs": [
+          "plated",
+          {
+            "id": "raw_004",
+            "fraction": "1/2"
+          },
+          {
+            "id": "raw_005",
+            "fraction": "1/3"
+          }
+        ],
+        "outputs": [
+          {
+            "id": "stuffed",
+            "name": "鱼腹加葱姜的鲈鱼",
+            "state": "鱼腹加葱姜的鲈鱼"
+          }
+        ]
+      },
+      {
+        "step": 4,
+        "inputs": [
+          "stuffed",
+          {
+            "id": "raw_005",
+            "fraction": "1/3"
+          },
+          "raw_003",
+          "raw_008"
+        ],
+        "outputs": [
+          {
+            "id": "prepared",
+            "name": "鱼背加葱姜和胡椒粉的鲈鱼",
+            "state": "鱼背加葱姜和胡椒粉的鲈鱼"
+          }
+        ]
+      },
+      {
+        "step": 5,
+        "inputs": [
+          "prepared"
+        ],
+        "outputs": [
+          {
+            "id": "loaded",
+            "name": "装入蒸箱的鲈鱼",
+            "state": "装入蒸箱的鲈鱼"
+          }
+        ]
+      },
+      {
+        "step": 6,
+        "inputs": [
+          "loaded"
+        ],
+        "outputs": [
+          {
+            "id": "steamed",
+            "name": "蒸熟鲈鱼",
+            "state": "蒸熟鲈鱼"
+          }
+        ]
+      },
+      {
+        "step": 7,
+        "inputs": [
+          "steamed",
+          "raw_006",
+          "raw_002"
+        ],
+        "outputs": [
+          {
+            "id": "garnished",
+            "name": "沥汁去旧葱姜后加新葱丝辣椒的鱼",
+            "state": "沥汁去旧葱姜后加新葱丝辣椒的鱼"
+          }
+        ]
+      },
+      {
+        "step": 8,
+        "operation_ids": [
+          "op_008_01",
+          "op_008_02"
+        ],
+        "inputs": [
+          "raw_009"
+        ],
+        "outputs": [
+          {
+            "id": "hot_oil",
+            "name": "热食用油",
+            "state": "锅内仅加热食用油"
+          }
+        ]
+      },
+      {
+        "step": 8,
+        "operation_ids": [
+          "op_008_03"
+        ],
+        "inputs": [
+          "garnished",
+          "hot_oil"
+        ],
+        "outputs": [
+          {
+            "id": "oiled",
+            "name": "淋热油鲈鱼",
+            "state": "装饰后的蒸鱼只在淋油时合并，不入油锅"
+          }
+        ]
+      },
+      {
+        "step": 9,
+        "inputs": [
+          "oiled",
+          "raw_007"
+        ],
+        "outputs": [
+          {
+            "id": "dish",
+            "name": "淋蒸鱼豉油的家常鲈鱼",
+            "state": "淋蒸鱼豉油的家常鲈鱼"
+          }
+        ]
+      }
+    ],
+    "final_outputs": [
+      "dish"
+    ],
+    "notes": [
+      "各新增分配和半成品状态为AI建议；保持源配方整批，禁止跨菜共享。",
+      "配方胡椒粉补入蒸前调味。葱B分三份，姜B分两份。",
+      "复合步骤按显式原子operation_ids分配：炒酱/热油时仅处理辅料，主菜到TRANSFER淋浇操作才投入；不得把主菜一同穿过炒锅HEAT。"
+    ],
+    "extra_preparation": []
+  },
+  {
+    "row": 11,
+    "recipe_id": "59cc89b47d21be2a79172c98",
+    "stages": [
+      {
+        "step": 1,
+        "inputs": [
+          "raw_002",
+          "raw_003",
+          "raw_013",
+          "raw_014"
+        ],
+        "outputs": [
+          {
+            "id": "slices",
+            "name": "垫盘葱姜片",
+            "state": "垫盘葱姜片",
+            "from_inputs": [
+              "raw_002",
+              "raw_003"
+            ]
+          },
+          {
+            "id": "shreds",
+            "name": "装饰葱姜丝",
+            "state": "装饰葱姜丝",
+            "from_inputs": [
+              "raw_013",
+              "raw_014"
+            ]
+          }
+        ]
+      },
+      {
+        "step": 2,
+        "inputs": [
+          "raw_001",
+          "raw_004",
+          "raw_005",
+          "raw_006",
+          "raw_007"
+        ],
+        "outputs": [
+          {
+            "id": "fish",
+            "name": "清理切块并调味的草鱼",
+            "state": "清理切块并调味的草鱼"
+          }
+        ]
+      },
+      {
+        "step": 3,
+        "inputs": [
+          "fish"
+        ],
+        "outputs": [
+          {
+            "id": "marinated",
+            "name": "腌好的草鱼",
+            "state": "腌好的草鱼"
+          }
+        ]
+      },
+      {
+        "step": 4,
+        "inputs": [
+          "marinated",
+          "slices"
+        ],
+        "outputs": [
+          {
+            "id": "loaded",
+            "name": "葱姜垫底并装入设备的草鱼",
+            "state": "葱姜垫底并装入设备的草鱼"
+          }
+        ]
+      },
+      {
+        "step": 6,
+        "inputs": [
+          "loaded"
+        ],
+        "outputs": [
+          {
+            "id": "steamed",
+            "name": "100℃蒸8分钟后的草鱼",
+            "state": "100℃蒸8分钟后的草鱼"
+          }
+        ]
+      },
+      {
+        "step": 8,
+        "inputs": [
+          "steamed"
+        ],
+        "outputs": [
+          {
+            "id": "cooked",
+            "name": "替代蒸制2分钟完成的草鱼",
+            "state": "替代蒸制2分钟完成的草鱼"
+          }
+        ]
+      },
+      {
+        "step": 9,
+        "inputs": [
+          "cooked",
+          "raw_009",
+          "raw_010",
+          "raw_011",
+          "raw_012",
+          "shreds"
+        ],
+        "outputs": [
+          {
+            "id": "garnished",
+            "name": "沥汁淋调料摆椒丝葱姜的鱼",
+            "state": "沥汁淋调料摆椒丝葱姜的鱼"
+          }
+        ]
+      },
+      {
+        "step": 10,
+        "operation_ids": [
+          "op_010_01",
+          "op_010_02"
+        ],
+        "inputs": [
+          "raw_008"
+        ],
+        "outputs": [
+          {
+            "id": "hot_oil",
+            "name": "热食用油",
+            "state": "锅内仅加热食用油"
+          }
+        ]
+      },
+      {
+        "step": 10,
+        "operation_ids": [
+          "op_010_03"
+        ],
+        "inputs": [
+          "garnished",
+          "hot_oil"
+        ],
+        "outputs": [
+          {
+            "id": "dish",
+            "name": "淋热油的豉汁蒸草鱼",
+            "state": "关火后热油浇葱姜丝，蒸鱼不入热油锅"
+          }
+        ]
+      }
+    ],
+    "final_outputs": [
+      "dish"
+    ],
+    "notes": [
+      "各新增分配和半成品状态为AI建议；保持源配方整批，禁止跨菜共享。",
+      "复合步骤按显式原子operation_ids分配：炒酱/热油时仅处理辅料，主菜到TRANSFER淋浇操作才投入；不得把主菜一同穿过炒锅HEAT。"
+    ],
+    "extra_preparation": []
+  },
+  {
+    "row": 12,
+    "recipe_id": "6528fac845256c3ad7c26313",
+    "stages": [
+      {
+        "step": 2,
+        "inputs": [
+          "raw_001",
+          "raw_002",
+          "raw_004",
+          "raw_005"
+        ],
+        "outputs": [
+          {
+            "id": "batter",
+            "name": "以部分椰浆水调成的浓稠粉浆",
+            "state": "以部分椰浆水调成的浓稠粉浆",
+            "from_inputs": [
+              "raw_001",
+              "raw_002",
+              "raw_004",
+              "raw_005"
+            ]
+          },
+          {
+            "id": "coconut_water",
+            "name": "剩余椰浆水",
+            "state": "剩余椰浆水",
+            "from_inputs": [
+              "raw_004",
+              "raw_005"
+            ]
+          }
+        ]
+      },
+      {
+        "step": 3,
+        "inputs": [
+          "coconut_water",
+          "raw_003"
+        ],
+        "outputs": [
+          {
+            "id": "hot_syrup",
+            "name": "煮沸的椰浆糖水",
+            "state": "煮沸的椰浆糖水"
+          }
+        ]
+      },
+      {
+        "step": 4,
+        "inputs": [
+          "batter",
+          "hot_syrup"
+        ],
+        "outputs": [
+          {
+            "id": "paste",
+            "name": "烫熟搅匀的粉浆",
+            "state": "烫熟搅匀的粉浆"
+          }
+        ]
+      },
+      {
+        "step": 5,
+        "inputs": [
+          "paste",
+          "raw_006"
+        ],
+        "outputs": [
+          {
+            "id": "raw_cakes",
+            "name": "加入蜜红豆的模具粉浆",
+            "state": "加入蜜红豆的模具粉浆"
+          }
+        ]
+      },
+      {
+        "step": 6,
+        "inputs": [
+          "raw_cakes"
+        ],
+        "outputs": [
+          {
+            "id": "dish",
+            "name": "蒸熟的红豆砵仔糕",
+            "state": "蒸熟的红豆砵仔糕"
+          }
+        ]
+      }
+    ],
+    "final_outputs": [
+      "dish"
+    ],
+    "notes": [
+      "各新增分配和半成品状态为AI建议；保持源配方整批，禁止跨菜共享。",
+      "椰浆水先取约1/3调粉浆，其余煮糖水，产量未称重。"
+    ],
+    "extra_preparation": []
+  },
+  {
+    "row": 13,
+    "recipe_id": "5d56689fa9114174727c8bfb",
+    "stages": [
+      {
+        "step": 1,
+        "inputs": [
+          "raw_001",
+          "raw_002"
+        ],
+        "outputs": [
+          {
+            "id": "flour_butter",
+            "name": "面粉和黄油",
+            "state": "面粉和黄油"
+          }
+        ]
+      },
+      {
+        "step": 2,
+        "inputs": [
+          "flour_butter",
+          "raw_004",
+          "raw_005",
+          "raw_006"
+        ],
+        "outputs": [
+          {
+            "id": "mixed",
+            "name": "初拌的饼干原料",
+            "state": "初拌的饼干原料"
+          }
+        ]
+      },
+      {
+        "step": 3,
+        "inputs": [
+          "mixed"
+        ],
+        "outputs": [
+          {
+            "id": "uniform",
+            "name": "刮拌均匀的饼干原料",
+            "state": "刮拌均匀的饼干原料"
+          }
+        ]
+      },
+      {
+        "step": 4,
+        "inputs": [
+          "uniform",
+          "raw_003"
+        ],
+        "outputs": [
+          {
+            "id": "matcha_mix",
+            "name": "加入抹茶的原料",
+            "state": "加入抹茶的原料"
+          }
+        ]
+      },
+      {
+        "step": 5,
+        "inputs": [
+          "matcha_mix"
+        ],
+        "outputs": [
+          {
+            "id": "dough",
+            "name": "揉匀的饼干面团",
+            "state": "揉匀的饼干面团"
+          }
+        ]
+      },
+      {
+        "step": 6,
+        "inputs": [
+          "dough"
+        ],
+        "outputs": [
+          {
+            "id": "skin",
+            "name": "0.3厘米厚面皮",
+            "state": "0.3厘米厚面皮"
+          }
+        ]
+      },
+      {
+        "step": 7,
+        "inputs": [
+          "skin",
+          "raw_007"
+        ],
+        "outputs": [
+          {
+            "id": "sesame_skin",
+            "name": "撒芝麻擀平的面皮",
+            "state": "撒芝麻擀平的面皮"
+          }
+        ]
+      },
+      {
+        "step": 8,
+        "inputs": [
+          "sesame_skin"
+        ],
+        "outputs": [
+          {
+            "id": "blanks",
+            "name": "切模后的饼干生坯",
+            "state": "切模后的饼干生坯"
+          }
+        ]
+      },
+      {
+        "step": 9,
+        "inputs": [
+          "blanks"
+        ],
+        "outputs": [
+          {
+            "id": "tray",
+            "name": "摆盘的饼干生坯",
+            "state": "摆盘的饼干生坯"
+          }
+        ]
+      },
+      {
+        "step": 10,
+        "inputs": [
+          "tray"
+        ],
+        "outputs": [
+          {
+            "id": "loaded",
+            "name": "装入烤箱的饼干",
+            "state": "装入烤箱的饼干"
+          }
+        ]
+      },
+      {
+        "step": 11,
+        "inputs": [
+          "loaded"
+        ],
+        "outputs": [
+          {
+            "id": "baked",
+            "name": "烤熟饼干",
+            "state": "烤熟饼干"
+          }
+        ]
+      },
+      {
+        "step": 12,
+        "inputs": [
+          "baked"
+        ],
+        "outputs": [
+          {
+            "id": "dish",
+            "name": "取出的饼干",
+            "state": "取出的饼干"
+          }
+        ]
+      }
+    ],
+    "final_outputs": [
+      "dish"
+    ],
+    "notes": [
+      "各新增分配和半成品状态为AI建议；保持源配方整批，禁止跨菜共享。"
+    ],
+    "extra_preparation": []
+  },
+  {
+    "row": 14,
+    "recipe_id": "661369554b3d03197733ac5a",
+    "stages": [
+      {
+        "step": 1,
+        "inputs": [
+          "raw_001"
+        ],
+        "outputs": [
+          {
+            "id": "ribs",
+            "name": "剁好的猪肋排段",
+            "state": "剁好的猪肋排段"
+          }
+        ]
+      },
+      {
+        "step": 2,
+        "inputs": [
+          "ribs"
+        ],
+        "outputs": [
+          {
+            "id": "soaking",
+            "name": "清水中的排骨",
+            "state": "清水中的排骨"
+          }
+        ]
+      },
+      {
+        "step": 3,
+        "inputs": [
+          "soaking"
+        ],
+        "outputs": [
+          {
+            "id": "drained",
+            "name": "泡出血水并沥干的排骨",
+            "state": "泡出血水并沥干的排骨"
+          }
+        ]
+      },
+      {
+        "step": 4,
+        "inputs": [
+          "drained",
+          "raw_002",
+          "raw_003",
+          "raw_004",
+          "raw_005",
+          "raw_006",
+          "raw_007",
+          "raw_008",
+          "raw_009",
+          "raw_010",
+          "raw_011",
+          "raw_012"
+        ],
+        "outputs": [
+          {
+            "id": "seasoned",
+            "name": "抓匀调料的排骨",
+            "state": "抓匀调料的排骨"
+          }
+        ]
+      },
+      {
+        "step": 5,
+        "inputs": [
+          "seasoned"
+        ],
+        "outputs": [
+          {
+            "id": "marinated",
+            "name": "冷藏腌好的排骨",
+            "state": "冷藏腌好的排骨"
+          }
+        ]
+      },
+      {
+        "step": 6,
+        "inputs": [
+          "marinated"
+        ],
+        "outputs": [
+          {
+            "id": "tray",
+            "name": "铝箔烤盘中的排骨",
+            "state": "铝箔烤盘中的排骨"
+          }
+        ]
+      },
+      {
+        "step": 7,
+        "inputs": [
+          "tray"
+        ],
+        "outputs": [
+          {
+            "id": "dish",
+            "name": "烤熟的香烤排骨",
+            "state": "烤熟的香烤排骨"
+          }
+        ]
+      }
+    ],
+    "final_outputs": [
+      "dish"
+    ],
+    "notes": [
+      "各新增分配和半成品状态为AI建议；保持源配方整批，禁止跨菜共享。"
+    ],
+    "extra_preparation": []
+  },
+  {
+    "row": 15,
+    "recipe_id": "64f550ff255d3b02f695fd69",
+    "stages": [
+      {
+        "step": 2,
+        "inputs": [
+          "raw_008"
+        ],
+        "outputs": [
+          {
+            "id": "chestnuts",
+            "name": "剥皮洗净的栗子",
+            "state": "剥皮洗净的栗子"
+          }
+        ]
+      },
+      {
+        "step": 3,
+        "inputs": [
+          "chestnuts"
+        ],
+        "outputs": [
+          {
+            "id": "cooked",
+            "name": "煮软烂的栗子",
+            "state": "煮软烂的栗子"
+          }
+        ]
+      },
+      {
+        "step": 4,
+        "inputs": [
+          "cooked"
+        ],
+        "outputs": [
+          {
+            "id": "mash",
+            "name": "压烂的栗子泥",
+            "state": "压烂的栗子泥"
+          }
+        ]
+      },
+      {
+        "step": 5,
+        "inputs": [
+          "mash"
+        ],
+        "outputs": [
+          {
+            "id": "pan_mash",
+            "name": "锅中的栗子泥",
+            "state": "锅中的栗子泥"
+          }
+        ]
+      },
+      {
+        "step": 6,
+        "inputs": [
+          "pan_mash",
+          {
+            "id": "raw_010",
+            "fraction": "4/5"
+          },
+          "raw_009"
+        ],
+        "outputs": [
+          {
+            "id": "filling",
+            "name": "炒干调甜的栗子馅",
+            "state": "炒干调甜的栗子馅"
+          }
+        ]
+      },
+      {
+        "step": 7,
+        "inputs": [
+          "raw_005",
+          "raw_004",
+          "raw_006"
+        ],
+        "outputs": [
+          {
+            "id": "liquid",
+            "name": "牛奶玉米油糖粉混合液",
+            "state": "牛奶玉米油糖粉混合液"
+          }
+        ]
+      },
+      {
+        "step": 8,
+        "inputs": [
+          "liquid",
+          "raw_001",
+          "raw_002",
+          "raw_003"
+        ],
+        "outputs": [
+          {
+            "id": "batter",
+            "name": "加入粉类的冰皮浆",
+            "state": "加入粉类的冰皮浆"
+          }
+        ]
+      },
+      {
+        "step": 9,
+        "inputs": [
+          "batter"
+        ],
+        "outputs": [
+          {
+            "id": "sieved",
+            "name": "搅匀过筛的冰皮浆",
+            "state": "搅匀过筛的冰皮浆"
+          }
+        ]
+      },
+      {
+        "step": 10,
+        "inputs": [
+          "sieved"
+        ],
+        "outputs": [
+          {
+            "id": "rested",
+            "name": "静置完成的冰皮浆",
+            "state": "静置完成的冰皮浆"
+          }
+        ]
+      },
+      {
+        "step": 11,
+        "inputs": [
+          "rested"
+        ],
+        "outputs": [
+          {
+            "id": "steamed",
+            "name": "蒸熟冰皮",
+            "state": "蒸熟冰皮"
+          }
+        ]
+      },
+      {
+        "step": 12,
+        "inputs": [
+          "steamed"
+        ],
+        "outputs": [
+          {
+            "id": "smooth",
+            "name": "搅至顺滑的冰皮",
+            "state": "搅至顺滑的冰皮"
+          }
+        ]
+      },
+      {
+        "step": 13,
+        "inputs": [
+          "smooth"
+        ],
+        "outputs": [
+          {
+            "id": "cold_skin",
+            "name": "冷却冰皮",
+            "state": "冷却冰皮"
+          }
+        ]
+      },
+      {
+        "step": 14,
+        "inputs": [
+          "cold_skin",
+          "raw_007"
+        ],
+        "outputs": [
+          {
+            "id": "purple",
+            "name": "紫薯冰皮",
+            "state": "紫薯冰皮"
+          }
+        ]
+      },
+      {
+        "step": 15,
+        "inputs": [
+          "purple",
+          "filling",
+          {
+            "id": "raw_010",
+            "fraction": "1/5"
+          }
+        ],
+        "outputs": [
+          {
+            "id": "assembled",
+            "name": "分份按扁放栗子馅的冰皮月饼",
+            "state": "分份按扁放栗子馅的冰皮月饼"
+          }
+        ]
+      },
+      {
+        "step": 16,
+        "inputs": [
+          "assembled"
+        ],
+        "outputs": [
+          {
+            "id": "closed",
+            "name": "包好收口的冰皮月饼",
+            "state": "包好收口的冰皮月饼"
+          }
+        ]
+      },
+      {
+        "step": 17,
+        "inputs": [
+          "closed"
+        ],
+        "outputs": [
+          {
+            "id": "dish",
+            "name": "模压成型的冰皮月饼",
+            "state": "模压成型的冰皮月饼"
+          }
+        ]
+      }
+    ],
+    "final_outputs": [
+      "dish"
+    ],
+    "notes": [
+      "各新增分配和半成品状态为AI建议；保持源配方整批，禁止跨菜共享。",
+      "紫薯泥按原料名称视为已熟制泥；植物油4/5炒馅1/5手部防粘。"
+    ],
+    "extra_preparation": []
+  },
+  {
+    "row": 16,
+    "recipe_id": "58e70b129f6429675ec80601",
+    "stages": [
+      {
+        "step": 1,
+        "inputs": [
+          "raw_001"
+        ],
+        "outputs": [
+          {
+            "id": "prawns",
+            "name": "洗净剪须开背的对虾",
+            "state": "洗净剪须开背的对虾"
+          }
+        ]
+      },
+      {
+        "step": 2,
+        "inputs": [
+          "prawns",
+          "raw_002",
+          "raw_003"
+        ],
+        "outputs": [
+          {
+            "id": "seasoned",
+            "name": "盐料酒调味的虾",
+            "state": "盐料酒调味的虾"
+          }
+        ]
+      },
+      {
+        "step": 3,
+        "inputs": [
+          "seasoned"
+        ],
+        "outputs": [
+          {
+            "id": "marinated",
+            "name": "腌好的对虾",
+            "state": "腌好的对虾"
+          }
+        ]
+      },
+      {
+        "step": 4,
+        "inputs": [
+          "raw_004",
+          "raw_005",
+          "raw_006",
+          "raw_007"
+        ],
+        "outputs": [
+          {
+            "id": "fried_aromatics",
+            "name": "炒香的油辣椒姜蒜",
+            "state": "炒香的油辣椒姜蒜"
+          }
+        ]
+      },
+      {
+        "step": 5,
+        "inputs": [
+          "fried_aromatics"
+        ],
+        "outputs": [
+          {
+            "id": "bowl_sauce",
+            "name": "盛入碗中的炒香配料",
+            "state": "盛入碗中的炒香配料"
+          }
+        ]
+      },
+      {
+        "step": 6,
+        "inputs": [
+          "bowl_sauce"
+        ],
+        "outputs": [
+          {
+            "id": "cooled",
+            "name": "冷却的炒香配料",
+            "state": "冷却的炒香配料"
+          }
+        ]
+      },
+      {
+        "step": 7,
+        "inputs": [
+          "cooled",
+          "raw_008",
+          "raw_009",
+          "raw_010",
+          "raw_011",
+          "raw_012",
+          "raw_013"
+        ],
+        "outputs": [
+          {
+            "id": "sauce",
+            "name": "完整麻辣调味料",
+            "state": "完整麻辣调味料"
+          }
+        ]
+      },
+      {
+        "step": 8,
+        "inputs": [
+          "marinated",
+          "sauce"
+        ],
+        "outputs": [
+          {
+            "id": "dressed",
+            "name": "拌匀酱料的对虾",
+            "state": "拌匀酱料的对虾"
+          }
+        ]
+      },
+      {
+        "step": 9,
+        "inputs": [
+          "dressed"
+        ],
+        "outputs": [
+          {
+            "id": "loaded",
+            "name": "装入蒸箱的对虾",
+            "state": "装入蒸箱的对虾"
+          }
+        ]
+      },
+      {
+        "step": 10,
+        "inputs": [
+          "loaded"
+        ],
+        "outputs": [
+          {
+            "id": "cooked",
+            "name": "蒸熟麻辣对虾",
+            "state": "蒸熟麻辣对虾"
+          }
+        ]
+      },
+      {
+        "step": 1000,
+        "inputs": [
+          "raw_014"
+        ],
+        "outputs": [
+          {
+            "id": "scallion",
+            "name": "葱花",
+            "state": "洗净切碎"
+          }
+        ]
+      },
+      {
+        "step": 11,
+        "inputs": [
+          "cooked",
+          "scallion"
+        ],
+        "outputs": [
+          {
+            "id": "dish",
+            "name": "撒葱花的麻辣对虾",
+            "state": "撒葱花的麻辣对虾"
+          }
+        ]
+      }
+    ],
+    "final_outputs": [
+      "dish"
+    ],
+    "notes": [
+      "各新增分配和半成品状态为AI建议；保持源配方整批，禁止跨菜共享。"
+    ],
+    "extra_preparation": [
+      {
+        "step": 1000,
+        "before_step": 11,
+        "description": "洗净新增小葱1根并切葱花",
+        "suggested_duration_sec": 90,
+        "device": null
+      }
+    ]
+  },
+  {
+    "row": 17,
+    "recipe_id": "5c875d0b98d5bc7e184a9166",
+    "stages": [
+      {
+        "step": 1,
+        "inputs": [
+          "raw_001"
+        ],
+        "outputs": [
+          {
+            "id": "prawns",
+            "name": "去须脚开背去虾线的明虾",
+            "state": "去须脚开背去虾线的明虾"
+          }
+        ]
+      },
+      {
+        "step": 2,
+        "inputs": [
+          "prawns"
+        ],
+        "outputs": [
+          {
+            "id": "opened",
+            "name": "斩开虾头并装盘的明虾",
+            "state": "斩开虾头并装盘的明虾"
+          }
+        ]
+      },
+      {
+        "step": 3,
+        "inputs": [
+          "opened",
+          {
+            "id": "raw_007",
+            "fraction": "1/2"
+          },
+          "raw_008",
+          "raw_009"
+        ],
+        "outputs": [
+          {
+            "id": "seasoned",
+            "name": "调味明虾",
+            "state": "调味明虾"
+          }
+        ]
+      },
+      {
+        "step": 4,
+        "inputs": [
+          "seasoned"
+        ],
+        "outputs": [
+          {
+            "id": "marinated",
+            "name": "腌好的明虾",
+            "state": "腌好的明虾"
+          }
+        ]
+      },
+      {
+        "step": 1000,
+        "inputs": [
+          "raw_002"
+        ],
+        "outputs": [
+          {
+            "id": "melted",
+            "name": "融化黄油",
+            "state": "融化黄油"
+          }
+        ]
+      },
+      {
+        "step": 5,
+        "inputs": [
+          "melted",
+          "raw_004",
+          "raw_005",
+          "raw_006",
+          {
+            "id": "raw_007",
+            "fraction": "1/2"
+          }
+        ],
+        "outputs": [
+          {
+            "id": "butter_sauce",
+            "name": "调匀的香草蒜蓉黄油酱",
+            "state": "调匀的香草蒜蓉黄油酱"
+          }
+        ]
+      },
+      {
+        "step": 6,
+        "inputs": [
+          "marinated"
+        ],
+        "outputs": [
+          {
+            "id": "loaded",
+            "name": "烤盘中的明虾",
+            "state": "烤盘中的明虾"
+          }
+        ]
+      },
+      {
+        "step": 7,
+        "inputs": [
+          "loaded"
+        ],
+        "outputs": [
+          {
+            "id": "first_baked",
+            "name": "220℃烤5分钟的明虾",
+            "state": "220℃烤5分钟的明虾"
+          }
+        ]
+      },
+      {
+        "step": 8,
+        "inputs": [
+          "first_baked",
+          "butter_sauce"
+        ],
+        "outputs": [
+          {
+            "id": "coated",
+            "name": "抹黄油酱后回装的明虾",
+            "state": "抹黄油酱后回装的明虾"
+          }
+        ]
+      },
+      {
+        "step": 9,
+        "inputs": [
+          "coated"
+        ],
+        "outputs": [
+          {
+            "id": "baked",
+            "name": "第二段烤制完成的明虾",
+            "state": "第二段烤制完成的明虾"
+          }
+        ]
+      },
+      {
+        "step": 10,
+        "inputs": [
+          "baked",
+          "raw_003"
+        ],
+        "outputs": [
+          {
+            "id": "dish",
+            "name": "香菜点缀的烤明虾",
+            "state": "香菜点缀的烤明虾"
+          }
+        ]
+      }
+    ],
+    "final_outputs": [
+      "dish"
+    ],
+    "notes": [
+      "各新增分配和半成品状态为AI建议；保持源配方整批，禁止跨菜共享。",
+      "盐各半用于腌虾和黄油酱。"
+    ],
+    "extra_preparation": [
+      {
+        "step": 1000,
+        "before_step": 5,
+        "description": "小火融化配方黄油，随后关火移出备用",
+        "suggested_duration_sec": 180,
+        "device": "stove"
+      }
+    ]
+  },
+  {
+    "row": 18,
+    "recipe_id": "5d54ed01a9114174727c8b5c",
+    "stages": [
+      {
+        "step": 1,
+        "inputs": [
+          "raw_001"
+        ],
+        "outputs": [
+          {
+            "id": "flour",
+            "name": "放入容器并开窝的面粉",
+            "state": "放入容器并开窝的面粉"
+          }
+        ]
+      },
+      {
+        "step": 2,
+        "inputs": [
+          "flour",
+          "raw_003",
+          "raw_004",
+          "raw_005"
+        ],
+        "outputs": [
+          {
+            "id": "mixed",
+            "name": "混入糖盐蛋黄的面粉",
+            "state": "混入糖盐蛋黄的面粉"
+          }
+        ]
+      },
+      {
+        "step": 3,
+        "inputs": [
+          "mixed",
+          "raw_002"
+        ],
+        "outputs": [
+          {
+            "id": "dough",
+            "name": "揉光滑的黄油饼干面团",
+            "state": "揉光滑的黄油饼干面团"
+          }
+        ]
+      },
+      {
+        "step": 4,
+        "inputs": [
+          "dough"
+        ],
+        "outputs": [
+          {
+            "id": "pressed",
+            "name": "保鲜膜上的按压面团",
+            "state": "保鲜膜上的按压面团"
+          }
+        ]
+      },
+      {
+        "step": 5,
+        "inputs": [
+          "pressed"
+        ],
+        "outputs": [
+          {
+            "id": "skin",
+            "name": "擀开的面皮",
+            "state": "擀开的面皮"
+          }
+        ]
+      },
+      {
+        "step": 6,
+        "inputs": [
+          "skin"
+        ],
+        "outputs": [
+          {
+            "id": "blanks",
+            "name": "小花饼干生坯",
+            "state": "小花饼干生坯"
+          }
+        ]
+      },
+      {
+        "step": 7,
+        "inputs": [
+          "blanks"
+        ],
+        "outputs": [
+          {
+            "id": "tray",
+            "name": "铺在烤盘的饼坯",
+            "state": "铺在烤盘的饼坯"
+          }
+        ]
+      },
+      {
+        "step": 8,
+        "inputs": [
+          "tray"
+        ],
+        "outputs": [
+          {
+            "id": "shaped",
+            "name": "叉出花瓣形状的饼坯",
+            "state": "叉出花瓣形状的饼坯"
+          }
+        ]
+      },
+      {
+        "step": 9,
+        "inputs": [
+          "shaped"
+        ],
+        "outputs": [
+          {
+            "id": "loaded",
+            "name": "装入烤箱的饼坯",
+            "state": "装入烤箱的饼坯"
+          }
+        ]
+      },
+      {
+        "step": 10,
+        "inputs": [
+          "loaded"
+        ],
+        "outputs": [
+          {
+            "id": "dish",
+            "name": "烤熟的黄油小饼干",
+            "state": "烤熟的黄油小饼干"
+          }
+        ]
+      }
+    ],
+    "final_outputs": [
+      "dish"
+    ],
+    "notes": [
+      "各新增分配和半成品状态为AI建议；保持源配方整批，禁止跨菜共享。"
+    ],
+    "extra_preparation": []
+  },
+  {
+    "row": 19,
+    "recipe_id": "5c8200d96dc6e123a037a202",
+    "stages": [
+      {
+        "step": 1,
+        "inputs": [
+          "raw_001"
+        ],
+        "outputs": [
+          {
+            "id": "soaking",
+            "name": "切段并加开水的腐竹",
+            "state": "切段并加开水的腐竹"
+          }
+        ]
+      },
+      {
+        "step": 2,
+        "inputs": [
+          "soaking"
+        ],
+        "outputs": [
+          {
+            "id": "soft",
+            "name": "泡发至无硬芯的腐竹",
+            "state": "泡发至无硬芯的腐竹"
+          }
+        ]
+      },
+      {
+        "step": 3,
+        "inputs": [
+          "soft"
+        ],
+        "outputs": [
+          {
+            "id": "drained",
+            "name": "挤干摆盘的腐竹",
+            "state": "挤干摆盘的腐竹"
+          }
+        ]
+      },
+      {
+        "step": 4,
+        "inputs": [
+          "raw_004",
+          "raw_005"
+        ],
+        "outputs": [
+          {
+            "id": "aromatics",
+            "name": "切碎豆豉蒜末",
+            "state": "切碎豆豉蒜末"
+          }
+        ]
+      },
+      {
+        "step": 5,
+        "operation_ids": [
+          "op_005_01",
+          "op_005_02"
+        ],
+        "inputs": [
+          "aromatics",
+          "raw_003",
+          "raw_006"
+        ],
+        "outputs": [
+          {
+            "id": "fried_sauce",
+            "name": "炒香豆豉蒜椒酱",
+            "state": "炒锅只处理油与豆豉蒜椒"
+          }
+        ]
+      },
+      {
+        "step": 5,
+        "operation_ids": [
+          "op_005_03"
+        ],
+        "inputs": [
+          "fried_sauce",
+          "drained"
+        ],
+        "outputs": [
+          {
+            "id": "seasoned",
+            "name": "浇炒香豆豉蒜椒的腐竹",
+            "state": "热酱浇在盘中挤干腐竹上，腐竹未炒制"
+          }
+        ]
+      },
+      {
+        "step": 6,
+        "inputs": [
+          "seasoned",
+          "raw_007",
+          "raw_008",
+          "raw_009",
+          "raw_010"
+        ],
+        "outputs": [
+          {
+            "id": "sauced",
+            "name": "加入调味鸡汤的腐竹",
+            "state": "加入调味鸡汤的腐竹"
+          }
+        ]
+      },
+      {
+        "step": 7,
+        "inputs": [
+          "sauced"
+        ],
+        "outputs": [
+          {
+            "id": "loaded",
+            "name": "装入蒸箱的腐竹",
+            "state": "装入蒸箱的腐竹"
+          }
+        ]
+      },
+      {
+        "step": 8,
+        "inputs": [
+          "loaded"
+        ],
+        "outputs": [
+          {
+            "id": "steamed",
+            "name": "蒸熟腐竹",
+            "state": "蒸熟腐竹"
+          }
+        ]
+      },
+      {
+        "step": 9,
+        "inputs": [
+          "steamed",
+          "raw_002"
+        ],
+        "outputs": [
+          {
+            "id": "dish",
+            "name": "撒葱花的豆豉腐竹",
+            "state": "撒葱花的豆豉腐竹"
+          }
+        ]
+      }
+    ],
+    "final_outputs": [
+      "dish"
+    ],
+    "notes": [
+      "各新增分配和半成品状态为AI建议；保持源配方整批，禁止跨菜共享。",
+      "复合步骤按显式原子operation_ids分配：炒酱/热油时仅处理辅料，主菜到TRANSFER淋浇操作才投入；不得把主菜一同穿过炒锅HEAT。"
+    ],
+    "extra_preparation": [
+      {
+        "step": 1000,
+        "before_step": 1,
+        "description": "将泡腐竹用工艺水烧开",
+        "suggested_duration_sec": 300,
+        "device": "stove"
+      }
+    ]
+  },
+  {
+    "row": 20,
+    "recipe_id": "5caf2ea3e78bfc455f2d5cad",
+    "stages": [
+      {
+        "step": 1,
+        "inputs": [
+          "raw_002"
+        ],
+        "outputs": [
+          {
+            "id": "banana",
+            "name": "香蕉丁",
+            "state": "香蕉丁"
+          }
+        ]
+      },
+      {
+        "step": 1000,
+        "inputs": [
+          "raw_001"
+        ],
+        "outputs": [
+          {
+            "id": "wrappers",
+            "name": "回软可折叠的飞饼皮",
+            "state": "回软可折叠的飞饼皮"
+          }
+        ]
+      },
+      {
+        "step": 2,
+        "inputs": [
+          "banana",
+          "wrappers",
+          "raw_003"
+        ],
+        "outputs": [
+          {
+            "id": "pies",
+            "name": "包香蕉并刷蛋液的生派",
+            "state": "包香蕉并刷蛋液的生派"
+          }
+        ]
+      },
+      {
+        "step": 3,
+        "inputs": [
+          "pies"
+        ],
+        "outputs": [
+          {
+            "id": "dish",
+            "name": "烤熟香蕉派",
+            "state": "烤熟香蕉派"
+          }
+        ]
+      }
+    ],
+    "final_outputs": [
+      "dish"
+    ],
+    "notes": [
+      "各新增分配和半成品状态为AI建议；保持源配方整批，禁止跨菜共享。"
+    ],
+    "extra_preparation": [
+      {
+        "step": 1000,
+        "before_step": 2,
+        "description": "飞饼皮在室温回软至可折叠",
+        "suggested_duration_sec": 300,
+        "device": null
+      }
+    ]
+  },
+  {
+    "row": 21,
+    "recipe_id": "657951b7c458a177d84386bc",
+    "stages": [
+      {
+        "step": 2,
+        "inputs": [
+          "raw_001"
+        ],
+        "outputs": [
+          {
+            "id": "taro",
+            "name": "蒸熟芋头",
+            "state": "蒸熟芋头"
+          }
+        ]
+      },
+      {
+        "step": 3,
+        "inputs": [
+          "raw_002",
+          "raw_003"
+        ],
+        "outputs": [
+          {
+            "id": "egg",
+            "name": "打散调盐过筛的蛋液",
+            "state": "打散调盐过筛的蛋液"
+          }
+        ]
+      },
+      {
+        "step": 4,
+        "inputs": [
+          "egg",
+          "raw_004"
+        ],
+        "outputs": [
+          {
+            "id": "pancake",
+            "name": "煎熟一面的蛋皮",
+            "state": "煎熟一面的蛋皮"
+          }
+        ]
+      },
+      {
+        "step": 5,
+        "inputs": [
+          "pancake"
+        ],
+        "outputs": [
+          {
+            "id": "turned",
+            "name": "翻面后关火的蛋皮",
+            "state": "翻面后关火的蛋皮"
+          }
+        ]
+      },
+      {
+        "step": 6,
+        "inputs": [
+          "turned"
+        ],
+        "outputs": [
+          {
+            "id": "cooked",
+            "name": "余温处理完成的蛋皮",
+            "state": "余温处理完成的蛋皮"
+          }
+        ]
+      },
+      {
+        "step": 7,
+        "inputs": [
+          "cooked"
+        ],
+        "outputs": [
+          {
+            "id": "removed",
+            "name": "盛出的蛋皮",
+            "state": "盛出的蛋皮"
+          }
+        ]
+      },
+      {
+        "step": 8,
+        "inputs": [
+          "taro"
+        ],
+        "outputs": [
+          {
+            "id": "mash",
+            "name": "去皮碾细的芋泥",
+            "state": "去皮碾细的芋泥"
+          }
+        ]
+      },
+      {
+        "step": 9,
+        "inputs": [
+          "removed",
+          "mash"
+        ],
+        "outputs": [
+          {
+            "id": "spread",
+            "name": "铺芋泥的蛋皮",
+            "state": "铺芋泥的蛋皮"
+          }
+        ]
+      },
+      {
+        "step": 10,
+        "inputs": [
+          "spread"
+        ],
+        "outputs": [
+          {
+            "id": "roll",
+            "name": "卷好的芋头蛋卷",
+            "state": "卷好的芋头蛋卷"
+          }
+        ]
+      },
+      {
+        "step": 11,
+        "inputs": [
+          "roll"
+        ],
+        "outputs": [
+          {
+            "id": "dish",
+            "name": "切段的芋头蛋卷",
+            "state": "切段的芋头蛋卷"
+          }
+        ]
+      }
+    ],
+    "final_outputs": [
+      "dish"
+    ],
+    "notes": [
+      "各新增分配和半成品状态为AI建议；保持源配方整批，禁止跨菜共享。"
+    ],
+    "extra_preparation": []
+  },
+  {
+    "row": 22,
+    "recipe_id": "5caf2f00e78bfc455f2d5cb7",
+    "stages": [
+      {
+        "step": 1,
+        "inputs": [
+          "raw_010",
+          "raw_011"
+        ],
+        "outputs": [
+          {
+            "id": "yolk_mix",
+            "name": "淀粉蛋黄糊",
+            "state": "淀粉蛋黄糊"
+          }
+        ]
+      },
+      {
+        "step": 2,
+        "inputs": [
+          "yolk_mix",
+          "raw_007",
+          "raw_008",
+          "raw_009"
+        ],
+        "outputs": [
+          {
+            "id": "hot_mix",
+            "name": "冲入热香草牛奶的蛋黄糊",
+            "state": "冲入热香草牛奶的蛋黄糊"
+          }
+        ]
+      },
+      {
+        "step": 3,
+        "inputs": [
+          "hot_mix"
+        ],
+        "outputs": [
+          {
+            "id": "thickened",
+            "name": "小火搅拌至稠的卡仕达",
+            "state": "小火搅拌至稠的卡仕达"
+          }
+        ]
+      },
+      {
+        "step": 4,
+        "inputs": [
+          "thickened",
+          "raw_012"
+        ],
+        "outputs": [
+          {
+            "id": "custard",
+            "name": "加入黄油封面的卡仕达",
+            "state": "加入黄油封面的卡仕达"
+          }
+        ]
+      },
+      {
+        "step": 5,
+        "inputs": [
+          "custard"
+        ],
+        "outputs": [
+          {
+            "id": "cooled_custard",
+            "name": "放凉卡仕达",
+            "state": "放凉卡仕达"
+          }
+        ]
+      },
+      {
+        "step": 6,
+        "inputs": [
+          "cooled_custard"
+        ],
+        "outputs": [
+          {
+            "id": "cold_custard",
+            "name": "冷藏卡仕达",
+            "state": "冷藏卡仕达"
+          }
+        ]
+      },
+      {
+        "step": 7,
+        "inputs": [
+          "raw_001",
+          "raw_002",
+          "raw_003",
+          "raw_004",
+          "raw_005"
+        ],
+        "outputs": [
+          {
+            "id": "dough",
+            "name": "揉匀包好的酥皮面团",
+            "state": "揉匀包好的酥皮面团"
+          }
+        ]
+      },
+      {
+        "step": 8,
+        "inputs": [
+          "dough"
+        ],
+        "outputs": [
+          {
+            "id": "cold_dough",
+            "name": "冷藏面团",
+            "state": "冷藏面团"
+          }
+        ]
+      },
+      {
+        "step": 9,
+        "inputs": [
+          "raw_006"
+        ],
+        "outputs": [
+          {
+            "id": "fat_sheet",
+            "name": "擀成方片的酥皮油",
+            "state": "擀成方片的酥皮油"
+          }
+        ]
+      },
+      {
+        "step": 10,
+        "inputs": [
+          "fat_sheet"
+        ],
+        "outputs": [
+          {
+            "id": "cold_fat",
+            "name": "冷藏酥皮油片",
+            "state": "冷藏酥皮油片"
+          }
+        ]
+      },
+      {
+        "step": 11,
+        "inputs": [
+          "cold_dough",
+          "cold_fat"
+        ],
+        "outputs": [
+          {
+            "id": "fold1",
+            "name": "包油并第一次三折的面团",
+            "state": "包油并第一次三折的面团"
+          }
+        ]
+      },
+      {
+        "step": 12,
+        "inputs": [
+          "fold1"
+        ],
+        "outputs": [
+          {
+            "id": "cold1",
+            "name": "第一次折叠后冷藏的面团",
+            "state": "第一次折叠后冷藏的面团"
+          }
+        ]
+      },
+      {
+        "step": 13,
+        "inputs": [
+          "cold1"
+        ],
+        "outputs": [
+          {
+            "id": "fold2",
+            "name": "第二次三折面团",
+            "state": "第二次三折面团"
+          }
+        ]
+      },
+      {
+        "step": 14,
+        "inputs": [
+          "fold2"
+        ],
+        "outputs": [
+          {
+            "id": "cold2",
+            "name": "第二次冷藏面团",
+            "state": "第二次冷藏面团"
+          }
+        ]
+      },
+      {
+        "step": 15,
+        "inputs": [
+          "cold2"
+        ],
+        "outputs": [
+          {
+            "id": "fold3",
+            "name": "第三次三折面团",
+            "state": "第三次三折面团"
+          }
+        ]
+      },
+      {
+        "step": 16,
+        "inputs": [
+          "fold3"
+        ],
+        "outputs": [
+          {
+            "id": "cold3",
+            "name": "第三次冷藏面团",
+            "state": "第三次冷藏面团"
+          }
+        ]
+      },
+      {
+        "step": 17,
+        "inputs": [
+          "cold3"
+        ],
+        "outputs": [
+          {
+            "id": "trimmed",
+            "name": "修边擀平扎孔的酥皮",
+            "state": "修边擀平扎孔的酥皮"
+          }
+        ]
+      },
+      {
+        "step": 18,
+        "inputs": [
+          "trimmed"
+        ],
+        "outputs": [
+          {
+            "id": "frozen",
+            "name": "冷冻定型酥皮",
+            "state": "冷冻定型酥皮"
+          }
+        ]
+      },
+      {
+        "step": 19,
+        "inputs": [
+          "frozen"
+        ],
+        "outputs": [
+          {
+            "id": "baked",
+            "name": "烤熟酥皮",
+            "state": "烤熟酥皮"
+          }
+        ]
+      },
+      {
+        "step": 20,
+        "inputs": [
+          "baked"
+        ],
+        "outputs": [
+          {
+            "id": "removed",
+            "name": "取出的酥皮",
+            "state": "取出的酥皮"
+          }
+        ]
+      },
+      {
+        "step": 21,
+        "inputs": [
+          "removed"
+        ],
+        "outputs": [
+          {
+            "id": "cool_pastry",
+            "name": "放凉酥皮",
+            "state": "放凉酥皮"
+          }
+        ]
+      },
+      {
+        "step": 1000,
+        "inputs": [
+          "raw_013"
+        ],
+        "outputs": [
+          {
+            "id": "cream",
+            "name": "打发的装饰奶油",
+            "state": "打发的装饰奶油"
+          }
+        ]
+      },
+      {
+        "step": 1001,
+        "inputs": [
+          "raw_014"
+        ],
+        "outputs": [
+          {
+            "id": "fruit",
+            "name": "洗净切好的时令水果",
+            "state": "洗净切好的时令水果"
+          }
+        ]
+      },
+      {
+        "step": 22,
+        "inputs": [
+          "cool_pastry",
+          "cold_custard",
+          "cream",
+          "fruit"
+        ],
+        "outputs": [
+          {
+            "id": "dish",
+            "name": "夹卡仕达并装饰奶油水果的拿破仑酥",
+            "state": "夹卡仕达并装饰奶油水果的拿破仑酥"
+          }
+        ]
+      }
+    ],
+    "final_outputs": [
+      "dish"
+    ],
+    "notes": [
+      "各新增分配和半成品状态为AI建议；保持源配方整批，禁止跨菜共享。",
+      "淡奶油100克、水果100克为AI补入的装饰用料。"
+    ],
+    "extra_preparation": [
+      {
+        "step": 1000,
+        "before_step": 22,
+        "description": "打发新增的100克装饰淡奶油",
+        "suggested_duration_sec": 240,
+        "device": null
+      },
+      {
+        "step": 1001,
+        "before_step": 22,
+        "description": "洗净并切好新增100克时令水果",
+        "suggested_duration_sec": 180,
+        "device": null
+      }
+    ]
+  },
+  {
+    "row": 23,
+    "recipe_id": "657951cac458a177d84387a1",
+    "stages": [
+      {
+        "step": 2,
+        "inputs": [
+          "raw_001"
+        ],
+        "outputs": [
+          {
+            "id": "chicken",
+            "name": "宰杀去毛去内脏洗净的乌鸡",
+            "state": "宰杀去毛去内脏洗净的乌鸡"
+          }
+        ]
+      },
+      {
+        "step": 3,
+        "inputs": [
+          "raw_002",
+          "raw_003",
+          "raw_004",
+          "raw_005",
+          "raw_006"
+        ],
+        "outputs": [
+          {
+            "id": "herbs",
+            "name": "洗净的配方药材",
+            "state": "洗净的配方药材"
+          }
+        ]
+      },
+      {
+        "step": 4,
+        "inputs": [
+          "herbs"
+        ],
+        "outputs": [
+          {
+            "id": "bag",
+            "name": "纱布包好的药材",
+            "state": "纱布包好的药材"
+          }
+        ]
+      },
+      {
+        "step": 5,
+        "inputs": [
+          "chicken",
+          "bag"
+        ],
+        "outputs": [
+          {
+            "id": "stuffed",
+            "name": "腹内放药材包并扎口的乌鸡",
+            "state": "腹内放药材包并扎口的乌鸡"
+          }
+        ]
+      },
+      {
+        "step": 6,
+        "inputs": [
+          "stuffed",
+          "raw_008"
+        ],
+        "outputs": [
+          {
+            "id": "cooked",
+            "name": "蒸炖完成的乌鸡汤",
+            "state": "蒸炖完成的乌鸡汤"
+          }
+        ]
+      },
+      {
+        "step": 7,
+        "inputs": [
+          "cooked",
+          "raw_007"
+        ],
+        "outputs": [
+          {
+            "id": "dish",
+            "name": "盐调味的乌鸡煲",
+            "state": "盐调味的乌鸡煲"
+          }
+        ]
+      }
+    ],
+    "final_outputs": [
+      "dish"
+    ],
+    "notes": [
+      "各新增分配和半成品状态为AI建议；保持源配方整批，禁止跨菜共享。"
+    ],
+    "extra_preparation": []
+  },
+  {
+    "row": 24,
+    "recipe_id": "662f2c398b2aa2265e11548f",
+    "stages": [
+      {
+        "step": 1,
+        "inputs": [
+          "raw_001",
+          "raw_002"
+        ],
+        "outputs": [
+          {
+            "id": "glazed",
+            "name": "刷蛋液摆盘的冷冻榴莲酥",
+            "state": "刷蛋液摆盘的冷冻榴莲酥"
+          }
+        ]
+      },
+      {
+        "step": 2,
+        "inputs": [
+          "glazed"
+        ],
+        "outputs": [
+          {
+            "id": "loaded",
+            "name": "装入设备的榴莲酥",
+            "state": "装入设备的榴莲酥"
+          }
+        ]
+      },
+      {
+        "step": 3,
+        "inputs": [
+          "loaded"
+        ],
+        "outputs": [
+          {
+            "id": "dish",
+            "name": "烤熟榴莲酥",
+            "state": "烤熟榴莲酥"
+          }
+        ]
+      }
+    ],
+    "final_outputs": [
+      "dish"
+    ],
+    "notes": [
+      "各新增分配和半成品状态为AI建议；保持源配方整批，禁止跨菜共享。"
+    ],
+    "extra_preparation": []
+  },
+  {
+    "row": 25,
+    "recipe_id": "6528fae945256c3ad7c2648f",
+    "stages": [
+      {
+        "step": 2,
+        "inputs": [
+          "raw_001",
+          "raw_002",
+          "raw_003"
+        ],
+        "outputs": [
+          {
+            "id": "meat",
+            "name": "洗净切块的五花肉",
+            "state": "洗净切块的五花肉",
+            "from_inputs": [
+              "raw_001"
+            ]
+          },
+          {
+            "id": "tofu",
+            "name": "切片素鸡",
+            "state": "切片素鸡",
+            "from_inputs": [
+              "raw_002"
+            ]
+          },
+          {
+            "id": "rice_cake",
+            "name": "年糕薄片",
+            "state": "年糕薄片",
+            "from_inputs": [
+              "raw_003"
+            ]
+          }
+        ]
+      },
+      {
+        "step": 3,
+        "inputs": [
+          "tofu",
+          {
+            "id": "raw_008",
+            "fraction": "1/2"
+          }
+        ],
+        "outputs": [
+          {
+            "id": "fried_tofu",
+            "name": "煎至微黄的素鸡",
+            "state": "煎至微黄的素鸡"
+          }
+        ]
+      },
+      {
+        "step": 4,
+        "inputs": [
+          "fried_tofu"
+        ],
+        "outputs": [
+          {
+            "id": "soaking",
+            "name": "凉水中的素鸡",
+            "state": "凉水中的素鸡"
+          }
+        ]
+      },
+      {
+        "step": 5,
+        "inputs": [
+          "soaking"
+        ],
+        "outputs": [
+          {
+            "id": "soft_tofu",
+            "name": "浸泡完成素鸡",
+            "state": "浸泡完成素鸡"
+          }
+        ]
+      },
+      {
+        "step": 6,
+        "inputs": [
+          "soft_tofu",
+          "rice_cake"
+        ],
+        "outputs": [
+          {
+            "id": "base",
+            "name": "碗中码好的素鸡年糕",
+            "state": "碗中码好的素鸡年糕"
+          }
+        ]
+      },
+      {
+        "step": 7,
+        "inputs": [
+          "meat"
+        ],
+        "outputs": [
+          {
+            "id": "seared",
+            "name": "煸出部分猪油的五花肉",
+            "state": "煸出部分猪油的五花肉"
+          }
+        ]
+      },
+      {
+        "step": 8,
+        "inputs": [
+          "seared",
+          {
+            "id": "raw_008",
+            "fraction": "1/2"
+          },
+          "raw_007"
+        ],
+        "outputs": [
+          {
+            "id": "caramelized",
+            "name": "裹上糖色的五花肉",
+            "state": "裹上糖色的五花肉"
+          }
+        ]
+      },
+      {
+        "step": 1000,
+        "inputs": [
+          "raw_010"
+        ],
+        "outputs": [
+          {
+            "id": "hot_water",
+            "name": "烧开的炖肉用水",
+            "state": "烧开的炖肉用水"
+          }
+        ]
+      },
+      {
+        "step": 9,
+        "inputs": [
+          "caramelized",
+          "hot_water",
+          "raw_004",
+          "raw_005",
+          "raw_006"
+        ],
+        "outputs": [
+          {
+            "id": "sauced",
+            "name": "加入调味液和热水的五花肉",
+            "state": "加入调味液和热水的五花肉"
+          }
+        ]
+      },
+      {
+        "step": 10,
+        "inputs": [
+          "sauced"
+        ],
+        "outputs": [
+          {
+            "id": "boiled",
+            "name": "大火烧开的肉汤",
+            "state": "大火烧开的肉汤"
+          }
+        ]
+      },
+      {
+        "step": 11,
+        "inputs": [
+          "boiled"
+        ],
+        "outputs": [
+          {
+            "id": "covered",
+            "name": "转小火加盖的五花肉",
+            "state": "转小火加盖的五花肉"
+          }
+        ]
+      },
+      {
+        "step": 12,
+        "inputs": [
+          "covered"
+        ],
+        "outputs": [
+          {
+            "id": "stewed",
+            "name": "炖煮完成的五花肉",
+            "state": "炖煮完成的五花肉"
+          }
+        ]
+      },
+      {
+        "step": 13,
+        "inputs": [
+          "stewed",
+          "raw_009"
+        ],
+        "outputs": [
+          {
+            "id": "seasoned",
+            "name": "盐调味收汁的炖肉",
+            "state": "盐调味收汁的炖肉"
+          }
+        ]
+      },
+      {
+        "step": 14,
+        "inputs": [
+          "base",
+          "seasoned"
+        ],
+        "outputs": [
+          {
+            "id": "assembled",
+            "name": "码上炖肉淋肉汁的素鸡年糕碗",
+            "state": "码上炖肉淋肉汁的素鸡年糕碗"
+          }
+        ]
+      },
+      {
+        "step": 15,
+        "inputs": [
+          "assembled"
+        ],
+        "outputs": [
+          {
+            "id": "dish",
+            "name": "蒸熟小碗蒸肉",
+            "state": "蒸熟小碗蒸肉"
+          }
+        ]
+      }
+    ],
+    "final_outputs": [
+      "dish"
+    ],
+    "notes": [
+      "各新增分配和半成品状态为AI建议；保持源配方整批，禁止跨菜共享。",
+      "植物油各半用于煎素鸡和炒糖色，另补400毫升炖肉水。"
+    ],
+    "extra_preparation": [
+      {
+        "step": 1000,
+        "before_step": 9,
+        "description": "将配方400毫升炖肉用水烧开",
+        "suggested_duration_sec": 300,
+        "device": "stove"
+      }
+    ]
+  }
+]

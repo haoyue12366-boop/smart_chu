@@ -1,0 +1,93 @@
+{
+  "source_kind": "OFFICIAL_EXAMPLE",
+  "source_file": "docs/智能烹饪调度Agent接口规范.md",
+  "source_sha256": "c5e8c4c9e39446582d36609f79d2c81017202fdf5d556f46e74396ad6c068ea7",
+  "usable_as_schedule_correctness_evidence": false,
+  "known_issue": "示例38–40分钟装盘包含烘烤持续到40分钟的鸡腿，不能作为物理依赖正确性的证据。",
+  "open_questions": [
+    {
+      "id": "U01",
+      "question": "多次数组请求如何关联同一轮做饭",
+      "current_handling": "内部显式会话；比赛初排按独立请求",
+      "acceptance": "确认官方上下文或明确单活动会话语义"
+    },
+    {
+      "id": "U02",
+      "question": "新数组表示全量菜单还是新增部分",
+      "current_handling": "Adapter 支持分离的转换策略，不自动猜测",
+      "acceptance": "用真实协议覆盖新增、重复、独立请求"
+    },
+    {
+      "id": "U03",
+      "question": "已执行状态如何提供或推算",
+      "current_handling": "模拟、人工、设备三种来源明确标记",
+      "acceptance": "确认评测状态推进方式"
+    },
+    {
+      "id": "U04",
+      "question": "重排时间原点及历史输出",
+      "current_handling": "内部保留会话原点与完整事实",
+      "acceptance": "明确官方相对时间和历史展示规则"
+    },
+    {
+      "id": "U05",
+      "question": "重排串行基线、压缩比例的口径",
+      "current_handling": "保存完整和剩余指标，基线带 policy_version",
+      "acceptance": "与评测口径对齐，不靠截零修饰"
+    },
+    {
+      "id": "U06",
+      "question": "同名不同 ID 的响应引用",
+      "current_handling": "内部始终按 ID；官方名称原样保留",
+      "acceptance": "确认可区分的外部引用规则"
+    },
+    {
+      "id": "U07",
+      "question": "HH:mm 无法表达跨日、整数分钟无法表达部分工艺",
+      "current_handling": "内部完整时间；离线进行分钟兼容检查",
+      "acceptance": "确认边界案例的展示与计分方式"
+    },
+    {
+      "id": "U08",
+      "question": "连续人工操作时长的精确定义",
+      "current_handling": "人工固定 1 人；休息阈值初始 60 秒，指标口径可配置",
+      "acceptance": "官方有补充后核对指标；单人项目边界不随指标调整改变"
+    },
+    {
+      "id": "U09",
+      "question": "温度、档位、模式、设备的原数据冲突",
+      "current_handling": "数据问题逐条审核，未解决不发布该路径",
+      "acceptance": "全部 100 道有合法路径"
+    },
+    {
+      "id": "U10",
+      "question": "原菜谱显式分批与不考虑容量的关系",
+      "current_handling": "保留显式分批，容量不额外设限",
+      "acceptance": "赛方有明确修订时通过规则版本变更"
+    },
+    {
+      "id": "U11",
+      "question": "网络计时、缓存和预热条件",
+      "current_handling": "分开报告冷启动、服务内、客户端耗时",
+      "acceptance": "按实际评测方式复测"
+    },
+    {
+      "id": "U12",
+      "question": "通知字段和失败响应没有完整协议",
+      "current_handling": "比赛成功响应不扩字段；通知用现有文本与独立展示",
+      "acceptance": "提交接口说明并确认可接受表达"
+    },
+    {
+      "id": "U13",
+      "question": "蒸烤一体机与清单分列设备的物理对应",
+      "current_handling": "默认两台设备，按实例可配置",
+      "acceptance": "审核实际工艺与设备映射"
+    },
+    {
+      "id": "U14",
+      "question": "精确提交日期与实际部署资源",
+      "current_handling": "建设按阶段出口安排，预算可配置",
+      "acceptance": "在交付计划阶段绑定真实条件"
+    }
+  ]
+}

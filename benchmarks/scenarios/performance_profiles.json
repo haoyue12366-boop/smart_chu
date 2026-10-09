@@ -1,0 +1,21 @@
+{
+  "id": "p6-windows-http-v1",
+  "suite_hash": "60276a5d3232a34905f1f298529b093ef7cee237394ca3c943c6053d8bed6613",
+  "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+  "rounds": 3,
+  "concurrent_jobs": 1,
+  "budgets_ms": {"INITIAL": 4200, "REPLAN": 2400},
+  "hardware": "ACTUAL_WINDOWS_HOST_RECORDED_NOT_4VCPU_8GB_EMULATION",
+  "case_ids": [
+    "boundary-000", "boundary-002", "boundary-004", "boundary-008", "boundary-009", "boundary-019",
+    "combination-000", "combination-031", "combination-041", "combination-043", "combination-052",
+    "replan-000", "replan-001", "replan-002", "replan-003", "replan-004",
+    "replan-005", "replan-006", "replan-007", "replan-008", "replan-009",
+    "replan-010", "replan-011", "replan-012", "replan-013", "replan-014",
+    "replan-015", "replan-016", "replan-017", "replan-018", "replan-019"
+  ],
+  "selection": "All 20 fixed replan scripts, known difficult combinations and representative physical-device/batching/same-name boundaries; no outcome-dependent removal",
+  "network": "Real loopback TCP HTTP; public network latency and official dynamic profile remain unverified",
+  "default_policy": "NOMINAL",
+  "live_llm_calls": 0
+}

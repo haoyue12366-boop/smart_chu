@@ -1,0 +1,29 @@
+{
+  "id": "p6-synthetic-duration-v1",
+  "source_kind": "SYNTHETIC_EXPERIMENT_NOT_OBSERVED_DURATIONS",
+  "seed": 20261004,
+  "menu_selection": "combination-000..036 plus combination-041,043,052",
+  "menus": 40,
+  "trajectories": 100,
+  "groups": ["NOMINAL_SHIFT", "NOMINAL_REPLAN", "BUFFERED_SHIFT", "BUFFERED_REPLAN"],
+  "common_percent": [80, 100, 120, 150],
+  "common_weights": [15, 40, 30, 15],
+  "local_percent": [90, 100, 110],
+  "local_weights": [20, 60, 20],
+  "distribution": "ceil(nominal*common_percent*local_percent/10000), clipped to reviewed bounds; whole shared phase uses max member local percent",
+  "protected": "HEAT and all fixed-process phases, including mandatory intervention stages; zero absorbed preheat remains zero",
+  "buffer_basis_points": 1500,
+  "trigger_delay_sec": 30,
+  "max_replans": 1,
+  "trigger": "first visible estimated phase in initial plan completes at least 30 seconds later than planned",
+  "max_events": 5000,
+  "future_leak": false,
+  "cache": "complete observed session + pinned knowledge + policy; no seed, private factor or future duration",
+  "limitations": [
+    "Synthetic weights are sensitivity assumptions, not measurements or empirical P90",
+    "At most one observed trigger per trajectory is a fixed experimental control",
+    "Pure execution/material transitions and planning core; SQL publication and HTTP budgets are separate P6-05/P6-06 evidence",
+    "All failed and incomplete trajectories remain in the full denominators",
+    "BUFFERED remains optional; no duration inflation or resource reservation for free waiting"
+  ]
+}

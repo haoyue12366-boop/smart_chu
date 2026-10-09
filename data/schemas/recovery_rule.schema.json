@@ -1,0 +1,420 @@
+{
+  "$defs": {
+    "CarrierId": {
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "CarrierId",
+      "type": "string"
+    },
+    "ConfigurationValue": {
+      "additionalProperties": false,
+      "properties": {
+        "parameter": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Parameter",
+          "type": "string"
+        },
+        "value": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "title": "Value"
+        }
+      },
+      "required": [
+        "parameter",
+        "value"
+      ],
+      "title": "ConfigurationValue",
+      "type": "object"
+    },
+    "ConflictPolicy": {
+      "enum": [
+        "UNARY",
+        "BATCH_EXCLUSIVE",
+        "STATE_COMPATIBLE",
+        "SHARED_AUXILIARY"
+      ],
+      "title": "ConflictPolicy",
+      "type": "string"
+    },
+    "Interval": {
+      "additionalProperties": false,
+      "properties": {
+        "start_sec": {
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "Start Sec",
+          "type": "integer"
+        },
+        "end_sec": {
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "End Sec",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "start_sec",
+        "end_sec"
+      ],
+      "title": "Interval",
+      "type": "object"
+    },
+    "OccupationPolicy": {
+      "enum": [
+        "WHOLE_INTERVAL",
+        "PHASE_INTERVAL"
+      ],
+      "title": "OccupationPolicy",
+      "type": "string"
+    },
+    "OperationId": {
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "OperationId",
+      "type": "string"
+    },
+    "RecipeId": {
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "RecipeId",
+      "type": "string"
+    },
+    "RecoveryBinding": {
+      "additionalProperties": false,
+      "properties": {
+        "recipe_id": {
+          "$ref": "#/$defs/RecipeId"
+        },
+        "operation_id": {
+          "$ref": "#/$defs/OperationId"
+        },
+        "recipe_hash": {
+          "pattern": "^[a-f0-9]{64}$",
+          "title": "Recipe Hash",
+          "type": "string"
+        },
+        "operation_hash": {
+          "pattern": "^[a-f0-9]{64}$",
+          "title": "Operation Hash",
+          "type": "string"
+        }
+      },
+      "required": [
+        "recipe_id",
+        "operation_id",
+        "recipe_hash",
+        "operation_hash"
+      ],
+      "title": "RecoveryBinding",
+      "type": "object"
+    },
+    "ResourceType": {
+      "enum": [
+        "HUMAN",
+        "DEVICE"
+      ],
+      "title": "ResourceType",
+      "type": "string"
+    },
+    "ResourceUse": {
+      "additionalProperties": false,
+      "properties": {
+        "resource_type": {
+          "$ref": "#/$defs/ResourceType"
+        },
+        "resource_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Resource Id",
+          "type": "string"
+        },
+        "units": {
+          "default": 1,
+          "exclusiveMinimum": 0,
+          "maximum": 1152921504606846976,
+          "title": "Units",
+          "type": "integer"
+        },
+        "layer_index": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0,
+              "maximum": 1152921504606846976,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Layer Index"
+        },
+        "physical_resource_id": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Physical Resource Id"
+        },
+        "component_id": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Component Id"
+        },
+        "profile_options": {
+          "default": [],
+          "items": {
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "title": "Profile Options",
+          "type": "array"
+        },
+        "configuration": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/ConfigurationValue"
+          },
+          "title": "Configuration",
+          "type": "array"
+        },
+        "conflict_policy": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ConflictPolicy"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "occupation_policy": {
+          "$ref": "#/$defs/OccupationPolicy",
+          "default": "WHOLE_INTERVAL"
+        },
+        "carrier_id": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/CarrierId"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "phase_id": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Phase Id"
+        },
+        "presence_condition": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Presence Condition"
+        },
+        "occupancy": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Interval"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "human_interventions": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/OperationId"
+          },
+          "title": "Human Interventions",
+          "type": "array"
+        },
+        "rule_version": {
+          "default": "unreviewed",
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Rule Version",
+          "type": "string"
+        },
+        "evidence_refs": {
+          "default": [],
+          "items": {
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "title": "Evidence Refs",
+          "type": "array"
+        },
+        "review_status": {
+          "$ref": "#/$defs/ReviewStatus",
+          "default": "DRAFT"
+        }
+      },
+      "required": [
+        "resource_type",
+        "resource_id"
+      ],
+      "title": "ResourceUse",
+      "type": "object"
+    },
+    "ResumeProcedure": {
+      "additionalProperties": false,
+      "description": "审核授权的同工艺续做：全部实际投入保留，并限制中断时长。",
+      "properties": {
+        "continuation": {
+          "const": "SAME_PROCESS",
+          "default": "SAME_PROCESS",
+          "title": "Continuation",
+          "type": "string"
+        },
+        "source_carrier_kind": {
+          "enum": [
+            "STANDALONE",
+            "SHARED_PREP"
+          ],
+          "title": "Source Carrier Kind",
+          "type": "string"
+        },
+        "resource_uses": {
+          "items": {
+            "$ref": "#/$defs/ResourceUse"
+          },
+          "title": "Resource Uses",
+          "type": "array"
+        },
+        "retain_all_consumed": {
+          "const": true,
+          "default": true,
+          "title": "Retain All Consumed",
+          "type": "boolean"
+        },
+        "max_pause_sec": {
+          "exclusiveMinimum": 0,
+          "maximum": 1152921504606846976,
+          "title": "Max Pause Sec",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "source_carrier_kind",
+        "resource_uses",
+        "max_pause_sec"
+      ],
+      "title": "ResumeProcedure",
+      "type": "object"
+    },
+    "ReviewStatus": {
+      "enum": [
+        "DRAFT",
+        "NEEDS_REVIEW",
+        "APPROVED",
+        "RETIRED"
+      ],
+      "title": "ReviewStatus",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "recovery-rule-v1",
+      "default": "recovery-rule-v1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "bindings": {
+      "items": {
+        "$ref": "#/$defs/RecoveryBinding"
+      },
+      "title": "Bindings",
+      "type": "array"
+    },
+    "kind": {
+      "enum": [
+        "REMAKE",
+        "RESUME"
+      ],
+      "title": "Kind",
+      "type": "string"
+    },
+    "remaining_sec": {
+      "anyOf": [
+        {
+          "exclusiveMinimum": 0,
+          "maximum": 1152921504606846976,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Remaining Sec"
+    },
+    "resume_procedure": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ResumeProcedure"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    }
+  },
+  "required": [
+    "bindings",
+    "kind"
+  ],
+  "title": "RecoveryRuleSpec",
+  "type": "object"
+}

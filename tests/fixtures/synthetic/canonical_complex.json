@@ -1,0 +1,136 @@
+{
+  "schema_version": "1.0",
+  "recipe_id": "synthetic-recipe",
+  "name": "合成固定两批与介入",
+  "recipe_version": "1",
+  "review_status": "DRAFT",
+  "provenance_refs": [
+    "synthetic-source"
+  ],
+  "ingredient_requirements": [],
+  "material_specs": [],
+  "operations": [
+    {
+      "operation_id": "prep_a",
+      "action": "CUT",
+      "duration": {
+        "execution_sec": 60,
+        "nominal_sec": 60,
+        "source_ref": "synthetic-source"
+      },
+      "provenance_refs": [
+        "synthetic-source"
+      ],
+      "resource_requirements": [
+        {
+          "resource_type": "HUMAN",
+          "resource_id": "human_1",
+          "conflict_policy": "UNARY"
+        }
+      ],
+      "execution_policy": {}
+    },
+    {
+      "operation_id": "prep_b",
+      "action": "WAIT",
+      "duration": {
+        "execution_sec": 120,
+        "nominal_sec": 120,
+        "source_ref": "synthetic-source"
+      },
+      "provenance_refs": [
+        "synthetic-source"
+      ],
+      "resource_requirements": [],
+      "execution_policy": {}
+    },
+    {
+      "operation_id": "steam_1",
+      "action": "HEAT",
+      "duration": {
+        "execution_sec": 600,
+        "nominal_sec": 600,
+        "source_ref": "synthetic-source"
+      },
+      "provenance_refs": [
+        "synthetic-source"
+      ],
+      "resource_requirements": [],
+      "execution_policy": {
+        "batch_policy": "FIXED_RECIPE",
+        "fixed_batch_id": "batch_1",
+        "thermal_group_id": "program_1",
+        "interventions": [
+          {
+            "operation_id": "add",
+            "offset_min_sec": 300,
+            "offset_max_sec": 300
+          }
+        ]
+      }
+    },
+    {
+      "operation_id": "add",
+      "action": "ADD",
+      "duration": {
+        "execution_sec": 60,
+        "nominal_sec": 60,
+        "source_ref": "synthetic-source"
+      },
+      "provenance_refs": [
+        "synthetic-source"
+      ],
+      "resource_requirements": [
+        {
+          "resource_type": "HUMAN",
+          "resource_id": "human_1",
+          "conflict_policy": "UNARY"
+        }
+      ],
+      "execution_policy": {}
+    },
+    {
+      "operation_id": "steam_2",
+      "action": "HEAT",
+      "duration": {
+        "execution_sec": 600,
+        "nominal_sec": 600,
+        "source_ref": "synthetic-source"
+      },
+      "provenance_refs": [
+        "synthetic-source"
+      ],
+      "resource_requirements": [],
+      "execution_policy": {
+        "batch_policy": "FIXED_RECIPE",
+        "fixed_batch_id": "batch_2"
+      }
+    }
+  ],
+  "dependencies": [
+    {
+      "predecessor_id": "prep_a",
+      "successor_id": "steam_1",
+      "reason": "合成物料依赖",
+      "evidence_refs": [
+        "synthetic-source"
+      ]
+    },
+    {
+      "predecessor_id": "prep_b",
+      "successor_id": "steam_1",
+      "reason": "合成物料依赖",
+      "evidence_refs": [
+        "synthetic-source"
+      ]
+    },
+    {
+      "predecessor_id": "steam_1",
+      "successor_id": "steam_2",
+      "reason": "合成固定两批",
+      "evidence_refs": [
+        "synthetic-source"
+      ]
+    }
+  ]
+}

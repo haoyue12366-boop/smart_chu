@@ -1,0 +1,165 @@
+{
+  "review_id": "DELEGATED_AGENT:2026-10-08:multilayer-onepot-v1",
+  "actor_kind": "DELEGATED_AGENT",
+  "base_release_id": "delegated-v3-layered-devices-v1-all",
+  "base_snapshot_id": "snapshot-c66756cf0e4713cb0cb07a220fb746efd7a1b581fa6a40d585763db21e76d5a4",
+  "base_content_hash": "c66756cf0e4713cb0cb07a220fb746efd7a1b581fa6a40d585763db21e76d5a4",
+  "new_release_id": "delegated-v3-multilayer-onepot-v1-all",
+  "recipe_id": "66715324bfbee338853895c7",
+  "review_scope": "原文固定第1、3层；从既有装盘入蒸箱操作开始，至既有取出操作完成，保持同一双层预约。只补充设备资源绑定，不修改工艺、人工、时长、温度或其他菜谱。",
+  "recipe_count": 100,
+  "changed_recipe_count": 1,
+  "changed_context_count": 1,
+  "before_semantic_hash": "2634cb15d035bcc37f552faf56e4adc8e5837347fa5301492406a9fd9d676ec9",
+  "after_semantic_hash": "c2b5de123d653ca2f12bac96d2df0608076db68fe7d4869c3d7ca77ce548e42c",
+  "before_recipe_hash": "8d85663b01a2ea1cdea4c2d4a8501a00b623158d82ca1bd239e18f80221f633e",
+  "after_recipe_hash": "db3bcd75fa3891bfe36120bcba9f6f23e87cbedb41d75a7fbaba2ce58b1da455",
+  "before_context_hash": "ee452fd299433ef8b16c104ebf31812133c97ad04a060f7dfa6bd1a7fd587869",
+  "after_context_hash": "1432e208306c2ef887900f65cd681d9a1110df4db8bcfd707a045ee405586a2e",
+  "reservation_before": {
+    "reservation_id": "66715324bfbee338853895c7:steam:2",
+    "members": [
+      "op_014_01",
+      "op_014_02",
+      "op_014_03",
+      "op_1000_01"
+    ],
+    "resource_options": [
+      "steam_oven_1"
+    ],
+    "policy": "STATE_COMPATIBLE",
+    "span": "min_start_to_max_end",
+    "origin": "MODEL_SUGGESTION"
+  },
+  "reservation_after": {
+    "reservation_id": "66715324bfbee338853895c7:steam:2",
+    "members": [
+      "op_013_01",
+      "op_014_01",
+      "op_014_02",
+      "op_014_03",
+      "op_1000_01"
+    ],
+    "resource_options": [
+      "steam_oven_1"
+    ],
+    "policy": "STATE_COMPATIBLE",
+    "span": "min_start_to_max_end",
+    "origin": "MODEL_SUGGESTION"
+  },
+  "changed_operations": [
+    {
+      "operation_id": "op_013_01",
+      "action": "LOAD",
+      "duration_sec": 30,
+      "change": "ADD_SOURCE_LOAD_OCCUPANCY",
+      "occupied_layer_indices": [
+        1,
+        3
+      ],
+      "units": 2,
+      "configuration": [
+        {
+          "parameter": "temperature_c",
+          "value": 100
+        },
+        {
+          "parameter": "mode",
+          "value": "普通蒸"
+        }
+      ]
+    },
+    {
+      "operation_id": "op_014_01",
+      "action": "PREPARE",
+      "duration_sec": 60,
+      "change": "FIX_TWO_LAYERS",
+      "occupied_layer_indices": [
+        1,
+        3
+      ],
+      "units": 2,
+      "configuration": [
+        {
+          "parameter": "temperature_c",
+          "value": 100
+        },
+        {
+          "parameter": "mode",
+          "value": "普通蒸"
+        }
+      ]
+    },
+    {
+      "operation_id": "op_014_02",
+      "action": "PREHEAT",
+      "duration_sec": 300,
+      "change": "FIX_TWO_LAYERS",
+      "occupied_layer_indices": [
+        1,
+        3
+      ],
+      "units": 2,
+      "configuration": [
+        {
+          "parameter": "temperature_c",
+          "value": 100
+        },
+        {
+          "parameter": "mode",
+          "value": "普通蒸"
+        }
+      ]
+    },
+    {
+      "operation_id": "op_014_03",
+      "action": "HEAT",
+      "duration_sec": 1800,
+      "change": "FIX_TWO_LAYERS",
+      "occupied_layer_indices": [
+        1,
+        3
+      ],
+      "units": 2,
+      "configuration": [
+        {
+          "parameter": "temperature_c",
+          "value": 100
+        },
+        {
+          "parameter": "mode",
+          "value": "普通蒸"
+        }
+      ]
+    },
+    {
+      "operation_id": "op_1000_01",
+      "action": "UNLOAD",
+      "duration_sec": 180,
+      "change": "FIX_TWO_LAYERS",
+      "occupied_layer_indices": [
+        1,
+        3
+      ],
+      "units": 2,
+      "configuration": [
+        {
+          "parameter": "temperature_c",
+          "value": 100
+        },
+        {
+          "parameter": "mode",
+          "value": "普通蒸"
+        }
+      ]
+    }
+  ],
+  "process_duration_changes": 0,
+  "temperature_mode_humidity_changes": 0,
+  "human_changes": 0,
+  "advance_preparation_rule_count": 42,
+  "advance_preparation_operation_count": 148,
+  "advance_preparation_change": "仅轻松一锅蒸更新recipe_hash；42道菜准备规则及原操作集合保留",
+  "new_kitchen_measurements": false,
+  "formal_human_review_complete": false
+}

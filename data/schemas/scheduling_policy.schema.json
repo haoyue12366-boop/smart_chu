@@ -1,0 +1,499 @@
+{
+  "$defs": {
+    "BudgetSpec": {
+      "additionalProperties": false,
+      "properties": {
+        "total_ms": {
+          "exclusiveMinimum": 0,
+          "maximum": 1152921504606846976,
+          "title": "Total Ms",
+          "type": "integer"
+        },
+        "greedy_ms": {
+          "exclusiveMinimum": 0,
+          "maximum": 1152921504606846976,
+          "title": "Greedy Ms",
+          "type": "integer"
+        },
+        "solver_ms": {
+          "exclusiveMinimum": 0,
+          "maximum": 1152921504606846976,
+          "title": "Solver Ms",
+          "type": "integer"
+        },
+        "publication_reserve_ms": {
+          "exclusiveMinimum": 0,
+          "maximum": 1152921504606846976,
+          "title": "Publication Reserve Ms",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "total_ms",
+        "greedy_ms",
+        "solver_ms",
+        "publication_reserve_ms"
+      ],
+      "title": "BudgetSpec",
+      "type": "object"
+    },
+    "GreedySearchLimits": {
+      "additionalProperties": false,
+      "properties": {
+        "max_variants": {
+          "default": 3,
+          "exclusiveMinimum": 0,
+          "maximum": 1152921504606846976,
+          "title": "Max Variants",
+          "type": "integer"
+        },
+        "max_placements_per_iteration": {
+          "default": 24,
+          "exclusiveMinimum": 0,
+          "maximum": 1152921504606846976,
+          "title": "Max Placements Per Iteration",
+          "type": "integer"
+        },
+        "max_gap_checks_per_candidate": {
+          "default": 32,
+          "exclusiveMinimum": 0,
+          "maximum": 1152921504606846976,
+          "title": "Max Gap Checks Per Candidate",
+          "type": "integer"
+        },
+        "rollback_depth": {
+          "default": 3,
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "Rollback Depth",
+          "type": "integer"
+        },
+        "rollback_attempts": {
+          "default": 8,
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "Rollback Attempts",
+          "type": "integer"
+        },
+        "max_standalone_restarts": {
+          "default": 1,
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "Max Standalone Restarts",
+          "type": "integer"
+        }
+      },
+      "title": "GreedySearchLimits",
+      "type": "object"
+    },
+    "ModelSize": {
+      "additionalProperties": false,
+      "properties": {
+        "total_variables": {
+          "default": 0,
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "Total Variables",
+          "type": "integer"
+        },
+        "boolean_variables": {
+          "default": 0,
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "Boolean Variables",
+          "type": "integer"
+        },
+        "optional_intervals": {
+          "default": 0,
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "Optional Intervals",
+          "type": "integer"
+        },
+        "total_constraints": {
+          "default": 0,
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "Total Constraints",
+          "type": "integer"
+        },
+        "sequence_arcs": {
+          "default": 0,
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "Sequence Arcs",
+          "type": "integer"
+        }
+      },
+      "title": "ModelSize",
+      "type": "object"
+    },
+    "ObjectiveSpec": {
+      "additionalProperties": false,
+      "properties": {
+        "spread_basis": {
+          "default": "WORKFLOW_FINISH",
+          "enum": [
+            "WORKFLOW_FINISH",
+            "COOKING_FINISH"
+          ],
+          "title": "Spread Basis",
+          "type": "string"
+        },
+        "stages": {
+          "default": [
+            "MAKESPAN",
+            "SPREAD",
+            "HUMAN_BUSY",
+            "STABILITY"
+          ],
+          "items": {
+            "enum": [
+              "MAKESPAN",
+              "SPREAD",
+              "TOTAL_HUMAN_WORK",
+              "HUMAN_BUSY",
+              "STABILITY"
+            ],
+            "type": "string"
+          },
+          "title": "Stages",
+          "type": "array"
+        },
+        "spread_target_sec": {
+          "default": 240,
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "Spread Target Sec",
+          "type": "integer"
+        },
+        "rest_gap_sec": {
+          "default": 60,
+          "exclusiveMinimum": 0,
+          "maximum": 1152921504606846976,
+          "title": "Rest Gap Sec",
+          "type": "integer"
+        },
+        "makespan_extra_basis_points": {
+          "default": 500,
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "Makespan Extra Basis Points",
+          "type": "integer"
+        },
+        "makespan_extra_cap_sec": {
+          "default": 120,
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "Makespan Extra Cap Sec",
+          "type": "integer"
+        }
+      },
+      "title": "ObjectiveSpec",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "policy_version": {
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "Policy Version",
+      "type": "string"
+    },
+    "time_grid_sec": {
+      "default": 1,
+      "exclusiveMinimum": 0,
+      "maximum": 1152921504606846976,
+      "title": "Time Grid Sec",
+      "type": "integer"
+    },
+    "minute_output_mode": {
+      "default": "DECIMAL",
+      "enum": [
+        "DECIMAL",
+        "INTEGER"
+      ],
+      "title": "Minute Output Mode",
+      "type": "string"
+    },
+    "human_count": {
+      "default": 1,
+      "maximum": 1,
+      "minimum": 1,
+      "title": "Human Count",
+      "type": "integer"
+    },
+    "human_resource_id": {
+      "const": "human_1",
+      "default": "human_1",
+      "title": "Human Resource Id",
+      "type": "string"
+    },
+    "burner_ids": {
+      "default": [
+        "burner_1",
+        "burner_2"
+      ],
+      "items": {
+        "enum": [
+          "burner_1",
+          "burner_2"
+        ],
+        "type": "string"
+      },
+      "title": "Burner Ids",
+      "type": "array"
+    },
+    "max_nonstandalone_per_requirement": {
+      "default": 12,
+      "exclusiveMinimum": 0,
+      "maximum": 1152921504606846976,
+      "title": "Max Nonstandalone Per Requirement",
+      "type": "integer"
+    },
+    "max_nonstandalone_per_problem": {
+      "default": 256,
+      "exclusiveMinimum": 0,
+      "maximum": 1152921504606846976,
+      "title": "Max Nonstandalone Per Problem",
+      "type": "integer"
+    },
+    "preserve_mandatory_recipe_batches": {
+      "const": true,
+      "default": true,
+      "title": "Preserve Mandatory Recipe Batches",
+      "type": "boolean"
+    },
+    "preserve_all_standalone_candidates": {
+      "const": true,
+      "default": true,
+      "title": "Preserve All Standalone Candidates",
+      "type": "boolean"
+    },
+    "shared_prep": {
+      "default": false,
+      "title": "Shared Prep",
+      "type": "boolean"
+    },
+    "allow_delegated_shared_estimates": {
+      "default": false,
+      "title": "Allow Delegated Shared Estimates",
+      "type": "boolean"
+    },
+    "strict_together_batch": {
+      "default": false,
+      "title": "Strict Together Batch",
+      "type": "boolean"
+    },
+    "generic_common_start_batch": {
+      "const": false,
+      "default": false,
+      "title": "Generic Common Start Batch",
+      "type": "boolean"
+    },
+    "generic_common_finish_batch": {
+      "const": false,
+      "default": false,
+      "title": "Generic Common Finish Batch",
+      "type": "boolean"
+    },
+    "enable_certified_non_equivalent_pruning": {
+      "default": false,
+      "title": "Enable Certified Non Equivalent Pruning",
+      "type": "boolean"
+    },
+    "equivalence_deduplication": {
+      "default": true,
+      "title": "Equivalence Deduplication",
+      "type": "boolean"
+    },
+    "graph_bound_preprocessing": {
+      "default": true,
+      "title": "Graph Bound Preprocessing",
+      "type": "boolean"
+    },
+    "duration_policy_id": {
+      "default": "NOMINAL",
+      "enum": [
+        "NOMINAL",
+        "BUFFERED"
+      ],
+      "title": "Duration Policy Id",
+      "type": "string"
+    },
+    "critical_window_policy_id": {
+      "default": "NONE",
+      "enum": [
+        "NONE",
+        "SERIAL_RECIPE_V1"
+      ],
+      "title": "Critical Window Policy Id",
+      "type": "string"
+    },
+    "replan_search_mode": {
+      "default": "OPTIMIZE",
+      "enum": [
+        "OPTIMIZE",
+        "FEASIBILITY_FIRST"
+      ],
+      "title": "Replan Search Mode",
+      "type": "string"
+    },
+    "dispatch_guard_policy_id": {
+      "default": "NONE",
+      "enum": [
+        "NONE",
+        "TIGHT_HUMAN_V1"
+      ],
+      "title": "Dispatch Guard Policy Id",
+      "type": "string"
+    },
+    "duration_data_version": {
+      "default": "nominal-v1",
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "Duration Data Version",
+      "type": "string"
+    },
+    "duration_buffer_basis_points": {
+      "default": 1500,
+      "maximum": 1152921504606846976,
+      "minimum": 0,
+      "title": "Duration Buffer Basis Points",
+      "type": "integer"
+    },
+    "initial_budget": {
+      "$ref": "#/$defs/BudgetSpec",
+      "default": {
+        "total_ms": 4200,
+        "greedy_ms": 150,
+        "solver_ms": 3000,
+        "publication_reserve_ms": 400
+      }
+    },
+    "replan_budget": {
+      "$ref": "#/$defs/BudgetSpec",
+      "default": {
+        "total_ms": 2400,
+        "greedy_ms": 100,
+        "solver_ms": 1500,
+        "publication_reserve_ms": 300
+      }
+    },
+    "objective": {
+      "$ref": "#/$defs/ObjectiveSpec",
+      "default": {
+        "stages": [
+          "MAKESPAN",
+          "SPREAD",
+          "HUMAN_BUSY",
+          "STABILITY"
+        ],
+        "spread_target_sec": 240,
+        "rest_gap_sec": 60,
+        "makespan_extra_basis_points": 500,
+        "makespan_extra_cap_sec": 120
+      }
+    },
+    "greedy_search": {
+      "$ref": "#/$defs/GreedySearchLimits",
+      "default": {
+        "max_variants": 3,
+        "max_placements_per_iteration": 24,
+        "max_gap_checks_per_candidate": 32,
+        "rollback_depth": 3,
+        "rollback_attempts": 8,
+        "max_standalone_restarts": 1
+      }
+    },
+    "max_exact_human_phases": {
+      "default": 120,
+      "exclusiveMinimum": 0,
+      "maximum": 1152921504606846976,
+      "title": "Max Exact Human Phases",
+      "type": "integer"
+    },
+    "minimum_exact_human_budget_ms": {
+      "default": 100,
+      "exclusiveMinimum": 0,
+      "maximum": 1152921504606846976,
+      "title": "Minimum Exact Human Budget Ms",
+      "type": "integer"
+    },
+    "model_soft_limits": {
+      "$ref": "#/$defs/ModelSize",
+      "default": {
+        "total_variables": 6000,
+        "boolean_variables": 4000,
+        "optional_intervals": 1500,
+        "total_constraints": 20000,
+        "sequence_arcs": 8000
+      }
+    },
+    "api_instances": {
+      "const": 1,
+      "default": 1,
+      "title": "Api Instances",
+      "type": "integer"
+    },
+    "concurrent_planning_jobs": {
+      "const": 1,
+      "default": 1,
+      "title": "Concurrent Planning Jobs",
+      "type": "integer"
+    },
+    "solver_worker_processes": {
+      "const": 1,
+      "default": 1,
+      "title": "Solver Worker Processes",
+      "type": "integer"
+    },
+    "max_solver_search_workers": {
+      "default": 4,
+      "exclusiveMinimum": 0,
+      "maximum": 1152921504606846976,
+      "title": "Max Solver Search Workers",
+      "type": "integer"
+    },
+    "sqlite_busy_timeout_ms": {
+      "default": 100,
+      "exclusiveMinimum": 0,
+      "maximum": 1152921504606846976,
+      "title": "Sqlite Busy Timeout Ms",
+      "type": "integer"
+    },
+    "sqlite_max_write_retries": {
+      "default": 2,
+      "maximum": 1152921504606846976,
+      "minimum": 0,
+      "title": "Sqlite Max Write Retries",
+      "type": "integer"
+    },
+    "diagnostic_total_budget_ms": {
+      "default": 2000,
+      "exclusiveMinimum": 0,
+      "maximum": 1152921504606846976,
+      "title": "Diagnostic Total Budget Ms",
+      "type": "integer"
+    },
+    "diagnostic_search_workers": {
+      "const": 1,
+      "default": 1,
+      "title": "Diagnostic Search Workers",
+      "type": "integer"
+    },
+    "max_core_shrink_checks": {
+      "default": 6,
+      "maximum": 1152921504606846976,
+      "minimum": 0,
+      "title": "Max Core Shrink Checks",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "policy_version"
+  ],
+  "title": "SchedulingPolicy",
+  "type": "object"
+}

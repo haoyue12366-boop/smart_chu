@@ -1,0 +1,40 @@
+"""应用配置只描述路径和选择；导入时不访问文件或外部服务。"""
+
+import os
+from pathlib import Path
+
+from pydantic import Field
+
+from app.domain.base import FrozenModel, NonEmpty
+
+ROOT = Path(__file__).resolve().parents[1]
+
+
+class AppSettings(FrozenModel):
+    release_root: Path = ROOT / "data/preparations/p4-v1/releases"
+    release_id: NonEmpty = "delegated-v3-multilayer-onepot-v1-all"
+    policy_path: Path = ROOT / "data/policies/p6-cook-prepared-multilayer-v1.json"
+    database_path: Path = ROOT / "data/runtime/p5.sqlite3"
+    frontend_path: Path = ROOT / "web/dist"
+    language_enabled: bool = False
+    language_archive_path: Path = ROOT / "data/runtime/intent-runs"
+    timezone: NonEmpty = "Asia/Shanghai"
+    recovery_interval_sec: float = Field(default=0.5, gt=0)
+
+    @classmethod
+    def from_environment(cls) -> "AppSettings":
+        fields: dict[str, object] = {}
+        for name in (
+            "release_root",
+            "release_id",
+            "policy_path",
+            "database_path",
+            "frontend_path",
+            "language_archive_path",
+            "timezone",
+        ):
+            value = os.getenv("SMART_COOKING_" + name.upper())
+            if value:
+                fields[name] = value
+        fields["language_enabled"] = os.getenv("SMART_COOKING_LANGUAGE_ENABLED", "0") == "1"
+        return cls.model_validate(fields)

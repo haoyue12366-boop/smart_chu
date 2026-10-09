@@ -1,0 +1,3838 @@
+{
+  "schema_version": "1.0",
+  "suite_id": "p6-full-v1",
+  "seed": 20261004,
+  "time_origin": "2026-10-04T10:00:00+08:00",
+  "release": {
+    "release_id": "delegated-v3-p4-preparation-v1-all",
+    "knowledge_version": "delegated-v3-p4-preparation-v1",
+    "rule_version": "development-shared-v2",
+    "snapshot_id": "snapshot-16e326334a7888de6d9b0e1e78f3c5f10f6e35dded8cc32c4afdf4ec57ef49ea",
+    "manifest_hash": "4fa81e1b5a9eda23bb5752c27d9e0ec92a46f70c34e02cd5a466ab8c4e707996",
+    "release_kind": "development"
+  },
+  "knowledge_hash": "920d8827e9454985cc14b07be65c7c16e588dfb1983f099c426e54099b9ce88e",
+  "policy_hash": "f6b7090edef4bbfd1a56e9398ad7999fa7ed9a216fa35ed5a49279e652ca5629",
+  "policy": {
+    "policy_version": "p4-runtime-v1",
+    "time_grid_sec": 1,
+    "minute_output_mode": "DECIMAL",
+    "human_count": 1,
+    "human_resource_id": "human_1",
+    "burner_ids": [
+      "burner_1",
+      "burner_2"
+    ],
+    "max_nonstandalone_per_requirement": 12,
+    "max_nonstandalone_per_problem": 256,
+    "preserve_mandatory_recipe_batches": true,
+    "preserve_all_standalone_candidates": true,
+    "shared_prep": true,
+    "allow_delegated_shared_estimates": true,
+    "strict_together_batch": true,
+    "generic_common_start_batch": false,
+    "generic_common_finish_batch": false,
+    "enable_certified_non_equivalent_pruning": false,
+    "duration_policy_id": "NOMINAL",
+    "duration_data_version": "nominal-v1",
+    "initial_budget": {
+      "total_ms": 4200,
+      "greedy_ms": 150,
+      "solver_ms": 3000,
+      "publication_reserve_ms": 400
+    },
+    "replan_budget": {
+      "total_ms": 2400,
+      "greedy_ms": 100,
+      "solver_ms": 1500,
+      "publication_reserve_ms": 300
+    },
+    "objective": {
+      "stages": [
+        "MAKESPAN",
+        "SPREAD",
+        "TOTAL_HUMAN_WORK",
+        "HUMAN_BUSY",
+        "STABILITY"
+      ],
+      "spread_target_sec": 240,
+      "rest_gap_sec": 60,
+      "makespan_extra_basis_points": 500,
+      "makespan_extra_cap_sec": 120
+    },
+    "greedy_search": {
+      "max_variants": 3,
+      "max_placements_per_iteration": 24,
+      "max_gap_checks_per_candidate": 32,
+      "rollback_depth": 3,
+      "rollback_attempts": 8,
+      "max_standalone_restarts": 1
+    },
+    "max_exact_human_phases": 120,
+    "minimum_exact_human_budget_ms": 100,
+    "model_soft_limits": {
+      "total_variables": 6000,
+      "boolean_variables": 4000,
+      "optional_intervals": 1500,
+      "total_constraints": 20000,
+      "sequence_arcs": 8000
+    },
+    "api_instances": 1,
+    "concurrent_planning_jobs": 1,
+    "solver_worker_processes": 1,
+    "max_solver_search_workers": 4,
+    "sqlite_busy_timeout_ms": 100,
+    "sqlite_max_write_retries": 2,
+    "diagnostic_total_budget_ms": 2000,
+    "diagnostic_search_workers": 1,
+    "max_core_shrink_checks": 6
+  },
+  "single_recipes": [
+    {
+      "case_id": "single-000",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "58e70ae1a3fd4a750f4b75af"
+      ]
+    },
+    {
+      "case_id": "single-001",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "58e70ae1a3fd4a750f4b75b0"
+      ]
+    },
+    {
+      "case_id": "single-002",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "58e70b0e9f6429675ec805d8"
+      ]
+    },
+    {
+      "case_id": "single-003",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "58e70b109f6429675ec805ed"
+      ]
+    },
+    {
+      "case_id": "single-004",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "58e70b129f6429675ec80601"
+      ]
+    },
+    {
+      "case_id": "single-005",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "58e70b139f6429675ec8060c"
+      ]
+    },
+    {
+      "case_id": "single-006",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "59cc89b47d21be2a79172c98"
+      ]
+    },
+    {
+      "case_id": "single-007",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5a38d6b3f254230b76e2b50f"
+      ]
+    },
+    {
+      "case_id": "single-008",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5c80cea36dc6e123a037a1be"
+      ]
+    },
+    {
+      "case_id": "single-009",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5c80d49c6dc6e123a037a1c5"
+      ]
+    },
+    {
+      "case_id": "single-010",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5c81cf416dc6e123a037a1f0"
+      ]
+    },
+    {
+      "case_id": "single-011",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5c8200d96dc6e123a037a202"
+      ]
+    },
+    {
+      "case_id": "single-012",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5c82027a6dc6e123a037a209"
+      ]
+    },
+    {
+      "case_id": "single-013",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5c860d6298d5bc7e184a907c"
+      ]
+    },
+    {
+      "case_id": "single-014",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5c8622ee98d5bc7e184a908b"
+      ]
+    },
+    {
+      "case_id": "single-015",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5c86417e98d5bc7e184a90a8"
+      ]
+    },
+    {
+      "case_id": "single-016",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5c8646fe98d5bc7e184a90bc"
+      ]
+    },
+    {
+      "case_id": "single-017",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5c8647b598d5bc7e184a90c3"
+      ]
+    },
+    {
+      "case_id": "single-018",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5c871bef98d5bc7e184a90dd"
+      ]
+    },
+    {
+      "case_id": "single-019",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5c875d0b98d5bc7e184a9166"
+      ]
+    },
+    {
+      "case_id": "single-020",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5c8762bd98d5bc7e184a917c"
+      ]
+    },
+    {
+      "case_id": "single-021",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5caf2ba9e78bfc455f2d5c55"
+      ]
+    },
+    {
+      "case_id": "single-022",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5caf2ce0e78bfc455f2d5c7a"
+      ]
+    },
+    {
+      "case_id": "single-023",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5caf2ddbe78bfc455f2d5c96"
+      ]
+    },
+    {
+      "case_id": "single-024",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5caf2e8fe78bfc455f2d5caa"
+      ]
+    },
+    {
+      "case_id": "single-025",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5caf2ea3e78bfc455f2d5cad"
+      ]
+    },
+    {
+      "case_id": "single-026",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5caf2ec7e78bfc455f2d5cb0"
+      ]
+    },
+    {
+      "case_id": "single-027",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5caf2f00e78bfc455f2d5cb7"
+      ]
+    },
+    {
+      "case_id": "single-028",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5cc5508e01ea5c2931c919f5"
+      ]
+    },
+    {
+      "case_id": "single-029",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5cc7e0404a21a4301960aef1"
+      ]
+    },
+    {
+      "case_id": "single-030",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5cc7e58a4a21a4301960aefc"
+      ]
+    },
+    {
+      "case_id": "single-031",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5cc7eb394a21a4301960af00"
+      ]
+    },
+    {
+      "case_id": "single-032",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5d54bae2a9114174727c8b20"
+      ]
+    },
+    {
+      "case_id": "single-033",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5d54ecfea9114174727c8b5b"
+      ]
+    },
+    {
+      "case_id": "single-034",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5d54ed01a9114174727c8b5c"
+      ]
+    },
+    {
+      "case_id": "single-035",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5d565e87a9114174727c8bad"
+      ]
+    },
+    {
+      "case_id": "single-036",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5d5665cea9114174727c8be4"
+      ]
+    },
+    {
+      "case_id": "single-037",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5d56689fa9114174727c8bfb"
+      ]
+    },
+    {
+      "case_id": "single-038",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5d638e17a9114174727c8d77"
+      ]
+    },
+    {
+      "case_id": "single-039",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5d664a986601a865649f9aba"
+      ]
+    },
+    {
+      "case_id": "single-040",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5d6656036601a865649f9ae1"
+      ]
+    },
+    {
+      "case_id": "single-041",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5dad41646601a865649f9c06"
+      ]
+    },
+    {
+      "case_id": "single-042",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5dad486b6601a865649f9c15"
+      ]
+    },
+    {
+      "case_id": "single-043",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5dad79866601a865649f9cb7"
+      ]
+    },
+    {
+      "case_id": "single-044",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5e4f4107d8dcd921c6735f7d"
+      ]
+    },
+    {
+      "case_id": "single-045",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5e6f131cd8dcd921c6736129"
+      ]
+    },
+    {
+      "case_id": "single-046",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5f5ecdaadad9417a1b793a9f"
+      ]
+    },
+    {
+      "case_id": "single-047",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5f73fee8a6daaa3b53ba043c"
+      ]
+    },
+    {
+      "case_id": "single-048",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5fc5f9e15f8f38795ea6fca6"
+      ]
+    },
+    {
+      "case_id": "single-049",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5fe197175f8f38795ea6fe77"
+      ]
+    },
+    {
+      "case_id": "single-050",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5fe197255f8f38795ea6fe79"
+      ]
+    },
+    {
+      "case_id": "single-051",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5fe197285f8f38795ea6fe7a"
+      ]
+    },
+    {
+      "case_id": "single-052",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5fe1972d5f8f38795ea6fe7b"
+      ]
+    },
+    {
+      "case_id": "single-053",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5fe1975b5f8f38795ea6fe81"
+      ]
+    },
+    {
+      "case_id": "single-054",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5ff6ba8163f7535cecbfa247"
+      ]
+    },
+    {
+      "case_id": "single-055",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "600e4f733f3ff83ca1e5191a"
+      ]
+    },
+    {
+      "case_id": "single-056",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "61e6c51fec6e1d65587067e1"
+      ]
+    },
+    {
+      "case_id": "single-057",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "63495f5a728bf96da1acfa3a"
+      ]
+    },
+    {
+      "case_id": "single-058",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "645c5889614c1208ae1f5a24"
+      ]
+    },
+    {
+      "case_id": "single-059",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "645c58f7614c1208ae1f5a60"
+      ]
+    },
+    {
+      "case_id": "single-060",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "64706f256f734220a4e24b47"
+      ]
+    },
+    {
+      "case_id": "single-061",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "64706f406f734220a4e24b57"
+      ]
+    },
+    {
+      "case_id": "single-062",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "647ea23d85ea9528599ccb51"
+      ]
+    },
+    {
+      "case_id": "single-063",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "6492a7a5933a4b7277dee0cf"
+      ]
+    },
+    {
+      "case_id": "single-064",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "6492a7c6933a4b7277dee237"
+      ]
+    },
+    {
+      "case_id": "single-065",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "6492a828933a4b7277dee6aa"
+      ]
+    },
+    {
+      "case_id": "single-066",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "64f550ff255d3b02f695fd69"
+      ]
+    },
+    {
+      "case_id": "single-067",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "64f5510a255d3b02f695fde1"
+      ]
+    },
+    {
+      "case_id": "single-068",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "6510fb3445256c3ad7c25c93"
+      ]
+    },
+    {
+      "case_id": "single-069",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "6510fb3545256c3ad7c25c9c"
+      ]
+    },
+    {
+      "case_id": "single-070",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "6510fb7845256c3ad7c25cd8"
+      ]
+    },
+    {
+      "case_id": "single-071",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "6528fa4745256c3ad7c25d61"
+      ]
+    },
+    {
+      "case_id": "single-072",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "6528fa7e45256c3ad7c25fcb"
+      ]
+    },
+    {
+      "case_id": "single-073",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "6528fac845256c3ad7c26313"
+      ]
+    },
+    {
+      "case_id": "single-074",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "6528fad345256c3ad7c2638b"
+      ]
+    },
+    {
+      "case_id": "single-075",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "6528fae945256c3ad7c2648f"
+      ]
+    },
+    {
+      "case_id": "single-076",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "65433a4245256c3ad7c2697f"
+      ]
+    },
+    {
+      "case_id": "single-077",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "65433a5545256c3ad7c26a5b"
+      ]
+    },
+    {
+      "case_id": "single-078",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "65433d5545256c3ad7c26fbb"
+      ]
+    },
+    {
+      "case_id": "single-079",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "65433d6a45256c3ad7c270ab"
+      ]
+    },
+    {
+      "case_id": "single-080",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "65433d7145256c3ad7c270fb"
+      ]
+    },
+    {
+      "case_id": "single-081",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "6543408e45256c3ad7c2744b"
+      ]
+    },
+    {
+      "case_id": "single-082",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "6544c6c245256c3ad7c27455"
+      ]
+    },
+    {
+      "case_id": "single-083",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "6577d480c458a177d8438637"
+      ]
+    },
+    {
+      "case_id": "single-084",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "65781f17c458a177d8438652"
+      ]
+    },
+    {
+      "case_id": "single-085",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "657951b7c458a177d84386bc"
+      ]
+    },
+    {
+      "case_id": "single-086",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "657951cac458a177d84387a1"
+      ]
+    },
+    {
+      "case_id": "single-087",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "65795214c458a177d8438b22"
+      ]
+    },
+    {
+      "case_id": "single-088",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "65795250c458a177d8438dea"
+      ]
+    },
+    {
+      "case_id": "single-089",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "65795251c458a177d8438e01"
+      ]
+    },
+    {
+      "case_id": "single-090",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "65f7f4ee85eb6c79dfb992ff"
+      ]
+    },
+    {
+      "case_id": "single-091",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "661369554b3d03197733ac5a"
+      ]
+    },
+    {
+      "case_id": "single-092",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "662e07388b2aa2265e115477"
+      ]
+    },
+    {
+      "case_id": "single-093",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "662f2c398b2aa2265e11548f"
+      ]
+    },
+    {
+      "case_id": "single-094",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "66715324bfbee338853895c7"
+      ]
+    },
+    {
+      "case_id": "single-095",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "668759f0bfbee3388538968e"
+      ]
+    },
+    {
+      "case_id": "single-096",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "66cec69b1142545e3856e07e"
+      ]
+    },
+    {
+      "case_id": "single-097",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "66dea6480d586d528ee9dd7c"
+      ]
+    },
+    {
+      "case_id": "single-098",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "6889acfbf5dd4d1e1f228e84"
+      ]
+    },
+    {
+      "case_id": "single-099",
+      "category": "single",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "68eefee6f5dd4d1e1f228fee"
+      ]
+    }
+  ],
+  "combinations": [
+    {
+      "case_id": "combination-000",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "645c58f7614c1208ae1f5a60",
+        "65433a5545256c3ad7c26a5b",
+        "661369554b3d03197733ac5a",
+        "58e70b0e9f6429675ec805d8"
+      ]
+    },
+    {
+      "case_id": "combination-001",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5cc7e58a4a21a4301960aefc",
+        "5dad41646601a865649f9c06",
+        "58e70b129f6429675ec80601",
+        "58e70ae1a3fd4a750f4b75af"
+      ]
+    },
+    {
+      "case_id": "combination-002",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5d54bae2a9114174727c8b20",
+        "58e70b139f6429675ec8060c",
+        "6492a7a5933a4b7277dee0cf",
+        "6528fac845256c3ad7c26313"
+      ]
+    },
+    {
+      "case_id": "combination-003",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "61e6c51fec6e1d65587067e1",
+        "6889acfbf5dd4d1e1f228e84",
+        "64f5510a255d3b02f695fde1",
+        "647ea23d85ea9528599ccb51"
+      ]
+    },
+    {
+      "case_id": "combination-004",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5c86417e98d5bc7e184a90a8",
+        "5c8622ee98d5bc7e184a908b",
+        "6543408e45256c3ad7c2744b",
+        "6577d480c458a177d8438637"
+      ]
+    },
+    {
+      "case_id": "combination-005",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5d5665cea9114174727c8be4",
+        "6528fae945256c3ad7c2648f",
+        "6528fa7e45256c3ad7c25fcb",
+        "6492a828933a4b7277dee6aa"
+      ]
+    },
+    {
+      "case_id": "combination-006",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "645c5889614c1208ae1f5a24",
+        "5c81cf416dc6e123a037a1f0",
+        "5dad486b6601a865649f9c15",
+        "5fc5f9e15f8f38795ea6fca6"
+      ]
+    },
+    {
+      "case_id": "combination-007",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5caf2ea3e78bfc455f2d5cad",
+        "6510fb7845256c3ad7c25cd8",
+        "6528fad345256c3ad7c2638b",
+        "58e70b109f6429675ec805ed"
+      ]
+    },
+    {
+      "case_id": "combination-008",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5d6656036601a865649f9ae1",
+        "5fe197285f8f38795ea6fe7a",
+        "65795250c458a177d8438dea",
+        "6492a7c6933a4b7277dee237"
+      ]
+    },
+    {
+      "case_id": "combination-009",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "6510fb3445256c3ad7c25c93",
+        "5e6f131cd8dcd921c6736129",
+        "65433d6a45256c3ad7c270ab",
+        "65781f17c458a177d8438652"
+      ]
+    },
+    {
+      "case_id": "combination-010",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5c860d6298d5bc7e184a907c",
+        "662f2c398b2aa2265e11548f",
+        "6544c6c245256c3ad7c27455",
+        "600e4f733f3ff83ca1e5191a"
+      ]
+    },
+    {
+      "case_id": "combination-011",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "65433d5545256c3ad7c26fbb",
+        "6528fa4745256c3ad7c25d61",
+        "5c80cea36dc6e123a037a1be",
+        "5c8200d96dc6e123a037a202"
+      ]
+    },
+    {
+      "case_id": "combination-012",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5d56689fa9114174727c8bfb",
+        "5caf2ba9e78bfc455f2d5c55",
+        "5d664a986601a865649f9aba",
+        "63495f5a728bf96da1acfa3a"
+      ]
+    },
+    {
+      "case_id": "combination-013",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "58e70ae1a3fd4a750f4b75b0",
+        "5dad79866601a865649f9cb7",
+        "5c8762bd98d5bc7e184a917c",
+        "66dea6480d586d528ee9dd7c"
+      ]
+    },
+    {
+      "case_id": "combination-014",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5c8647b598d5bc7e184a90c3",
+        "5fe1972d5f8f38795ea6fe7b",
+        "65795251c458a177d8438e01",
+        "6510fb3545256c3ad7c25c9c"
+      ]
+    },
+    {
+      "case_id": "combination-015",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5caf2ddbe78bfc455f2d5c96",
+        "5e4f4107d8dcd921c6735f7d",
+        "64706f406f734220a4e24b57",
+        "5fe197175f8f38795ea6fe77"
+      ]
+    },
+    {
+      "case_id": "combination-016",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "66715324bfbee338853895c7",
+        "5cc7e0404a21a4301960aef1",
+        "5a38d6b3f254230b76e2b50f",
+        "5f73fee8a6daaa3b53ba043c"
+      ]
+    },
+    {
+      "case_id": "combination-017",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5cc5508e01ea5c2931c919f5",
+        "5ff6ba8163f7535cecbfa247",
+        "5fe1975b5f8f38795ea6fe81",
+        "65795214c458a177d8438b22"
+      ]
+    },
+    {
+      "case_id": "combination-018",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5c80d49c6dc6e123a037a1c5",
+        "65433d7145256c3ad7c270fb",
+        "5c875d0b98d5bc7e184a9166",
+        "662e07388b2aa2265e115477"
+      ]
+    },
+    {
+      "case_id": "combination-019",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5d54ecfea9114174727c8b5b",
+        "657951cac458a177d84387a1",
+        "5d54ed01a9114174727c8b5c",
+        "68eefee6f5dd4d1e1f228fee"
+      ]
+    },
+    {
+      "case_id": "combination-020",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5cc7eb394a21a4301960af00",
+        "5c82027a6dc6e123a037a209",
+        "5caf2f00e78bfc455f2d5cb7",
+        "5caf2ec7e78bfc455f2d5cb0"
+      ]
+    },
+    {
+      "case_id": "combination-021",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5f5ecdaadad9417a1b793a9f",
+        "65433a4245256c3ad7c2697f",
+        "668759f0bfbee3388538968e",
+        "5c871bef98d5bc7e184a90dd"
+      ]
+    },
+    {
+      "case_id": "combination-022",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "64706f256f734220a4e24b47",
+        "5c8646fe98d5bc7e184a90bc",
+        "657951b7c458a177d84386bc",
+        "65f7f4ee85eb6c79dfb992ff"
+      ]
+    },
+    {
+      "case_id": "combination-023",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5caf2e8fe78bfc455f2d5caa",
+        "64f550ff255d3b02f695fd69",
+        "5d565e87a9114174727c8bad",
+        "5fe197255f8f38795ea6fe79"
+      ]
+    },
+    {
+      "case_id": "combination-024",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5d638e17a9114174727c8d77",
+        "66cec69b1142545e3856e07e",
+        "59cc89b47d21be2a79172c98",
+        "5caf2ce0e78bfc455f2d5c7a"
+      ]
+    },
+    {
+      "case_id": "combination-025",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "6510fb7845256c3ad7c25cd8",
+        "58e70ae1a3fd4a750f4b75b0",
+        "5c8762bd98d5bc7e184a917c",
+        "5c871bef98d5bc7e184a90dd",
+        "6528fac845256c3ad7c26313"
+      ]
+    },
+    {
+      "case_id": "combination-026",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "65795250c458a177d8438dea",
+        "5dad79866601a865649f9cb7",
+        "65433d7145256c3ad7c270fb",
+        "65433a4245256c3ad7c2697f",
+        "6492a7c6933a4b7277dee237"
+      ]
+    },
+    {
+      "case_id": "combination-027",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5d638e17a9114174727c8d77",
+        "5dad41646601a865649f9c06",
+        "5e6f131cd8dcd921c6736129",
+        "5ff6ba8163f7535cecbfa247",
+        "6544c6c245256c3ad7c27455"
+      ]
+    },
+    {
+      "case_id": "combination-028",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5d565e87a9114174727c8bad",
+        "668759f0bfbee3388538968e",
+        "5caf2f00e78bfc455f2d5cb7",
+        "657951b7c458a177d84386bc",
+        "5d638e17a9114174727c8d77"
+      ]
+    },
+    {
+      "case_id": "combination-029",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "64706f406f734220a4e24b57",
+        "5ff6ba8163f7535cecbfa247",
+        "647ea23d85ea9528599ccb51",
+        "65433d6a45256c3ad7c270ab",
+        "68eefee6f5dd4d1e1f228fee"
+      ]
+    },
+    {
+      "case_id": "combination-030",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5caf2e8fe78bfc455f2d5caa",
+        "5c8622ee98d5bc7e184a908b",
+        "65433d7145256c3ad7c270fb"
+      ]
+    },
+    {
+      "case_id": "combination-031",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5caf2f00e78bfc455f2d5cb7",
+        "5c860d6298d5bc7e184a907c",
+        "5c8646fe98d5bc7e184a90bc",
+        "668759f0bfbee3388538968e"
+      ]
+    },
+    {
+      "case_id": "combination-032",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "6510fb7845256c3ad7c25cd8",
+        "65795214c458a177d8438b22",
+        "5cc5508e01ea5c2931c919f5"
+      ]
+    },
+    {
+      "case_id": "combination-033",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "6543408e45256c3ad7c2744b",
+        "5d54ed01a9114174727c8b5c",
+        "59cc89b47d21be2a79172c98",
+        "5cc5508e01ea5c2931c919f5",
+        "657951b7c458a177d84386bc"
+      ]
+    },
+    {
+      "case_id": "combination-034",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5f5ecdaadad9417a1b793a9f",
+        "5c8646fe98d5bc7e184a90bc",
+        "59cc89b47d21be2a79172c98"
+      ]
+    },
+    {
+      "case_id": "combination-035",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "6543408e45256c3ad7c2744b",
+        "5fc5f9e15f8f38795ea6fca6",
+        "647ea23d85ea9528599ccb51",
+        "5c871bef98d5bc7e184a90dd"
+      ]
+    },
+    {
+      "case_id": "combination-036",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5c8647b598d5bc7e184a90c3",
+        "5d56689fa9114174727c8bfb",
+        "5d565e87a9114174727c8bad",
+        "65433a5545256c3ad7c26a5b",
+        "5c86417e98d5bc7e184a90a8"
+      ]
+    },
+    {
+      "case_id": "combination-037",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "58e70b109f6429675ec805ed",
+        "5dad79866601a865649f9cb7",
+        "661369554b3d03197733ac5a",
+        "6889acfbf5dd4d1e1f228e84"
+      ]
+    },
+    {
+      "case_id": "combination-038",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "657951b7c458a177d84386bc",
+        "65433d6a45256c3ad7c270ab",
+        "65433d5545256c3ad7c26fbb"
+      ]
+    },
+    {
+      "case_id": "combination-039",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "6492a828933a4b7277dee6aa",
+        "5caf2ec7e78bfc455f2d5cb0",
+        "65433d5545256c3ad7c26fbb",
+        "5caf2ce0e78bfc455f2d5c7a",
+        "5c86417e98d5bc7e184a90a8"
+      ]
+    },
+    {
+      "case_id": "combination-040",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5c860d6298d5bc7e184a907c",
+        "661369554b3d03197733ac5a",
+        "647ea23d85ea9528599ccb51",
+        "65795250c458a177d8438dea"
+      ]
+    },
+    {
+      "case_id": "combination-041",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "66cec69b1142545e3856e07e",
+        "65795250c458a177d8438dea",
+        "5d54ed01a9114174727c8b5c",
+        "6492a7c6933a4b7277dee237"
+      ]
+    },
+    {
+      "case_id": "combination-042",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5d54ecfea9114174727c8b5b",
+        "65433d6a45256c3ad7c270ab",
+        "6889acfbf5dd4d1e1f228e84",
+        "5d638e17a9114174727c8d77",
+        "5cc7eb394a21a4301960af00"
+      ]
+    },
+    {
+      "case_id": "combination-043",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "66dea6480d586d528ee9dd7c",
+        "5fe197175f8f38795ea6fe77",
+        "6510fb3445256c3ad7c25c93",
+        "645c5889614c1208ae1f5a24"
+      ]
+    },
+    {
+      "case_id": "combination-044",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "65781f17c458a177d8438652",
+        "645c58f7614c1208ae1f5a60",
+        "5fe197175f8f38795ea6fe77",
+        "5dad486b6601a865649f9c15",
+        "5fe1972d5f8f38795ea6fe7b"
+      ]
+    },
+    {
+      "case_id": "combination-045",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "6492a7a5933a4b7277dee0cf",
+        "5a38d6b3f254230b76e2b50f",
+        "64706f256f734220a4e24b47"
+      ]
+    },
+    {
+      "case_id": "combination-046",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5caf2ec7e78bfc455f2d5cb0",
+        "65433d7145256c3ad7c270fb",
+        "6543408e45256c3ad7c2744b"
+      ]
+    },
+    {
+      "case_id": "combination-047",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5caf2ea3e78bfc455f2d5cad",
+        "5c8762bd98d5bc7e184a917c",
+        "5caf2f00e78bfc455f2d5cb7",
+        "6528fac845256c3ad7c26313"
+      ]
+    },
+    {
+      "case_id": "combination-048",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5d54bae2a9114174727c8b20",
+        "668759f0bfbee3388538968e",
+        "5fe197285f8f38795ea6fe7a"
+      ]
+    },
+    {
+      "case_id": "combination-049",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5c80cea36dc6e123a037a1be",
+        "6889acfbf5dd4d1e1f228e84",
+        "5dad486b6601a865649f9c15",
+        "65f7f4ee85eb6c79dfb992ff",
+        "58e70b0e9f6429675ec805d8"
+      ]
+    },
+    {
+      "case_id": "combination-050",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5fe197255f8f38795ea6fe79",
+        "5d54ed01a9114174727c8b5c",
+        "5fe197285f8f38795ea6fe7a",
+        "5caf2ba9e78bfc455f2d5c55"
+      ]
+    },
+    {
+      "case_id": "combination-051",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "66cec69b1142545e3856e07e",
+        "5c875d0b98d5bc7e184a9166",
+        "5c80cea36dc6e123a037a1be"
+      ]
+    },
+    {
+      "case_id": "combination-052",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5c81cf416dc6e123a037a1f0",
+        "66dea6480d586d528ee9dd7c",
+        "5e4f4107d8dcd921c6735f7d",
+        "5dad486b6601a865649f9c15",
+        "58e70b139f6429675ec8060c"
+      ]
+    },
+    {
+      "case_id": "combination-053",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "6492a7c6933a4b7277dee237",
+        "65433d6a45256c3ad7c270ab",
+        "5d664a986601a865649f9aba",
+        "65795250c458a177d8438dea",
+        "65f7f4ee85eb6c79dfb992ff"
+      ]
+    },
+    {
+      "case_id": "combination-054",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "647ea23d85ea9528599ccb51",
+        "5c82027a6dc6e123a037a209",
+        "65433a4245256c3ad7c2697f",
+        "5d6656036601a865649f9ae1"
+      ]
+    },
+    {
+      "case_id": "combination-055",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "6510fb3545256c3ad7c25c9c",
+        "5cc5508e01ea5c2931c919f5",
+        "66dea6480d586d528ee9dd7c",
+        "63495f5a728bf96da1acfa3a",
+        "5d56689fa9114174727c8bfb"
+      ]
+    },
+    {
+      "case_id": "combination-056",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "64706f406f734220a4e24b57",
+        "5d54ecfea9114174727c8b5b",
+        "5caf2ea3e78bfc455f2d5cad",
+        "5c8647b598d5bc7e184a90c3",
+        "5c86417e98d5bc7e184a90a8"
+      ]
+    },
+    {
+      "case_id": "combination-057",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "63495f5a728bf96da1acfa3a",
+        "5ff6ba8163f7535cecbfa247",
+        "5cc7e58a4a21a4301960aefc"
+      ]
+    },
+    {
+      "case_id": "combination-058",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "647ea23d85ea9528599ccb51",
+        "5cc5508e01ea5c2931c919f5",
+        "65795251c458a177d8438e01",
+        "58e70ae1a3fd4a750f4b75b0"
+      ]
+    },
+    {
+      "case_id": "combination-059",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "64706f256f734220a4e24b47",
+        "5d638e17a9114174727c8d77",
+        "65f7f4ee85eb6c79dfb992ff",
+        "58e70b0e9f6429675ec805d8",
+        "6543408e45256c3ad7c2744b"
+      ]
+    },
+    {
+      "case_id": "combination-060",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "6577d480c458a177d8438637",
+        "5fe1975b5f8f38795ea6fe81",
+        "6528fae945256c3ad7c2648f",
+        "6528fa4745256c3ad7c25d61"
+      ]
+    },
+    {
+      "case_id": "combination-061",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5c81cf416dc6e123a037a1f0",
+        "6544c6c245256c3ad7c27455",
+        "5e4f4107d8dcd921c6735f7d",
+        "5caf2ce0e78bfc455f2d5c7a"
+      ]
+    },
+    {
+      "case_id": "combination-062",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5c80d49c6dc6e123a037a1c5",
+        "65433d5545256c3ad7c26fbb",
+        "64706f406f734220a4e24b57"
+      ]
+    },
+    {
+      "case_id": "combination-063",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "662e07388b2aa2265e115477",
+        "5c8646fe98d5bc7e184a90bc",
+        "65433d7145256c3ad7c270fb"
+      ]
+    },
+    {
+      "case_id": "combination-064",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "65433a5545256c3ad7c26a5b",
+        "58e70b109f6429675ec805ed",
+        "5c86417e98d5bc7e184a90a8",
+        "5c871bef98d5bc7e184a90dd",
+        "58e70ae1a3fd4a750f4b75b0"
+      ]
+    },
+    {
+      "case_id": "combination-065",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5c80cea36dc6e123a037a1be",
+        "65433a5545256c3ad7c26a5b",
+        "5c871bef98d5bc7e184a90dd",
+        "6492a828933a4b7277dee6aa"
+      ]
+    },
+    {
+      "case_id": "combination-066",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5dad41646601a865649f9c06",
+        "5fe1972d5f8f38795ea6fe7b",
+        "5d5665cea9114174727c8be4",
+        "6492a7c6933a4b7277dee237",
+        "68eefee6f5dd4d1e1f228fee"
+      ]
+    },
+    {
+      "case_id": "combination-067",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5caf2ea3e78bfc455f2d5cad",
+        "5c8646fe98d5bc7e184a90bc",
+        "5e4f4107d8dcd921c6735f7d",
+        "5d54ecfea9114174727c8b5b"
+      ]
+    },
+    {
+      "case_id": "combination-068",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5caf2ea3e78bfc455f2d5cad",
+        "662f2c398b2aa2265e11548f",
+        "5d6656036601a865649f9ae1"
+      ]
+    },
+    {
+      "case_id": "combination-069",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5d54bae2a9114174727c8b20",
+        "66cec69b1142545e3856e07e",
+        "6492a828933a4b7277dee6aa",
+        "5dad79866601a865649f9cb7",
+        "6528fae945256c3ad7c2648f"
+      ]
+    },
+    {
+      "case_id": "combination-070",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "63495f5a728bf96da1acfa3a",
+        "65795214c458a177d8438b22",
+        "5c8762bd98d5bc7e184a917c",
+        "6889acfbf5dd4d1e1f228e84",
+        "5fe1972d5f8f38795ea6fe7b"
+      ]
+    },
+    {
+      "case_id": "combination-071",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "64f5510a255d3b02f695fde1",
+        "5dad486b6601a865649f9c15",
+        "64f550ff255d3b02f695fd69"
+      ]
+    },
+    {
+      "case_id": "combination-072",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "66cec69b1142545e3856e07e",
+        "5d54ecfea9114174727c8b5b",
+        "5c8622ee98d5bc7e184a908b",
+        "68eefee6f5dd4d1e1f228fee",
+        "65433a4245256c3ad7c2697f"
+      ]
+    },
+    {
+      "case_id": "combination-073",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5fe1975b5f8f38795ea6fe81",
+        "5cc5508e01ea5c2931c919f5",
+        "6528fad345256c3ad7c2638b"
+      ]
+    },
+    {
+      "case_id": "combination-074",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "64706f406f734220a4e24b57",
+        "5c860d6298d5bc7e184a907c",
+        "58e70b0e9f6429675ec805d8",
+        "5fe1972d5f8f38795ea6fe7b"
+      ]
+    },
+    {
+      "case_id": "combination-075",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "65433a4245256c3ad7c2697f",
+        "5d565e87a9114174727c8bad",
+        "59cc89b47d21be2a79172c98",
+        "5d5665cea9114174727c8be4"
+      ]
+    },
+    {
+      "case_id": "combination-076",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "65795250c458a177d8438dea",
+        "6510fb3445256c3ad7c25c93",
+        "5e4f4107d8dcd921c6735f7d",
+        "58e70b109f6429675ec805ed"
+      ]
+    },
+    {
+      "case_id": "combination-077",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5f5ecdaadad9417a1b793a9f",
+        "5d6656036601a865649f9ae1",
+        "58e70b0e9f6429675ec805d8",
+        "6577d480c458a177d8438637",
+        "5d54bae2a9114174727c8b20"
+      ]
+    },
+    {
+      "case_id": "combination-078",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5c8762bd98d5bc7e184a917c",
+        "5cc5508e01ea5c2931c919f5",
+        "5fe1972d5f8f38795ea6fe7b",
+        "645c58f7614c1208ae1f5a60",
+        "5f73fee8a6daaa3b53ba043c"
+      ]
+    },
+    {
+      "case_id": "combination-079",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5c8646fe98d5bc7e184a90bc",
+        "6577d480c458a177d8438637",
+        "66715324bfbee338853895c7",
+        "5dad41646601a865649f9c06"
+      ]
+    },
+    {
+      "case_id": "combination-080",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "6492a828933a4b7277dee6aa",
+        "5c8200d96dc6e123a037a202",
+        "5caf2ddbe78bfc455f2d5c96"
+      ]
+    },
+    {
+      "case_id": "combination-081",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "6889acfbf5dd4d1e1f228e84",
+        "58e70ae1a3fd4a750f4b75af",
+        "6492a7a5933a4b7277dee0cf"
+      ]
+    },
+    {
+      "case_id": "combination-082",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "58e70b109f6429675ec805ed",
+        "661369554b3d03197733ac5a",
+        "5c8200d96dc6e123a037a202",
+        "5e6f131cd8dcd921c6736129"
+      ]
+    },
+    {
+      "case_id": "combination-083",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "6544c6c245256c3ad7c27455",
+        "5d565e87a9114174727c8bad",
+        "5d54ecfea9114174727c8b5b"
+      ]
+    },
+    {
+      "case_id": "combination-084",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5c871bef98d5bc7e184a90dd",
+        "5fe197175f8f38795ea6fe77",
+        "5fe1972d5f8f38795ea6fe7b",
+        "65433d5545256c3ad7c26fbb",
+        "6528fa7e45256c3ad7c25fcb"
+      ]
+    },
+    {
+      "case_id": "combination-085",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "6528fac845256c3ad7c26313",
+        "64706f406f734220a4e24b57",
+        "5cc5508e01ea5c2931c919f5"
+      ]
+    },
+    {
+      "case_id": "combination-086",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "65795250c458a177d8438dea",
+        "5fe197175f8f38795ea6fe77",
+        "5d6656036601a865649f9ae1",
+        "58e70b0e9f6429675ec805d8",
+        "6510fb7845256c3ad7c25cd8"
+      ]
+    },
+    {
+      "case_id": "combination-087",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5d56689fa9114174727c8bfb",
+        "5cc7e58a4a21a4301960aefc",
+        "6577d480c458a177d8438637",
+        "65433d6a45256c3ad7c270ab",
+        "5caf2ddbe78bfc455f2d5c96"
+      ]
+    },
+    {
+      "case_id": "combination-088",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5d54ecfea9114174727c8b5b",
+        "65433d6a45256c3ad7c270ab",
+        "5f73fee8a6daaa3b53ba043c"
+      ]
+    },
+    {
+      "case_id": "combination-089",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5c8762bd98d5bc7e184a917c",
+        "58e70b109f6429675ec805ed",
+        "5dad41646601a865649f9c06",
+        "5cc7e58a4a21a4301960aefc",
+        "5caf2ec7e78bfc455f2d5cb0"
+      ]
+    },
+    {
+      "case_id": "combination-090",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5a38d6b3f254230b76e2b50f",
+        "5c8646fe98d5bc7e184a90bc",
+        "6543408e45256c3ad7c2744b",
+        "6492a828933a4b7277dee6aa"
+      ]
+    },
+    {
+      "case_id": "combination-091",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "66cec69b1142545e3856e07e",
+        "5d54bae2a9114174727c8b20",
+        "65781f17c458a177d8438652",
+        "657951b7c458a177d84386bc",
+        "645c58f7614c1208ae1f5a60"
+      ]
+    },
+    {
+      "case_id": "combination-092",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "6528fae945256c3ad7c2648f",
+        "645c58f7614c1208ae1f5a60",
+        "5d54ecfea9114174727c8b5b",
+        "64f5510a255d3b02f695fde1"
+      ]
+    },
+    {
+      "case_id": "combination-093",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "66cec69b1142545e3856e07e",
+        "5c80cea36dc6e123a037a1be",
+        "58e70ae1a3fd4a750f4b75af",
+        "5f5ecdaadad9417a1b793a9f",
+        "5dad486b6601a865649f9c15"
+      ]
+    },
+    {
+      "case_id": "combination-094",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "64706f256f734220a4e24b47",
+        "5c80d49c6dc6e123a037a1c5",
+        "5c86417e98d5bc7e184a90a8"
+      ]
+    },
+    {
+      "case_id": "combination-095",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5fe197255f8f38795ea6fe79",
+        "647ea23d85ea9528599ccb51",
+        "6528fad345256c3ad7c2638b",
+        "68eefee6f5dd4d1e1f228fee"
+      ]
+    },
+    {
+      "case_id": "combination-096",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "6510fb3445256c3ad7c25c93",
+        "662f2c398b2aa2265e11548f",
+        "65433a4245256c3ad7c2697f",
+        "64706f406f734220a4e24b57",
+        "65433d7145256c3ad7c270fb"
+      ]
+    },
+    {
+      "case_id": "combination-097",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "61e6c51fec6e1d65587067e1",
+        "6492a828933a4b7277dee6aa",
+        "5d5665cea9114174727c8be4",
+        "5fe197175f8f38795ea6fe77"
+      ]
+    },
+    {
+      "case_id": "combination-098",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "6528fae945256c3ad7c2648f",
+        "5d6656036601a865649f9ae1",
+        "6528fa7e45256c3ad7c25fcb"
+      ]
+    },
+    {
+      "case_id": "combination-099",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5c8622ee98d5bc7e184a908b",
+        "661369554b3d03197733ac5a",
+        "668759f0bfbee3388538968e",
+        "68eefee6f5dd4d1e1f228fee",
+        "5c8647b598d5bc7e184a90c3"
+      ]
+    },
+    {
+      "case_id": "combination-100",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5c8622ee98d5bc7e184a908b",
+        "58e70b0e9f6429675ec805d8",
+        "5caf2ddbe78bfc455f2d5c96"
+      ]
+    },
+    {
+      "case_id": "combination-101",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "657951cac458a177d84387a1",
+        "647ea23d85ea9528599ccb51",
+        "5c871bef98d5bc7e184a90dd",
+        "6544c6c245256c3ad7c27455"
+      ]
+    },
+    {
+      "case_id": "combination-102",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5dad41646601a865649f9c06",
+        "5fe197255f8f38795ea6fe79",
+        "5caf2ea3e78bfc455f2d5cad"
+      ]
+    },
+    {
+      "case_id": "combination-103",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "661369554b3d03197733ac5a",
+        "645c5889614c1208ae1f5a24",
+        "5e6f131cd8dcd921c6736129",
+        "5c875d0b98d5bc7e184a9166"
+      ]
+    },
+    {
+      "case_id": "combination-104",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "65781f17c458a177d8438652",
+        "5d638e17a9114174727c8d77",
+        "5ff6ba8163f7535cecbfa247",
+        "5c81cf416dc6e123a037a1f0",
+        "6492a7a5933a4b7277dee0cf"
+      ]
+    },
+    {
+      "case_id": "combination-105",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "6577d480c458a177d8438637",
+        "5e4f4107d8dcd921c6735f7d",
+        "5d54ecfea9114174727c8b5b",
+        "5c8762bd98d5bc7e184a917c",
+        "58e70b139f6429675ec8060c"
+      ]
+    },
+    {
+      "case_id": "combination-106",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5c8762bd98d5bc7e184a917c",
+        "6510fb3545256c3ad7c25c9c",
+        "647ea23d85ea9528599ccb51"
+      ]
+    },
+    {
+      "case_id": "combination-107",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5fe1975b5f8f38795ea6fe81",
+        "65433a4245256c3ad7c2697f",
+        "5cc7eb394a21a4301960af00",
+        "6510fb3445256c3ad7c25c93"
+      ]
+    },
+    {
+      "case_id": "combination-108",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5c8647b598d5bc7e184a90c3",
+        "5d5665cea9114174727c8be4",
+        "5f5ecdaadad9417a1b793a9f",
+        "647ea23d85ea9528599ccb51",
+        "6510fb3545256c3ad7c25c9c"
+      ]
+    },
+    {
+      "case_id": "combination-109",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "645c5889614c1208ae1f5a24",
+        "5fc5f9e15f8f38795ea6fca6",
+        "5d54ecfea9114174727c8b5b"
+      ]
+    },
+    {
+      "case_id": "combination-110",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "63495f5a728bf96da1acfa3a",
+        "6528fad345256c3ad7c2638b",
+        "58e70b139f6429675ec8060c"
+      ]
+    },
+    {
+      "case_id": "combination-111",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5caf2e8fe78bfc455f2d5caa",
+        "5c80cea36dc6e123a037a1be",
+        "58e70b129f6429675ec80601",
+        "65433d7145256c3ad7c270fb",
+        "5caf2ddbe78bfc455f2d5c96"
+      ]
+    },
+    {
+      "case_id": "combination-112",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "6510fb7845256c3ad7c25cd8",
+        "5c860d6298d5bc7e184a907c",
+        "6889acfbf5dd4d1e1f228e84"
+      ]
+    },
+    {
+      "case_id": "combination-113",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "662e07388b2aa2265e115477",
+        "6528fae945256c3ad7c2648f",
+        "5fe197255f8f38795ea6fe79",
+        "5c875d0b98d5bc7e184a9166",
+        "65433d5545256c3ad7c26fbb"
+      ]
+    },
+    {
+      "case_id": "combination-114",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "600e4f733f3ff83ca1e5191a",
+        "668759f0bfbee3388538968e",
+        "5d5665cea9114174727c8be4",
+        "5d664a986601a865649f9aba",
+        "5f73fee8a6daaa3b53ba043c"
+      ]
+    },
+    {
+      "case_id": "combination-115",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5d54ecfea9114174727c8b5b",
+        "6528fac845256c3ad7c26313",
+        "5dad79866601a865649f9cb7",
+        "5cc7e58a4a21a4301960aefc",
+        "5c8647b598d5bc7e184a90c3"
+      ]
+    },
+    {
+      "case_id": "combination-116",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "668759f0bfbee3388538968e",
+        "6528fae945256c3ad7c2648f",
+        "5f5ecdaadad9417a1b793a9f",
+        "5c8622ee98d5bc7e184a908b"
+      ]
+    },
+    {
+      "case_id": "combination-117",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "64f5510a255d3b02f695fde1",
+        "5caf2e8fe78bfc455f2d5caa",
+        "6528fad345256c3ad7c2638b",
+        "5fe197255f8f38795ea6fe79"
+      ]
+    },
+    {
+      "case_id": "combination-118",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "645c58f7614c1208ae1f5a60",
+        "600e4f733f3ff83ca1e5191a",
+        "5caf2ea3e78bfc455f2d5cad"
+      ]
+    },
+    {
+      "case_id": "combination-119",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "657951b7c458a177d84386bc",
+        "6528fad345256c3ad7c2638b",
+        "5fe197255f8f38795ea6fe79",
+        "657951cac458a177d84387a1",
+        "5e6f131cd8dcd921c6736129"
+      ]
+    },
+    {
+      "case_id": "combination-120",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5cc5508e01ea5c2931c919f5",
+        "5dad79866601a865649f9cb7",
+        "6889acfbf5dd4d1e1f228e84",
+        "65433d6a45256c3ad7c270ab"
+      ]
+    },
+    {
+      "case_id": "combination-121",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "64f550ff255d3b02f695fd69",
+        "64706f406f734220a4e24b57",
+        "5c80d49c6dc6e123a037a1c5",
+        "5c8646fe98d5bc7e184a90bc",
+        "65433a5545256c3ad7c26a5b"
+      ]
+    },
+    {
+      "case_id": "combination-122",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5d638e17a9114174727c8d77",
+        "6544c6c245256c3ad7c27455",
+        "5d565e87a9114174727c8bad",
+        "5c86417e98d5bc7e184a90a8"
+      ]
+    },
+    {
+      "case_id": "combination-123",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "6510fb7845256c3ad7c25cd8",
+        "5d565e87a9114174727c8bad",
+        "645c5889614c1208ae1f5a24",
+        "657951cac458a177d84387a1"
+      ]
+    },
+    {
+      "case_id": "combination-124",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "6543408e45256c3ad7c2744b",
+        "5c8622ee98d5bc7e184a908b",
+        "661369554b3d03197733ac5a",
+        "5caf2ec7e78bfc455f2d5cb0",
+        "6510fb3545256c3ad7c25c9c"
+      ]
+    },
+    {
+      "case_id": "combination-125",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "6528fae945256c3ad7c2648f",
+        "5fe197255f8f38795ea6fe79",
+        "645c5889614c1208ae1f5a24",
+        "5d54ed01a9114174727c8b5c"
+      ]
+    },
+    {
+      "case_id": "combination-126",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "6577d480c458a177d8438637",
+        "5c80cea36dc6e123a037a1be",
+        "58e70b129f6429675ec80601",
+        "5fe1975b5f8f38795ea6fe81",
+        "661369554b3d03197733ac5a"
+      ]
+    },
+    {
+      "case_id": "combination-127",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "6492a7c6933a4b7277dee237",
+        "63495f5a728bf96da1acfa3a",
+        "6528fac845256c3ad7c26313"
+      ]
+    },
+    {
+      "case_id": "combination-128",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "668759f0bfbee3388538968e",
+        "600e4f733f3ff83ca1e5191a",
+        "5cc7e58a4a21a4301960aefc"
+      ]
+    },
+    {
+      "case_id": "combination-129",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "65795214c458a177d8438b22",
+        "5c80cea36dc6e123a037a1be",
+        "6510fb3445256c3ad7c25c93",
+        "668759f0bfbee3388538968e"
+      ]
+    },
+    {
+      "case_id": "combination-130",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "61e6c51fec6e1d65587067e1",
+        "6528fad345256c3ad7c2638b",
+        "5f5ecdaadad9417a1b793a9f"
+      ]
+    },
+    {
+      "case_id": "combination-131",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "647ea23d85ea9528599ccb51",
+        "668759f0bfbee3388538968e",
+        "6543408e45256c3ad7c2744b"
+      ]
+    },
+    {
+      "case_id": "combination-132",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5dad41646601a865649f9c06",
+        "657951b7c458a177d84386bc",
+        "58e70b109f6429675ec805ed"
+      ]
+    },
+    {
+      "case_id": "combination-133",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "66dea6480d586d528ee9dd7c",
+        "5c80d49c6dc6e123a037a1c5",
+        "5fe1972d5f8f38795ea6fe7b",
+        "5c8200d96dc6e123a037a202",
+        "662f2c398b2aa2265e11548f"
+      ]
+    },
+    {
+      "case_id": "combination-134",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5c80cea36dc6e123a037a1be",
+        "6510fb7845256c3ad7c25cd8",
+        "5c86417e98d5bc7e184a90a8"
+      ]
+    },
+    {
+      "case_id": "combination-135",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "65433a5545256c3ad7c26a5b",
+        "5ff6ba8163f7535cecbfa247",
+        "5fe197175f8f38795ea6fe77"
+      ]
+    },
+    {
+      "case_id": "combination-136",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5d54ecfea9114174727c8b5b",
+        "68eefee6f5dd4d1e1f228fee",
+        "64706f406f734220a4e24b57",
+        "58e70ae1a3fd4a750f4b75af"
+      ]
+    },
+    {
+      "case_id": "combination-137",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "657951cac458a177d84387a1",
+        "6510fb7845256c3ad7c25cd8",
+        "65795250c458a177d8438dea"
+      ]
+    },
+    {
+      "case_id": "combination-138",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5dad486b6601a865649f9c15",
+        "5cc5508e01ea5c2931c919f5",
+        "6528fad345256c3ad7c2638b",
+        "64f5510a255d3b02f695fde1"
+      ]
+    },
+    {
+      "case_id": "combination-139",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "65433a5545256c3ad7c26a5b",
+        "58e70ae1a3fd4a750f4b75b0",
+        "600e4f733f3ff83ca1e5191a",
+        "5c8762bd98d5bc7e184a917c",
+        "6492a828933a4b7277dee6aa"
+      ]
+    },
+    {
+      "case_id": "combination-140",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "6577d480c458a177d8438637",
+        "65f7f4ee85eb6c79dfb992ff",
+        "5dad486b6601a865649f9c15"
+      ]
+    },
+    {
+      "case_id": "combination-141",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5d54bae2a9114174727c8b20",
+        "66dea6480d586d528ee9dd7c",
+        "5d54ecfea9114174727c8b5b",
+        "65433a4245256c3ad7c2697f"
+      ]
+    },
+    {
+      "case_id": "combination-142",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "64f5510a255d3b02f695fde1",
+        "58e70b129f6429675ec80601",
+        "5c8622ee98d5bc7e184a908b"
+      ]
+    },
+    {
+      "case_id": "combination-143",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "58e70ae1a3fd4a750f4b75b0",
+        "5caf2ea3e78bfc455f2d5cad",
+        "65795251c458a177d8438e01",
+        "5ff6ba8163f7535cecbfa247",
+        "64f5510a255d3b02f695fde1"
+      ]
+    },
+    {
+      "case_id": "combination-144",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5c81cf416dc6e123a037a1f0",
+        "5caf2ec7e78bfc455f2d5cb0",
+        "5caf2ea3e78bfc455f2d5cad"
+      ]
+    },
+    {
+      "case_id": "combination-145",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "6528fad345256c3ad7c2638b",
+        "645c5889614c1208ae1f5a24",
+        "66715324bfbee338853895c7"
+      ]
+    },
+    {
+      "case_id": "combination-146",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "645c5889614c1208ae1f5a24",
+        "661369554b3d03197733ac5a",
+        "6543408e45256c3ad7c2744b",
+        "5ff6ba8163f7535cecbfa247",
+        "6528fa7e45256c3ad7c25fcb"
+      ]
+    },
+    {
+      "case_id": "combination-147",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5dad79866601a865649f9cb7",
+        "65781f17c458a177d8438652",
+        "5caf2e8fe78bfc455f2d5caa",
+        "6492a828933a4b7277dee6aa",
+        "5c86417e98d5bc7e184a90a8"
+      ]
+    },
+    {
+      "case_id": "combination-148",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "6543408e45256c3ad7c2744b",
+        "5ff6ba8163f7535cecbfa247",
+        "5cc7e58a4a21a4301960aefc",
+        "5fe1972d5f8f38795ea6fe7b",
+        "6528fa4745256c3ad7c25d61"
+      ]
+    },
+    {
+      "case_id": "combination-149",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5d5665cea9114174727c8be4",
+        "5fe197285f8f38795ea6fe7a",
+        "5caf2ce0e78bfc455f2d5c7a",
+        "65f7f4ee85eb6c79dfb992ff",
+        "6492a7a5933a4b7277dee0cf"
+      ]
+    },
+    {
+      "case_id": "combination-150",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "68eefee6f5dd4d1e1f228fee",
+        "5dad486b6601a865649f9c15",
+        "5cc7e0404a21a4301960aef1",
+        "5d54ecfea9114174727c8b5b"
+      ]
+    },
+    {
+      "case_id": "combination-151",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5fe197175f8f38795ea6fe77",
+        "600e4f733f3ff83ca1e5191a",
+        "5c860d6298d5bc7e184a907c"
+      ]
+    },
+    {
+      "case_id": "combination-152",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "6889acfbf5dd4d1e1f228e84",
+        "63495f5a728bf96da1acfa3a",
+        "65433d7145256c3ad7c270fb",
+        "6510fb3445256c3ad7c25c93",
+        "5fc5f9e15f8f38795ea6fca6"
+      ]
+    },
+    {
+      "case_id": "combination-153",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "58e70b129f6429675ec80601",
+        "645c5889614c1208ae1f5a24",
+        "5fc5f9e15f8f38795ea6fca6"
+      ]
+    },
+    {
+      "case_id": "combination-154",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "65f7f4ee85eb6c79dfb992ff",
+        "5e6f131cd8dcd921c6736129",
+        "59cc89b47d21be2a79172c98",
+        "5c875d0b98d5bc7e184a9166",
+        "5caf2ba9e78bfc455f2d5c55"
+      ]
+    },
+    {
+      "case_id": "combination-155",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5c86417e98d5bc7e184a90a8",
+        "5caf2ea3e78bfc455f2d5cad",
+        "662e07388b2aa2265e115477",
+        "58e70b129f6429675ec80601"
+      ]
+    },
+    {
+      "case_id": "combination-156",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "66715324bfbee338853895c7",
+        "5fe197285f8f38795ea6fe7a",
+        "5f5ecdaadad9417a1b793a9f"
+      ]
+    },
+    {
+      "case_id": "combination-157",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "65f7f4ee85eb6c79dfb992ff",
+        "645c58f7614c1208ae1f5a60",
+        "5fc5f9e15f8f38795ea6fca6",
+        "6492a828933a4b7277dee6aa",
+        "65433d7145256c3ad7c270fb"
+      ]
+    },
+    {
+      "case_id": "combination-158",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "645c5889614c1208ae1f5a24",
+        "58e70b0e9f6429675ec805d8",
+        "5d6656036601a865649f9ae1",
+        "5cc5508e01ea5c2931c919f5",
+        "5c8622ee98d5bc7e184a908b"
+      ]
+    },
+    {
+      "case_id": "combination-159",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5f5ecdaadad9417a1b793a9f",
+        "65433a5545256c3ad7c26a5b",
+        "5fe197255f8f38795ea6fe79",
+        "65795214c458a177d8438b22"
+      ]
+    },
+    {
+      "case_id": "combination-160",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5fe197285f8f38795ea6fe7a",
+        "64706f256f734220a4e24b47",
+        "5c8200d96dc6e123a037a202",
+        "66dea6480d586d528ee9dd7c"
+      ]
+    },
+    {
+      "case_id": "combination-161",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "668759f0bfbee3388538968e",
+        "6543408e45256c3ad7c2744b",
+        "5c82027a6dc6e123a037a209",
+        "5f73fee8a6daaa3b53ba043c"
+      ]
+    },
+    {
+      "case_id": "combination-162",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "6577d480c458a177d8438637",
+        "58e70b139f6429675ec8060c",
+        "5e4f4107d8dcd921c6735f7d",
+        "6528fae945256c3ad7c2648f"
+      ]
+    },
+    {
+      "case_id": "combination-163",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5c80cea36dc6e123a037a1be",
+        "5ff6ba8163f7535cecbfa247",
+        "5cc7e58a4a21a4301960aefc"
+      ]
+    },
+    {
+      "case_id": "combination-164",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5dad79866601a865649f9cb7",
+        "58e70b129f6429675ec80601",
+        "657951b7c458a177d84386bc"
+      ]
+    },
+    {
+      "case_id": "combination-165",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "65433a4245256c3ad7c2697f",
+        "64706f406f734220a4e24b57",
+        "66715324bfbee338853895c7",
+        "6510fb7845256c3ad7c25cd8"
+      ]
+    },
+    {
+      "case_id": "combination-166",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5c875d0b98d5bc7e184a9166",
+        "66dea6480d586d528ee9dd7c",
+        "5d638e17a9114174727c8d77",
+        "65781f17c458a177d8438652"
+      ]
+    },
+    {
+      "case_id": "combination-167",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "64706f256f734220a4e24b47",
+        "65433a5545256c3ad7c26a5b",
+        "5fe1975b5f8f38795ea6fe81",
+        "6492a7a5933a4b7277dee0cf",
+        "6889acfbf5dd4d1e1f228e84"
+      ]
+    },
+    {
+      "case_id": "combination-168",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "58e70ae1a3fd4a750f4b75af",
+        "5c81cf416dc6e123a037a1f0",
+        "5c8762bd98d5bc7e184a917c",
+        "600e4f733f3ff83ca1e5191a",
+        "662e07388b2aa2265e115477"
+      ]
+    },
+    {
+      "case_id": "combination-169",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5d664a986601a865649f9aba",
+        "65f7f4ee85eb6c79dfb992ff",
+        "6889acfbf5dd4d1e1f228e84",
+        "5c81cf416dc6e123a037a1f0"
+      ]
+    },
+    {
+      "case_id": "combination-170",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5c8647b598d5bc7e184a90c3",
+        "657951cac458a177d84387a1",
+        "6544c6c245256c3ad7c27455",
+        "6889acfbf5dd4d1e1f228e84",
+        "64706f406f734220a4e24b57"
+      ]
+    },
+    {
+      "case_id": "combination-171",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "59cc89b47d21be2a79172c98",
+        "5d6656036601a865649f9ae1",
+        "5caf2e8fe78bfc455f2d5caa",
+        "5cc5508e01ea5c2931c919f5",
+        "5c8647b598d5bc7e184a90c3"
+      ]
+    },
+    {
+      "case_id": "combination-172",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "6528fad345256c3ad7c2638b",
+        "645c58f7614c1208ae1f5a60",
+        "5cc7e58a4a21a4301960aefc",
+        "65433d6a45256c3ad7c270ab",
+        "5c860d6298d5bc7e184a907c"
+      ]
+    },
+    {
+      "case_id": "combination-173",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5c8647b598d5bc7e184a90c3",
+        "6492a7a5933a4b7277dee0cf",
+        "5c82027a6dc6e123a037a209",
+        "647ea23d85ea9528599ccb51",
+        "5c8762bd98d5bc7e184a917c"
+      ]
+    },
+    {
+      "case_id": "combination-174",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "65433a5545256c3ad7c26a5b",
+        "668759f0bfbee3388538968e",
+        "645c58f7614c1208ae1f5a60",
+        "5cc7e58a4a21a4301960aefc",
+        "5c860d6298d5bc7e184a907c"
+      ]
+    },
+    {
+      "case_id": "combination-175",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "6510fb3445256c3ad7c25c93",
+        "5c875d0b98d5bc7e184a9166",
+        "68eefee6f5dd4d1e1f228fee",
+        "5f73fee8a6daaa3b53ba043c"
+      ]
+    },
+    {
+      "case_id": "combination-176",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5caf2ea3e78bfc455f2d5cad",
+        "65433a4245256c3ad7c2697f",
+        "5c80d49c6dc6e123a037a1c5",
+        "6528fad345256c3ad7c2638b"
+      ]
+    },
+    {
+      "case_id": "combination-177",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "661369554b3d03197733ac5a",
+        "5d664a986601a865649f9aba",
+        "5d5665cea9114174727c8be4",
+        "5d56689fa9114174727c8bfb",
+        "5e6f131cd8dcd921c6736129"
+      ]
+    },
+    {
+      "case_id": "combination-178",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "58e70ae1a3fd4a750f4b75b0",
+        "58e70b139f6429675ec8060c",
+        "662e07388b2aa2265e115477",
+        "6510fb7845256c3ad7c25cd8",
+        "5fc5f9e15f8f38795ea6fca6"
+      ]
+    },
+    {
+      "case_id": "combination-179",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5caf2e8fe78bfc455f2d5caa",
+        "5fc5f9e15f8f38795ea6fca6",
+        "5c875d0b98d5bc7e184a9166"
+      ]
+    },
+    {
+      "case_id": "combination-180",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5f5ecdaadad9417a1b793a9f",
+        "6492a828933a4b7277dee6aa",
+        "5d565e87a9114174727c8bad",
+        "58e70b109f6429675ec805ed",
+        "5caf2ec7e78bfc455f2d5cb0"
+      ]
+    },
+    {
+      "case_id": "combination-181",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5dad79866601a865649f9cb7",
+        "6492a828933a4b7277dee6aa",
+        "5d664a986601a865649f9aba",
+        "6510fb3445256c3ad7c25c93"
+      ]
+    },
+    {
+      "case_id": "combination-182",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5dad41646601a865649f9c06",
+        "65795214c458a177d8438b22",
+        "5c8200d96dc6e123a037a202"
+      ]
+    },
+    {
+      "case_id": "combination-183",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "58e70ae1a3fd4a750f4b75b0",
+        "65795250c458a177d8438dea",
+        "5c8200d96dc6e123a037a202",
+        "6510fb3445256c3ad7c25c93"
+      ]
+    },
+    {
+      "case_id": "combination-184",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5caf2e8fe78bfc455f2d5caa",
+        "5f73fee8a6daaa3b53ba043c",
+        "5dad486b6601a865649f9c15",
+        "5c8762bd98d5bc7e184a917c",
+        "65433d6a45256c3ad7c270ab"
+      ]
+    },
+    {
+      "case_id": "combination-185",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5cc7e0404a21a4301960aef1",
+        "5caf2f00e78bfc455f2d5cb7",
+        "66cec69b1142545e3856e07e",
+        "657951cac458a177d84387a1",
+        "65433d7145256c3ad7c270fb"
+      ]
+    },
+    {
+      "case_id": "combination-186",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5c8646fe98d5bc7e184a90bc",
+        "64f5510a255d3b02f695fde1",
+        "5c80cea36dc6e123a037a1be"
+      ]
+    },
+    {
+      "case_id": "combination-187",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5c875d0b98d5bc7e184a9166",
+        "6510fb3545256c3ad7c25c9c",
+        "5d54ed01a9114174727c8b5c",
+        "5dad79866601a865649f9cb7"
+      ]
+    },
+    {
+      "case_id": "combination-188",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5dad486b6601a865649f9c15",
+        "6543408e45256c3ad7c2744b",
+        "6492a828933a4b7277dee6aa"
+      ]
+    },
+    {
+      "case_id": "combination-189",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "645c5889614c1208ae1f5a24",
+        "64f5510a255d3b02f695fde1",
+        "5caf2ba9e78bfc455f2d5c55",
+        "65795214c458a177d8438b22",
+        "65433d5545256c3ad7c26fbb"
+      ]
+    },
+    {
+      "case_id": "combination-190",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "662e07388b2aa2265e115477",
+        "58e70ae1a3fd4a750f4b75af",
+        "5dad41646601a865649f9c06"
+      ]
+    },
+    {
+      "case_id": "combination-191",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5fe197255f8f38795ea6fe79",
+        "66cec69b1142545e3856e07e",
+        "65433d6a45256c3ad7c270ab",
+        "5e4f4107d8dcd921c6735f7d"
+      ]
+    },
+    {
+      "case_id": "combination-192",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5e6f131cd8dcd921c6736129",
+        "6528fac845256c3ad7c26313",
+        "657951b7c458a177d84386bc",
+        "5c80d49c6dc6e123a037a1c5"
+      ]
+    },
+    {
+      "case_id": "combination-193",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "600e4f733f3ff83ca1e5191a",
+        "5dad486b6601a865649f9c15",
+        "5d56689fa9114174727c8bfb",
+        "5c875d0b98d5bc7e184a9166"
+      ]
+    },
+    {
+      "case_id": "combination-194",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "645c5889614c1208ae1f5a24",
+        "65795251c458a177d8438e01",
+        "600e4f733f3ff83ca1e5191a",
+        "5d664a986601a865649f9aba"
+      ]
+    },
+    {
+      "case_id": "combination-195",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5caf2ce0e78bfc455f2d5c7a",
+        "58e70b129f6429675ec80601",
+        "5d6656036601a865649f9ae1"
+      ]
+    },
+    {
+      "case_id": "combination-196",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "6889acfbf5dd4d1e1f228e84",
+        "6577d480c458a177d8438637",
+        "5e6f131cd8dcd921c6736129"
+      ]
+    },
+    {
+      "case_id": "combination-197",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "6510fb3545256c3ad7c25c9c",
+        "600e4f733f3ff83ca1e5191a",
+        "61e6c51fec6e1d65587067e1"
+      ]
+    },
+    {
+      "case_id": "combination-198",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5d56689fa9114174727c8bfb",
+        "5c871bef98d5bc7e184a90dd",
+        "5c8646fe98d5bc7e184a90bc"
+      ]
+    },
+    {
+      "case_id": "combination-199",
+      "category": "combination",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5caf2ba9e78bfc455f2d5c55",
+        "64706f406f734220a4e24b57",
+        "5c8622ee98d5bc7e184a908b",
+        "58e70b139f6429675ec8060c"
+      ]
+    }
+  ],
+  "boundaries": [
+    {
+      "case_id": "boundary-000",
+      "category": "boundary",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "58e70ae1a3fd4a750f4b75af",
+        "59cc89b47d21be2a79172c98"
+      ],
+      "features": [
+        "双椒鳙鱼头",
+        "豉汁蒸草鱼"
+      ]
+    },
+    {
+      "case_id": "boundary-001",
+      "category": "boundary",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5dad79866601a865649f9cb7",
+        "5d54bae2a9114174727c8b20"
+      ],
+      "features": [
+        "家常鲈鱼",
+        "鸡翅包饭"
+      ]
+    },
+    {
+      "case_id": "boundary-002",
+      "category": "boundary",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5cc7e0404a21a4301960aef1",
+        "66715324bfbee338853895c7"
+      ],
+      "features": [
+        "糯米烧麦",
+        "轻松一锅蒸"
+      ]
+    },
+    {
+      "case_id": "boundary-003",
+      "category": "boundary",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "66cec69b1142545e3856e07e",
+        "66dea6480d586d528ee9dd7c"
+      ],
+      "features": [
+        "亲朋欢聚套餐",
+        "烹香酷炒汇"
+      ]
+    },
+    {
+      "case_id": "boundary-004",
+      "category": "boundary",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5c8646fe98d5bc7e184a90bc",
+        "5fc5f9e15f8f38795ea6fca6"
+      ],
+      "features": [
+        "鸡仔饼",
+        "广式叉烧"
+      ]
+    },
+    {
+      "case_id": "boundary-005",
+      "category": "boundary",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "61e6c51fec6e1d65587067e1",
+        "600e4f733f3ff83ca1e5191a"
+      ],
+      "features": [
+        "低温牛排",
+        "柠檬干"
+      ]
+    },
+    {
+      "case_id": "boundary-006",
+      "category": "boundary",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5dad486b6601a865649f9c15",
+        "661369554b3d03197733ac5a"
+      ],
+      "features": [
+        "香菇烤芦笋",
+        "香烤排骨"
+      ]
+    },
+    {
+      "case_id": "boundary-007",
+      "category": "boundary",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "645c58f7614c1208ae1f5a60",
+        "6543408e45256c3ad7c2744b"
+      ],
+      "features": [
+        "蒸茄龙",
+        "蒜蓉粉丝烤茄子"
+      ]
+    },
+    {
+      "case_id": "boundary-008",
+      "category": "boundary",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5c8200d96dc6e123a037a202",
+        "5fe197175f8f38795ea6fe77"
+      ],
+      "features": [
+        "豆豉蒸腐竹",
+        "豆豉蒸腐竹（台式）"
+      ]
+    },
+    {
+      "case_id": "boundary-009",
+      "category": "boundary",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "6577d480c458a177d8438637",
+        "5d54bae2a9114174727c8b20"
+      ],
+      "features": [
+        "三味蒸鳗鱼&香茅烤鳗鱼同烹",
+        "鸡翅包饭"
+      ]
+    },
+    {
+      "case_id": "boundary-010",
+      "category": "boundary",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5c860d6298d5bc7e184a907c",
+        "5caf2f00e78bfc455f2d5cb7"
+      ],
+      "features": [
+        "雪媚娘",
+        "拿破仑酥"
+      ]
+    },
+    {
+      "case_id": "boundary-011",
+      "category": "boundary",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5c86417e98d5bc7e184a90a8",
+        "5c8646fe98d5bc7e184a90bc"
+      ],
+      "features": [
+        "抹茶红豆白玉卷",
+        "鸡仔饼"
+      ]
+    },
+    {
+      "case_id": "boundary-012",
+      "category": "boundary",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "64f550ff255d3b02f695fd69",
+        "5d664a986601a865649f9aba"
+      ],
+      "features": [
+        "栗子冰皮月饼",
+        "大理石饼干"
+      ]
+    },
+    {
+      "case_id": "boundary-013",
+      "category": "boundary",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "65795250c458a177d8438dea",
+        "5fe1972d5f8f38795ea6fe7b"
+      ],
+      "features": [
+        "南瓜鸡腿煲",
+        "秘制叉烧"
+      ]
+    },
+    {
+      "case_id": "boundary-014",
+      "category": "boundary",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5d638e17a9114174727c8d77",
+        "5d54ed01a9114174727c8b5c"
+      ],
+      "features": [
+        "草莓蛋挞",
+        "黄油小饼干"
+      ]
+    },
+    {
+      "case_id": "boundary-015",
+      "category": "boundary",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "58e70b139f6429675ec8060c",
+        "65795214c458a177d8438b22"
+      ],
+      "features": [
+        "葱香土豆泥",
+        "血糯米仙草奶茶"
+      ]
+    },
+    {
+      "case_id": "boundary-016",
+      "category": "boundary",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "6528fae945256c3ad7c2648f",
+        "5c82027a6dc6e123a037a209"
+      ],
+      "features": [
+        "小碗蒸肉",
+        "荷叶蒸蟹饭"
+      ]
+    },
+    {
+      "case_id": "boundary-017",
+      "category": "boundary",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "647ea23d85ea9528599ccb51",
+        "662e07388b2aa2265e115477"
+      ],
+      "features": [
+        "香辣烤小龙虾",
+        "法式羊排"
+      ]
+    },
+    {
+      "case_id": "boundary-018",
+      "category": "boundary",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "6544c6c245256c3ad7c27455",
+        "64706f406f734220a4e24b57"
+      ],
+      "features": [
+        "本帮白切鸡",
+        "竹荪排骨汤"
+      ]
+    },
+    {
+      "case_id": "boundary-019",
+      "category": "boundary",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "58e70b129f6429675ec80601",
+        "5fe197255f8f38795ea6fe79"
+      ],
+      "features": [
+        "同名不同 ID"
+      ]
+    }
+  ],
+  "replans": [
+    {
+      "case_id": "replan-000",
+      "category": "replan",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "645c58f7614c1208ae1f5a60",
+        "65433a5545256c3ad7c26a5b",
+        "661369554b3d03197733ac5a",
+        "58e70b0e9f6429675ec805d8"
+      ],
+      "event_script": {
+        "event_type": "ADD_RECIPE",
+        "additional_recipe_id": "58e70ae1a3fd4a750f4b75af",
+        "target_recipe_index": 0,
+        "earliest_start_sec": 300,
+        "occurred_offset_sec": 0
+      }
+    },
+    {
+      "case_id": "replan-001",
+      "category": "replan",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5cc7e58a4a21a4301960aefc",
+        "5dad41646601a865649f9c06",
+        "58e70b129f6429675ec80601",
+        "58e70ae1a3fd4a750f4b75af"
+      ],
+      "event_script": {
+        "event_type": "DELAY_RECIPE",
+        "additional_recipe_id": "58e70ae1a3fd4a750f4b75b0",
+        "target_recipe_index": 0,
+        "earliest_start_sec": 330,
+        "occurred_offset_sec": 0
+      }
+    },
+    {
+      "case_id": "replan-002",
+      "category": "replan",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5d54bae2a9114174727c8b20",
+        "58e70b139f6429675ec8060c",
+        "6492a7a5933a4b7277dee0cf",
+        "6528fac845256c3ad7c26313"
+      ],
+      "event_script": {
+        "event_type": "CANCEL_RECIPE",
+        "additional_recipe_id": "58e70ae1a3fd4a750f4b75af",
+        "target_recipe_index": 0,
+        "earliest_start_sec": 360,
+        "occurred_offset_sec": 0
+      }
+    },
+    {
+      "case_id": "replan-003",
+      "category": "replan",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "61e6c51fec6e1d65587067e1",
+        "6889acfbf5dd4d1e1f228e84",
+        "64f5510a255d3b02f695fde1",
+        "647ea23d85ea9528599ccb51"
+      ],
+      "event_script": {
+        "event_type": "REPLAY_ADD",
+        "additional_recipe_id": "58e70ae1a3fd4a750f4b75af",
+        "target_recipe_index": 0,
+        "earliest_start_sec": 390,
+        "occurred_offset_sec": 0
+      }
+    },
+    {
+      "case_id": "replan-004",
+      "category": "replan",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5c86417e98d5bc7e184a90a8",
+        "5c8622ee98d5bc7e184a908b",
+        "6543408e45256c3ad7c2744b",
+        "6577d480c458a177d8438637"
+      ],
+      "event_script": {
+        "event_type": "ADD_RECIPE",
+        "additional_recipe_id": "58e70ae1a3fd4a750f4b75af",
+        "target_recipe_index": 0,
+        "earliest_start_sec": 420,
+        "occurred_offset_sec": 0
+      }
+    },
+    {
+      "case_id": "replan-005",
+      "category": "replan",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5d5665cea9114174727c8be4",
+        "6528fae945256c3ad7c2648f",
+        "6528fa7e45256c3ad7c25fcb",
+        "6492a828933a4b7277dee6aa"
+      ],
+      "event_script": {
+        "event_type": "DELAY_RECIPE",
+        "additional_recipe_id": "58e70ae1a3fd4a750f4b75af",
+        "target_recipe_index": 0,
+        "earliest_start_sec": 450,
+        "occurred_offset_sec": 0
+      }
+    },
+    {
+      "case_id": "replan-006",
+      "category": "replan",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "645c5889614c1208ae1f5a24",
+        "5c81cf416dc6e123a037a1f0",
+        "5dad486b6601a865649f9c15",
+        "5fc5f9e15f8f38795ea6fca6"
+      ],
+      "event_script": {
+        "event_type": "CANCEL_RECIPE",
+        "additional_recipe_id": "58e70ae1a3fd4a750f4b75af",
+        "target_recipe_index": 0,
+        "earliest_start_sec": 480,
+        "occurred_offset_sec": 0
+      }
+    },
+    {
+      "case_id": "replan-007",
+      "category": "replan",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5caf2ea3e78bfc455f2d5cad",
+        "6510fb7845256c3ad7c25cd8",
+        "6528fad345256c3ad7c2638b",
+        "58e70b109f6429675ec805ed"
+      ],
+      "event_script": {
+        "event_type": "REPLAY_ADD",
+        "additional_recipe_id": "58e70ae1a3fd4a750f4b75af",
+        "target_recipe_index": 0,
+        "earliest_start_sec": 510,
+        "occurred_offset_sec": 0
+      }
+    },
+    {
+      "case_id": "replan-008",
+      "category": "replan",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5d6656036601a865649f9ae1",
+        "5fe197285f8f38795ea6fe7a",
+        "65795250c458a177d8438dea",
+        "6492a7c6933a4b7277dee237"
+      ],
+      "event_script": {
+        "event_type": "ADD_RECIPE",
+        "additional_recipe_id": "58e70ae1a3fd4a750f4b75af",
+        "target_recipe_index": 0,
+        "earliest_start_sec": 540,
+        "occurred_offset_sec": 0
+      }
+    },
+    {
+      "case_id": "replan-009",
+      "category": "replan",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "6510fb3445256c3ad7c25c93",
+        "5e6f131cd8dcd921c6736129",
+        "65433d6a45256c3ad7c270ab",
+        "65781f17c458a177d8438652"
+      ],
+      "event_script": {
+        "event_type": "DELAY_RECIPE",
+        "additional_recipe_id": "58e70ae1a3fd4a750f4b75af",
+        "target_recipe_index": 0,
+        "earliest_start_sec": 570,
+        "occurred_offset_sec": 0
+      }
+    },
+    {
+      "case_id": "replan-010",
+      "category": "replan",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5c860d6298d5bc7e184a907c",
+        "662f2c398b2aa2265e11548f",
+        "6544c6c245256c3ad7c27455",
+        "600e4f733f3ff83ca1e5191a"
+      ],
+      "event_script": {
+        "event_type": "CANCEL_RECIPE",
+        "additional_recipe_id": "58e70ae1a3fd4a750f4b75af",
+        "target_recipe_index": 0,
+        "earliest_start_sec": 600,
+        "occurred_offset_sec": 0
+      }
+    },
+    {
+      "case_id": "replan-011",
+      "category": "replan",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "65433d5545256c3ad7c26fbb",
+        "6528fa4745256c3ad7c25d61",
+        "5c80cea36dc6e123a037a1be",
+        "5c8200d96dc6e123a037a202"
+      ],
+      "event_script": {
+        "event_type": "REPLAY_ADD",
+        "additional_recipe_id": "58e70ae1a3fd4a750f4b75af",
+        "target_recipe_index": 0,
+        "earliest_start_sec": 630,
+        "occurred_offset_sec": 0
+      }
+    },
+    {
+      "case_id": "replan-012",
+      "category": "replan",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5d56689fa9114174727c8bfb",
+        "5caf2ba9e78bfc455f2d5c55",
+        "5d664a986601a865649f9aba",
+        "63495f5a728bf96da1acfa3a"
+      ],
+      "event_script": {
+        "event_type": "ADD_RECIPE",
+        "additional_recipe_id": "58e70ae1a3fd4a750f4b75af",
+        "target_recipe_index": 0,
+        "earliest_start_sec": 660,
+        "occurred_offset_sec": 0
+      }
+    },
+    {
+      "case_id": "replan-013",
+      "category": "replan",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "58e70ae1a3fd4a750f4b75b0",
+        "5dad79866601a865649f9cb7",
+        "5c8762bd98d5bc7e184a917c",
+        "66dea6480d586d528ee9dd7c"
+      ],
+      "event_script": {
+        "event_type": "DELAY_RECIPE",
+        "additional_recipe_id": "58e70ae1a3fd4a750f4b75af",
+        "target_recipe_index": 0,
+        "earliest_start_sec": 690,
+        "occurred_offset_sec": 0
+      }
+    },
+    {
+      "case_id": "replan-014",
+      "category": "replan",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5c8647b598d5bc7e184a90c3",
+        "5fe1972d5f8f38795ea6fe7b",
+        "65795251c458a177d8438e01",
+        "6510fb3545256c3ad7c25c9c"
+      ],
+      "event_script": {
+        "event_type": "CANCEL_RECIPE",
+        "additional_recipe_id": "58e70ae1a3fd4a750f4b75af",
+        "target_recipe_index": 0,
+        "earliest_start_sec": 720,
+        "occurred_offset_sec": 0
+      }
+    },
+    {
+      "case_id": "replan-015",
+      "category": "replan",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5caf2ddbe78bfc455f2d5c96",
+        "5e4f4107d8dcd921c6735f7d",
+        "64706f406f734220a4e24b57",
+        "5fe197175f8f38795ea6fe77"
+      ],
+      "event_script": {
+        "event_type": "REPLAY_ADD",
+        "additional_recipe_id": "58e70ae1a3fd4a750f4b75af",
+        "target_recipe_index": 0,
+        "earliest_start_sec": 750,
+        "occurred_offset_sec": 0
+      }
+    },
+    {
+      "case_id": "replan-016",
+      "category": "replan",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "66715324bfbee338853895c7",
+        "5cc7e0404a21a4301960aef1",
+        "5a38d6b3f254230b76e2b50f",
+        "5f73fee8a6daaa3b53ba043c"
+      ],
+      "event_script": {
+        "event_type": "ADD_RECIPE",
+        "additional_recipe_id": "58e70ae1a3fd4a750f4b75af",
+        "target_recipe_index": 0,
+        "earliest_start_sec": 780,
+        "occurred_offset_sec": 0
+      }
+    },
+    {
+      "case_id": "replan-017",
+      "category": "replan",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5cc5508e01ea5c2931c919f5",
+        "5ff6ba8163f7535cecbfa247",
+        "5fe1975b5f8f38795ea6fe81",
+        "65795214c458a177d8438b22"
+      ],
+      "event_script": {
+        "event_type": "DELAY_RECIPE",
+        "additional_recipe_id": "58e70ae1a3fd4a750f4b75af",
+        "target_recipe_index": 0,
+        "earliest_start_sec": 810,
+        "occurred_offset_sec": 0
+      }
+    },
+    {
+      "case_id": "replan-018",
+      "category": "replan",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5c80d49c6dc6e123a037a1c5",
+        "65433d7145256c3ad7c270fb",
+        "5c875d0b98d5bc7e184a9166",
+        "662e07388b2aa2265e115477"
+      ],
+      "event_script": {
+        "event_type": "CANCEL_RECIPE",
+        "additional_recipe_id": "58e70ae1a3fd4a750f4b75af",
+        "target_recipe_index": 0,
+        "earliest_start_sec": 840,
+        "occurred_offset_sec": 0
+      }
+    },
+    {
+      "case_id": "replan-019",
+      "category": "replan",
+      "source_kind": "REAL_PUBLISHED_RECIPES_SYNTHETIC_MENU_AND_EVENTS",
+      "recipe_ids": [
+        "5d54ecfea9114174727c8b5b",
+        "657951cac458a177d84387a1",
+        "5d54ed01a9114174727c8b5c",
+        "68eefee6f5dd4d1e1f228fee"
+      ],
+      "event_script": {
+        "event_type": "REPLAY_ADD",
+        "additional_recipe_id": "58e70ae1a3fd4a750f4b75af",
+        "target_recipe_index": 0,
+        "earliest_start_sec": 870,
+        "occurred_offset_sec": 0
+      }
+    }
+  ],
+  "supplementary_regressions": {
+    "device_matrix": "tests/unit/test_device_material_exceptions.py",
+    "mandatory_batches": "tests/unit/test_joint_thermal_batches.py",
+    "shared_leftovers": "tests/integration/test_shared_leftover_replanning.py",
+    "running_batches": "tests/integration/test_running_thermal_batch.py"
+  },
+  "supplementary_scope": "合成设备边界和已执行共享/运行批次另跑登记的回归，不计为真实菜单",
+  "name_collisions": {
+    "双椒鳙鱼头": 1,
+    "韩式泡菜鸦片鱼头": 1,
+    "清蒸鲈鱼": 1,
+    "蒜蓉粉丝蒸扇贝": 1,
+    "麻辣对虾": 2,
+    "葱香土豆泥": 1,
+    "豉汁蒸草鱼": 1,
+    "蒜香烤茄子": 1,
+    "香辣烤鸡爪": 1,
+    "珍珠爆浆蛋糕": 1,
+    "原味墨西哥面包": 1,
+    "豆豉蒸腐竹": 1,
+    "荷叶蒸蟹饭": 1,
+    "雪媚娘": 1,
+    "粉蒸藕丁": 1,
+    "抹茶红豆白玉卷": 1,
+    "鸡仔饼": 1,
+    "椰香苹果香蕉烤燕麦": 1,
+    "香烤鲫鱼": 1,
+    "香菜黄油烤明虾": 1,
+    "烤鱿鱼干": 1,
+    "松子枣泥拉糕": 1,
+    "土豆焖饭": 1,
+    "糖霜饼干": 1,
+    "红豆糯米糕": 1,
+    "快手香蕉派": 1,
+    "清蒸带鱼": 1,
+    "拿破仑酥": 1,
+    "黑森林蛋糕": 1,
+    "糯米烧麦": 1,
+    "温州鱼饼": 1,
+    "银鱼蒸蛋": 1,
+    "鸡翅包饭": 1,
+    "红枣酥饼": 1,
+    "黄油小饼干": 1,
+    "半熟芝士蛋糕": 1,
+    "培根披萨": 1,
+    "鸡蛋黄油饼干": 1,
+    "草莓蛋挞": 1,
+    "大理石饼干": 1,
+    "豆沙手撕包": 1,
+    "蔬菜塔": 1,
+    "香菇烤芦笋": 1,
+    "家常鲈鱼": 1,
+    "披萨面团": 1,
+    "蒸咸蛋酿苦瓜": 1,
+    "广式月饼（台式）": 1,
+    "美式薯条": 1,
+    "广式叉烧": 1,
+    "豆豉蒸腐竹（台式）": 1,
+    "玛格丽特": 1,
+    "秘制叉烧": 1,
+    "双椒鳙鱼头（台式）": 1,
+    "碳烤基围虾": 1,
+    "柠檬干": 1,
+    "低温牛排": 1,
+    "油醋汁剁肉饼蒸和乐蟹": 1,
+    "立夏饭": 1,
+    "蒸茄龙": 1,
+    "祛寒羊肉汤": 1,
+    "竹荪排骨汤": 1,
+    "香辣烤小龙虾": 1,
+    "酿苦瓜": 1,
+    "Q弹果冻鸡蛋羹": 1,
+    "蜜豆卷馒头": 1,
+    "栗子冰皮月饼": 1,
+    "腊味蒸素鸡": 1,
+    "芝士番茄土豆泥": 1,
+    "苹果芒果派": 1,
+    "京韵酱香烤鸡": 1,
+    "紫甘蓝沙拉": 1,
+    "豆沙松糕": 1,
+    "椰汁红豆砵仔糕": 1,
+    "酿莴苣": 1,
+    "小碗蒸肉": 1,
+    "金龙吐瑞": 1,
+    "莲藕虾肉饼": 1,
+    "清蒸火焙鱼": 1,
+    "手工鸡蛋豆腐": 1,
+    "金银蒜蒸鸡胸肉": 1,
+    "蒜蓉粉丝烤茄子": 1,
+    "本帮白切鸡": 1,
+    "三味蒸鳗鱼&香茅烤鳗鱼同烹": 1,
+    "巴斯克蛋糕": 1,
+    "芋头蛋卷": 1,
+    "五味乌鸡煲": 1,
+    "血糯米仙草奶茶": 1,
+    "南瓜鸡腿煲": 1,
+    "虾米豆豉蒸排骨": 1,
+    "皂角银耳羹": 1,
+    "香烤排骨": 1,
+    "法式羊排": 1,
+    "榴莲酥": 1,
+    "轻松一锅蒸": 1,
+    "嫩烤鸡胸肉": 1,
+    "亲朋欢聚套餐": 1,
+    "烹香酷炒汇": 1,
+    "沙参老鸭麦冬汤": 1,
+    "茯苓饼干": 1
+  },
+  "suite_hash": "60276a5d3232a34905f1f298529b093ef7cee237394ca3c943c6053d8bed6613"
+}

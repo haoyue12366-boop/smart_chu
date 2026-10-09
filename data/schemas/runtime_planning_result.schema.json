@@ -1,0 +1,1347 @@
+{
+  "$defs": {
+    "CandidateSchedule": {
+      "additionalProperties": false,
+      "properties": {
+        "problem_hash": {
+          "pattern": "^[a-f0-9]{64}$",
+          "title": "Problem Hash",
+          "type": "string"
+        },
+        "assignments": {
+          "items": {
+            "$ref": "#/$defs/ScheduledAssignment"
+          },
+          "title": "Assignments",
+          "type": "array"
+        },
+        "recipe_completions": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/RecipeCompletion"
+          },
+          "title": "Recipe Completions",
+          "type": "array"
+        },
+        "metrics": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ScheduleMetrics"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "required": [
+        "problem_hash",
+        "assignments"
+      ],
+      "title": "CandidateSchedule",
+      "type": "object"
+    },
+    "CarrierId": {
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "CarrierId",
+      "type": "string"
+    },
+    "ConfigurationValue": {
+      "additionalProperties": false,
+      "properties": {
+        "parameter": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Parameter",
+          "type": "string"
+        },
+        "value": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "title": "Value"
+        }
+      },
+      "required": [
+        "parameter",
+        "value"
+      ],
+      "title": "ConfigurationValue",
+      "type": "object"
+    },
+    "ConflictPolicy": {
+      "enum": [
+        "UNARY",
+        "BATCH_EXCLUSIVE",
+        "STATE_COMPATIBLE",
+        "SHARED_AUXILIARY"
+      ],
+      "title": "ConflictPolicy",
+      "type": "string"
+    },
+    "ErrorCode": {
+      "enum": [
+        "INVALID_REQUEST",
+        "UNKNOWN_RECIPE",
+        "RECIPE_NAME_MISMATCH",
+        "DATA_NOT_READY",
+        "STATE_CONFLICT",
+        "STATE_INCOMPLETE",
+        "NO_FEASIBLE_PLAN",
+        "SOLVER_MODEL_ERROR",
+        "SERVICE_NOT_READY"
+      ],
+      "title": "ErrorCode",
+      "type": "string"
+    },
+    "EventApplyResult": {
+      "additionalProperties": false,
+      "properties": {
+        "event_id": {
+          "$ref": "#/$defs/EventId"
+        },
+        "first_applied": {
+          "title": "First Applied",
+          "type": "boolean"
+        },
+        "status": {
+          "enum": [
+            "APPLIED",
+            "REJECTED",
+            "CONFLICT"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "state_revision": {
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "State Revision",
+          "type": "integer"
+        },
+        "fact_change_refs": {
+          "default": [],
+          "items": {
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "title": "Fact Change Refs",
+          "type": "array"
+        },
+        "requires_replan": {
+          "default": false,
+          "title": "Requires Replan",
+          "type": "boolean"
+        },
+        "rejection_reason": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Rejection Reason"
+        },
+        "replan_reasons": {
+          "default": [],
+          "items": {
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "title": "Replan Reasons",
+          "type": "array"
+        }
+      },
+      "required": [
+        "event_id",
+        "first_applied",
+        "status",
+        "state_revision"
+      ],
+      "title": "EventApplyResult",
+      "type": "object"
+    },
+    "EventId": {
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "EventId",
+      "type": "string"
+    },
+    "Interval": {
+      "additionalProperties": false,
+      "properties": {
+        "start_sec": {
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "Start Sec",
+          "type": "integer"
+        },
+        "end_sec": {
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "End Sec",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "start_sec",
+        "end_sec"
+      ],
+      "title": "Interval",
+      "type": "object"
+    },
+    "OccupationPolicy": {
+      "enum": [
+        "WHOLE_INTERVAL",
+        "PHASE_INTERVAL"
+      ],
+      "title": "OccupationPolicy",
+      "type": "string"
+    },
+    "OperationId": {
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "OperationId",
+      "type": "string"
+    },
+    "PhaseTiming": {
+      "additionalProperties": false,
+      "properties": {
+        "stage": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Stage",
+          "type": "string"
+        },
+        "elapsed_ms": {
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "Elapsed Ms",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "stage",
+        "elapsed_ms"
+      ],
+      "title": "PhaseTiming",
+      "type": "object"
+    },
+    "PlanningFailure": {
+      "additionalProperties": false,
+      "properties": {
+        "code": {
+          "$ref": "#/$defs/ErrorCode"
+        },
+        "failure_class": {
+          "enum": [
+            "INPUT_INVALID",
+            "PRECHECK_CONFLICT",
+            "INFEASIBLE_MODEL",
+            "NO_SOLUTION_WITHIN_BUDGET",
+            "MODEL_INVALID",
+            "STALE_STATE",
+            "STATE_INCOMPLETE"
+          ],
+          "title": "Failure Class",
+          "type": "string"
+        },
+        "message": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Message",
+          "type": "string"
+        },
+        "evidence_refs": {
+          "default": [],
+          "items": {
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "title": "Evidence Refs",
+          "type": "array"
+        }
+      },
+      "required": [
+        "code",
+        "failure_class",
+        "message"
+      ],
+      "title": "PlanningFailure",
+      "type": "object"
+    },
+    "PlanningResult": {
+      "additionalProperties": false,
+      "properties": {
+        "first_validated_candidate_ms": {
+          "anyOf": [
+            {
+              "maximum": 1152921504606846976,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "First Validated Candidate Ms"
+        },
+        "selected_candidate_source": {
+          "anyOf": [
+            {
+              "enum": [
+                "GREEDY",
+                "CP_SAT"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Selected Candidate Source"
+        },
+        "solver_fallback_used": {
+          "default": false,
+          "title": "Solver Fallback Used",
+          "type": "boolean"
+        },
+        "status": {
+          "enum": [
+            "VALIDATED",
+            "FAILED"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "candidate": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/CandidateSchedule"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "validation": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ValidationReport"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "failure": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PlanningFailure"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "solve_result": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/SolveResult"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "timings": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/PhaseTiming"
+          },
+          "title": "Timings",
+          "type": "array"
+        },
+        "stage_results": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/SolveResult"
+          },
+          "title": "Stage Results",
+          "type": "array"
+        },
+        "human_objective_optimized": {
+          "default": false,
+          "title": "Human Objective Optimized",
+          "type": "boolean"
+        },
+        "total_human_objective_optimized": {
+          "default": false,
+          "title": "Total Human Objective Optimized",
+          "type": "boolean"
+        },
+        "stability_objective_optimized": {
+          "default": false,
+          "title": "Stability Objective Optimized",
+          "type": "boolean"
+        },
+        "makespan_cap_sec": {
+          "anyOf": [
+            {
+              "maximum": 1152921504606846976,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Makespan Cap Sec"
+        },
+        "serial_reference_candidate": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/CandidateSchedule"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "serial_reference_validation": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ValidationReport"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "rejected_candidates": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/ValidationReport"
+          },
+          "title": "Rejected Candidates",
+          "type": "array"
+        }
+      },
+      "required": [
+        "status"
+      ],
+      "title": "PlanningResult",
+      "type": "object"
+    },
+    "PublishedPlan": {
+      "additionalProperties": false,
+      "properties": {
+        "session_id": {
+          "$ref": "#/$defs/SessionId"
+        },
+        "plan_version": {
+          "exclusiveMinimum": 0,
+          "maximum": 1152921504606846976,
+          "title": "Plan Version",
+          "type": "integer"
+        },
+        "parent_plan_version": {
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "Parent Plan Version",
+          "type": "integer"
+        },
+        "state_revision": {
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "State Revision",
+          "type": "integer"
+        },
+        "knowledge_version": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Knowledge Version",
+          "type": "string"
+        },
+        "snapshot_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Snapshot Id",
+          "type": "string"
+        },
+        "time_origin": {
+          "$ref": "#/$defs/TimeOrigin"
+        },
+        "validated": {
+          "$ref": "#/$defs/ValidatedSchedule"
+        },
+        "publication_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Publication Id",
+          "type": "string"
+        },
+        "committed_at": {
+          "format": "date-time",
+          "title": "Committed At",
+          "type": "string"
+        },
+        "serial_reference": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ValidatedSchedule"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "required": [
+        "session_id",
+        "plan_version",
+        "parent_plan_version",
+        "state_revision",
+        "knowledge_version",
+        "snapshot_id",
+        "time_origin",
+        "validated",
+        "publication_id",
+        "committed_at"
+      ],
+      "title": "PublishedPlan",
+      "type": "object"
+    },
+    "RecipeCompletion": {
+      "additionalProperties": false,
+      "properties": {
+        "recipe_instance_id": {
+          "$ref": "#/$defs/RecipeInstanceId"
+        },
+        "completion_sec": {
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "Completion Sec",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "recipe_instance_id",
+        "completion_sec"
+      ],
+      "title": "RecipeCompletion",
+      "type": "object"
+    },
+    "RecipeCookingFinish": {
+      "additionalProperties": false,
+      "properties": {
+        "recipe_instance_id": {
+          "$ref": "#/$defs/RecipeInstanceId"
+        },
+        "cooking_finish_sec": {
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "Cooking Finish Sec",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "recipe_instance_id",
+        "cooking_finish_sec"
+      ],
+      "title": "RecipeCookingFinish",
+      "type": "object"
+    },
+    "RecipeInstanceId": {
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "RecipeInstanceId",
+      "type": "string"
+    },
+    "ResourceType": {
+      "enum": [
+        "HUMAN",
+        "DEVICE"
+      ],
+      "title": "ResourceType",
+      "type": "string"
+    },
+    "ResourceUse": {
+      "additionalProperties": false,
+      "properties": {
+        "resource_type": {
+          "$ref": "#/$defs/ResourceType"
+        },
+        "resource_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Resource Id",
+          "type": "string"
+        },
+        "units": {
+          "default": 1,
+          "exclusiveMinimum": 0,
+          "maximum": 1152921504606846976,
+          "title": "Units",
+          "type": "integer"
+        },
+        "layer_index": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0,
+              "maximum": 1152921504606846976,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Layer Index"
+        },
+        "physical_resource_id": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Physical Resource Id"
+        },
+        "component_id": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Component Id"
+        },
+        "profile_options": {
+          "default": [],
+          "items": {
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "title": "Profile Options",
+          "type": "array"
+        },
+        "configuration": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/ConfigurationValue"
+          },
+          "title": "Configuration",
+          "type": "array"
+        },
+        "conflict_policy": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ConflictPolicy"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "occupation_policy": {
+          "$ref": "#/$defs/OccupationPolicy",
+          "default": "WHOLE_INTERVAL"
+        },
+        "carrier_id": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/CarrierId"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "phase_id": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Phase Id"
+        },
+        "presence_condition": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Presence Condition"
+        },
+        "occupancy": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Interval"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "human_interventions": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/OperationId"
+          },
+          "title": "Human Interventions",
+          "type": "array"
+        },
+        "rule_version": {
+          "default": "unreviewed",
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Rule Version",
+          "type": "string"
+        },
+        "evidence_refs": {
+          "default": [],
+          "items": {
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "title": "Evidence Refs",
+          "type": "array"
+        },
+        "review_status": {
+          "$ref": "#/$defs/ReviewStatus",
+          "default": "DRAFT"
+        }
+      },
+      "required": [
+        "resource_type",
+        "resource_id"
+      ],
+      "title": "ResourceUse",
+      "type": "object"
+    },
+    "ReviewStatus": {
+      "enum": [
+        "DRAFT",
+        "NEEDS_REVIEW",
+        "APPROVED",
+        "RETIRED"
+      ],
+      "title": "ReviewStatus",
+      "type": "string"
+    },
+    "ScheduleDisruption": {
+      "additionalProperties": false,
+      "properties": {
+        "time_shift_sec": {
+          "default": 0,
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "Time Shift Sec",
+          "type": "integer"
+        },
+        "resource_changes": {
+          "default": 0,
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "Resource Changes",
+          "type": "integer"
+        },
+        "group_changes": {
+          "default": 0,
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "Group Changes",
+          "type": "integer"
+        }
+      },
+      "title": "ScheduleDisruption",
+      "type": "object"
+    },
+    "ScheduleMetrics": {
+      "additionalProperties": false,
+      "properties": {
+        "makespan_sec": {
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "Makespan Sec",
+          "type": "integer"
+        },
+        "completion_spread_sec": {
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "Completion Spread Sec",
+          "type": "integer"
+        },
+        "cooking_finish_spread_sec": {
+          "anyOf": [
+            {
+              "maximum": 1152921504606846976,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Cooking Finish Spread Sec"
+        },
+        "remaining_cooking_finish_spread_sec": {
+          "anyOf": [
+            {
+              "maximum": 1152921504606846976,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Remaining Cooking Finish Spread Sec"
+        },
+        "recipe_cooking_finishes": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/RecipeCookingFinish"
+          },
+          "title": "Recipe Cooking Finishes",
+          "type": "array"
+        },
+        "max_continuous_human_sec": {
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "Max Continuous Human Sec",
+          "type": "integer"
+        },
+        "serial_reference_sec": {
+          "anyOf": [
+            {
+              "maximum": 1152921504606846976,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Serial Reference Sec"
+        },
+        "total_human_work_sec": {
+          "default": 0,
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "Total Human Work Sec",
+          "type": "integer"
+        },
+        "actual_human_work_sec": {
+          "default": 0,
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "Actual Human Work Sec",
+          "type": "integer"
+        },
+        "remaining_human_work_sec": {
+          "default": 0,
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "Remaining Human Work Sec",
+          "type": "integer"
+        },
+        "remaining_makespan_sec": {
+          "default": 0,
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "Remaining Makespan Sec",
+          "type": "integer"
+        },
+        "remaining_max_continuous_human_sec": {
+          "default": 0,
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "Remaining Max Continuous Human Sec",
+          "type": "integer"
+        },
+        "remaining_completion_spread_sec": {
+          "default": 0,
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "Remaining Completion Spread Sec",
+          "type": "integer"
+        },
+        "disruption": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ScheduleDisruption"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "required": [
+        "makespan_sec",
+        "completion_spread_sec",
+        "max_continuous_human_sec"
+      ],
+      "title": "ScheduleMetrics",
+      "type": "object"
+    },
+    "ScheduledAssignment": {
+      "additionalProperties": false,
+      "properties": {
+        "carrier_id": {
+          "$ref": "#/$defs/CarrierId"
+        },
+        "task_ids": {
+          "items": {
+            "$ref": "#/$defs/TaskId"
+          },
+          "title": "Task Ids",
+          "type": "array"
+        },
+        "interval": {
+          "$ref": "#/$defs/Interval"
+        },
+        "resource_uses": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/ResourceUse"
+          },
+          "title": "Resource Uses",
+          "type": "array"
+        }
+      },
+      "required": [
+        "carrier_id",
+        "task_ids",
+        "interval"
+      ],
+      "title": "ScheduledAssignment",
+      "type": "object"
+    },
+    "SessionId": {
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "SessionId",
+      "type": "string"
+    },
+    "SolveResult": {
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "$ref": "#/$defs/SolveStatus"
+        },
+        "problem_hash": {
+          "pattern": "^[a-f0-9]{64}$",
+          "title": "Problem Hash",
+          "type": "string"
+        },
+        "candidate": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/CandidateSchedule"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "objective_stage": {
+          "default": "FEASIBILITY",
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Objective Stage",
+          "type": "string"
+        },
+        "objective_value": {
+          "anyOf": [
+            {
+              "maximum": 1152921504606846976,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Objective Value"
+        },
+        "best_bound": {
+          "anyOf": [
+            {
+              "maximum": 1152921504606846976,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Best Bound"
+        },
+        "optimal_for_retained_candidates_only": {
+          "default": true,
+          "title": "Optimal For Retained Candidates Only",
+          "type": "boolean"
+        },
+        "build_report_ref": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Build Report Ref"
+        },
+        "diagnostic_ref": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Diagnostic Ref"
+        },
+        "diagnostic_message": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Diagnostic Message"
+        },
+        "timings": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/PhaseTiming"
+          },
+          "title": "Timings",
+          "type": "array"
+        }
+      },
+      "required": [
+        "status",
+        "problem_hash"
+      ],
+      "title": "SolveResult",
+      "type": "object"
+    },
+    "SolveStatus": {
+      "enum": [
+        "OPTIMAL",
+        "FEASIBLE",
+        "UNKNOWN",
+        "INFEASIBLE",
+        "MODEL_INVALID"
+      ],
+      "title": "SolveStatus",
+      "type": "string"
+    },
+    "TaskId": {
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "TaskId",
+      "type": "string"
+    },
+    "TimeOrigin": {
+      "additionalProperties": false,
+      "properties": {
+        "start_at": {
+          "format": "date-time",
+          "title": "Start At",
+          "type": "string"
+        }
+      },
+      "required": [
+        "start_at"
+      ],
+      "title": "TimeOrigin",
+      "type": "object"
+    },
+    "ValidatedSchedule": {
+      "additionalProperties": false,
+      "properties": {
+        "candidate": {
+          "$ref": "#/$defs/CandidateSchedule"
+        },
+        "validation": {
+          "$ref": "#/$defs/ValidationReport"
+        }
+      },
+      "required": [
+        "candidate",
+        "validation"
+      ],
+      "title": "ValidatedSchedule",
+      "type": "object"
+    },
+    "ValidationReport": {
+      "additionalProperties": false,
+      "properties": {
+        "report_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Report Id",
+          "type": "string"
+        },
+        "problem_hash": {
+          "pattern": "^[a-f0-9]{64}$",
+          "title": "Problem Hash",
+          "type": "string"
+        },
+        "candidate_hash": {
+          "pattern": "^[a-f0-9]{64}$",
+          "title": "Candidate Hash",
+          "type": "string"
+        },
+        "validator_version": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Validator Version",
+          "type": "string"
+        },
+        "valid": {
+          "title": "Valid",
+          "type": "boolean"
+        },
+        "violations": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/ValidationViolation"
+          },
+          "title": "Violations",
+          "type": "array"
+        }
+      },
+      "required": [
+        "report_id",
+        "problem_hash",
+        "candidate_hash",
+        "validator_version",
+        "valid"
+      ],
+      "title": "ValidationReport",
+      "type": "object"
+    },
+    "ValidationViolation": {
+      "additionalProperties": false,
+      "properties": {
+        "code": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Code",
+          "type": "string"
+        },
+        "message": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Message",
+          "type": "string"
+        },
+        "entity_refs": {
+          "default": [],
+          "items": {
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "title": "Entity Refs",
+          "type": "array"
+        },
+        "evidence_refs": {
+          "default": [],
+          "items": {
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "title": "Evidence Refs",
+          "type": "array"
+        }
+      },
+      "required": [
+        "code",
+        "message"
+      ],
+      "title": "ValidationViolation",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "status": {
+      "enum": [
+        "PUBLISHED",
+        "NO_REPLAN",
+        "PENDING",
+        "FAILED",
+        "EVENT_REJECTED"
+      ],
+      "title": "Status",
+      "type": "string"
+    },
+    "event": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/EventApplyResult"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "plan": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/PublishedPlan"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "planning": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/PlanningResult"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "attempts": {
+      "default": 0,
+      "maximum": 1152921504606846976,
+      "minimum": 0,
+      "title": "Attempts",
+      "type": "integer"
+    },
+    "budget_ms": {
+      "maximum": 1152921504606846976,
+      "minimum": 0,
+      "title": "Budget Ms",
+      "type": "integer"
+    },
+    "elapsed_ms": {
+      "default": 0,
+      "maximum": 1152921504606846976,
+      "minimum": 0,
+      "title": "Elapsed Ms",
+      "type": "integer"
+    },
+    "replan_requested_sec": {
+      "anyOf": [
+        {
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Replan Requested Sec"
+    },
+    "replan_not_before_sec": {
+      "anyOf": [
+        {
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Replan Not Before Sec"
+    }
+  },
+  "required": [
+    "status",
+    "budget_ms"
+  ],
+  "title": "RuntimePlanningResult",
+  "type": "object"
+}

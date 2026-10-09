@@ -1,0 +1,3605 @@
+{
+  "$defs": {
+    "ActualResourceSpan": {
+      "additionalProperties": false,
+      "properties": {
+        "resource": {
+          "$ref": "#/$defs/ResourceUse"
+        },
+        "interval": {
+          "$ref": "#/$defs/Interval"
+        },
+        "event_refs": {
+          "items": {
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "title": "Event Refs",
+          "type": "array"
+        }
+      },
+      "required": [
+        "resource",
+        "interval",
+        "event_refs"
+      ],
+      "title": "ActualResourceSpan",
+      "type": "object"
+    },
+    "Allocation": {
+      "additionalProperties": false,
+      "properties": {
+        "allocation_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Allocation Id",
+          "type": "string"
+        },
+        "lot_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Lot Id",
+          "type": "string"
+        },
+        "task_id": {
+          "$ref": "#/$defs/TaskId"
+        },
+        "plan_version": {
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "Plan Version",
+          "type": "integer"
+        },
+        "amount": {
+          "$ref": "#/$defs/RationalAmount"
+        },
+        "status": {
+          "default": "RESERVED",
+          "enum": [
+            "RESERVED",
+            "CONSUMED",
+            "CANCELLED"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "consumed": {
+          "$ref": "#/$defs/RationalAmount",
+          "default": {
+            "numerator": 0,
+            "denominator": 1
+          }
+        },
+        "reservation_id": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Reservation Id"
+        }
+      },
+      "required": [
+        "allocation_id",
+        "lot_id",
+        "task_id",
+        "plan_version",
+        "amount"
+      ],
+      "title": "Allocation",
+      "type": "object"
+    },
+    "AvailabilityStatus": {
+      "enum": [
+        "AVAILABLE",
+        "UNAVAILABLE",
+        "UNKNOWN"
+      ],
+      "title": "AvailabilityStatus",
+      "type": "string"
+    },
+    "BatchTransitionBinding": {
+      "additionalProperties": false,
+      "properties": {
+        "completed_state_ref": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Completed State Ref"
+        },
+        "rule_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Rule Id",
+          "type": "string"
+        },
+        "source_preheat_sec": {
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "Source Preheat Sec",
+          "type": "integer"
+        },
+        "transition_offset_sec": {
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "Transition Offset Sec",
+          "type": "integer"
+        },
+        "preheat_task_ids": {
+          "items": {
+            "$ref": "#/$defs/TaskId"
+          },
+          "title": "Preheat Task Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "rule_id",
+        "source_preheat_sec",
+        "transition_offset_sec",
+        "preheat_task_ids"
+      ],
+      "title": "BatchTransitionBinding",
+      "type": "object"
+    },
+    "BudgetSpec": {
+      "additionalProperties": false,
+      "properties": {
+        "total_ms": {
+          "exclusiveMinimum": 0,
+          "maximum": 1152921504606846976,
+          "title": "Total Ms",
+          "type": "integer"
+        },
+        "greedy_ms": {
+          "exclusiveMinimum": 0,
+          "maximum": 1152921504606846976,
+          "title": "Greedy Ms",
+          "type": "integer"
+        },
+        "solver_ms": {
+          "exclusiveMinimum": 0,
+          "maximum": 1152921504606846976,
+          "title": "Solver Ms",
+          "type": "integer"
+        },
+        "publication_reserve_ms": {
+          "exclusiveMinimum": 0,
+          "maximum": 1152921504606846976,
+          "title": "Publication Reserve Ms",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "total_ms",
+        "greedy_ms",
+        "solver_ms",
+        "publication_reserve_ms"
+      ],
+      "title": "BudgetSpec",
+      "type": "object"
+    },
+    "CandidateCarrier": {
+      "additionalProperties": false,
+      "properties": {
+        "carrier_id": {
+          "$ref": "#/$defs/CarrierId"
+        },
+        "kind": {
+          "enum": [
+            "STANDALONE",
+            "SHARED_PREP",
+            "THERMAL_BATCH",
+            "INVENTORY_SUPPLY"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "covers": {
+          "items": {
+            "$ref": "#/$defs/TaskId"
+          },
+          "title": "Covers",
+          "type": "array"
+        },
+        "duration_sec": {
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "Duration Sec",
+          "type": "integer"
+        },
+        "resume_execution_id": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ExecutionId"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "resource_uses": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/ResourceUse"
+          },
+          "title": "Resource Uses",
+          "type": "array"
+        },
+        "rule_refs": {
+          "default": [],
+          "items": {
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "title": "Rule Refs",
+          "type": "array"
+        },
+        "material_inputs": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/MaterialRequirement"
+          },
+          "title": "Material Inputs",
+          "type": "array"
+        },
+        "material_outputs": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/MaterialRequirement"
+          },
+          "title": "Material Outputs",
+          "type": "array"
+        },
+        "mandatory_recipe_batch": {
+          "default": false,
+          "title": "Mandatory Recipe Batch",
+          "type": "boolean"
+        },
+        "provenance_refs": {
+          "default": [],
+          "items": {
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "title": "Provenance Refs",
+          "type": "array"
+        },
+        "member_offsets": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/MemberTimeOffset"
+          },
+          "title": "Member Offsets",
+          "type": "array"
+        },
+        "resource_phases": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/CarrierResourcePhase"
+          },
+          "title": "Resource Phases",
+          "type": "array"
+        },
+        "replaced_reservation_ids": {
+          "default": [],
+          "items": {
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "title": "Replaced Reservation Ids",
+          "type": "array"
+        },
+        "transition_binding": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/BatchTransitionBinding"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "inventory_supply": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/InventorySupply"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "required": [
+        "carrier_id",
+        "kind",
+        "covers",
+        "duration_sec"
+      ],
+      "title": "CandidateCarrier",
+      "type": "object"
+    },
+    "CarrierId": {
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "CarrierId",
+      "type": "string"
+    },
+    "CarrierResourcePhase": {
+      "additionalProperties": false,
+      "properties": {
+        "task_id": {
+          "$ref": "#/$defs/TaskId"
+        },
+        "start_offset_sec": {
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "Start Offset Sec",
+          "type": "integer"
+        },
+        "end_offset_sec": {
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "End Offset Sec",
+          "type": "integer"
+        },
+        "resource_use": {
+          "$ref": "#/$defs/ResourceUse"
+        }
+      },
+      "required": [
+        "task_id",
+        "start_offset_sec",
+        "end_offset_sec",
+        "resource_use"
+      ],
+      "title": "CarrierResourcePhase",
+      "type": "object"
+    },
+    "ConfigurationValue": {
+      "additionalProperties": false,
+      "properties": {
+        "parameter": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Parameter",
+          "type": "string"
+        },
+        "value": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "title": "Value"
+        }
+      },
+      "required": [
+        "parameter",
+        "value"
+      ],
+      "title": "ConfigurationValue",
+      "type": "object"
+    },
+    "ConflictPolicy": {
+      "enum": [
+        "UNARY",
+        "BATCH_EXCLUSIVE",
+        "STATE_COMPATIBLE",
+        "SHARED_AUXILIARY"
+      ],
+      "title": "ConflictPolicy",
+      "type": "string"
+    },
+    "DeviceState": {
+      "additionalProperties": false,
+      "properties": {
+        "device_instance_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Device Instance Id",
+          "type": "string"
+        },
+        "physical_resource_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Physical Resource Id",
+          "type": "string"
+        },
+        "component_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Component Id",
+          "type": "string"
+        },
+        "availability_status": {
+          "$ref": "#/$defs/AvailabilityStatus"
+        },
+        "occupancy_status": {
+          "$ref": "#/$defs/OccupancyStatus"
+        },
+        "active_execution_id": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ExecutionId"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "observed_at": {
+          "format": "date-time",
+          "title": "Observed At",
+          "type": "string"
+        },
+        "source": {
+          "$ref": "#/$defs/EventSource"
+        },
+        "expected_recovery_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Expected Recovery At"
+        },
+        "release_confirmation_event_id": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/EventId"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "configuration": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/ConfigurationValue"
+          },
+          "title": "Configuration",
+          "type": "array"
+        },
+        "thermal_state": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ThermalState"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "required": [
+        "device_instance_id",
+        "physical_resource_id",
+        "component_id",
+        "availability_status",
+        "occupancy_status",
+        "observed_at",
+        "source"
+      ],
+      "title": "DeviceState",
+      "type": "object"
+    },
+    "EventId": {
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "EventId",
+      "type": "string"
+    },
+    "EventSource": {
+      "enum": [
+        "SIMULATED",
+        "SCHEDULE_CLOCK",
+        "MANUAL_CONFIRM",
+        "DEVICE_FEEDBACK",
+        "COMPETITION_PROFILE"
+      ],
+      "title": "EventSource",
+      "type": "string"
+    },
+    "ExecutionBinding": {
+      "additionalProperties": false,
+      "properties": {
+        "assignment": {
+          "$ref": "#/$defs/ScheduledAssignment"
+        },
+        "carrier": {
+          "$ref": "#/$defs/CandidateCarrier"
+        },
+        "plan_version": {
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "Plan Version",
+          "type": "integer"
+        },
+        "task_spans": {
+          "items": {
+            "$ref": "#/$defs/TaskSpan"
+          },
+          "title": "Task Spans",
+          "type": "array"
+        },
+        "continuities": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/TaskReservation"
+          },
+          "title": "Continuities",
+          "type": "array"
+        }
+      },
+      "required": [
+        "assignment",
+        "carrier",
+        "plan_version",
+        "task_spans"
+      ],
+      "title": "ExecutionBinding",
+      "type": "object"
+    },
+    "ExecutionId": {
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "ExecutionId",
+      "type": "string"
+    },
+    "ExecutionRecord": {
+      "additionalProperties": false,
+      "properties": {
+        "execution_id": {
+          "$ref": "#/$defs/ExecutionId"
+        },
+        "task_ids": {
+          "items": {
+            "$ref": "#/$defs/TaskId"
+          },
+          "title": "Task Ids",
+          "type": "array"
+        },
+        "status": {
+          "$ref": "#/$defs/ExecutionStatus"
+        },
+        "source": {
+          "$ref": "#/$defs/EventSource"
+        },
+        "event_refs": {
+          "items": {
+            "$ref": "#/$defs/EventId"
+          },
+          "title": "Event Refs",
+          "type": "array"
+        },
+        "started_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Started At"
+        },
+        "finished_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Finished At"
+        },
+        "consumed": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/LotMovement"
+          },
+          "title": "Consumed",
+          "type": "array"
+        },
+        "produced": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/LotMovement"
+          },
+          "title": "Produced",
+          "type": "array"
+        },
+        "resource_ids": {
+          "default": [],
+          "items": {
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "title": "Resource Ids",
+          "type": "array"
+        },
+        "previous_execution_id": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ExecutionId"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "recovery_rule_id": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Recovery Rule Id"
+        },
+        "recovery_kind": {
+          "anyOf": [
+            {
+              "enum": [
+                "REMAKE",
+                "RESUME"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Recovery Kind"
+        },
+        "resumption": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ResumptionEvidence"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "failure_output_status": {
+          "anyOf": [
+            {
+              "enum": [
+                "QUALIFIED",
+                "UNKNOWN",
+                "WASTE"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Failure Output Status"
+        },
+        "remaining_sec": {
+          "anyOf": [
+            {
+              "maximum": 1152921504606846976,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Remaining Sec"
+        },
+        "remaining_source_ref": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Remaining Source Ref"
+        },
+        "remaining_observed_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Remaining Observed At"
+        },
+        "task_spans": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/TaskSpan"
+          },
+          "title": "Task Spans",
+          "type": "array"
+        },
+        "resource_spans": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/ActualResourceSpan"
+          },
+          "title": "Resource Spans",
+          "type": "array"
+        },
+        "carrier_id": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Carrier Id"
+        },
+        "started_task_ids": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/TaskId"
+          },
+          "title": "Started Task Ids",
+          "type": "array"
+        },
+        "completed_task_ids": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/TaskId"
+          },
+          "title": "Completed Task Ids",
+          "type": "array"
+        },
+        "scheduled_resource_spans": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/ActualResourceSpan"
+          },
+          "title": "Scheduled Resource Spans",
+          "type": "array"
+        },
+        "interruption_event_refs": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/EventId"
+          },
+          "title": "Interruption Event Refs",
+          "type": "array"
+        }
+      },
+      "required": [
+        "execution_id",
+        "task_ids",
+        "status",
+        "source",
+        "event_refs"
+      ],
+      "title": "ExecutionRecord",
+      "type": "object"
+    },
+    "ExecutionStatus": {
+      "enum": [
+        "PENDING",
+        "READY",
+        "RUNNING",
+        "COMPLETED",
+        "FAILED",
+        "CANCELLED"
+      ],
+      "title": "ExecutionStatus",
+      "type": "string"
+    },
+    "FutureAllocation": {
+      "additionalProperties": false,
+      "description": "计划供给不是真实库存；只有实际形成的批次才可绑定 Allocation。",
+      "properties": {
+        "reservation_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Reservation Id",
+          "type": "string"
+        },
+        "supply_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Supply Id",
+          "type": "string"
+        },
+        "demand_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Demand Id",
+          "type": "string"
+        },
+        "task_id": {
+          "$ref": "#/$defs/TaskId"
+        },
+        "plan_version": {
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "Plan Version",
+          "type": "integer"
+        },
+        "amount": {
+          "$ref": "#/$defs/RationalAmount"
+        },
+        "unit": {
+          "anyOf": [
+            {
+              "enum": [
+                "g",
+                "kg",
+                "ml",
+                "L",
+                "个",
+                "片",
+                "根",
+                "张",
+                "瓣",
+                "朵",
+                "汤匙",
+                "茶匙"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Unit"
+        },
+        "status": {
+          "default": "PLANNED",
+          "enum": [
+            "PLANNED",
+            "FULFILLED",
+            "CANCELLED"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "inventory_fulfillment_id": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Inventory Fulfillment Id"
+        },
+        "eligible_lot_ids": {
+          "default": [],
+          "items": {
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "title": "Eligible Lot Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "reservation_id",
+        "supply_id",
+        "demand_id",
+        "task_id",
+        "plan_version",
+        "amount"
+      ],
+      "title": "FutureAllocation",
+      "type": "object"
+    },
+    "GreedySearchLimits": {
+      "additionalProperties": false,
+      "properties": {
+        "max_variants": {
+          "default": 3,
+          "exclusiveMinimum": 0,
+          "maximum": 1152921504606846976,
+          "title": "Max Variants",
+          "type": "integer"
+        },
+        "max_placements_per_iteration": {
+          "default": 24,
+          "exclusiveMinimum": 0,
+          "maximum": 1152921504606846976,
+          "title": "Max Placements Per Iteration",
+          "type": "integer"
+        },
+        "max_gap_checks_per_candidate": {
+          "default": 32,
+          "exclusiveMinimum": 0,
+          "maximum": 1152921504606846976,
+          "title": "Max Gap Checks Per Candidate",
+          "type": "integer"
+        },
+        "rollback_depth": {
+          "default": 3,
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "Rollback Depth",
+          "type": "integer"
+        },
+        "rollback_attempts": {
+          "default": 8,
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "Rollback Attempts",
+          "type": "integer"
+        },
+        "max_standalone_restarts": {
+          "default": 1,
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "Max Standalone Restarts",
+          "type": "integer"
+        }
+      },
+      "title": "GreedySearchLimits",
+      "type": "object"
+    },
+    "Interval": {
+      "additionalProperties": false,
+      "properties": {
+        "start_sec": {
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "Start Sec",
+          "type": "integer"
+        },
+        "end_sec": {
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "End Sec",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "start_sec",
+        "end_sec"
+      ],
+      "title": "Interval",
+      "type": "object"
+    },
+    "InventoryFulfillment": {
+      "additionalProperties": false,
+      "properties": {
+        "fulfillment_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Fulfillment Id",
+          "type": "string"
+        },
+        "publication_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Publication Id",
+          "type": "string"
+        },
+        "plan_version": {
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "Plan Version",
+          "type": "integer"
+        },
+        "carrier_id": {
+          "$ref": "#/$defs/CarrierId"
+        },
+        "recipe_instance_id": {
+          "$ref": "#/$defs/RecipeInstanceId"
+        },
+        "task_ids": {
+          "items": {
+            "$ref": "#/$defs/TaskId"
+          },
+          "title": "Task Ids",
+          "type": "array"
+        },
+        "supply": {
+          "$ref": "#/$defs/InventorySupply"
+        },
+        "satisfied_at_sec": {
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "Satisfied At Sec",
+          "type": "integer"
+        },
+        "status": {
+          "default": "PLANNED",
+          "enum": [
+            "PLANNED",
+            "COMMITTED",
+            "SUPERSEDED"
+          ],
+          "title": "Status",
+          "type": "string"
+        }
+      },
+      "required": [
+        "fulfillment_id",
+        "publication_id",
+        "plan_version",
+        "carrier_id",
+        "recipe_instance_id",
+        "task_ids",
+        "supply",
+        "satisfied_at_sec"
+      ],
+      "title": "InventoryFulfillment",
+      "type": "object"
+    },
+    "InventoryLotClaim": {
+      "additionalProperties": false,
+      "properties": {
+        "lot_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Lot Id",
+          "type": "string"
+        },
+        "quantity": {
+          "$ref": "#/$defs/ScaledQuantity"
+        },
+        "consumed": {
+          "$ref": "#/$defs/RationalAmount",
+          "default": {
+            "numerator": 0,
+            "denominator": 1
+          }
+        }
+      },
+      "required": [
+        "lot_id",
+        "quantity"
+      ],
+      "title": "InventoryLotClaim",
+      "type": "object"
+    },
+    "InventoryRule": {
+      "additionalProperties": false,
+      "properties": {
+        "rule_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Rule Id",
+          "type": "string"
+        },
+        "target_task_ids": {
+          "items": {
+            "$ref": "#/$defs/TaskId"
+          },
+          "title": "Target Task Ids",
+          "type": "array"
+        },
+        "source_spec_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Source Spec Id",
+          "type": "string"
+        },
+        "quantity": {
+          "$ref": "#/$defs/RationalAmount"
+        },
+        "unit": {
+          "enum": [
+            "g",
+            "kg",
+            "ml",
+            "L",
+            "个",
+            "片",
+            "根",
+            "张",
+            "瓣",
+            "朵",
+            "汤匙",
+            "茶匙"
+          ],
+          "title": "Unit",
+          "type": "string"
+        },
+        "evidence_refs": {
+          "items": {
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "title": "Evidence Refs",
+          "type": "array"
+        },
+        "knowledge_version": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Knowledge Version",
+          "type": "string"
+        },
+        "source_kind": {
+          "enum": [
+            "REVIEWED",
+            "SYNTHETIC"
+          ],
+          "title": "Source Kind",
+          "type": "string"
+        },
+        "approved": {
+          "const": true,
+          "title": "Approved",
+          "type": "boolean"
+        },
+        "max_age_sec": {
+          "anyOf": [
+            {
+              "maximum": 1152921504606846976,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Max Age Sec"
+        }
+      },
+      "required": [
+        "rule_id",
+        "target_task_ids",
+        "source_spec_id",
+        "quantity",
+        "unit",
+        "evidence_refs",
+        "knowledge_version",
+        "source_kind",
+        "approved"
+      ],
+      "title": "InventoryRule",
+      "type": "object"
+    },
+    "InventorySupply": {
+      "additionalProperties": false,
+      "properties": {
+        "rule_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Rule Id",
+          "type": "string"
+        },
+        "target_supply_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Target Supply Id",
+          "type": "string"
+        },
+        "target_spec": {
+          "$ref": "#/$defs/MaterialSpec"
+        },
+        "quantity": {
+          "$ref": "#/$defs/ScaledQuantity"
+        },
+        "lot_claims": {
+          "items": {
+            "$ref": "#/$defs/InventoryLotClaim"
+          },
+          "title": "Lot Claims",
+          "type": "array"
+        },
+        "available_at_sec": {
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "Available At Sec",
+          "type": "integer"
+        },
+        "expires_at_sec": {
+          "anyOf": [
+            {
+              "maximum": 1152921504606846976,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Expires At Sec"
+        }
+      },
+      "required": [
+        "rule_id",
+        "target_supply_id",
+        "target_spec",
+        "quantity",
+        "lot_claims",
+        "available_at_sec"
+      ],
+      "title": "InventorySupply",
+      "type": "object"
+    },
+    "LedgerEntry": {
+      "additionalProperties": false,
+      "properties": {
+        "entry_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Entry Id",
+          "type": "string"
+        },
+        "event_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Event Id",
+          "type": "string"
+        },
+        "execution_id": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Execution Id"
+        },
+        "lot_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Lot Id",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "CONSUME",
+            "PRODUCE",
+            "LOSS",
+            "ADJUST",
+            "RESERVE",
+            "RELEASE"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "before": {
+          "$ref": "#/$defs/RationalAmount"
+        },
+        "after": {
+          "$ref": "#/$defs/RationalAmount"
+        },
+        "evidence_refs": {
+          "default": [],
+          "items": {
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "title": "Evidence Refs",
+          "type": "array"
+        }
+      },
+      "required": [
+        "entry_id",
+        "event_id",
+        "lot_id",
+        "kind",
+        "before",
+        "after"
+      ],
+      "title": "LedgerEntry",
+      "type": "object"
+    },
+    "LotFact": {
+      "additionalProperties": false,
+      "properties": {
+        "lot_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Lot Id",
+          "type": "string"
+        },
+        "spec_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Spec Id",
+          "type": "string"
+        },
+        "source_spec_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Source Spec Id",
+          "type": "string"
+        },
+        "quantity_kind": {
+          "enum": [
+            "EXACT",
+            "QUALITATIVE",
+            "RECIPE_BATCH"
+          ],
+          "title": "Quantity Kind",
+          "type": "string"
+        },
+        "unit": {
+          "anyOf": [
+            {
+              "enum": [
+                "g",
+                "kg",
+                "ml",
+                "L",
+                "个",
+                "片",
+                "根",
+                "张",
+                "瓣",
+                "朵",
+                "汤匙",
+                "茶匙"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Unit"
+        },
+        "produced": {
+          "$ref": "#/$defs/RationalAmount"
+        },
+        "available": {
+          "$ref": "#/$defs/RationalAmount"
+        },
+        "reserved": {
+          "$ref": "#/$defs/RationalAmount",
+          "default": {
+            "numerator": 0,
+            "denominator": 1
+          }
+        },
+        "quality_status": {
+          "enum": [
+            "QUALIFIED",
+            "UNKNOWN",
+            "WASTE"
+          ],
+          "title": "Quality Status",
+          "type": "string"
+        },
+        "produced_at": {
+          "format": "date-time",
+          "title": "Produced At",
+          "type": "string"
+        },
+        "source_event_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Source Event Id",
+          "type": "string"
+        },
+        "produced_by_execution_id": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ExecutionId"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "expires_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Expires At"
+        },
+        "availability_evidence": {
+          "default": [],
+          "items": {
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "title": "Availability Evidence",
+          "type": "array"
+        },
+        "storage_state": {
+          "default": "declared",
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Storage State",
+          "type": "string"
+        },
+        "material_spec": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/MaterialSpec"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "required": [
+        "lot_id",
+        "spec_id",
+        "source_spec_id",
+        "quantity_kind",
+        "produced",
+        "available",
+        "quality_status",
+        "produced_at",
+        "source_event_id"
+      ],
+      "title": "LotFact",
+      "type": "object"
+    },
+    "LotMovement": {
+      "additionalProperties": false,
+      "properties": {
+        "lot_id": {
+          "$ref": "#/$defs/MaterialLotId"
+        },
+        "quantity": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ScaledQuantity"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "spec_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Spec Id",
+          "type": "string"
+        },
+        "batch_share": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/RationalAmount"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "required": [
+        "lot_id",
+        "spec_id"
+      ],
+      "title": "LotMovement",
+      "type": "object"
+    },
+    "MaterialLot": {
+      "additionalProperties": false,
+      "properties": {
+        "lot_id": {
+          "$ref": "#/$defs/MaterialLotId"
+        },
+        "spec_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Spec Id",
+          "type": "string"
+        },
+        "produced_by_execution_id": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ExecutionId"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "produced_at": {
+          "format": "date-time",
+          "title": "Produced At",
+          "type": "string"
+        },
+        "quantity_produced": {
+          "$ref": "#/$defs/ScaledQuantity"
+        },
+        "quantity_available": {
+          "$ref": "#/$defs/ScaledQuantity"
+        },
+        "quantity_reserved": {
+          "$ref": "#/$defs/ScaledQuantity"
+        },
+        "storage_state": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Storage State",
+          "type": "string"
+        },
+        "source_lot_ids": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/MaterialLotId"
+          },
+          "title": "Source Lot Ids",
+          "type": "array"
+        },
+        "source_event_id": {
+          "$ref": "#/$defs/EventId"
+        },
+        "version": {
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "Version",
+          "type": "integer"
+        },
+        "quality_status": {
+          "default": "UNKNOWN",
+          "enum": [
+            "QUALIFIED",
+            "UNKNOWN",
+            "WASTE"
+          ],
+          "title": "Quality Status",
+          "type": "string"
+        }
+      },
+      "required": [
+        "lot_id",
+        "spec_id",
+        "produced_at",
+        "quantity_produced",
+        "quantity_available",
+        "quantity_reserved",
+        "storage_state",
+        "source_event_id",
+        "version"
+      ],
+      "title": "MaterialLot",
+      "type": "object"
+    },
+    "MaterialLotId": {
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "MaterialLotId",
+      "type": "string"
+    },
+    "MaterialRequirement": {
+      "additionalProperties": false,
+      "properties": {
+        "requirement_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Requirement Id",
+          "type": "string"
+        },
+        "spec_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Spec Id",
+          "type": "string"
+        },
+        "quantity_kind": {
+          "$ref": "#/$defs/QuantityKind"
+        },
+        "quantity": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ScaledQuantity"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "upper_quantity": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ScaledQuantity"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "qualitative_quantity": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Qualitative Quantity"
+        },
+        "provenance_refs": {
+          "default": [],
+          "items": {
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "title": "Provenance Refs",
+          "type": "array"
+        }
+      },
+      "required": [
+        "requirement_id",
+        "spec_id",
+        "quantity_kind"
+      ],
+      "title": "MaterialRequirement",
+      "type": "object"
+    },
+    "MaterialSpec": {
+      "additionalProperties": false,
+      "properties": {
+        "spec_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Spec Id",
+          "type": "string"
+        },
+        "ingredient_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Ingredient Id",
+          "type": "string"
+        },
+        "name": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Name",
+          "type": "string"
+        },
+        "state": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "State",
+          "type": "string"
+        },
+        "shape": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Shape"
+        },
+        "size_mm": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0,
+              "maximum": 1152921504606846976,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Size Mm"
+        },
+        "treatment": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Treatment"
+        },
+        "composition": {
+          "default": [],
+          "items": {
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "title": "Composition",
+          "type": "array"
+        },
+        "provenance_refs": {
+          "default": [],
+          "items": {
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "title": "Provenance Refs",
+          "type": "array"
+        },
+        "review_status": {
+          "$ref": "#/$defs/ReviewStatus",
+          "default": "DRAFT"
+        }
+      },
+      "required": [
+        "spec_id",
+        "ingredient_id",
+        "name",
+        "state"
+      ],
+      "title": "MaterialSpec",
+      "type": "object"
+    },
+    "MemberTimeOffset": {
+      "additionalProperties": false,
+      "properties": {
+        "task_id": {
+          "$ref": "#/$defs/TaskId"
+        },
+        "start_offset_sec": {
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "Start Offset Sec",
+          "type": "integer"
+        },
+        "end_offset_sec": {
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "End Offset Sec",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "task_id",
+        "start_offset_sec",
+        "end_offset_sec"
+      ],
+      "title": "MemberTimeOffset",
+      "type": "object"
+    },
+    "ModelSize": {
+      "additionalProperties": false,
+      "properties": {
+        "total_variables": {
+          "default": 0,
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "Total Variables",
+          "type": "integer"
+        },
+        "boolean_variables": {
+          "default": 0,
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "Boolean Variables",
+          "type": "integer"
+        },
+        "optional_intervals": {
+          "default": 0,
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "Optional Intervals",
+          "type": "integer"
+        },
+        "total_constraints": {
+          "default": 0,
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "Total Constraints",
+          "type": "integer"
+        },
+        "sequence_arcs": {
+          "default": 0,
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "Sequence Arcs",
+          "type": "integer"
+        }
+      },
+      "title": "ModelSize",
+      "type": "object"
+    },
+    "ObjectiveSpec": {
+      "additionalProperties": false,
+      "properties": {
+        "spread_basis": {
+          "default": "WORKFLOW_FINISH",
+          "enum": [
+            "WORKFLOW_FINISH",
+            "COOKING_FINISH"
+          ],
+          "title": "Spread Basis",
+          "type": "string"
+        },
+        "stages": {
+          "default": [
+            "MAKESPAN",
+            "SPREAD",
+            "HUMAN_BUSY",
+            "STABILITY"
+          ],
+          "items": {
+            "enum": [
+              "MAKESPAN",
+              "SPREAD",
+              "TOTAL_HUMAN_WORK",
+              "HUMAN_BUSY",
+              "STABILITY"
+            ],
+            "type": "string"
+          },
+          "title": "Stages",
+          "type": "array"
+        },
+        "spread_target_sec": {
+          "default": 240,
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "Spread Target Sec",
+          "type": "integer"
+        },
+        "rest_gap_sec": {
+          "default": 60,
+          "exclusiveMinimum": 0,
+          "maximum": 1152921504606846976,
+          "title": "Rest Gap Sec",
+          "type": "integer"
+        },
+        "makespan_extra_basis_points": {
+          "default": 500,
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "Makespan Extra Basis Points",
+          "type": "integer"
+        },
+        "makespan_extra_cap_sec": {
+          "default": 120,
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "Makespan Extra Cap Sec",
+          "type": "integer"
+        }
+      },
+      "title": "ObjectiveSpec",
+      "type": "object"
+    },
+    "Occupancy": {
+      "additionalProperties": false,
+      "properties": {
+        "occupancy_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Occupancy Id",
+          "type": "string"
+        },
+        "execution_id": {
+          "$ref": "#/$defs/ExecutionId"
+        },
+        "resource": {
+          "$ref": "#/$defs/ResourceUse"
+        },
+        "started_at": {
+          "format": "date-time",
+          "title": "Started At",
+          "type": "string"
+        },
+        "released_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Released At"
+        },
+        "release_event_id": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Release Event Id"
+        },
+        "awaiting_confirmation": {
+          "default": false,
+          "title": "Awaiting Confirmation",
+          "type": "boolean"
+        },
+        "reservation_id": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Reservation Id"
+        },
+        "reservation_members": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/TaskId"
+          },
+          "title": "Reservation Members",
+          "type": "array"
+        }
+      },
+      "required": [
+        "occupancy_id",
+        "execution_id",
+        "resource",
+        "started_at"
+      ],
+      "title": "Occupancy",
+      "type": "object"
+    },
+    "OccupancyStatus": {
+      "enum": [
+        "FREE",
+        "OCCUPIED",
+        "AWAITING_RELEASE_CONFIRMATION"
+      ],
+      "title": "OccupancyStatus",
+      "type": "string"
+    },
+    "OccupationPolicy": {
+      "enum": [
+        "WHOLE_INTERVAL",
+        "PHASE_INTERVAL"
+      ],
+      "title": "OccupationPolicy",
+      "type": "string"
+    },
+    "OperationId": {
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "OperationId",
+      "type": "string"
+    },
+    "QuantityKind": {
+      "enum": [
+        "EXACT",
+        "RANGE",
+        "QUALITATIVE",
+        "UNKNOWN"
+      ],
+      "title": "QuantityKind",
+      "type": "string"
+    },
+    "RationalAmount": {
+      "additionalProperties": false,
+      "properties": {
+        "numerator": {
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "Numerator",
+          "type": "integer"
+        },
+        "denominator": {
+          "default": 1,
+          "exclusiveMinimum": 0,
+          "maximum": 1152921504606846976,
+          "title": "Denominator",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "numerator"
+      ],
+      "title": "RationalAmount",
+      "type": "object"
+    },
+    "RecipeId": {
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "RecipeId",
+      "type": "string"
+    },
+    "RecipeInstance": {
+      "additionalProperties": false,
+      "properties": {
+        "recipe_instance_id": {
+          "$ref": "#/$defs/RecipeInstanceId"
+        },
+        "recipe_id": {
+          "$ref": "#/$defs/RecipeId"
+        },
+        "name": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Name",
+          "type": "string"
+        }
+      },
+      "required": [
+        "recipe_instance_id",
+        "recipe_id",
+        "name"
+      ],
+      "title": "RecipeInstance",
+      "type": "object"
+    },
+    "RecipeInstanceId": {
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "RecipeInstanceId",
+      "type": "string"
+    },
+    "RecoveryRule": {
+      "additionalProperties": false,
+      "properties": {
+        "rule_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Rule Id",
+          "type": "string"
+        },
+        "task_ids": {
+          "items": {
+            "$ref": "#/$defs/TaskId"
+          },
+          "title": "Task Ids",
+          "type": "array"
+        },
+        "kind": {
+          "enum": [
+            "REMAKE",
+            "RESUME"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "evidence_refs": {
+          "items": {
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "title": "Evidence Refs",
+          "type": "array"
+        },
+        "knowledge_version": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Knowledge Version",
+          "type": "string"
+        },
+        "approved": {
+          "const": true,
+          "title": "Approved",
+          "type": "boolean"
+        },
+        "source_kind": {
+          "enum": [
+            "REVIEWED",
+            "SYNTHETIC"
+          ],
+          "title": "Source Kind",
+          "type": "string"
+        },
+        "remaining_sec": {
+          "anyOf": [
+            {
+              "maximum": 1152921504606846976,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Remaining Sec"
+        },
+        "resume_procedure": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ResumeProcedure"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "required": [
+        "rule_id",
+        "task_ids",
+        "kind",
+        "evidence_refs",
+        "knowledge_version",
+        "approved",
+        "source_kind"
+      ],
+      "title": "RecoveryRule",
+      "type": "object"
+    },
+    "ResourceType": {
+      "enum": [
+        "HUMAN",
+        "DEVICE"
+      ],
+      "title": "ResourceType",
+      "type": "string"
+    },
+    "ResourceUse": {
+      "additionalProperties": false,
+      "properties": {
+        "resource_type": {
+          "$ref": "#/$defs/ResourceType"
+        },
+        "resource_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Resource Id",
+          "type": "string"
+        },
+        "units": {
+          "default": 1,
+          "exclusiveMinimum": 0,
+          "maximum": 1152921504606846976,
+          "title": "Units",
+          "type": "integer"
+        },
+        "layer_index": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0,
+              "maximum": 1152921504606846976,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Layer Index"
+        },
+        "physical_resource_id": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Physical Resource Id"
+        },
+        "component_id": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Component Id"
+        },
+        "profile_options": {
+          "default": [],
+          "items": {
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "title": "Profile Options",
+          "type": "array"
+        },
+        "configuration": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/ConfigurationValue"
+          },
+          "title": "Configuration",
+          "type": "array"
+        },
+        "conflict_policy": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ConflictPolicy"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "occupation_policy": {
+          "$ref": "#/$defs/OccupationPolicy",
+          "default": "WHOLE_INTERVAL"
+        },
+        "carrier_id": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/CarrierId"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "phase_id": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Phase Id"
+        },
+        "presence_condition": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Presence Condition"
+        },
+        "occupancy": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Interval"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "human_interventions": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/OperationId"
+          },
+          "title": "Human Interventions",
+          "type": "array"
+        },
+        "rule_version": {
+          "default": "unreviewed",
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Rule Version",
+          "type": "string"
+        },
+        "evidence_refs": {
+          "default": [],
+          "items": {
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "title": "Evidence Refs",
+          "type": "array"
+        },
+        "review_status": {
+          "$ref": "#/$defs/ReviewStatus",
+          "default": "DRAFT"
+        }
+      },
+      "required": [
+        "resource_type",
+        "resource_id"
+      ],
+      "title": "ResourceUse",
+      "type": "object"
+    },
+    "ResumeProcedure": {
+      "additionalProperties": false,
+      "description": "审核授权的同工艺续做：全部实际投入保留，并限制中断时长。",
+      "properties": {
+        "continuation": {
+          "const": "SAME_PROCESS",
+          "default": "SAME_PROCESS",
+          "title": "Continuation",
+          "type": "string"
+        },
+        "source_carrier_kind": {
+          "enum": [
+            "STANDALONE",
+            "SHARED_PREP"
+          ],
+          "title": "Source Carrier Kind",
+          "type": "string"
+        },
+        "resource_uses": {
+          "items": {
+            "$ref": "#/$defs/ResourceUse"
+          },
+          "title": "Resource Uses",
+          "type": "array"
+        },
+        "retain_all_consumed": {
+          "const": true,
+          "default": true,
+          "title": "Retain All Consumed",
+          "type": "boolean"
+        },
+        "max_pause_sec": {
+          "exclusiveMinimum": 0,
+          "maximum": 1152921504606846976,
+          "title": "Max Pause Sec",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "source_carrier_kind",
+        "resource_uses",
+        "max_pause_sec"
+      ],
+      "title": "ResumeProcedure",
+      "type": "object"
+    },
+    "ResumptionEvidence": {
+      "additionalProperties": false,
+      "properties": {
+        "procedure": {
+          "$ref": "#/$defs/ResumeProcedure"
+        },
+        "retained_inputs": {
+          "items": {
+            "$ref": "#/$defs/LotMovement"
+          },
+          "title": "Retained Inputs",
+          "type": "array"
+        },
+        "authorized_duration_sec": {
+          "exclusiveMinimum": 0,
+          "maximum": 1152921504606846976,
+          "title": "Authorized Duration Sec",
+          "type": "integer"
+        },
+        "original_duration_sec": {
+          "exclusiveMinimum": 0,
+          "maximum": 1152921504606846976,
+          "title": "Original Duration Sec",
+          "type": "integer"
+        },
+        "authorization_event_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Authorization Event Id",
+          "type": "string"
+        },
+        "parent_hash": {
+          "pattern": "^[a-f0-9]{64}$",
+          "title": "Parent Hash",
+          "type": "string"
+        },
+        "authorized_at": {
+          "format": "date-time",
+          "title": "Authorized At",
+          "type": "string"
+        },
+        "latest_start_at": {
+          "format": "date-time",
+          "title": "Latest Start At",
+          "type": "string"
+        },
+        "source_kind": {
+          "enum": [
+            "REVIEWED",
+            "SYNTHETIC"
+          ],
+          "title": "Source Kind",
+          "type": "string"
+        },
+        "evidence_refs": {
+          "items": {
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "title": "Evidence Refs",
+          "type": "array"
+        }
+      },
+      "required": [
+        "procedure",
+        "retained_inputs",
+        "authorized_duration_sec",
+        "original_duration_sec",
+        "authorization_event_id",
+        "parent_hash",
+        "authorized_at",
+        "latest_start_at",
+        "source_kind",
+        "evidence_refs"
+      ],
+      "title": "ResumptionEvidence",
+      "type": "object"
+    },
+    "ReviewStatus": {
+      "enum": [
+        "DRAFT",
+        "NEEDS_REVIEW",
+        "APPROVED",
+        "RETIRED"
+      ],
+      "title": "ReviewStatus",
+      "type": "string"
+    },
+    "RuntimeDetails": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "p4-runtime-v1",
+          "default": "p4-runtime-v1",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "planning_kind": {
+          "default": "INITIAL",
+          "enum": [
+            "INITIAL",
+            "REPLAN"
+          ],
+          "title": "Planning Kind",
+          "type": "string"
+        },
+        "occupancies": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/Occupancy"
+          },
+          "title": "Occupancies",
+          "type": "array"
+        },
+        "lots": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/LotFact"
+          },
+          "title": "Lots",
+          "type": "array"
+        },
+        "cancelled_instance_ids": {
+          "default": [],
+          "items": {
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "title": "Cancelled Instance Ids",
+          "type": "array"
+        },
+        "earliest_starts": {
+          "default": [],
+          "items": {
+            "maxItems": 2,
+            "minItems": 2,
+            "prefixItems": [
+              {
+                "minLength": 1,
+                "pattern": "\\S",
+                "type": "string"
+              },
+              {
+                "maximum": 1152921504606846976,
+                "minimum": 0,
+                "type": "integer"
+              }
+            ],
+            "type": "array"
+          },
+          "title": "Earliest Starts",
+          "type": "array"
+        },
+        "blocked_task_ids": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/TaskId"
+          },
+          "title": "Blocked Task Ids",
+          "type": "array"
+        },
+        "retired_task_ids": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/TaskId"
+          },
+          "title": "Retired Task Ids",
+          "type": "array"
+        },
+        "inventory_rules": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/InventoryRule"
+          },
+          "title": "Inventory Rules",
+          "type": "array"
+        },
+        "inventory_fulfillments": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/InventoryFulfillment"
+          },
+          "title": "Inventory Fulfillments",
+          "type": "array"
+        }
+      },
+      "title": "RuntimeDetails",
+      "type": "object"
+    },
+    "RuntimeSnapshot": {
+      "additionalProperties": false,
+      "properties": {
+        "session_id": {
+          "$ref": "#/$defs/SessionId"
+        },
+        "state_revision": {
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "State Revision",
+          "type": "integer"
+        },
+        "current_plan_version": {
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "Current Plan Version",
+          "type": "integer"
+        },
+        "knowledge_version": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Knowledge Version",
+          "type": "string"
+        },
+        "rule_version": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Rule Version",
+          "type": "string"
+        },
+        "snapshot_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Snapshot Id",
+          "type": "string"
+        },
+        "time_origin": {
+          "$ref": "#/$defs/TimeOrigin"
+        },
+        "now_offset_sec": {
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "Now Offset Sec",
+          "type": "integer"
+        },
+        "execution_mode": {
+          "$ref": "#/$defs/EventSource"
+        },
+        "executions": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/ExecutionRecord"
+          },
+          "title": "Executions",
+          "type": "array"
+        },
+        "material_lots": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/MaterialLot"
+          },
+          "title": "Material Lots",
+          "type": "array"
+        },
+        "device_states": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/DeviceState"
+          },
+          "title": "Device States",
+          "type": "array"
+        },
+        "current_plan_ref": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Current Plan Ref"
+        },
+        "event_refs": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/EventId"
+          },
+          "title": "Event Refs",
+          "type": "array"
+        },
+        "details": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/RuntimeDetails"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "required": [
+        "session_id",
+        "state_revision",
+        "current_plan_version",
+        "knowledge_version",
+        "rule_version",
+        "snapshot_id",
+        "time_origin",
+        "now_offset_sec",
+        "execution_mode"
+      ],
+      "title": "RuntimeSnapshot",
+      "type": "object"
+    },
+    "ScaledQuantity": {
+      "additionalProperties": false,
+      "properties": {
+        "value": {
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "Value",
+          "type": "integer"
+        },
+        "unit": {
+          "enum": [
+            "g",
+            "kg",
+            "ml",
+            "L",
+            "个",
+            "片",
+            "根",
+            "张",
+            "瓣",
+            "朵",
+            "汤匙",
+            "茶匙"
+          ],
+          "title": "Unit",
+          "type": "string"
+        },
+        "scale": {
+          "exclusiveMinimum": 0,
+          "maximum": 1152921504606846976,
+          "title": "Scale",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "value",
+        "unit",
+        "scale"
+      ],
+      "title": "ScaledQuantity",
+      "type": "object"
+    },
+    "ScheduleClockState": {
+      "additionalProperties": false,
+      "properties": {
+        "started_at": {
+          "format": "date-time",
+          "title": "Started At",
+          "type": "string"
+        },
+        "start_offset_sec": {
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "Start Offset Sec",
+          "type": "integer"
+        },
+        "processed_until_sec": {
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "Processed Until Sec",
+          "type": "integer"
+        },
+        "replan_requested_sec": {
+          "anyOf": [
+            {
+              "maximum": 1152921504606846976,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Replan Requested Sec"
+        },
+        "replan_not_before_sec": {
+          "anyOf": [
+            {
+              "maximum": 1152921504606846976,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Replan Not Before Sec"
+        },
+        "replan_continuation_task_ids": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/TaskId"
+          },
+          "title": "Replan Continuation Task Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "started_at",
+        "start_offset_sec",
+        "processed_until_sec"
+      ],
+      "title": "ScheduleClockState",
+      "type": "object"
+    },
+    "ScheduledAssignment": {
+      "additionalProperties": false,
+      "properties": {
+        "carrier_id": {
+          "$ref": "#/$defs/CarrierId"
+        },
+        "task_ids": {
+          "items": {
+            "$ref": "#/$defs/TaskId"
+          },
+          "title": "Task Ids",
+          "type": "array"
+        },
+        "interval": {
+          "$ref": "#/$defs/Interval"
+        },
+        "resource_uses": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/ResourceUse"
+          },
+          "title": "Resource Uses",
+          "type": "array"
+        }
+      },
+      "required": [
+        "carrier_id",
+        "task_ids",
+        "interval"
+      ],
+      "title": "ScheduledAssignment",
+      "type": "object"
+    },
+    "SchedulingPolicy": {
+      "additionalProperties": false,
+      "properties": {
+        "policy_version": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Policy Version",
+          "type": "string"
+        },
+        "time_grid_sec": {
+          "default": 1,
+          "exclusiveMinimum": 0,
+          "maximum": 1152921504606846976,
+          "title": "Time Grid Sec",
+          "type": "integer"
+        },
+        "minute_output_mode": {
+          "default": "DECIMAL",
+          "enum": [
+            "DECIMAL",
+            "INTEGER"
+          ],
+          "title": "Minute Output Mode",
+          "type": "string"
+        },
+        "human_count": {
+          "default": 1,
+          "maximum": 1,
+          "minimum": 1,
+          "title": "Human Count",
+          "type": "integer"
+        },
+        "human_resource_id": {
+          "const": "human_1",
+          "default": "human_1",
+          "title": "Human Resource Id",
+          "type": "string"
+        },
+        "burner_ids": {
+          "default": [
+            "burner_1",
+            "burner_2"
+          ],
+          "items": {
+            "enum": [
+              "burner_1",
+              "burner_2"
+            ],
+            "type": "string"
+          },
+          "title": "Burner Ids",
+          "type": "array"
+        },
+        "max_nonstandalone_per_requirement": {
+          "default": 12,
+          "exclusiveMinimum": 0,
+          "maximum": 1152921504606846976,
+          "title": "Max Nonstandalone Per Requirement",
+          "type": "integer"
+        },
+        "max_nonstandalone_per_problem": {
+          "default": 256,
+          "exclusiveMinimum": 0,
+          "maximum": 1152921504606846976,
+          "title": "Max Nonstandalone Per Problem",
+          "type": "integer"
+        },
+        "preserve_mandatory_recipe_batches": {
+          "const": true,
+          "default": true,
+          "title": "Preserve Mandatory Recipe Batches",
+          "type": "boolean"
+        },
+        "preserve_all_standalone_candidates": {
+          "const": true,
+          "default": true,
+          "title": "Preserve All Standalone Candidates",
+          "type": "boolean"
+        },
+        "shared_prep": {
+          "default": false,
+          "title": "Shared Prep",
+          "type": "boolean"
+        },
+        "allow_delegated_shared_estimates": {
+          "default": false,
+          "title": "Allow Delegated Shared Estimates",
+          "type": "boolean"
+        },
+        "strict_together_batch": {
+          "default": false,
+          "title": "Strict Together Batch",
+          "type": "boolean"
+        },
+        "generic_common_start_batch": {
+          "const": false,
+          "default": false,
+          "title": "Generic Common Start Batch",
+          "type": "boolean"
+        },
+        "generic_common_finish_batch": {
+          "const": false,
+          "default": false,
+          "title": "Generic Common Finish Batch",
+          "type": "boolean"
+        },
+        "enable_certified_non_equivalent_pruning": {
+          "default": false,
+          "title": "Enable Certified Non Equivalent Pruning",
+          "type": "boolean"
+        },
+        "equivalence_deduplication": {
+          "default": true,
+          "title": "Equivalence Deduplication",
+          "type": "boolean"
+        },
+        "graph_bound_preprocessing": {
+          "default": true,
+          "title": "Graph Bound Preprocessing",
+          "type": "boolean"
+        },
+        "duration_policy_id": {
+          "default": "NOMINAL",
+          "enum": [
+            "NOMINAL",
+            "BUFFERED"
+          ],
+          "title": "Duration Policy Id",
+          "type": "string"
+        },
+        "critical_window_policy_id": {
+          "default": "NONE",
+          "enum": [
+            "NONE",
+            "SERIAL_RECIPE_V1"
+          ],
+          "title": "Critical Window Policy Id",
+          "type": "string"
+        },
+        "replan_search_mode": {
+          "default": "OPTIMIZE",
+          "enum": [
+            "OPTIMIZE",
+            "FEASIBILITY_FIRST"
+          ],
+          "title": "Replan Search Mode",
+          "type": "string"
+        },
+        "dispatch_guard_policy_id": {
+          "default": "NONE",
+          "enum": [
+            "NONE",
+            "TIGHT_HUMAN_V1"
+          ],
+          "title": "Dispatch Guard Policy Id",
+          "type": "string"
+        },
+        "duration_data_version": {
+          "default": "nominal-v1",
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Duration Data Version",
+          "type": "string"
+        },
+        "duration_buffer_basis_points": {
+          "default": 1500,
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "Duration Buffer Basis Points",
+          "type": "integer"
+        },
+        "initial_budget": {
+          "$ref": "#/$defs/BudgetSpec",
+          "default": {
+            "total_ms": 4200,
+            "greedy_ms": 150,
+            "solver_ms": 3000,
+            "publication_reserve_ms": 400
+          }
+        },
+        "replan_budget": {
+          "$ref": "#/$defs/BudgetSpec",
+          "default": {
+            "total_ms": 2400,
+            "greedy_ms": 100,
+            "solver_ms": 1500,
+            "publication_reserve_ms": 300
+          }
+        },
+        "objective": {
+          "$ref": "#/$defs/ObjectiveSpec",
+          "default": {
+            "stages": [
+              "MAKESPAN",
+              "SPREAD",
+              "HUMAN_BUSY",
+              "STABILITY"
+            ],
+            "spread_target_sec": 240,
+            "rest_gap_sec": 60,
+            "makespan_extra_basis_points": 500,
+            "makespan_extra_cap_sec": 120
+          }
+        },
+        "greedy_search": {
+          "$ref": "#/$defs/GreedySearchLimits",
+          "default": {
+            "max_variants": 3,
+            "max_placements_per_iteration": 24,
+            "max_gap_checks_per_candidate": 32,
+            "rollback_depth": 3,
+            "rollback_attempts": 8,
+            "max_standalone_restarts": 1
+          }
+        },
+        "max_exact_human_phases": {
+          "default": 120,
+          "exclusiveMinimum": 0,
+          "maximum": 1152921504606846976,
+          "title": "Max Exact Human Phases",
+          "type": "integer"
+        },
+        "minimum_exact_human_budget_ms": {
+          "default": 100,
+          "exclusiveMinimum": 0,
+          "maximum": 1152921504606846976,
+          "title": "Minimum Exact Human Budget Ms",
+          "type": "integer"
+        },
+        "model_soft_limits": {
+          "$ref": "#/$defs/ModelSize",
+          "default": {
+            "total_variables": 6000,
+            "boolean_variables": 4000,
+            "optional_intervals": 1500,
+            "total_constraints": 20000,
+            "sequence_arcs": 8000
+          }
+        },
+        "api_instances": {
+          "const": 1,
+          "default": 1,
+          "title": "Api Instances",
+          "type": "integer"
+        },
+        "concurrent_planning_jobs": {
+          "const": 1,
+          "default": 1,
+          "title": "Concurrent Planning Jobs",
+          "type": "integer"
+        },
+        "solver_worker_processes": {
+          "const": 1,
+          "default": 1,
+          "title": "Solver Worker Processes",
+          "type": "integer"
+        },
+        "max_solver_search_workers": {
+          "default": 4,
+          "exclusiveMinimum": 0,
+          "maximum": 1152921504606846976,
+          "title": "Max Solver Search Workers",
+          "type": "integer"
+        },
+        "sqlite_busy_timeout_ms": {
+          "default": 100,
+          "exclusiveMinimum": 0,
+          "maximum": 1152921504606846976,
+          "title": "Sqlite Busy Timeout Ms",
+          "type": "integer"
+        },
+        "sqlite_max_write_retries": {
+          "default": 2,
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "Sqlite Max Write Retries",
+          "type": "integer"
+        },
+        "diagnostic_total_budget_ms": {
+          "default": 2000,
+          "exclusiveMinimum": 0,
+          "maximum": 1152921504606846976,
+          "title": "Diagnostic Total Budget Ms",
+          "type": "integer"
+        },
+        "diagnostic_search_workers": {
+          "const": 1,
+          "default": 1,
+          "title": "Diagnostic Search Workers",
+          "type": "integer"
+        },
+        "max_core_shrink_checks": {
+          "default": 6,
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "Max Core Shrink Checks",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "policy_version"
+      ],
+      "title": "SchedulingPolicy",
+      "type": "object"
+    },
+    "SessionId": {
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "SessionId",
+      "type": "string"
+    },
+    "TaskId": {
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "TaskId",
+      "type": "string"
+    },
+    "TaskReservation": {
+      "additionalProperties": false,
+      "properties": {
+        "reservation_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Reservation Id",
+          "type": "string"
+        },
+        "recipe_instance_id": {
+          "$ref": "#/$defs/RecipeInstanceId"
+        },
+        "members": {
+          "items": {
+            "$ref": "#/$defs/TaskId"
+          },
+          "title": "Members",
+          "type": "array"
+        },
+        "resource_options": {
+          "items": {
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "title": "Resource Options",
+          "type": "array"
+        },
+        "conflict_policy": {
+          "$ref": "#/$defs/ConflictPolicy"
+        },
+        "evidence_refs": {
+          "items": {
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "title": "Evidence Refs",
+          "type": "array"
+        }
+      },
+      "required": [
+        "reservation_id",
+        "recipe_instance_id",
+        "members",
+        "resource_options",
+        "conflict_policy",
+        "evidence_refs"
+      ],
+      "title": "TaskReservation",
+      "type": "object"
+    },
+    "TaskSpan": {
+      "additionalProperties": false,
+      "properties": {
+        "task_id": {
+          "$ref": "#/$defs/TaskId"
+        },
+        "interval": {
+          "$ref": "#/$defs/Interval"
+        }
+      },
+      "required": [
+        "task_id",
+        "interval"
+      ],
+      "title": "TaskSpan",
+      "type": "object"
+    },
+    "ThermalProfile": {
+      "additionalProperties": false,
+      "properties": {
+        "physical_resource_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Physical Resource Id",
+          "type": "string"
+        },
+        "component_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Component Id",
+          "type": "string"
+        },
+        "profile_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Profile Id",
+          "type": "string"
+        },
+        "configuration": {
+          "items": {
+            "$ref": "#/$defs/ConfigurationValue"
+          },
+          "title": "Configuration",
+          "type": "array"
+        }
+      },
+      "required": [
+        "physical_resource_id",
+        "component_id",
+        "profile_id",
+        "configuration"
+      ],
+      "title": "ThermalProfile",
+      "type": "object"
+    },
+    "ThermalState": {
+      "additionalProperties": false,
+      "properties": {
+        "physical_resource_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Physical Resource Id",
+          "type": "string"
+        },
+        "component_id": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Component Id",
+          "type": "string"
+        },
+        "condition": {
+          "enum": [
+            "OFF",
+            "COLD",
+            "HOLDING",
+            "UNKNOWN",
+            "TRANSITION_COMPLETED"
+          ],
+          "title": "Condition",
+          "type": "string"
+        },
+        "profile": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ThermalProfile"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "at_sec": {
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "At Sec",
+          "type": "integer"
+        },
+        "valid_until_sec": {
+          "anyOf": [
+            {
+              "maximum": 1152921504606846976,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Valid Until Sec"
+        },
+        "origin": {
+          "enum": [
+            "OBSERVED",
+            "PLANNED"
+          ],
+          "title": "Origin",
+          "type": "string"
+        },
+        "source_ref": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Source Ref",
+          "type": "string"
+        },
+        "completed_rule_id": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Completed Rule Id"
+        },
+        "completed_rule_version": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "pattern": "\\S",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Completed Rule Version"
+        }
+      },
+      "required": [
+        "physical_resource_id",
+        "component_id",
+        "condition",
+        "at_sec",
+        "origin",
+        "source_ref"
+      ],
+      "title": "ThermalState",
+      "type": "object"
+    },
+    "TimeOrigin": {
+      "additionalProperties": false,
+      "properties": {
+        "start_at": {
+          "format": "date-time",
+          "title": "Start At",
+          "type": "string"
+        }
+      },
+      "required": [
+        "start_at"
+      ],
+      "title": "TimeOrigin",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "knowledge_release_id": {
+      "anyOf": [
+        {
+          "minLength": 1,
+          "pattern": "\\S",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Knowledge Release Id"
+    },
+    "schema_version": {
+      "const": "p4-session-v1",
+      "default": "p4-session-v1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "runtime": {
+      "$ref": "#/$defs/RuntimeSnapshot"
+    },
+    "policy": {
+      "$ref": "#/$defs/SchedulingPolicy"
+    },
+    "menu": {
+      "default": [],
+      "items": {
+        "$ref": "#/$defs/RecipeInstance"
+      },
+      "title": "Menu",
+      "type": "array"
+    },
+    "status": {
+      "default": "CREATED",
+      "enum": [
+        "CREATED",
+        "ACTIVE",
+        "ENDED"
+      ],
+      "title": "Status",
+      "type": "string"
+    },
+    "bindings": {
+      "default": [],
+      "items": {
+        "$ref": "#/$defs/ExecutionBinding"
+      },
+      "title": "Bindings",
+      "type": "array"
+    },
+    "ledger": {
+      "default": [],
+      "items": {
+        "$ref": "#/$defs/LedgerEntry"
+      },
+      "title": "Ledger",
+      "type": "array"
+    },
+    "allocations": {
+      "default": [],
+      "items": {
+        "$ref": "#/$defs/Allocation"
+      },
+      "title": "Allocations",
+      "type": "array"
+    },
+    "future_allocations": {
+      "default": [],
+      "items": {
+        "$ref": "#/$defs/FutureAllocation"
+      },
+      "title": "Future Allocations",
+      "type": "array"
+    },
+    "recovery_rules": {
+      "default": [],
+      "items": {
+        "$ref": "#/$defs/RecoveryRule"
+      },
+      "title": "Recovery Rules",
+      "type": "array"
+    },
+    "inventory_rules": {
+      "default": [],
+      "items": {
+        "$ref": "#/$defs/InventoryRule"
+      },
+      "title": "Inventory Rules",
+      "type": "array"
+    },
+    "requires_replan": {
+      "default": false,
+      "title": "Requires Replan",
+      "type": "boolean"
+    },
+    "replan_reasons": {
+      "default": [],
+      "items": {
+        "minLength": 1,
+        "pattern": "\\S",
+        "type": "string"
+      },
+      "title": "Replan Reasons",
+      "type": "array"
+    },
+    "dispatch_blocked": {
+      "default": true,
+      "title": "Dispatch Blocked",
+      "type": "boolean"
+    },
+    "last_planning_failure": {
+      "anyOf": [
+        {
+          "minLength": 1,
+          "pattern": "\\S",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Last Planning Failure"
+    },
+    "schedule_clock": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ScheduleClockState"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    }
+  },
+  "required": [
+    "runtime",
+    "policy"
+  ],
+  "title": "RuntimeSession",
+  "type": "object"
+}

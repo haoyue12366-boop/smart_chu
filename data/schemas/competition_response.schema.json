@@ -1,0 +1,380 @@
+{
+  "$defs": {
+    "CookingParameters": {
+      "additionalProperties": false,
+      "properties": {
+        "mode": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Mode",
+          "type": "string"
+        },
+        "temperature": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Temperature",
+          "type": "string"
+        },
+        "time": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Time",
+          "type": "string"
+        }
+      },
+      "required": [
+        "mode",
+        "temperature",
+        "time"
+      ],
+      "title": "CookingParameters",
+      "type": "object"
+    },
+    "CookingStep": {
+      "additionalProperties": false,
+      "properties": {
+        "describe": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Describe",
+          "type": "string"
+        },
+        "cookingParameters": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/CookingParameters"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "required": [
+        "describe"
+      ],
+      "title": "CookingStep",
+      "type": "object"
+    },
+    "CookingTimelineItem": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Name",
+          "type": "string"
+        },
+        "product": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Product",
+          "type": "string"
+        },
+        "startTime": {
+          "pattern": "^(?:[01]\\d|2[0-3]):[0-5]\\d$",
+          "title": "Starttime",
+          "type": "string"
+        },
+        "endTime": {
+          "pattern": "^(?:[01]\\d|2[0-3]):[0-5]\\d$",
+          "title": "Endtime",
+          "type": "string"
+        },
+        "timeSpent": {
+          "pattern": "^(?:0|[1-9]\\d*)$",
+          "title": "Timespent",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "product",
+        "startTime",
+        "endTime",
+        "timeSpent"
+      ],
+      "title": "CookingTimelineItem",
+      "type": "object"
+    },
+    "DetailTimelineItem": {
+      "additionalProperties": false,
+      "properties": {
+        "timeInterval": {
+          "pattern": "^\\d+-\\d+$",
+          "title": "Timeinterval",
+          "type": "string"
+        },
+        "title": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Title",
+          "type": "string"
+        },
+        "type": {
+          "maximum": 6,
+          "minimum": 1,
+          "title": "Type",
+          "type": "integer"
+        },
+        "list": {
+          "items": {
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
+          "title": "List",
+          "type": "array"
+        },
+        "recipeNames": {
+          "anyOf": [
+            {
+              "items": {
+                "minLength": 1,
+                "pattern": "\\S",
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Recipenames"
+        },
+        "parameters": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/DeviceParameter"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Parameters"
+        }
+      },
+      "required": [
+        "timeInterval",
+        "title",
+        "type",
+        "list"
+      ],
+      "title": "DetailTimelineItem",
+      "type": "object"
+    },
+    "DeviceParameter": {
+      "additionalProperties": false,
+      "properties": {
+        "recipeName": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Recipename",
+          "type": "string"
+        },
+        "temperature": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "minLength": 1,
+              "pattern": "\\S",
+              "type": "string"
+            }
+          ],
+          "title": "Temperature"
+        },
+        "time": {
+          "exclusiveMinimum": 0,
+          "maximum": 1152921504606846976,
+          "title": "Time",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "recipeName",
+        "temperature",
+        "time"
+      ],
+      "title": "DeviceParameter",
+      "type": "object"
+    },
+    "IngredientGroup": {
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "enum": [
+            "荤菜",
+            "素菜",
+            "调味品"
+          ],
+          "title": "Type",
+          "type": "string"
+        },
+        "list": {
+          "items": {
+            "$ref": "#/$defs/IngredientItem"
+          },
+          "title": "List",
+          "type": "array"
+        }
+      },
+      "required": [
+        "type",
+        "list"
+      ],
+      "title": "IngredientGroup",
+      "type": "object"
+    },
+    "IngredientItem": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Name",
+          "type": "string"
+        },
+        "unit": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Unit",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "unit"
+      ],
+      "title": "IngredientItem",
+      "type": "object"
+    },
+    "Overview": {
+      "additionalProperties": false,
+      "properties": {
+        "finishTime": {
+          "pattern": "^(?:[01]\\d|2[0-3]):[0-5]\\d$",
+          "title": "Finishtime",
+          "type": "string"
+        },
+        "timeSpent": {
+          "pattern": "^(?:0|[1-9]\\d*)$",
+          "title": "Timespent",
+          "type": "string"
+        },
+        "timeSave": {
+          "pattern": "^(?:0|[1-9]\\d*)$",
+          "title": "Timesave",
+          "type": "string"
+        },
+        "recipeCount": {
+          "maximum": 1152921504606846976,
+          "minimum": 0,
+          "title": "Recipecount",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "finishTime",
+        "timeSpent",
+        "timeSave",
+        "recipeCount"
+      ],
+      "title": "Overview",
+      "type": "object"
+    },
+    "RecipeDetail": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Name",
+          "type": "string"
+        },
+        "majorIngredients": {
+          "items": {
+            "$ref": "#/$defs/IngredientItem"
+          },
+          "title": "Majoringredients",
+          "type": "array"
+        },
+        "minorIngredients": {
+          "items": {
+            "$ref": "#/$defs/IngredientItem"
+          },
+          "title": "Minoringredients",
+          "type": "array"
+        },
+        "cookingSteps": {
+          "items": {
+            "$ref": "#/$defs/CookingStep"
+          },
+          "title": "Cookingsteps",
+          "type": "array"
+        }
+      },
+      "required": [
+        "name",
+        "majorIngredients",
+        "minorIngredients",
+        "cookingSteps"
+      ],
+      "title": "RecipeDetail",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "overview": {
+      "$ref": "#/$defs/Overview"
+    },
+    "cookingTimeline": {
+      "items": {
+        "$ref": "#/$defs/CookingTimelineItem"
+      },
+      "title": "Cookingtimeline",
+      "type": "array"
+    },
+    "ingredientsSummary": {
+      "items": {
+        "$ref": "#/$defs/IngredientGroup"
+      },
+      "title": "Ingredientssummary",
+      "type": "array"
+    },
+    "detailTimeline": {
+      "items": {
+        "$ref": "#/$defs/DetailTimelineItem"
+      },
+      "title": "Detailtimeline",
+      "type": "array"
+    },
+    "recipeDetail": {
+      "items": {
+        "$ref": "#/$defs/RecipeDetail"
+      },
+      "title": "Recipedetail",
+      "type": "array"
+    }
+  },
+  "required": [
+    "overview",
+    "cookingTimeline",
+    "ingredientsSummary",
+    "detailTimeline",
+    "recipeDetail"
+  ],
+  "title": "CompetitionResponse",
+  "type": "object"
+}

@@ -1,0 +1,329 @@
+{
+  "$defs": {
+    "ArtifactRef": {
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Path",
+          "type": "string"
+        },
+        "sha256": {
+          "pattern": "^[a-f0-9]{64}$",
+          "title": "Sha256",
+          "type": "string"
+        },
+        "media_type": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Media Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "path",
+        "sha256",
+        "media_type"
+      ],
+      "title": "ArtifactRef",
+      "type": "object"
+    },
+    "GenerationParameter": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "minLength": 1,
+          "pattern": "\\S",
+          "title": "Name",
+          "type": "string"
+        },
+        "value_json": {
+          "title": "Value Json",
+          "type": "string"
+        },
+        "applicability": {
+          "default": "SUBMITTED",
+          "enum": [
+            "SUBMITTED",
+            "NOT_SUPPORTED"
+          ],
+          "title": "Applicability",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "value_json"
+      ],
+      "title": "GenerationParameter",
+      "type": "object"
+    },
+    "RecipeId": {
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "RecipeId",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "run_id": {
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "Run Id",
+      "type": "string"
+    },
+    "source_recipe_id": {
+      "$ref": "#/$defs/RecipeId"
+    },
+    "source": {
+      "$ref": "#/$defs/ArtifactRef"
+    },
+    "source_spans": {
+      "default": [],
+      "items": {
+        "minLength": 1,
+        "pattern": "\\S",
+        "type": "string"
+      },
+      "title": "Source Spans",
+      "type": "array"
+    },
+    "rendered_request": {
+      "$ref": "#/$defs/ArtifactRef"
+    },
+    "output_schema": {
+      "$ref": "#/$defs/ArtifactRef"
+    },
+    "raw_response": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ArtifactRef"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "response_profile": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ArtifactRef"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "structured_result": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ArtifactRef"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "provider": {
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "Provider",
+      "type": "string"
+    },
+    "requested_model": {
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "Requested Model",
+      "type": "string"
+    },
+    "resolved_model_revision": {
+      "default": "unknown",
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "Resolved Model Revision",
+      "type": "string"
+    },
+    "provider_request_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Provider Request Id"
+    },
+    "returned_model": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Returned Model"
+    },
+    "generation_parameters": {
+      "default": [],
+      "items": {
+        "$ref": "#/$defs/GenerationParameter"
+      },
+      "title": "Generation Parameters",
+      "type": "array"
+    },
+    "called_at": {
+      "format": "date-time",
+      "title": "Called At",
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "SUCCEEDED",
+        "FAILED",
+        "REFUSED",
+        "TRUNCATED"
+      ],
+      "title": "Status",
+      "type": "string"
+    },
+    "finish_reason": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Finish Reason"
+    },
+    "error_message": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Error Message"
+    },
+    "prompt_version": {
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "Prompt Version",
+      "type": "string"
+    },
+    "schema_version": {
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "parser_version": {
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "Parser Version",
+      "type": "string"
+    },
+    "normalizer_version": {
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "Normalizer Version",
+      "type": "string"
+    },
+    "rule_version": {
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "Rule Version",
+      "type": "string"
+    },
+    "code_revision": {
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "Code Revision",
+      "type": "string"
+    },
+    "dependency_lock_hash": {
+      "pattern": "^[a-f0-9]{64}$",
+      "title": "Dependency Lock Hash",
+      "type": "string"
+    },
+    "review_patch_refs": {
+      "default": [],
+      "items": {
+        "$ref": "#/$defs/ArtifactRef"
+      },
+      "title": "Review Patch Refs",
+      "type": "array"
+    },
+    "knowledge_release_id": {
+      "anyOf": [
+        {
+          "minLength": 1,
+          "pattern": "\\S",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Knowledge Release Id"
+    },
+    "snapshot_id": {
+      "anyOf": [
+        {
+          "minLength": 1,
+          "pattern": "\\S",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Snapshot Id"
+    },
+    "provenance_refs": {
+      "default": [],
+      "items": {
+        "minLength": 1,
+        "pattern": "\\S",
+        "type": "string"
+      },
+      "title": "Provenance Refs",
+      "type": "array"
+    }
+  },
+  "required": [
+    "source_recipe_id",
+    "source",
+    "rendered_request",
+    "output_schema",
+    "provider",
+    "requested_model",
+    "called_at",
+    "status",
+    "prompt_version",
+    "schema_version",
+    "parser_version",
+    "normalizer_version",
+    "rule_version",
+    "code_revision",
+    "dependency_lock_hash"
+  ],
+  "title": "ExtractionRun",
+  "type": "object"
+}

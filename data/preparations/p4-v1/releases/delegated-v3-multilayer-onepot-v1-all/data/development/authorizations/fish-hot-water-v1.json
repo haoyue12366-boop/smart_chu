@@ -1,0 +1,9 @@
+{
+  "recorded_date": "2026-09-28",
+  "source": "当前用户会话",
+  "user_message": "鱼头菜的工艺修复同意你的意见",
+  "recipe_id": "58e70ae1a3fd4a750f4b75b0",
+  "correction": "保留既有约90℃热水准备300秒及移出60秒；原文15秒烫洗改为human_1人工操作；移除误加的蒸箱预热op_002_01和取出op_8002_01及对应预约；物料直接产出scalded_fish，后续真实蒸制不变。",
+  "scope": "开发工艺修正授权；不等于整道菜或AI估时的正式人工审核",
+  "review_status": "NEEDS_REVIEW"
+}

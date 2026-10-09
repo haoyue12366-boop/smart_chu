@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0",
+  "scope": "P5 implementation flows; execution evidence comes from actual test reports",
+  "flows": {
+    "task-initial-three-append-two": {
+      "tests": [
+        "tests/contract/test_competition_replanning.py",
+        "web/tests/e2e/competition_flow.spec.ts"
+      ],
+      "source": "FIXED_P4_DEVELOPMENT_KNOWLEDGE"
+    },
+    "manual-start-add-fault-recover-history": {
+      "tests": [
+        "web/tests/e2e/replanning.spec.ts"
+      ],
+      "source": "MANUAL_CONFIRM"
+    },
+    "simulated-occupancy-recover-explicit-release": {
+      "tests": [
+        "web/tests/e2e/simulation_release.spec.ts",
+        "tests/contract/test_simulation_api.py"
+      ],
+      "source": "SIMULATED"
+    },
+    "restart-and-response-recovery": {
+      "tests": [
+        "tests/integration/test_competition_task_recovery.py",
+        "tests/integration/test_competition_response_recovery.py"
+      ],
+      "source": "REAL_STORAGE_WITH_EXPLICIT_FAULT_INJECTION"
+    },
+    "h02-member-reminders": {
+      "tests": [
+        "tests/integration/test_notification_stream.py"
+      ],
+      "source": "FIXED_P4_KNOWLEDGE_WITH_OFFLINE_BATCH_FIXTURE"
+    },
+    "neo4j-off-service": {
+      "tests": [
+        "tests/integration/test_service_end_to_end.py"
+      ],
+      "source": "ACTUAL_LOCAL_NEO4J_STOPPED"
+    }
+  }
+}

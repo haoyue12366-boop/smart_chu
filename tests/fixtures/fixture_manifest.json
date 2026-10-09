@@ -1,0 +1,249 @@
+{
+  "schema_version": "1.0",
+  "knowledge_version": "development-v3-rebased-v1",
+  "review_status": "NEEDS_REVIEW",
+  "source_hashes": {
+    "data/revisions/recipes_v3/ingredient_inputs.json": "0fd362c928c845d42e98927cdede673953f6af0072ecd8123566ca099e00075d",
+    "data/revisions/recipes_v3/material_map_01_25.json": "509643d03f2564439573ebba3841c10ee374d587510987a9c186994c7f34b710",
+    "data/revisions/recipes_v3/material_map_26_50.json": "d006a4822f04d1d1263a9def20880ad3d2c9dab04910c05b406a0b269e31c08e",
+    "data/revisions/recipes_v3/material_map_51_75.json": "1a6c54ffdb8596779e6e586818d90ebe61c2c3bf5fa27c9fef3023ced203f243",
+    "data/revisions/recipes_v3/material_map_76_100.json": "9fe8821c7f687b3c49f7d2d3fff0feaf8b14f474bd141528f61e7342cf5820bd",
+    "data/revisions/recipes_v3/recipes_100_调度版.csv": "500dee6ba25e8f21fe24c1eb59be18236cd1af3aaeb9d84765bf7e81cbb5fbbf",
+    "data/revisions/recipes_v3/scheduling_dataset.json": "82a2f3c6bddbd4aba8f3ab96562883a983b104c30017a016c0c9f61f28e6a694",
+    "docs/recipes_100.csv": "96626b4bc7bebc6170a18177a326918728b67f9264eea0d5a820562b0107dc5c",
+    "docs/recipes_100_详细步骤_完善版.csv": "7b1fc84da3a9578f4d9bf0c36e3ba95736fdf30d4919777ff83ba998e1868f7b",
+    "docs/设备参数清单参考.json": "fe8aef3f0afaba5a82d2ef575245cc7f8db92ea5205f8d59f521a63384040061",
+    "docs/问题/数据问题.docx": "6990273c3f021ca214817e2be991ad42082377aec7e8bbd872f5ed300646e4c6",
+    "scripts/attach_recipe_materials.py": "765ec21e8f7ad4620fb5533120a480f442c91061df172e49728d82e3762e4ea9",
+    "scripts/build_scheduling_dataset.py": "6b0d7c7cd9b869838d226561a89b475b9ced9c8efde9d66075ee042ba167fe88",
+    "data/development/development-v3-rebased-v1/dataset.json": "74d8cb914ed6c76a6c583a2af65dd033f27b4ce30335a40c78dbab1789944c75"
+  },
+  "real_samples": [
+    {
+      "recipe_id": "5d54bae2a9114174727c8b20",
+      "name": "鸡翅包饭",
+      "path": "tests/fixtures/reviewed_sample/5d54bae2a9114174727c8b20.json",
+      "sha256": "b1a40f0f2e6cd3fcf5a0b3c2e11861f564c7d20381e58bd90d9e99b7f1a28132",
+      "review_status": "NEEDS_REVIEW",
+      "source_kind": "REAL_SOURCE"
+    },
+    {
+      "recipe_id": "5c8646fe98d5bc7e184a90bc",
+      "name": "鸡仔饼",
+      "path": "tests/fixtures/reviewed_sample/5c8646fe98d5bc7e184a90bc.json",
+      "sha256": "ca0aa4eb8066578a97449c325a8e8ef881f16a3ad8bbf54495edb6d591b7f5ae",
+      "review_status": "NEEDS_REVIEW",
+      "source_kind": "REAL_SOURCE"
+    },
+    {
+      "recipe_id": "5dad79866601a865649f9cb7",
+      "name": "家常鲈鱼",
+      "path": "tests/fixtures/reviewed_sample/5dad79866601a865649f9cb7.json",
+      "sha256": "0ad47b23d5c3eae0521eafc384cc5328f033f427425f00daa107d922dfa372bf",
+      "review_status": "NEEDS_REVIEW",
+      "source_kind": "REAL_SOURCE"
+    },
+    {
+      "recipe_id": "58e70b129f6429675ec80601",
+      "name": "麻辣对虾",
+      "path": "tests/fixtures/reviewed_sample/58e70b129f6429675ec80601.json",
+      "sha256": "70b635540dcb406b53bdbb1fa8d71cc73a94b63737790c1ac838c433f3942850",
+      "review_status": "NEEDS_REVIEW",
+      "source_kind": "REAL_SOURCE"
+    },
+    {
+      "recipe_id": "5fc5f9e15f8f38795ea6fca6",
+      "name": "广式叉烧",
+      "path": "tests/fixtures/reviewed_sample/5fc5f9e15f8f38795ea6fca6.json",
+      "sha256": "c55dca426f3a9e99b2b71076a8e1142e95fe0892e0b2de75d9d2da1101c94938",
+      "review_status": "NEEDS_REVIEW",
+      "source_kind": "REAL_SOURCE"
+    },
+    {
+      "recipe_id": "5cc7e0404a21a4301960aef1",
+      "name": "糯米烧麦",
+      "path": "tests/fixtures/reviewed_sample/5cc7e0404a21a4301960aef1.json",
+      "sha256": "0ef229cde03b2c32a3fc4f628038f0c06115c6215127e723142a3851a05e4f5e",
+      "review_status": "NEEDS_REVIEW",
+      "source_kind": "REAL_SOURCE"
+    },
+    {
+      "recipe_id": "66cec69b1142545e3856e07e",
+      "name": "亲朋欢聚套餐",
+      "path": "tests/fixtures/reviewed_sample/66cec69b1142545e3856e07e.json",
+      "sha256": "9c826147dab2842a8cce40ada93ff2129a9ef2dc329b27299fd0b1984f8ee742",
+      "review_status": "NEEDS_REVIEW",
+      "source_kind": "REAL_SOURCE"
+    },
+    {
+      "recipe_id": "5caf2ce0e78bfc455f2d5c7a",
+      "name": "土豆焖饭",
+      "path": "tests/fixtures/reviewed_sample/5caf2ce0e78bfc455f2d5c7a.json",
+      "sha256": "6f9589a8ce61054ce3274d5f9f23e538a26e8003f52c57ff4ee8606561383049",
+      "review_status": "NEEDS_REVIEW",
+      "source_kind": "REAL_SOURCE"
+    },
+    {
+      "recipe_id": "5dad486b6601a865649f9c15",
+      "name": "香菇烤芦笋",
+      "path": "tests/fixtures/reviewed_sample/5dad486b6601a865649f9c15.json",
+      "sha256": "8b45317b30d6c40bd66d7b051d1d08397a5ed2aa9ca4419fd87b926d9c94be75",
+      "review_status": "NEEDS_REVIEW",
+      "source_kind": "REAL_SOURCE"
+    },
+    {
+      "recipe_id": "5fe197255f8f38795ea6fe79",
+      "name": "麻辣对虾",
+      "path": "tests/fixtures/reviewed_sample/5fe197255f8f38795ea6fe79.json",
+      "sha256": "bbf873dc7a52a06656130815e88154c5e3a4668d2df6996791cb849393156fca",
+      "review_status": "NEEDS_REVIEW",
+      "source_kind": "REAL_SOURCE"
+    },
+    {
+      "recipe_id": "66dea6480d586d528ee9dd7c",
+      "name": "烹香酷炒汇",
+      "path": "tests/fixtures/reviewed_sample/66dea6480d586d528ee9dd7c.json",
+      "sha256": "f1f6d04dfe054a3435182da23b905a46271f5344a0fa1725943abe3108e1473d",
+      "review_status": "NEEDS_REVIEW",
+      "source_kind": "REAL_SOURCE"
+    },
+    {
+      "recipe_id": "58e70b109f6429675ec805ed",
+      "name": "蒜蓉粉丝蒸扇贝",
+      "path": "tests/fixtures/reviewed_sample/58e70b109f6429675ec805ed.json",
+      "sha256": "479481285184d41dbd3670ae7b5ba0c6ca892ac85c400cd8d1ce602b36ac020a",
+      "review_status": "NEEDS_REVIEW",
+      "source_kind": "REAL_SOURCE"
+    }
+  ],
+  "synthetic_samples": [
+    {
+      "path": "tests/fixtures/synthetic/canonical_complex.json",
+      "sha256": "aec2927a319835a0e465056732f81730f9bd0c2609b482e1a4f4465b45085a37",
+      "source_kind": "SYNTHETIC",
+      "expected_result": "结构合法",
+      "expected_reason": "合成并行、固定两批和精确中途介入，可无损序列化"
+    },
+    {
+      "path": "tests/fixtures/synthetic/second_human.json",
+      "sha256": "023efa93133ac4a716dd54858e65dbcda755ba642fb2f448349f2fbf795e3651",
+      "source_kind": "SYNTHETIC",
+      "expected_result": "拒绝",
+      "expected_reason": "仅允许 human_1"
+    },
+    {
+      "path": "tests/fixtures/synthetic/unmapped_device.json",
+      "sha256": "44f8a25d0ecddc11b207253064ab984a463dc26b9f011c23b9902e180d9d966e",
+      "source_kind": "SYNTHETIC",
+      "expected_result": "拒绝",
+      "expected_reason": "缺少物理映射及竞争策略"
+    }
+  ],
+  "coverage": {
+    "long_preparation": {
+      "recipe_ids": [
+        "5c8646fe98d5bc7e184a90bc",
+        "5fc5f9e15f8f38795ea6fca6",
+        "5cc7e0404a21a4301960aef1"
+      ],
+      "status": "STRUCTURED_DRAFT_REVIEW_PENDING"
+    },
+    "recipe_parallelism": {
+      "recipe_ids": [
+        "5dad486b6601a865649f9c15"
+      ],
+      "status": "STRUCTURED_DRAFT_REVIEW_PENDING"
+    },
+    "two_burner_contention": {
+      "recipe_ids": [
+        "5d54bae2a9114174727c8b20",
+        "5dad79866601a865649f9cb7",
+        "5caf2ce0e78bfc455f2d5c7a"
+      ],
+      "status": "STRUCTURED_DRAFT_REVIEW_PENDING"
+    },
+    "device_relay": {
+      "recipe_ids": [
+        "5d54bae2a9114174727c8b20",
+        "5dad79866601a865649f9cb7",
+        "5caf2ce0e78bfc455f2d5c7a"
+      ],
+      "status": "STRUCTURED_DRAFT_REVIEW_PENDING"
+    },
+    "different_heat_durations": {
+      "recipe_ids": [
+        "5d54bae2a9114174727c8b20",
+        "5dad79866601a865649f9cb7",
+        "5caf2ce0e78bfc455f2d5c7a"
+      ],
+      "status": "STRUCTURED_DRAFT_REVIEW_PENDING"
+    },
+    "explicit_batches": {
+      "recipe_ids": [
+        "5cc7e0404a21a4301960aef1"
+      ],
+      "status": "STRUCTURED_DRAFT_REVIEW_PENDING"
+    },
+    "intervention": {
+      "recipe_ids": [
+        "66cec69b1142545e3856e07e",
+        "5dad486b6601a865649f9c15",
+        "66dea6480d586d528ee9dd7c"
+      ],
+      "status": "STRUCTURED_DRAFT_REVIEW_PENDING"
+    },
+    "duplicate_names": {
+      "recipe_ids": [
+        "58e70b129f6429675ec80601",
+        "5fe197255f8f38795ea6fe79"
+      ],
+      "status": "STRUCTURED_DRAFT_REVIEW_PENDING"
+    },
+    "shared_cutting_candidate": {
+      "recipe_ids": [
+        "58e70b129f6429675ec80601",
+        "5fe197255f8f38795ea6fe79",
+        "58e70b109f6429675ec805ed"
+      ],
+      "status": "STRUCTURED_DRAFT_REVIEW_PENDING"
+    }
+  },
+  "review_gate": {
+    "required_approved_recipes": 12,
+    "approved_count": 0
+  },
+  "historical_source_hashes": {
+    "docs/recipes_100.csv": "96626b4bc7bebc6170a18177a326918728b67f9264eea0d5a820562b0107dc5c",
+    "data/revisions/recipes_v2/recipes_100_详细步骤_完善版.csv": "7b1fc84da3a9578f4d9bf0c36e3ba95736fdf30d4919777ff83ba998e1868f7b",
+    "data/revisions/recipes_v2/recipes_100_完善版.json": "a797fb24efb52af96f300a587637a5596b4743643515415287e721189b197163",
+    "data/issues/p0_process_map.json": "ff20f9f65883b518e2b34655d6ac1c88ff8f06001db6fc123d535094275e3994",
+    "docs/recipes_100_详细步骤_完善版.csv": "7b1fc84da3a9578f4d9bf0c36e3ba95736fdf30d4919777ff83ba998e1868f7b",
+    "docs/问题/数据问题.docx": "6990273c3f021ca214817e2be991ad42082377aec7e8bbd872f5ed300646e4c6",
+    "docs/设备参数清单参考.json": "fe8aef3f0afaba5a82d2ef575245cc7f8db92ea5205f8d59f521a63384040061",
+    "data/revisions/recipes_v3/recipes_100_时间补全版.json": "4e0a9d99acf2f28884425e7a14dc429bb1b5deddec834aa56ef0c342cc24ffc9",
+    "data/revisions/recipes_v3/material_map_01_25.json": "509643d03f2564439573ebba3841c10ee374d587510987a9c186994c7f34b710",
+    "data/revisions/recipes_v3/material_map_26_50.json": "d006a4822f04d1d1263a9def20880ad3d2c9dab04910c05b406a0b269e31c08e",
+    "data/revisions/recipes_v3/material_map_51_75.json": "1a6c54ffdb8596779e6e586818d90ebe61c2c3bf5fa27c9fef3023ced203f243",
+    "data/revisions/recipes_v3/material_map_76_100.json": "9fe8821c7f687b3c49f7d2d3fff0feaf8b14f474bd141528f61e7342cf5820bd",
+    "data/revisions/recipes_v3/ingredient_inputs.json": "0fd362c928c845d42e98927cdede673953f6af0072ecd8123566ca099e00075d",
+    "scripts/build_scheduling_dataset.py": "6b0d7c7cd9b869838d226561a89b475b9ced9c8efde9d66075ee042ba167fe88",
+    "scripts/attach_recipe_materials.py": "765ec21e8f7ad4620fb5533120a480f442c91061df172e49728d82e3762e4ea9",
+    "data/revisions/recipes_v3/scheduling_dataset.json": "82a2f3c6bddbd4aba8f3ab96562883a983b104c30017a016c0c9f61f28e6a694"
+  },
+  "provenance_gaps": [
+    {
+      "current_sha256": null,
+      "expected_sha256": "4e0a9d99acf2f28884425e7a14dc429bb1b5deddec834aa56ef0c342cc24ffc9",
+      "locator": "/provenance/99",
+      "path": "data/revisions/recipes_v3/recipes_100_时间补全版.json",
+      "status": "MISSING"
+    },
+    {
+      "current_sha256": null,
+      "expected_sha256": null,
+      "locator": "legacy-rebuild-input",
+      "path": "data/revisions/recipes_v2/corrections.json",
+      "status": "MISSING"
+    }
+  ]
+}

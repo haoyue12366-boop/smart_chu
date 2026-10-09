@@ -1,0 +1,1382 @@
+{
+  "schema_version": "1.0",
+  "quality_commands": [
+    [
+      "{python}",
+      "-m",
+      "ruff",
+      "check",
+      "."
+    ],
+    [
+      "{python}",
+      "-m",
+      "ruff",
+      "format",
+      "--check",
+      "."
+    ],
+    [
+      "{python}",
+      "-m",
+      "mypy",
+      "app"
+    ]
+  ],
+  "phases": {
+    "P0": {
+      "tasks": [
+        "P0-01",
+        "P0-02",
+        "P0-03",
+        "P0-04",
+        "P0-05",
+        "P0-06",
+        "P0-07"
+      ]
+    },
+    "P1:core": {
+      "tasks": [
+        "P1-01",
+        "P1-02",
+        "P1-03",
+        "P1-04",
+        "P1-05",
+        "P1-06",
+        "P1-07",
+        "P1-08"
+      ],
+      "required_phase_gates": [
+        "P0"
+      ],
+      "minimum_approved_recipes": 12,
+      "requires_real_neo4j": true
+    },
+    "P1:full": {
+      "tasks": [
+        "P1-09"
+      ],
+      "required_phase_gates": [
+        "P1:core",
+        "P2"
+      ],
+      "required_recipe_count": 100,
+      "required_live_single_recipe_solves": 100
+    },
+    "P2": {
+      "tasks": [
+        "P2-01",
+        "P2-02",
+        "P2-03",
+        "P2-04",
+        "P2-05",
+        "P2-06",
+        "P2-07",
+        "P2-08",
+        "P2-09",
+        "P2-10",
+        "P2-11",
+        "P2-12"
+      ],
+      "required_phase_gates": [
+        "P1:core"
+      ]
+    },
+    "P3": {
+      "tasks": [
+        "P3-07"
+      ],
+      "required_phase_gates": [
+        "P1:core"
+      ]
+    },
+    "P4": {
+      "tasks": [
+        "P4-10"
+      ],
+      "required_phase_gates": [
+        "P1:core"
+      ]
+    },
+    "P5": {
+      "tasks": [
+        "P5-08"
+      ],
+      "required_phase_gates": [
+        "P1:core"
+      ]
+    },
+    "P6": {
+      "tasks": [
+        "P6-08"
+      ],
+      "required_phase_gates": [
+        "P1:full",
+        "P5"
+      ]
+    },
+    "P3:development": {
+      "tasks": [
+        "P3-07"
+      ],
+      "development_authorization_artifact": {
+        "path": "data/development/authorizations/p3-delegation-v1.json",
+        "sha256": "d6fff93d29b3b388abdc03f0b0340ea5fbabaf6d79104c285d37101277bc72d9",
+        "media_type": "application/json"
+      },
+      "development_dependency_overrides": {
+        "P3-01": [
+          "P3-DEV-INPUTS"
+        ]
+      },
+      "deferred_formal_requirements": [
+        "P1正式人工审核与competition发布仍未通过；本入口仅使用用户授权的NEEDS_REVIEW开发快照",
+        "完整动态事件、SQLite条件发布和通知事务属于P4；本次存储检查为真实知识发布与静态实验文件重载",
+        "开发依赖门槛运行已列出的P2相关回归，不将既有正式P0/P1/P2门槛改为通过"
+      ]
+    },
+    "P4:development": {
+      "tasks": [
+        "P4-10"
+      ],
+      "development_authorization_artifact": {
+        "path": "data/development/authorizations/p4-delegation-v1.json",
+        "sha256": "0d578d14058b276596c29b7f08752fe4b18d0251e961baf3496067159e734f7e",
+        "media_type": "application/json"
+      },
+      "development_dependency_overrides": {
+        "P4-01": [
+          "P4-DEV-INPUTS"
+        ],
+        "P4-02": [
+          "P4-01"
+        ],
+        "P3-01": [
+          "P3-DEV-INPUTS"
+        ]
+      },
+      "deferred_formal_requirements": [
+        "本入口绑定用户授权的代理审核 P4 发布包；保留原 P0/P1/P2 正式入口及外部服务、正式工艺审核门槛，不将其改为通过。",
+        "官方动态协议、HTTP、SSE、前端和实机工艺验证由 P5 及后续正式验收单独完成。",
+        "真实知识未开放库存替代和失败恢复工艺；机制正向验收使用明确合成规则，不构成真实食品有效期或恢复路径的批准。"
+      ]
+    },
+    "P5:development": {
+      "tasks": [
+        "P5-01",
+        "P5-02",
+        "P5-03",
+        "P5-04",
+        "P5-05",
+        "P5-06",
+        "P5-07",
+        "P5-08"
+      ],
+      "required_phase_gates": [
+        "P4:development"
+      ],
+      "development_authorization_artifact": {
+        "path": "data/development/authorizations/p5-project-design-v1.json",
+        "sha256": "bc9f7df667792a8e1120c000efa01d0b5361df0752d70fac800d730a042426cc",
+        "media_type": "application/json"
+      },
+      "development_dependency_overrides": {
+        "P4-01": [
+          "P4-DEV-INPUTS"
+        ],
+        "P4-02": [
+          "P4-01"
+        ],
+        "P3-01": [
+          "P3-DEV-INPUTS"
+        ],
+        "P5-01": [
+          "P5-DEV-INPUTS"
+        ],
+        "P5-02": [
+          "P5-01"
+        ],
+        "P5-04": [
+          "P5-03"
+        ]
+      },
+      "deferred_formal_requirements": [
+        "固定知识为用户授权的 development 发布；原正式 P0/P1/P2/P4/P5 入口与工艺、实机、外部服务门槛保持不变。",
+        "task_id 查询参数、累计活动菜单、初次会话时间原点与一位小数由用户授权的项目设计确定，不代表赛方逐字段认证。",
+        "离线阶段不执行真实LLM；供应商连接由独立显式报告记录，固定响应和真实业务链证据分开。官方全部动态条件和最终公网联调由P6收口。"
+      ]
+    },
+    "P6:development": {
+      "tasks": [
+        "P6-01",
+        "P6-02",
+        "P6-03",
+        "P6-04",
+        "P6-05",
+        "P6-06",
+        "P6-07"
+      ],
+      "development_authorization_artifact": {
+        "path": "data/development/authorizations/p6-final-acceptance-v1.json",
+        "sha256": "41593f82ffd27d164cb8fd9bb298be7b81c9397b1f5c43d40ae124f871649870",
+        "media_type": "application/json"
+      },
+      "development_dependency_overrides": {
+        "P5-01": [
+          "P6-DEV-INPUTS"
+        ],
+        "P5-02": [
+          "P5-01"
+        ],
+        "P5-04": [
+          "P5-03"
+        ],
+        "P5-05": [
+          "P5-03"
+        ]
+      },
+      "deferred_formal_requirements": [
+        "用户授权的 Windows 技术验收覆盖固定 development 发布；正式 P6 继续依赖 P1:full 和 P5，不以本入口代替 competition 正式发布。",
+        "重新执行当前 P5 八项接口、语言固定响应和真实前端检查；本入口不冒充既有 P4 旧实验已覆盖新代码。系统属性、故障与新全量重排证据在 P6 独立核对。",
+        "P6-08 保留官方外部事实、公网目标和提交授权的验收边界；本地 Windows 包通过不表示公网服务可用。",
+        "不新增真实收费 LLM 调用；受控实验保留失败分母，部分诊断不替代全量性能和场景证据。"
+      ]
+    }
+  },
+  "tasks": {
+    "P1-01": {
+      "dependencies": [
+        "P0-07"
+      ],
+      "artifacts": [
+        "app/domain/source_document.py",
+        "app/pipeline/import_raw.py",
+        "app/pipeline/device_import.py",
+        "scripts/import_sources.py",
+        "data/raw/manifest.json",
+        "data/raw/recipes_original.json",
+        "data/raw/recipes_development_v3.json",
+        "data/raw/devices.json"
+      ],
+      "tests": [
+        "tests/unit/test_raw_import.py"
+      ]
+    },
+    "P0-01": {
+      "dependencies": [],
+      "artifacts": [
+        "pyproject.toml",
+        "uv.lock",
+        ".python-version",
+        "app/__init__.py",
+        ".gitignore",
+        ".env.example",
+        "scripts/verify.py",
+        "scripts/verification_manifest.json"
+      ],
+      "tests": [
+        "tests/unit/test_environment.py",
+        "tests/unit/test_verify_runner.py"
+      ]
+    },
+    "P0-02": {
+      "dependencies": [
+        "P0-01"
+      ],
+      "artifacts": [
+        "app/domain/ids.py",
+        "app/domain/time.py",
+        "app/domain/quantity.py",
+        "app/domain/errors.py"
+      ],
+      "tests": [
+        "tests/unit/test_domain_primitives.py"
+      ]
+    },
+    "P0-03": {
+      "dependencies": [
+        "P0-02"
+      ],
+      "artifacts": [
+        "app/domain/canonical_recipe.py",
+        "app/domain/material.py",
+        "app/domain/resources.py",
+        "app/domain/processing_rules.py",
+        "data/schemas/canonical_recipe.schema.json"
+      ],
+      "tests": [
+        "tests/contract/test_canonical_contract.py"
+      ]
+    },
+    "P0-04": {
+      "dependencies": [
+        "P0-03"
+      ],
+      "artifacts": [
+        "app/domain/events.py",
+        "app/domain/runtime_snapshot.py",
+        "app/domain/scheduling_problem.py",
+        "app/domain/schedule.py",
+        "app/domain/ports.py",
+        "app/domain/reports.py",
+        "app/domain/knowledge.py",
+        "app/domain/policy.py",
+        "data/schemas/scheduling_problem.schema.json",
+        "data/schemas/runtime_event.schema.json"
+      ],
+      "tests": [
+        "tests/contract/test_runtime_problem_contract.py"
+      ]
+    },
+    "P0-05": {
+      "dependencies": [
+        "P0-03"
+      ],
+      "artifacts": [
+        "app/domain/provenance.py",
+        "app/domain/review.py",
+        "app/domain/extraction.py",
+        "app/pipeline/issues.py",
+        "data/schemas/review_patch.schema.json"
+      ],
+      "tests": [
+        "tests/unit/test_review_provenance.py"
+      ]
+    },
+    "P0-06": {
+      "dependencies": [
+        "P0-03",
+        "P0-05"
+      ],
+      "artifacts": [
+        "tests/fixtures/fixture_manifest.json",
+        "data/issues/sample_review.json",
+        "data/issues/sample_review.md",
+        "docs/recipes_100_详细步骤_完善版.csv",
+        "data/development/development-v3-rebased-v1/dataset.json",
+        "data/development/development-v3-rebased-v1/provenance_gaps.json",
+        "scripts/build_development_version.py",
+        "data/issues/p0_process_map.json",
+        "scripts/update_p0_samples_from_revision.py",
+        "data/revisions/recipes_v3/scheduling_dataset.json",
+        "data/revisions/recipes_v3/recipes_100_调度版.csv",
+        "data/revisions/recipes_v3/scheduling_verification.json",
+        "data/active_recipe_dataset.json",
+        "scripts/build_scheduling_dataset.py",
+        "scripts/attach_recipe_materials.py",
+        "scripts/check_scheduling_dataset.py",
+        "data/issues/p0_review_packet.md",
+        "data/revisions/recipes_v3/README.md",
+        "data/revisions/recipes_v3/修订对照.md",
+        "data/revisions/recipes_v3/saved_file_verification.json"
+      ],
+      "tests": [
+        "tests/contract/test_fixture_provenance.py",
+        "tests/contract/test_scheduling_dataset.py",
+        "tests/contract/test_recipe_material_flow.py",
+        "tests/contract/test_recipe_reservations.py",
+        "tests/contract/test_scheduling_validation.py"
+      ]
+    },
+    "P0-07": {
+      "dependencies": [
+        "P0-04",
+        "P0-06"
+      ],
+      "artifacts": [
+        "app/domain/competition_contract.py",
+        "docs/智能烹饪调度Agent接口规范.md",
+        "data/schemas/competition_request.schema.json",
+        "data/schemas/competition_response.schema.json",
+        "tests/fixtures/competition/source_manifest.json"
+      ],
+      "tests": [
+        "tests/contract/test_competition_schema.py"
+      ]
+    },
+    "P1-02": {
+      "dependencies": [
+        "P1-01",
+        "P0-04",
+        "P0-05"
+      ],
+      "artifacts": [
+        "app/llm/provider.py",
+        "app/llm/extraction_contract.py",
+        "app/llm/provider_adapter.py",
+        "app/llm/deepseek.py",
+        "app/pipeline/extract.py",
+        "app/pipeline/extraction_archive.py",
+        "scripts/check_deepseek.py"
+      ],
+      "tests": [
+        "tests/unit/test_extraction_archive.py",
+        "tests/integration/test_llm_provider_contract.py",
+        "tests/unit/test_deepseek_config.py"
+      ]
+    },
+    "P1-03": {
+      "dependencies": [
+        "P1-02"
+      ],
+      "artifacts": [
+        "app/pipeline/normalize.py",
+        "app/pipeline/review.py",
+        "app/pipeline/replay.py"
+      ],
+      "tests": [
+        "tests/unit/test_normalization_review.py"
+      ]
+    },
+    "P1-04": {
+      "dependencies": [
+        "P1-03"
+      ],
+      "artifacts": [
+        "app/validation/knowledge.py",
+        "app/validation/device_paths.py",
+        "app/validation/knowledge_materials.py",
+        "app/validation/time_compatibility.py",
+        "app/pipeline/device_profiles.py",
+        "app/pipeline/development.py",
+        "scripts/check_development_knowledge.py",
+        "scripts/correct_fish_development.py",
+        "data/development/development-v3-rebased-v2/dataset.json",
+        "data/development/development-v3-rebased-v2/correction.json"
+      ],
+      "tests": [
+        "tests/unit/test_knowledge_gate.py",
+        "tests/unit/test_device_profiles.py",
+        "tests/unit/test_development_sources.py",
+        "tests/integration/test_development_knowledge.py",
+        "tests/integration/test_fish_correction.py"
+      ]
+    },
+    "P1-05": {
+      "dependencies": [
+        "P1-04"
+      ],
+      "artifacts": [
+        "app/domain/knowledge_release.py",
+        "app/domain/recipe_context.py",
+        "app/knowledge/graph_projection.py",
+        "app/knowledge/graph_schema.py",
+        "deploy/compose.knowledge.yaml"
+      ],
+      "tests": [
+        "tests/integration/test_graph_projection.py"
+      ]
+    },
+    "P1-06": {
+      "dependencies": [
+        "P1-05"
+      ],
+      "artifacts": [
+        "app/pipeline/snapshot_export.py",
+        "app/knowledge/snapshot.py",
+        "app/knowledge/index.py"
+      ],
+      "tests": [
+        "tests/integration/test_snapshot_export.py",
+        "tests/property/test_snapshot_roundtrip.py"
+      ]
+    },
+    "P1-07": {
+      "dependencies": [
+        "P1-06"
+      ],
+      "artifacts": [
+        "app/pipeline/publish.py",
+        "app/pipeline/release_manifest.py",
+        "app/pipeline/release_replay.py",
+        "app/domain/release_manifest.py"
+      ],
+      "tests": [
+        "tests/integration/test_release_activation.py"
+      ]
+    },
+    "P1-08": {
+      "dependencies": [
+        "P1-07"
+      ],
+      "artifacts": [
+        "app/knowledge/repository.py",
+        "app/knowledge/loader.py",
+        "scripts/check_snapshot.py"
+      ],
+      "tests": [
+        "tests/integration/test_knowledge_without_neo4j.py"
+      ]
+    },
+    "P2-01": {
+      "dependencies": [
+        "P1-08",
+        "P0-04"
+      ],
+      "artifacts": [
+        "app/compiler/instantiate.py",
+        "app/compiler/candidate_generation.py"
+      ],
+      "tests": [
+        "tests/unit/test_standalone_compilation.py"
+      ]
+    },
+    "P2-02": {
+      "dependencies": [
+        "P2-01"
+      ],
+      "artifacts": [
+        "app/compiler/phase_expansion.py",
+        "app/compiler/mandatory_batches.py"
+      ],
+      "tests": [
+        "tests/unit/test_mandatory_recipe_programs.py"
+      ]
+    },
+    "P2-03": {
+      "dependencies": [
+        "P2-02"
+      ],
+      "artifacts": [
+        "app/compiler/dependency_graph.py",
+        "app/compiler/bounds.py",
+        "app/compiler/time_projection.py"
+      ],
+      "tests": [
+        "tests/unit/test_dependency_bounds.py",
+        "tests/unit/test_minute_grid.py"
+      ]
+    },
+    "P2-04": {
+      "dependencies": [
+        "P2-03"
+      ],
+      "artifacts": [
+        "app/compiler/compiler.py",
+        "app/compiler/material_flow.py"
+      ],
+      "tests": [
+        "tests/unit/test_problem_compilation.py",
+        "tests/unit/test_compiler_material_stock.py"
+      ]
+    },
+    "P2-05": {
+      "dependencies": [
+        "P2-04"
+      ],
+      "artifacts": [
+        "app/compiler/constraint_catalog.py",
+        "app/compiler/pruning.py",
+        "app/compiler/model_stats.py"
+      ],
+      "tests": [
+        "tests/unit/test_constraint_catalog.py",
+        "tests/property/test_pruning_equivalence.py"
+      ]
+    },
+    "P2-06": {
+      "dependencies": [
+        "P2-04",
+        "P2-05"
+      ],
+      "artifacts": [
+        "app/validation/schedule.py"
+      ],
+      "tests": [
+        "tests/unit/test_schedule_validator.py",
+        "tests/integration/test_schedule_validator_real_paths.py",
+        "tests/property/test_schedule_invariants.py"
+      ]
+    },
+    "P2-07": {
+      "dependencies": [
+        "P2-05",
+        "P2-06"
+      ],
+      "artifacts": [
+        "app/scheduling/greedy.py",
+        "app/scheduling/calendars.py"
+      ],
+      "tests": [
+        "tests/unit/test_greedy_placement.py",
+        "tests/property/test_greedy_rollback.py"
+      ]
+    },
+    "P2-08": {
+      "dependencies": [
+        "P2-05",
+        "P2-06"
+      ],
+      "artifacts": [
+        "app/scheduling/cp_sat.py",
+        "app/scheduling/model_builder.py",
+        "app/scheduling/build_report.py"
+      ],
+      "tests": [
+        "tests/unit/test_cp_sat_model.py",
+        "tests/integration/test_small_exact_schedules.py"
+      ]
+    },
+    "P2-09": {
+      "dependencies": [
+        "P2-07",
+        "P2-08"
+      ],
+      "artifacts": [
+        "app/scheduling/metrics.py",
+        "app/scheduling/serial_reference.py"
+      ],
+      "tests": [
+        "tests/unit/test_schedule_metrics.py"
+      ]
+    },
+    "P2-10": {
+      "dependencies": [
+        "P2-09"
+      ],
+      "artifacts": [
+        "app/scheduling/objectives.py",
+        "app/scheduling/engine.py",
+        "app/scheduling/candidate_pool.py"
+      ],
+      "tests": [
+        "tests/unit/test_objective_stages.py"
+      ]
+    },
+    "P2-11": {
+      "dependencies": [
+        "P2-10"
+      ],
+      "artifacts": [
+        "app/scheduling/worker.py",
+        "app/services/planning_core.py",
+        "scripts/run_sample_plan.py"
+      ],
+      "tests": [
+        "tests/integration/test_planning_budget.py",
+        "tests/fault_injection/test_solver_worker_failure.py",
+        "tests/integration/test_sample_plan_cli.py"
+      ]
+    },
+    "P2-12": {
+      "dependencies": [
+        "P2-11"
+      ],
+      "artifacts": [
+        "app/scheduling/diagnostics.py",
+        "scripts/diagnose_problem.py"
+      ],
+      "tests": [
+        "tests/integration/test_infeasibility_diagnostics.py",
+        "tests/integration/test_baseline_end_to_end.py"
+      ]
+    },
+    "P1-09": {
+      "dependencies": [
+        "P1-08",
+        "P2-12"
+      ],
+      "artifacts": [
+        "scripts/verify_all_recipes.py",
+        "app/domain/release_feasibility.py",
+        "app/pipeline/release_feasibility.py"
+      ],
+      "tests": [
+        "tests/unit/test_release_plan_evidence.py",
+        "tests/integration/test_all_recipes_release.py",
+        "tests/integration/test_competition_release_evidence.py"
+      ],
+      "timeout_sec": 600
+    },
+    "P3-01": {
+      "dependencies": [
+        "P2-12"
+      ],
+      "artifacts": [
+        "app/domain/compatibility.py",
+        "app/knowledge/rules.py",
+        "app/compiler/compatibility.py",
+        "data/development/authorizations/p3-delegation-v1.json",
+        "data/development/p3-delegated-review-v1.json",
+        "data/development/p3-delegated-review-v2.json",
+        "app/pipeline/p3_preparation.py",
+        "app/pipeline/p3_preflight.py",
+        "scripts/prepare_p3.py",
+        "scripts/check_p3_preparation.py"
+      ],
+      "tests": [
+        "tests/unit/test_group_compatibility.py",
+        "tests/unit/test_p3_preparation.py",
+        "tests/unit/test_p3_preflight.py",
+        "tests/integration/test_p3_preparation_offline.py"
+      ]
+    },
+    "P3-02": {
+      "dependencies": [
+        "P3-01"
+      ],
+      "artifacts": [
+        "app/compiler/shared_prep.py",
+        "app/domain/candidates.py",
+        "app/scheduling/model_builder.py",
+        "app/validation/shared_prep.py"
+      ],
+      "tests": [
+        "tests/unit/test_shared_prep_coverage.py"
+      ]
+    },
+    "P3-03": {
+      "dependencies": [
+        "P3-02"
+      ],
+      "artifacts": [
+        "app/domain/material_flow.py",
+        "app/compiler/material_flow.py",
+        "app/scheduling/material_constraints.py",
+        "app/validation/material_balance.py",
+        "app/validation/planned_materials.py"
+      ],
+      "tests": [
+        "tests/unit/test_shared_material_allocations.py"
+      ]
+    },
+    "P3-04": {
+      "dependencies": [
+        "P3-01",
+        "P3-03"
+      ],
+      "artifacts": [
+        "app/compiler/thermal_batches.py",
+        "app/domain/carrier_timing.py",
+        "app/scheduling/resource_model.py",
+        "app/validation/joint_thermal.py",
+        "app/pipeline/p3_thermal_release.py",
+        "scripts/prepare_p3_thermal.py",
+        "data/development/p3-thermal-boundary-v1.json"
+      ],
+      "tests": [
+        "tests/unit/test_joint_thermal_batches.py",
+        "tests/unit/test_p3_thermal_release.py",
+        "tests/integration/test_p3_thermal_publication.py"
+      ]
+    },
+    "P3-05": {
+      "dependencies": [
+        "P3-04"
+      ],
+      "artifacts": [
+        "app/compiler/transitions.py",
+        "app/compiler/thermal_variants.py",
+        "app/domain/transitions.py",
+        "app/domain/transition_rules.py",
+        "app/scheduling/thermal_constraints.py",
+        "app/scheduling/transition_placement.py",
+        "app/validation/joint_transition.py",
+        "app/validation/transition_sequence.py"
+      ],
+      "tests": [
+        "tests/unit/test_batch_transitions.py"
+      ]
+    },
+    "P3-06": {
+      "dependencies": [
+        "P3-05"
+      ],
+      "artifacts": [
+        "app/compiler/candidate_limits.py",
+        "app/compiler/compiler.py",
+        "app/compiler/pruning.py",
+        "app/scheduling/build_report.py",
+        "app/scheduling/engine.py"
+      ],
+      "tests": [
+        "tests/integration/test_shared_search_limits.py"
+      ]
+    },
+    "P3-07": {
+      "dependencies": [
+        "P3-06"
+      ],
+      "artifacts": [
+        "benchmarks/shared_ablation.py",
+        "benchmarks/shared_cases.py",
+        "benchmarks/scenarios/shared_cases.json",
+        "benchmarks/reports/P3-shared-ablation-v1/report.json"
+      ],
+      "tests": [
+        "tests/integration/test_shared_end_to_end.py",
+        "tests/unit/test_verify_runner.py"
+      ],
+      "timeout_sec": 600
+    },
+    "P3-DEV-INPUTS": {
+      "dependencies": [],
+      "artifacts": [
+        "data/preparations/p3-thermal-v1/publication_report.json",
+        "benchmarks/reports/verification/P3-baseline-test-copy.json"
+      ],
+      "tests": [
+        "tests/contract/test_canonical_contract.py",
+        "tests/contract/test_competition_schema.py",
+        "tests/contract/test_recipe_material_flow.py",
+        "tests/contract/test_recipe_reservations.py",
+        "tests/contract/test_runtime_problem_contract.py",
+        "tests/contract/test_scheduling_dataset.py",
+        "tests/contract/test_scheduling_validation.py",
+        "tests/fault_injection/test_solver_worker_failure.py",
+        "tests/integration/test_planning_budget.py",
+        "tests/integration/test_schedule_validator_real_paths.py",
+        "tests/integration/test_small_exact_schedules.py",
+        "tests/property/test_greedy_rollback.py",
+        "tests/property/test_schedule_invariants.py",
+        "tests/unit/test_constraint_catalog.py",
+        "tests/unit/test_cp_sat_model.py",
+        "tests/unit/test_dependency_bounds.py",
+        "tests/unit/test_greedy_placement.py",
+        "tests/unit/test_mandatory_recipe_programs.py",
+        "tests/unit/test_minute_grid.py",
+        "tests/unit/test_objective_stages.py",
+        "tests/unit/test_problem_compilation.py",
+        "tests/unit/test_schedule_metrics.py",
+        "tests/unit/test_schedule_validator.py"
+      ],
+      "timeout_sec": 600
+    },
+    "P4-DEV-INPUTS": {
+      "dependencies": [
+        "P3-07"
+      ],
+      "artifacts": [
+        "data/development/authorizations/p4-delegation-v1.json",
+        "data/preparations/p4-v1/p4_inputs.json",
+        "data/preparations/p4-v1/publication_report.json",
+        "scripts/check_p4_saved_plans.py"
+      ],
+      "tests": [
+        "tests/unit/test_p4_preparation.py",
+        "tests/integration/test_p4_development_inputs.py"
+      ],
+      "timeout_sec": 300
+    },
+    "P4-01": {
+      "dependencies": [
+        "P2-12"
+      ],
+      "artifacts": [
+        "app/storage/models.py",
+        "app/storage/repositories.py",
+        "app/storage/unit_of_work.py",
+        "alembic.ini",
+        "app/storage/migrations/versions/0004_inventory_fulfillments.py"
+      ],
+      "tests": [
+        "tests/integration/test_runtime_storage.py"
+      ],
+      "timeout_sec": 300
+    },
+    "P4-02": {
+      "dependencies": [
+        "P4-01",
+        "P2-10"
+      ],
+      "artifacts": [
+        "app/runtime/service.py",
+        "app/runtime/event_validation.py",
+        "app/runtime/state_machine.py",
+        "app/runtime/triggers.py"
+      ],
+      "tests": [
+        "tests/unit/test_execution_state_machine.py",
+        "tests/stateful/test_event_idempotency.py"
+      ],
+      "timeout_sec": 600
+    },
+    "P4-03": {
+      "dependencies": [
+        "P4-02",
+        "P3-03"
+      ],
+      "artifacts": [
+        "app/runtime/material_ledger.py",
+        "app/runtime/inventory.py",
+        "app/compiler/inventory_supply.py",
+        "app/runtime/material_reports.py",
+        "app/runtime/running_inputs.py",
+        "app/validation/running_inputs.py"
+      ],
+      "tests": [
+        "tests/integration/test_material_ledger.py",
+        "tests/integration/test_inventory_substitution.py",
+        "tests/unit/test_compiler_material_stock.py",
+        "tests/integration/test_running_material_inputs.py",
+        "tests/integration/test_shared_leftover_replanning.py"
+      ],
+      "timeout_sec": 300
+    },
+    "P4-04": {
+      "dependencies": [
+        "P4-02"
+      ],
+      "artifacts": [
+        "app/runtime/clock.py",
+        "app/runtime/feedback.py",
+        "app/runtime/simulator.py"
+      ],
+      "tests": [
+        "tests/unit/test_simulation_clock.py",
+        "tests/integration/test_real_runtime_flow.py"
+      ],
+      "timeout_sec": 300
+    },
+    "P4-05": {
+      "dependencies": [
+        "P4-03",
+        "P4-04",
+        "P3-07"
+      ],
+      "artifacts": [
+        "app/runtime/replanning.py",
+        "app/runtime/stage_progress.py",
+        "app/compiler/runtime_constraints.py",
+        "app/compiler/compiler.py"
+      ],
+      "tests": [
+        "tests/integration/test_replan_freezing.py",
+        "tests/integration/test_running_thermal_batch.py",
+        "tests/integration/test_cancelled_execution_history.py",
+        "tests/integration/test_continuous_device_occupation.py",
+        "tests/unit/test_problem_identity_cache.py"
+      ],
+      "timeout_sec": 300
+    },
+    "P4-06": {
+      "dependencies": [
+        "P4-05"
+      ],
+      "artifacts": [
+        "app/services/replanning.py",
+        "app/services/planning.py",
+        "app/scheduling/budget.py",
+        "app/scheduling/objectives.py",
+        "app/scheduling/ranking.py",
+        "app/services/session_knowledge.py"
+      ],
+      "tests": [
+        "tests/integration/test_menu_events_replanning.py",
+        "tests/unit/test_total_human_objective.py",
+        "tests/integration/test_replan_aggregate_budget.py",
+        "tests/integration/test_planning_budget.py",
+        "tests/integration/test_cancel_all_recipes.py",
+        "tests/unit/test_session_knowledge.py",
+        "tests/integration/test_replan_greedy_reserve.py"
+      ],
+      "timeout_sec": 300
+    },
+    "P4-07": {
+      "dependencies": [
+        "P4-06"
+      ],
+      "artifacts": [
+        "app/services/publishing.py",
+        "app/runtime/recovery.py"
+      ],
+      "tests": [
+        "tests/integration/test_plan_compare_and_swap.py",
+        "tests/fault_injection/test_commit_boundary.py",
+        "tests/fault_injection/test_planning_publish_recovery.py",
+        "tests/integration/test_runtime_recovery.py"
+      ],
+      "timeout_sec": 300
+    },
+    "P4-08": {
+      "dependencies": [
+        "P4-07"
+      ],
+      "artifacts": [
+        "app/runtime/device_events.py",
+        "app/runtime/device_triggers.py",
+        "app/runtime/execution_resources.py",
+        "app/runtime/continuous_occupation.py"
+      ],
+      "tests": [
+        "tests/integration/test_device_and_material_failures.py",
+        "tests/unit/test_device_material_exceptions.py"
+      ],
+      "timeout_sec": 300
+    },
+    "P4-09": {
+      "dependencies": [
+        "P4-08"
+      ],
+      "artifacts": [
+        "app/runtime/execution_failures.py",
+        "app/runtime/resumption.py",
+        "app/domain/recovery.py",
+        "app/validation/resumption.py"
+      ],
+      "tests": [
+        "tests/integration/test_execution_retry.py",
+        "tests/integration/test_failed_execution_retry.py",
+        "tests/integration/test_resume_execution.py"
+      ],
+      "timeout_sec": 300
+    },
+    "P4-10": {
+      "dependencies": [
+        "P4-09"
+      ],
+      "artifacts": [
+        "app/runtime/notifications.py",
+        "app/runtime/notification_projection.py",
+        "scripts/verification_manifest.json",
+        "benchmarks/scenarios/runtime_events.json",
+        "benchmarks/runtime_replanning.py",
+        "benchmarks/reports/P4-runtime-v1/report.json",
+        "benchmarks/reports/P4-runtime-v2/interruption.json",
+        "benchmarks/reports/P4-runtime-v3/report.json",
+        "benchmarks/reports/P4-runtime-v4/report.json",
+        "benchmarks/reports/P4-runtime-v5/report.json",
+        "benchmarks/reports/P4-runtime-v6/report.json",
+        "benchmarks/reports/P4-runtime-v7/report.json"
+      ],
+      "tests": [
+        "tests/integration/test_notification_outbox.py",
+        "tests/integration/test_p4_prepared_scenarios.py",
+        "tests/stateful/test_runtime_invariants.py",
+        "tests/fault_injection/test_runtime_recovery.py",
+        "tests/fault_injection/test_solver_worker_failure.py",
+        "tests/unit/test_runtime_benchmark.py",
+        "tests/unit/test_verify_runner.py",
+        "tests/unit/test_solver_startup_context.py"
+      ],
+      "timeout_sec": 900
+    },
+    "P5-DEV-INPUTS": {
+      "dependencies": [
+        "P4-10"
+      ],
+      "artifacts": [
+        "data/preparations/p5-v2/implementation_inputs.json",
+        "data/development/authorizations/p5-project-design-v1.json",
+        "benchmarks/scenarios/api_flows.json"
+      ],
+      "tests": [
+        "tests/integration/test_p5_development_inputs.py"
+      ],
+      "timeout_sec": 300
+    },
+    "P5-01": {
+      "dependencies": [
+        "P4-10"
+      ],
+      "artifacts": [
+        "app/main.py",
+        "app/config.py",
+        "app/api/health.py",
+        "app/api/errors.py",
+        "app/services/container.py"
+      ],
+      "tests": [
+        "tests/integration/test_application_lifecycle.py"
+      ],
+      "timeout_sec": 900
+    },
+    "P5-02": {
+      "dependencies": [
+        "P5-01",
+        "P0-07"
+      ],
+      "artifacts": [
+        "app/api/competition.py",
+        "app/api/competition_adapter.py",
+        "app/api/competition_profiles.py",
+        "app/validation/competition_contract.py",
+        "app/storage/competition_tasks.py"
+      ],
+      "tests": [
+        "tests/contract/test_competition_endpoint.py",
+        "tests/contract/test_competition_replanning.py",
+        "tests/integration/test_competition_task_recovery.py",
+        "tests/integration/test_competition_response_recovery.py",
+        "tests/contract/test_competition_projection_validation.py",
+        "tests/contract/test_competition_inventory_projection.py"
+      ],
+      "timeout_sec": 900
+    },
+    "P5-03": {
+      "dependencies": [
+        "P5-01"
+      ],
+      "artifacts": [
+        "app/api/sessions.py",
+        "app/api/events.py",
+        "app/api/plans.py",
+        "app/api/recipes.py"
+      ],
+      "tests": [
+        "tests/contract/test_internal_api.py",
+        "tests/contract/test_simulation_api.py",
+        "tests/contract/test_manual_feedback_api.py",
+        "tests/contract/test_plan_presentation.py",
+        "tests/contract/test_device_presentation.py",
+        "tests/fault_injection/test_simulation_control_recovery.py"
+      ],
+      "timeout_sec": 900
+    },
+    "P5-04": {
+      "dependencies": [
+        "P5-03",
+        "P1-02"
+      ],
+      "artifacts": [
+        "app/llm/intent_contract.py",
+        "app/llm/intent_service.py",
+        "app/api/language_events.py",
+        "app/services/language_events.py"
+      ],
+      "tests": [
+        "tests/contract/test_language_events.py"
+      ],
+      "timeout_sec": 900
+    },
+    "P5-05": {
+      "dependencies": [
+        "P5-03",
+        "P4-10"
+      ],
+      "artifacts": [
+        "app/runtime/notification_templates.py",
+        "app/api/notifications.py",
+        "app/services/notification_dispatcher.py",
+        "app/storage/notification_stream.py"
+      ],
+      "tests": [
+        "tests/integration/test_notification_stream.py"
+      ],
+      "timeout_sec": 900
+    },
+    "P5-06": {
+      "dependencies": [
+        "P5-02",
+        "P5-03"
+      ],
+      "artifacts": [
+        "web/package.json",
+        "web/package-lock.json",
+        "web/tsconfig.json",
+        "web/vite.config.ts",
+        "web/src/views/PlanningView.vue",
+        "web/src/components/ScheduleGantt.vue"
+      ],
+      "tests": [
+        "tests/integration/test_web_quality.py"
+      ],
+      "timeout_sec": 900
+    },
+    "P5-07": {
+      "dependencies": [
+        "P5-04",
+        "P5-05",
+        "P5-06"
+      ],
+      "artifacts": [
+        "web/src/views/ExecutionView.vue",
+        "web/src/components/KnowledgeGraph.vue",
+        "web/src/components/PlanDiff.vue",
+        "web/src/components/DeviceStatus.vue"
+      ],
+      "tests": [
+        "tests/integration/test_web_browser.py"
+      ],
+      "timeout_sec": 900
+    },
+    "P5-08": {
+      "dependencies": [
+        "P5-07"
+      ],
+      "artifacts": [
+        "web/playwright.config.ts",
+        "scripts/verification_manifest.json",
+        "benchmarks/scenarios/api_flows.json",
+        "docs/P5运行与接口说明.md"
+      ],
+      "tests": [
+        "tests/integration/test_service_end_to_end.py",
+        "tests/integration/test_web_competition.py"
+      ],
+      "timeout_sec": 900
+    },
+    "P6-DEV-INPUTS": {
+      "dependencies": [],
+      "artifacts": [
+        "data/preparations/p6-v1/acceptance_inputs.json",
+        "data/development/authorizations/p6-final-acceptance-v1.json",
+        "data/preparations/p4-v1/releases/delegated-v3-p4-preparation-v1-all/manifest.json",
+        "data/preparations/p4-v1/releases/delegated-v3-p4-preparation-v1-all/app/pipeline/p3_preparation.py",
+        "data/preparations/p4-v1/releases/delegated-v3-p4-preparation-v1-all/app/pipeline/p3_thermal_release.py",
+        "data/preparations/p4-v1/releases/delegated-v3-p4-preparation-v1-all/data/development/authorizations/fish-hot-water-v1.json",
+        "data/preparations/p4-v1/releases/delegated-v3-p4-preparation-v1-all/data/development/authorizations/p3-delegation-v1.json",
+        "data/preparations/p4-v1/releases/delegated-v3-p4-preparation-v1-all/data/development/authorizations/p4-delegation-v1.json",
+        "data/preparations/p4-v1/releases/delegated-v3-p4-preparation-v1-all/data/development/development-v3-rebased-v1/dataset.json",
+        "data/preparations/p4-v1/releases/delegated-v3-p4-preparation-v1-all/data/development/development-v3-rebased-v2/dataset.json",
+        "data/preparations/p4-v1/releases/delegated-v3-p4-preparation-v1-all/data/development/p3-delegated-review-v2.json",
+        "data/preparations/p4-v1/releases/delegated-v3-p4-preparation-v1-all/data/development/p3-thermal-boundary-v1.json",
+        "data/preparations/p4-v1/releases/delegated-v3-p4-preparation-v1-all/data/issues/p3_rule_review_evidence.json",
+        "data/preparations/p4-v1/releases/delegated-v3-p4-preparation-v1-all/data/preparations/p3-v1/reviewed_release.json",
+        "data/preparations/p4-v1/releases/delegated-v3-p4-preparation-v1-all/data/preparations/p4-v1/data_review.json",
+        "data/preparations/p4-v1/releases/delegated-v3-p4-preparation-v1-all/data/revisions/recipes_v3/ingredient_inputs.json",
+        "data/preparations/p4-v1/releases/delegated-v3-p4-preparation-v1-all/data/revisions/recipes_v3/material_map_01_25.json",
+        "data/preparations/p4-v1/releases/delegated-v3-p4-preparation-v1-all/data/revisions/recipes_v3/material_map_26_50.json",
+        "data/preparations/p4-v1/releases/delegated-v3-p4-preparation-v1-all/data/revisions/recipes_v3/material_map_51_75.json",
+        "data/preparations/p4-v1/releases/delegated-v3-p4-preparation-v1-all/data/revisions/recipes_v3/material_map_76_100.json",
+        "data/preparations/p4-v1/releases/delegated-v3-p4-preparation-v1-all/data/revisions/recipes_v3/recipes_100_调度版.csv",
+        "data/preparations/p4-v1/releases/delegated-v3-p4-preparation-v1-all/data/revisions/recipes_v3/scheduling_dataset.json",
+        "data/preparations/p4-v1/releases/delegated-v3-p4-preparation-v1-all/docs/recipes_100.csv",
+        "data/preparations/p4-v1/releases/delegated-v3-p4-preparation-v1-all/docs/recipes_100_详细步骤_完善版.csv",
+        "data/preparations/p4-v1/releases/delegated-v3-p4-preparation-v1-all/docs/设备参数清单参考.json",
+        "data/preparations/p4-v1/releases/delegated-v3-p4-preparation-v1-all/docs/问题/数据问题.docx",
+        "data/preparations/p4-v1/releases/delegated-v3-p4-preparation-v1-all/index.json",
+        "data/preparations/p4-v1/releases/delegated-v3-p4-preparation-v1-all/scripts/attach_recipe_materials.py",
+        "data/preparations/p4-v1/releases/delegated-v3-p4-preparation-v1-all/scripts/build_scheduling_dataset.py",
+        "data/preparations/p4-v1/releases/delegated-v3-p4-preparation-v1-all/scripts/prepare_p4.py",
+        "data/preparations/p4-v1/releases/delegated-v3-p4-preparation-v1-all/snapshot.json",
+        "data/preparations/p4-v1/releases/delegated-v3-p4-preparation-v1-all/snapshot_validation_report.json",
+        "data/policies/p4-runtime-v1.json",
+        "benchmarks/scenarios/full_suite.json"
+      ],
+      "tests": [
+        "tests/integration/test_p6_development_inputs.py"
+      ],
+      "timeout_sec": 300
+    },
+    "P6-01": {
+      "dependencies": [
+        "P5-08"
+      ],
+      "artifacts": [
+        "benchmarks/reports/P6-full-feedback-run1/report.json"
+      ],
+      "tests": [
+        "tests/integration/test_p6_full_evidence.py",
+        "tests/integration/test_full_benchmark_dataset.py"
+      ],
+      "timeout_sec": 600
+    },
+    "P6-02": {
+      "dependencies": [
+        "P6-01"
+      ],
+      "artifacts": [
+        "benchmarks/reports/P6-ablation-feedback-run1/report.json"
+      ],
+      "tests": [
+        "tests/integration/test_p6_ablation_evidence.py"
+      ],
+      "timeout_sec": 600
+    },
+    "P6-03": {
+      "dependencies": [
+        "P6-02"
+      ],
+      "artifacts": [
+        "benchmarks/reports/P6-feedback-critical-full-run1/report.json",
+        "data/verification/P6-feedback-critical-full-audit-run1.json",
+        "scripts/audit_feedback_experiment.py",
+        "scripts/run_feedback_revalidation.py",
+        "benchmarks/robustness/feedback.py",
+        "benchmarks/robustness/feedback_cache.py",
+        "benchmarks/robustness/feedback_planner.py",
+        "benchmarks/robustness/feedback_runner.py",
+        "app/domain/critical_windows.py",
+        "benchmarks/reports/verification/P6-feedback-critical-fix/baseline.json",
+        "benchmarks/reports/verification/P6-feedback-critical-fix/verification-summary.json",
+        "benchmarks/reports/P6-robustness-run2/report.json",
+        "benchmarks/reports/verification/P6-robustness-window-fix/verification-summary.json",
+        "benchmarks/reports/P6-robustness-window-compare-run2/report.json"
+      ],
+      "tests": [
+        "tests/unit/test_feedback_cache.py",
+        "tests/unit/test_robustness_windows.py",
+        "tests/integration/test_robustness_dispatch.py",
+        "tests/integration/test_robustness_archive_replay.py",
+        "tests/integration/test_robustness_dispatch_evidence.py",
+        "tests/integration/test_robustness_no_future_leak.py",
+        "tests/unit/test_duration_policy.py",
+        "tests/integration/test_robustness_feedback.py",
+        "tests/integration/test_critical_window_policy.py",
+        "tests/integration/test_fast_feedback_planning.py",
+        "tests/integration/test_fast_feedback_service.py",
+        "tests/integration/test_p6_robustness_evidence.py"
+      ],
+      "timeout_sec": 1800
+    },
+    "P6-04": {
+      "dependencies": [
+        "P6-03"
+      ],
+      "artifacts": [
+        "data/verification/P6-property-summary-feedback-run1.json"
+      ],
+      "tests": [
+        "tests/integration/test_p6_property_evidence.py"
+      ],
+      "timeout_sec": 600
+    },
+    "P6-05": {
+      "dependencies": [
+        "P6-04"
+      ],
+      "artifacts": [
+        "benchmarks/reports/P6-faults-feedback-run1/report.json"
+      ],
+      "tests": [
+        "tests/integration/test_p6_fault_evidence.py"
+      ],
+      "timeout_sec": 600
+    },
+    "P6-06": {
+      "dependencies": [
+        "P6-05"
+      ],
+      "artifacts": [
+        "benchmarks/reports/P6-performance-feedback-run1/report.json"
+      ],
+      "tests": [
+        "tests/integration/test_p6_performance_evidence.py",
+        "tests/integration/test_publication_time_reserve.py",
+        "tests/integration/test_recovery_queue_indexes.py",
+        "tests/integration/test_foreground_recovery_coordination.py",
+        "tests/integration/test_json_worker_transport.py"
+      ],
+      "timeout_sec": 600
+    },
+    "P6-07": {
+      "dependencies": [
+        "P6-06"
+      ],
+      "artifacts": [
+        "data/delivery/P6-Windows-feedback-run1/release_manifest.json",
+        "data/delivery/P6-Windows-feedback-run1.zip",
+        "data/verification/P6-windows-feedback-run1/report.json"
+      ],
+      "tests": [
+        "tests/integration/test_p6_windows_evidence.py"
+      ],
+      "timeout_sec": 600
+    },
+    "P6-08": {
+      "dependencies": [
+        "P6-07"
+      ],
+      "artifacts": [
+        "data/preparations/p6-v1/acceptance_inputs.json",
+        "docs/task.md"
+      ],
+      "tests": [
+        "tests/contract/test_official_dynamic_profile.py",
+        "tests/integration/test_public_endpoint_smoke.py"
+      ],
+      "timeout_sec": 300
+    }
+  }
+}

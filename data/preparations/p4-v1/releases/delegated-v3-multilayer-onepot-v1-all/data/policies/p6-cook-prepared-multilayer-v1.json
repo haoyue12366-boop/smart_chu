@@ -1,0 +1,812 @@
+{
+  "policy_version": "p6-cook-prepared-multilayer-v1",
+  "advance_preparation_mode": "ASSUME_READY",
+  "advance_preparation_rules": [
+    {
+      "rule_id": "advance-preparation-v1:5d54bae2a9114174727c8b20",
+      "recipe_id": "5d54bae2a9114174727c8b20",
+      "recipe_hash": "274ba237af1006b1f632dc6d6d613368c03f37707600cebc848954bf2775b4ae",
+      "operation_ids": [
+        "op_003_01",
+        "op_004_01",
+        "op_005_01"
+      ],
+      "description": "腌渍",
+      "evidence_refs": [
+        "user:2026-10-08:advance-preparation-before-start",
+        "DELEGATED_AGENT:2026-10-08:advance-preparation-v1",
+        "ai-timing:5d54bae2a9114174727c8b20",
+        "ai-material:5d54bae2a9114174727c8b20"
+      ]
+    },
+    {
+      "rule_id": "advance-preparation-v1:6510fb3545256c3ad7c25c9c",
+      "recipe_id": "6510fb3545256c3ad7c25c9c",
+      "recipe_hash": "bf9deb6f6167d20060c4ff610be82e2c245e6d15352010b9bc2d08d6f2250f70",
+      "operation_ids": [
+        "op_002_01",
+        "op_003_01",
+        "op_004_01",
+        "op_005_01",
+        "op_006_01",
+        "op_007_01"
+      ],
+      "description": "冷藏1小时",
+      "evidence_refs": [
+        "user:2026-10-08:advance-preparation-before-start",
+        "DELEGATED_AGENT:2026-10-08:advance-preparation-v1",
+        "ai-timing:6510fb3545256c3ad7c25c9c",
+        "ai-material:6510fb3545256c3ad7c25c9c"
+      ]
+    },
+    {
+      "rule_id": "advance-preparation-v1:5c8646fe98d5bc7e184a90bc",
+      "recipe_id": "5c8646fe98d5bc7e184a90bc",
+      "recipe_hash": "e08639e0fb11c84a739a1ea535c6b8b8378b9590b3a4e09fc07ae8c3edb4f121",
+      "operation_ids": [
+        "op_001_01",
+        "op_002_01"
+      ],
+      "description": "冷冻24小时以上，制成冰肉",
+      "evidence_refs": [
+        "user:2026-10-08:advance-preparation-before-start",
+        "DELEGATED_AGENT:2026-10-08:advance-preparation-v1",
+        "ai-timing:5c8646fe98d5bc7e184a90bc",
+        "ai-material:5c8646fe98d5bc7e184a90bc"
+      ]
+    },
+    {
+      "rule_id": "advance-preparation-v1:61e6c51fec6e1d65587067e1",
+      "recipe_id": "61e6c51fec6e1d65587067e1",
+      "recipe_hash": "4b6adb2227dc66f43ea27bfd745f4f15306a88219bb78b0be3fd6860daabe2e9",
+      "operation_ids": [
+        "op_001_01"
+      ],
+      "description": "牛排解冻",
+      "evidence_refs": [
+        "user:2026-10-08:advance-preparation-before-start",
+        "DELEGATED_AGENT:2026-10-08:advance-preparation-v1",
+        "ai-timing:61e6c51fec6e1d65587067e1",
+        "ai-material:61e6c51fec6e1d65587067e1"
+      ]
+    },
+    {
+      "rule_id": "advance-preparation-v1:6577d480c458a177d8438637",
+      "recipe_id": "6577d480c458a177d8438637",
+      "recipe_hash": "2eb990f10ac347c34c242e9fd70f6ee1dc40c69617f0cc668d7b1e0ef37f588b",
+      "operation_ids": [
+        "op_001_01",
+        "op_002_01",
+        "op_003_01",
+        "op_004_01"
+      ],
+      "description": "腌制10分钟",
+      "evidence_refs": [
+        "user:2026-10-08:advance-preparation-before-start",
+        "DELEGATED_AGENT:2026-10-08:advance-preparation-v1",
+        "ai-timing:6577d480c458a177d8438637",
+        "ai-material:6577d480c458a177d8438637"
+      ]
+    },
+    {
+      "rule_id": "advance-preparation-v1:65433a4245256c3ad7c2697f",
+      "recipe_id": "65433a4245256c3ad7c2697f",
+      "recipe_hash": "2dfaf3fb66e216f394f3d0232be59ca3de76ea23be3aa70e13741c425ec44039",
+      "operation_ids": [
+        "op_002_01",
+        "op_003_01",
+        "op_004_01"
+      ],
+      "description": "腌制15分钟",
+      "evidence_refs": [
+        "user:2026-10-08:advance-preparation-before-start",
+        "DELEGATED_AGENT:2026-10-08:advance-preparation-v1",
+        "ai-timing:65433a4245256c3ad7c2697f",
+        "ai-material:65433a4245256c3ad7c2697f"
+      ]
+    },
+    {
+      "rule_id": "advance-preparation-v1:58e70ae1a3fd4a750f4b75af",
+      "recipe_id": "58e70ae1a3fd4a750f4b75af",
+      "recipe_hash": "0caa3fc19c695d6570315b4cfa1cca7319dfc729ffd9ae5696af29f89f4407ed",
+      "operation_ids": [
+        "op_001_01",
+        "op_002_01",
+        "op_003_01"
+      ],
+      "description": "腌制10分钟",
+      "evidence_refs": [
+        "user:2026-10-08:advance-preparation-before-start",
+        "DELEGATED_AGENT:2026-10-08:advance-preparation-v1",
+        "ai-timing:58e70ae1a3fd4a750f4b75af",
+        "ai-material:58e70ae1a3fd4a750f4b75af"
+      ]
+    },
+    {
+      "rule_id": "advance-preparation-v1:59cc89b47d21be2a79172c98",
+      "recipe_id": "59cc89b47d21be2a79172c98",
+      "recipe_hash": "b82fa05c1b5296d953d6b5429c61d173167e3462da1660902ae37cbe216ae4ef",
+      "operation_ids": [
+        "op_001_01",
+        "op_002_01",
+        "op_003_01"
+      ],
+      "description": "腌渍10分钟",
+      "evidence_refs": [
+        "user:2026-10-08:advance-preparation-before-start",
+        "DELEGATED_AGENT:2026-10-08:advance-preparation-v1",
+        "ai-timing:59cc89b47d21be2a79172c98",
+        "ai-material:59cc89b47d21be2a79172c98"
+      ]
+    },
+    {
+      "rule_id": "advance-preparation-v1:661369554b3d03197733ac5a",
+      "recipe_id": "661369554b3d03197733ac5a",
+      "recipe_hash": "8a1052828f67efdb5c2932c490580ed18365701d73be9b241177c50a36abaa6c",
+      "operation_ids": [
+        "op_001_01",
+        "op_002_01",
+        "op_003_01",
+        "op_004_01",
+        "op_005_01"
+      ],
+      "description": "浸泡半小时泡出血水沥干；放冰箱腌制2h",
+      "evidence_refs": [
+        "user:2026-10-08:advance-preparation-before-start",
+        "DELEGATED_AGENT:2026-10-08:advance-preparation-v1",
+        "ai-timing:661369554b3d03197733ac5a",
+        "ai-material:661369554b3d03197733ac5a"
+      ]
+    },
+    {
+      "rule_id": "advance-preparation-v1:58e70b129f6429675ec80601",
+      "recipe_id": "58e70b129f6429675ec80601",
+      "recipe_hash": "c378b525c6759777acd4742546c94085ddc287f61e7f6a2c64c79b4174cb2ff4",
+      "operation_ids": [
+        "op_001_01",
+        "op_002_01",
+        "op_003_01"
+      ],
+      "description": "腌渍10分钟",
+      "evidence_refs": [
+        "user:2026-10-08:advance-preparation-before-start",
+        "DELEGATED_AGENT:2026-10-08:advance-preparation-v1",
+        "ai-timing:58e70b129f6429675ec80601",
+        "ai-material:58e70b129f6429675ec80601"
+      ]
+    },
+    {
+      "rule_id": "advance-preparation-v1:5c875d0b98d5bc7e184a9166",
+      "recipe_id": "5c875d0b98d5bc7e184a9166",
+      "recipe_hash": "300b692ac508a9291fbd2b333045f0eab770fe738ffa93704d5880d3fadf0fe5",
+      "operation_ids": [
+        "op_001_01",
+        "op_002_01",
+        "op_003_01",
+        "op_004_01"
+      ],
+      "description": "腌渍5分钟",
+      "evidence_refs": [
+        "user:2026-10-08:advance-preparation-before-start",
+        "DELEGATED_AGENT:2026-10-08:advance-preparation-v1",
+        "ai-timing:5c875d0b98d5bc7e184a9166",
+        "ai-material:5c875d0b98d5bc7e184a9166"
+      ]
+    },
+    {
+      "rule_id": "advance-preparation-v1:5caf2ea3e78bfc455f2d5cad",
+      "recipe_id": "5caf2ea3e78bfc455f2d5cad",
+      "recipe_hash": "58534df31d12f274eb1be35add2cd196f26c1c0bebc19975171083687ff920b4",
+      "operation_ids": [
+        "op_1000_01"
+      ],
+      "description": "飞饼皮在室温回软至可折叠",
+      "evidence_refs": [
+        "user:2026-10-08:advance-preparation-before-start",
+        "DELEGATED_AGENT:2026-10-08:advance-preparation-v1",
+        "ai-timing:5caf2ea3e78bfc455f2d5cad",
+        "ai-material:5caf2ea3e78bfc455f2d5cad"
+      ]
+    },
+    {
+      "rule_id": "advance-preparation-v1:5f5ecdaadad9417a1b793a9f",
+      "recipe_id": "5f5ecdaadad9417a1b793a9f",
+      "recipe_hash": "65244625ed7725d83f1b9afa2aa4327c61dffb6e47032d9e65266d465fa253c0",
+      "operation_ids": [
+        "op_001_01",
+        "op_002_01",
+        "op_003_01",
+        "op_004_01",
+        "op_005_01"
+      ],
+      "description": "静置1小时",
+      "evidence_refs": [
+        "user:2026-10-08:advance-preparation-before-start",
+        "DELEGATED_AGENT:2026-10-08:advance-preparation-v1",
+        "ai-timing:5f5ecdaadad9417a1b793a9f",
+        "ai-material:5f5ecdaadad9417a1b793a9f"
+      ]
+    },
+    {
+      "rule_id": "advance-preparation-v1:66715324bfbee338853895c7",
+      "recipe_id": "66715324bfbee338853895c7",
+      "recipe_hash": "db3bcd75fa3891bfe36120bcba9f6f23e87cbedb41d75a7fbaba2ce58b1da455",
+      "operation_ids": [
+        "op_001_01",
+        "op_002_01",
+        "op_003_01"
+      ],
+      "description": "腌制10分钟",
+      "evidence_refs": [
+        "user:2026-10-08:advance-preparation-before-start",
+        "DELEGATED_AGENT:2026-10-08:advance-preparation-v1",
+        "ai-timing:66715324bfbee338853895c7",
+        "ai-material:66715324bfbee338853895c7"
+      ]
+    },
+    {
+      "rule_id": "advance-preparation-v1:65433d5545256c3ad7c26fbb",
+      "recipe_id": "65433d5545256c3ad7c26fbb",
+      "recipe_hash": "10bed2eac2ec3ab57ad12dd2d55b2ab44ce223da34404dc94a907318edefa7ef",
+      "operation_ids": [
+        "op_002_01"
+      ],
+      "description": "将干火焙鱼放入清水浸泡",
+      "evidence_refs": [
+        "user:2026-10-08:advance-preparation-before-start",
+        "DELEGATED_AGENT:2026-10-08:advance-preparation-v1",
+        "ai-timing:65433d5545256c3ad7c26fbb",
+        "ai-material:65433d5545256c3ad7c26fbb"
+      ]
+    },
+    {
+      "rule_id": "advance-preparation-v1:65795251c458a177d8438e01",
+      "recipe_id": "65795251c458a177d8438e01",
+      "recipe_hash": "fe17bd4cd96ba72e252d251683c04b844deeecd0d3d2b9f1af39c7680746ec5c",
+      "operation_ids": [
+        "op_002_01",
+        "op_002_02",
+        "op_002_03",
+        "op_003_01",
+        "op_004_01",
+        "op_005_01"
+      ],
+      "description": "清水浸洗排骨；将拌好调料的排骨腌制",
+      "evidence_refs": [
+        "user:2026-10-08:advance-preparation-before-start",
+        "DELEGATED_AGENT:2026-10-08:advance-preparation-v1",
+        "ai-timing:65795251c458a177d8438e01",
+        "ai-material:65795251c458a177d8438e01"
+      ]
+    },
+    {
+      "rule_id": "advance-preparation-v1:5fe1975b5f8f38795ea6fe81",
+      "recipe_id": "5fe1975b5f8f38795ea6fe81",
+      "recipe_hash": "05638c6b5f783bea7a2bcae88bc5d5a6d202f5c1be9dcece1493ffa51589102f",
+      "operation_ids": [
+        "op_001_01",
+        "op_002_01",
+        "op_003_01"
+      ],
+      "description": "腌制10分钟",
+      "evidence_refs": [
+        "user:2026-10-08:advance-preparation-before-start",
+        "DELEGATED_AGENT:2026-10-08:advance-preparation-v1",
+        "ai-timing:5fe1975b5f8f38795ea6fe81",
+        "ai-material:5fe1975b5f8f38795ea6fe81"
+      ]
+    },
+    {
+      "rule_id": "advance-preparation-v1:5fc5f9e15f8f38795ea6fca6",
+      "recipe_id": "5fc5f9e15f8f38795ea6fca6",
+      "recipe_hash": "5323bd0138e5f6655c78c3f2e9d22c44005d215451d10eaa41f902172e6b6786",
+      "operation_ids": [
+        "op_001_01",
+        "op_002_01",
+        "op_003_01",
+        "op_004_01",
+        "op_005_01"
+      ],
+      "description": "冷藏24小时以上使之充分入味",
+      "evidence_refs": [
+        "user:2026-10-08:advance-preparation-before-start",
+        "DELEGATED_AGENT:2026-10-08:advance-preparation-v1",
+        "ai-timing:5fc5f9e15f8f38795ea6fca6",
+        "ai-material:5fc5f9e15f8f38795ea6fca6"
+      ]
+    },
+    {
+      "rule_id": "advance-preparation-v1:58e70b0e9f6429675ec805d8",
+      "recipe_id": "58e70b0e9f6429675ec805d8",
+      "recipe_hash": "3052c9278cbaeb5665a7cd11419269bfc27ca415a46621330d929931222ce118",
+      "operation_ids": [
+        "op_001_01",
+        "op_002_01",
+        "op_003_01"
+      ],
+      "description": "腌制10分钟",
+      "evidence_refs": [
+        "user:2026-10-08:advance-preparation-before-start",
+        "DELEGATED_AGENT:2026-10-08:advance-preparation-v1",
+        "ai-timing:58e70b0e9f6429675ec805d8",
+        "ai-material:58e70b0e9f6429675ec805d8"
+      ]
+    },
+    {
+      "rule_id": "advance-preparation-v1:5cc7e0404a21a4301960aef1",
+      "recipe_id": "5cc7e0404a21a4301960aef1",
+      "recipe_hash": "001b9e1d98d62475af766f6925916a026e19b8ab0e5af84699ecabdd3bc357ad",
+      "operation_ids": [
+        "op_001_01",
+        "op_002_01",
+        "op_1000_01",
+        "op_1000_02"
+      ],
+      "description": "提前浸泡糯米；原料中的10克干香菇温水泡发",
+      "evidence_refs": [
+        "user:2026-10-08:advance-preparation-before-start",
+        "DELEGATED_AGENT:2026-10-08:advance-preparation-v1",
+        "ai-timing:5cc7e0404a21a4301960aef1",
+        "ai-material:5cc7e0404a21a4301960aef1"
+      ]
+    },
+    {
+      "rule_id": "advance-preparation-v1:5caf2ec7e78bfc455f2d5cb0",
+      "recipe_id": "5caf2ec7e78bfc455f2d5cb0",
+      "recipe_hash": "ef085497854964c4354aaf1c6fb644d66b39f7c358917c9e613bcdb69c4b5b4c",
+      "operation_ids": [
+        "op_1000_01",
+        "op_001_01",
+        "op_002_01",
+        "op_003_01"
+      ],
+      "description": "腌渍5分钟",
+      "evidence_refs": [
+        "user:2026-10-08:advance-preparation-before-start",
+        "DELEGATED_AGENT:2026-10-08:advance-preparation-v1",
+        "ai-timing:5caf2ec7e78bfc455f2d5cb0",
+        "ai-material:5caf2ec7e78bfc455f2d5cb0"
+      ]
+    },
+    {
+      "rule_id": "advance-preparation-v1:668759f0bfbee3388538968e",
+      "recipe_id": "668759f0bfbee3388538968e",
+      "recipe_hash": "22103c1c9f4bf8dc9d5f8c760d352e4c28004b5cd8f02ba914b898d155e27782",
+      "operation_ids": [
+        "op_001_01",
+        "op_002_01"
+      ],
+      "description": "腌制1h",
+      "evidence_refs": [
+        "user:2026-10-08:advance-preparation-before-start",
+        "DELEGATED_AGENT:2026-10-08:advance-preparation-v1",
+        "ai-timing:668759f0bfbee3388538968e",
+        "ai-material:668759f0bfbee3388538968e"
+      ]
+    },
+    {
+      "rule_id": "advance-preparation-v1:5caf2ddbe78bfc455f2d5c96",
+      "recipe_id": "5caf2ddbe78bfc455f2d5c96",
+      "recipe_hash": "b4a08d8e9a23e60b02220e2ec836bc812bee1df4b432d92c3046d419e843b27d",
+      "operation_ids": [
+        "op_001_01",
+        "op_002_01",
+        "op_003_01",
+        "op_004_01",
+        "op_005_01",
+        "op_006_01",
+        "op_007_01"
+      ],
+      "description": "将黄油在室温软化；将面片放入冰箱冷冻至冻硬",
+      "evidence_refs": [
+        "user:2026-10-08:advance-preparation-before-start",
+        "DELEGATED_AGENT:2026-10-08:advance-preparation-v1",
+        "ai-timing:5caf2ddbe78bfc455f2d5c96",
+        "ai-material:5caf2ddbe78bfc455f2d5c96"
+      ]
+    },
+    {
+      "rule_id": "advance-preparation-v1:5c86417e98d5bc7e184a90a8",
+      "recipe_id": "5c86417e98d5bc7e184a90a8",
+      "recipe_hash": "84d08d154fd8143131b346a7b046624ea621dbe73a899a275e45a805f57071d7",
+      "operation_ids": [
+        "op_1000_01",
+        "op_1000_02"
+      ],
+      "description": "用冷水泡发吉利丁5克",
+      "evidence_refs": [
+        "user:2026-10-08:advance-preparation-before-start",
+        "DELEGATED_AGENT:2026-10-08:advance-preparation-v1",
+        "ai-timing:5c86417e98d5bc7e184a90a8",
+        "ai-material:5c86417e98d5bc7e184a90a8"
+      ]
+    },
+    {
+      "rule_id": "advance-preparation-v1:5d664a986601a865649f9aba",
+      "recipe_id": "5d664a986601a865649f9aba",
+      "recipe_hash": "bdfa840536f386293316b9ca44e057103b58bc57cc30dc6854a2313a602261c3",
+      "operation_ids": [
+        "op_001_01",
+        "op_002_01",
+        "op_003_01",
+        "op_004_01",
+        "op_005_01",
+        "op_006_01",
+        "op_007_01",
+        "op_008_01",
+        "op_009_01",
+        "op_010_01",
+        "op_011_01",
+        "op_012_01",
+        "op_013_01"
+      ],
+      "description": "冷冻20分钟至定型",
+      "evidence_refs": [
+        "user:2026-10-08:advance-preparation-before-start",
+        "DELEGATED_AGENT:2026-10-08:advance-preparation-v1",
+        "ai-timing:5d664a986601a865649f9aba",
+        "ai-material:5d664a986601a865649f9aba"
+      ]
+    },
+    {
+      "rule_id": "advance-preparation-v1:5c81cf416dc6e123a037a1f0",
+      "recipe_id": "5c81cf416dc6e123a037a1f0",
+      "recipe_hash": "a55bb4dfd6ee32aaccd70ea514147bc14c13d894d38c62f441f7670fb25cd5c3",
+      "operation_ids": [
+        "op_1000_01",
+        "op_1001_01"
+      ],
+      "description": "将A料15克黄油取出置室温软化至可揉入面团；将B料28克黄油取出置室温软化至可搅拌制酱",
+      "evidence_refs": [
+        "user:2026-10-08:advance-preparation-before-start",
+        "DELEGATED_AGENT:2026-10-08:advance-preparation-v1",
+        "ai-timing:5c81cf416dc6e123a037a1f0",
+        "ai-material:5c81cf416dc6e123a037a1f0"
+      ]
+    },
+    {
+      "rule_id": "advance-preparation-v1:64f5510a255d3b02f695fde1",
+      "recipe_id": "64f5510a255d3b02f695fde1",
+      "recipe_hash": "ee04532178f166da805a60ced7692296c21909502a5f4770e74987dc8d443f28",
+      "operation_ids": [
+        "op_002_01",
+        "op_003_01",
+        "op_004_01"
+      ],
+      "description": "腌制入味",
+      "evidence_refs": [
+        "user:2026-10-08:advance-preparation-before-start",
+        "DELEGATED_AGENT:2026-10-08:advance-preparation-v1",
+        "ai-timing:64f5510a255d3b02f695fde1",
+        "ai-material:64f5510a255d3b02f695fde1"
+      ]
+    },
+    {
+      "rule_id": "advance-preparation-v1:5fe1972d5f8f38795ea6fe7b",
+      "recipe_id": "5fe1972d5f8f38795ea6fe7b",
+      "recipe_hash": "c8009729f3e1be88c37bf6bade79ab95f8403e92a77d36d48c67950842b42972",
+      "operation_ids": [
+        "op_001_01",
+        "op_002_01",
+        "op_003_01",
+        "op_004_01",
+        "op_005_01"
+      ],
+      "description": "冷藏 15 个小时以上使之充分入味",
+      "evidence_refs": [
+        "user:2026-10-08:advance-preparation-before-start",
+        "DELEGATED_AGENT:2026-10-08:advance-preparation-v1",
+        "ai-timing:5fe1972d5f8f38795ea6fe7b",
+        "ai-material:5fe1972d5f8f38795ea6fe7b"
+      ]
+    },
+    {
+      "rule_id": "advance-preparation-v1:65f7f4ee85eb6c79dfb992ff",
+      "recipe_id": "65f7f4ee85eb6c79dfb992ff",
+      "recipe_hash": "0616ee088d42528473b0eeca6ea2f18c76c1697db4c13ead3ecbdef66681d6f6",
+      "operation_ids": [
+        "op_001_01"
+      ],
+      "description": "干桃胶、干雪燕、干皂角米提前一天用冷水泡发",
+      "evidence_refs": [
+        "user:2026-10-08:advance-preparation-before-start",
+        "DELEGATED_AGENT:2026-10-08:advance-preparation-v1",
+        "ai-timing:65f7f4ee85eb6c79dfb992ff",
+        "ai-material:65f7f4ee85eb6c79dfb992ff"
+      ]
+    },
+    {
+      "rule_id": "advance-preparation-v1:5cc7eb394a21a4301960af00",
+      "recipe_id": "5cc7eb394a21a4301960af00",
+      "recipe_hash": "0f79c49c846a11d8e4f3dc58636ac6bd7187990c07b14b439e15ff65fc1ea0e3",
+      "operation_ids": [
+        "op_001_01"
+      ],
+      "description": "将银鱼干泡入水中至变软",
+      "evidence_refs": [
+        "user:2026-10-08:advance-preparation-before-start",
+        "DELEGATED_AGENT:2026-10-08:advance-preparation-v1",
+        "ai-timing:5cc7eb394a21a4301960af00",
+        "ai-material:5cc7eb394a21a4301960af00"
+      ]
+    },
+    {
+      "rule_id": "advance-preparation-v1:5c871bef98d5bc7e184a90dd",
+      "recipe_id": "5c871bef98d5bc7e184a90dd",
+      "recipe_hash": "744fc77e85fffd3f60af4b3ee38273d2dff75b1e661acbebc915da5684f7ffa0",
+      "operation_ids": [
+        "op_1000_01",
+        "op_001_01",
+        "op_002_01",
+        "op_003_01"
+      ],
+      "description": "腌渍10分钟至入味",
+      "evidence_refs": [
+        "user:2026-10-08:advance-preparation-before-start",
+        "DELEGATED_AGENT:2026-10-08:advance-preparation-v1",
+        "ai-timing:5c871bef98d5bc7e184a90dd",
+        "ai-material:5c871bef98d5bc7e184a90dd"
+      ]
+    },
+    {
+      "rule_id": "advance-preparation-v1:66cec69b1142545e3856e07e",
+      "recipe_id": "66cec69b1142545e3856e07e",
+      "recipe_hash": "3a4c3fd6811241c492bfdc81a96bb091ac65dfc8178bc8c50dbaa3a2f3ff4caf",
+      "operation_ids": [
+        "op_1000_01",
+        "op_1000_02",
+        "op_1002_01",
+        "op_002_01",
+        "op_003_01"
+      ],
+      "description": "鸡在4℃冷藏腌制；腌制2小时备用",
+      "evidence_refs": [
+        "user:2026-10-08:advance-preparation-before-start",
+        "DELEGATED_AGENT:2026-10-08:advance-preparation-v1",
+        "ai-timing:66cec69b1142545e3856e07e",
+        "ai-material:66cec69b1142545e3856e07e"
+      ]
+    },
+    {
+      "rule_id": "advance-preparation-v1:662e07388b2aa2265e115477",
+      "recipe_id": "662e07388b2aa2265e115477",
+      "recipe_hash": "4cc6f2a424a197fc391d9afd0d59f870f6d7300863dd2a2b588b3b5ca6d59353",
+      "operation_ids": [
+        "op_001_01"
+      ],
+      "description": "调味法式羊排需冷藏解冻",
+      "evidence_refs": [
+        "user:2026-10-08:advance-preparation-before-start",
+        "DELEGATED_AGENT:2026-10-08:advance-preparation-v1",
+        "ai-timing:662e07388b2aa2265e115477",
+        "ai-material:662e07388b2aa2265e115477"
+      ]
+    },
+    {
+      "rule_id": "advance-preparation-v1:6544c6c245256c3ad7c27455",
+      "recipe_id": "6544c6c245256c3ad7c27455",
+      "recipe_hash": "c793a58a97fdf35617f963ba6eff5c0f4cf25792ca407be0d60ce731731b8efd",
+      "operation_ids": [
+        "op_1000_01",
+        "op_1001_01",
+        "op_001_01",
+        "op_002_01",
+        "op_003_01"
+      ],
+      "description": "腌制15分钟",
+      "evidence_refs": [
+        "user:2026-10-08:advance-preparation-before-start",
+        "DELEGATED_AGENT:2026-10-08:advance-preparation-v1",
+        "ai-timing:6544c6c245256c3ad7c27455",
+        "ai-material:6544c6c245256c3ad7c27455"
+      ]
+    },
+    {
+      "rule_id": "advance-preparation-v1:6510fb7845256c3ad7c25cd8",
+      "recipe_id": "6510fb7845256c3ad7c25cd8",
+      "recipe_hash": "90c80c65e54cb9ff33a2e78d5d61511858969f87b9db97ea8e75142d3ea7df66",
+      "operation_ids": [
+        "op_002_01",
+        "op_003_01",
+        "op_004_01",
+        "op_005_01",
+        "op_006_01",
+        "op_007_01",
+        "op_008_01"
+      ],
+      "description": "腌制6小时以上",
+      "evidence_refs": [
+        "user:2026-10-08:advance-preparation-before-start",
+        "DELEGATED_AGENT:2026-10-08:advance-preparation-v1",
+        "ai-timing:6510fb7845256c3ad7c25cd8",
+        "ai-material:6510fb7845256c3ad7c25cd8"
+      ]
+    },
+    {
+      "rule_id": "advance-preparation-v1:65433d7145256c3ad7c270fb",
+      "recipe_id": "65433d7145256c3ad7c270fb",
+      "recipe_hash": "00fdd1ef9c55454c4a22106491ce3cbf00e8f6540b1db7e9fa74829b1d211ef9",
+      "operation_ids": [
+        "op_002_01",
+        "op_003_01",
+        "op_004_01"
+      ],
+      "description": "腌制1小时",
+      "evidence_refs": [
+        "user:2026-10-08:advance-preparation-before-start",
+        "DELEGATED_AGENT:2026-10-08:advance-preparation-v1",
+        "ai-timing:65433d7145256c3ad7c270fb",
+        "ai-material:65433d7145256c3ad7c270fb"
+      ]
+    },
+    {
+      "rule_id": "advance-preparation-v1:6543408e45256c3ad7c2744b",
+      "recipe_id": "6543408e45256c3ad7c2744b",
+      "recipe_hash": "f9817074838472cb7ca5abcb0adf053d8e12baa0e53b63698381d269eb8e2b6c",
+      "operation_ids": [
+        "op_001_01",
+        "op_002_01"
+      ],
+      "description": "浸泡20分钟",
+      "evidence_refs": [
+        "user:2026-10-08:advance-preparation-before-start",
+        "DELEGATED_AGENT:2026-10-08:advance-preparation-v1",
+        "ai-timing:6543408e45256c3ad7c2744b",
+        "ai-material:6543408e45256c3ad7c2744b"
+      ]
+    },
+    {
+      "rule_id": "advance-preparation-v1:5fe197255f8f38795ea6fe79",
+      "recipe_id": "5fe197255f8f38795ea6fe79",
+      "recipe_hash": "ba6026225f323c68db97fe9d8b9f945397093d774de133c22ed4995381d6911e",
+      "operation_ids": [
+        "op_001_01",
+        "op_002_01",
+        "op_003_01"
+      ],
+      "description": "腌渍10分钟",
+      "evidence_refs": [
+        "user:2026-10-08:advance-preparation-before-start",
+        "DELEGATED_AGENT:2026-10-08:advance-preparation-v1",
+        "ai-timing:5fe197255f8f38795ea6fe79",
+        "ai-material:5fe197255f8f38795ea6fe79"
+      ]
+    },
+    {
+      "rule_id": "advance-preparation-v1:65795214c458a177d8438b22",
+      "recipe_id": "65795214c458a177d8438b22",
+      "recipe_hash": "79d7f47d68b3fd5d1a64b5f7e064c1483fa006858a4c65d1e408317c70b9b931",
+      "operation_ids": [
+        "op_010_01"
+      ],
+      "description": "在仙草糊冷却的同时浸泡血糯米",
+      "evidence_refs": [
+        "user:2026-10-08:advance-preparation-before-start",
+        "DELEGATED_AGENT:2026-10-08:advance-preparation-v1",
+        "ai-timing:65795214c458a177d8438b22",
+        "ai-material:65795214c458a177d8438b22"
+      ]
+    },
+    {
+      "rule_id": "advance-preparation-v1:66dea6480d586d528ee9dd7c",
+      "recipe_id": "66dea6480d586d528ee9dd7c",
+      "recipe_hash": "19e5f5626dd0f7f48d35bbc4891f2d9a8c5cbf4997280333e68d94d998a19862",
+      "operation_ids": [
+        "op_006_01",
+        "op_007_01",
+        "op_008_01",
+        "op_009_01",
+        "op_011_01",
+        "op_012_01"
+      ],
+      "description": "腌制10分钟；腌制5分钟",
+      "evidence_refs": [
+        "user:2026-10-08:advance-preparation-before-start",
+        "DELEGATED_AGENT:2026-10-08:advance-preparation-v1",
+        "ai-timing:66dea6480d586d528ee9dd7c",
+        "ai-material:66dea6480d586d528ee9dd7c"
+      ]
+    },
+    {
+      "rule_id": "advance-preparation-v1:5c82027a6dc6e123a037a209",
+      "recipe_id": "5c82027a6dc6e123a037a209",
+      "recipe_hash": "bab0036fd7e77d518b728bca94077366f4f42163aa00a64068b648bbc1f9fb91",
+      "operation_ids": [
+        "op_001_01"
+      ],
+      "description": "将糯米浸泡",
+      "evidence_refs": [
+        "user:2026-10-08:advance-preparation-before-start",
+        "DELEGATED_AGENT:2026-10-08:advance-preparation-v1",
+        "ai-timing:5c82027a6dc6e123a037a209",
+        "ai-material:5c82027a6dc6e123a037a209"
+      ]
+    },
+    {
+      "rule_id": "advance-preparation-v1:6492a828933a4b7277dee6aa",
+      "recipe_id": "6492a828933a4b7277dee6aa",
+      "recipe_hash": "08fce3e00dd073a808ee29ed611127e51ee1a0408a449df28e0fa6618335bc13",
+      "operation_ids": [
+        "op_002_01",
+        "op_003_01"
+      ],
+      "description": "酵母糖水静置",
+      "evidence_refs": [
+        "user:2026-10-08:advance-preparation-before-start",
+        "DELEGATED_AGENT:2026-10-08:advance-preparation-v1",
+        "ai-timing:6492a828933a4b7277dee6aa",
+        "ai-material:6492a828933a4b7277dee6aa"
+      ]
+    }
+  ],
+  "time_grid_sec": 1,
+  "minute_output_mode": "DECIMAL",
+  "human_count": 1,
+  "human_resource_id": "human_1",
+  "burner_ids": [
+    "burner_1",
+    "burner_2"
+  ],
+  "max_nonstandalone_per_requirement": 12,
+  "max_nonstandalone_per_problem": 256,
+  "preserve_mandatory_recipe_batches": true,
+  "preserve_all_standalone_candidates": true,
+  "shared_prep": true,
+  "allow_delegated_shared_estimates": true,
+  "strict_together_batch": false,
+  "generic_common_start_batch": false,
+  "generic_common_finish_batch": false,
+  "enable_certified_non_equivalent_pruning": false,
+  "duration_policy_id": "NOMINAL",
+  "duration_data_version": "nominal-v1",
+  "initial_budget": {
+    "total_ms": 7000,
+    "greedy_ms": 300,
+    "solver_ms": 5000,
+    "publication_reserve_ms": 600
+  },
+  "replan_budget": {
+    "total_ms": 5000,
+    "greedy_ms": 400,
+    "solver_ms": 2800,
+    "publication_reserve_ms": 1400
+  },
+  "objective": {
+    "spread_basis": "COOKING_FINISH",
+    "stages": [
+      "SPREAD",
+      "HUMAN_BUSY",
+      "MAKESPAN"
+    ],
+    "spread_target_sec": 300,
+    "rest_gap_sec": 60,
+    "makespan_extra_basis_points": 500,
+    "makespan_extra_cap_sec": 120
+  },
+  "greedy_search": {
+    "max_variants": 3,
+    "max_placements_per_iteration": 24,
+    "max_gap_checks_per_candidate": 32,
+    "rollback_depth": 3,
+    "rollback_attempts": 8,
+    "max_standalone_restarts": 1
+  },
+  "max_exact_human_phases": 120,
+  "minimum_exact_human_budget_ms": 100,
+  "model_soft_limits": {
+    "total_variables": 6000,
+    "boolean_variables": 4000,
+    "optional_intervals": 1500,
+    "total_constraints": 20000,
+    "sequence_arcs": 8000
+  },
+  "api_instances": 1,
+  "concurrent_planning_jobs": 1,
+  "solver_worker_processes": 1,
+  "max_solver_search_workers": 4,
+  "sqlite_busy_timeout_ms": 100,
+  "sqlite_max_write_retries": 2,
+  "diagnostic_total_budget_ms": 2000,
+  "diagnostic_search_workers": 1,
+  "max_core_shrink_checks": 6
+}

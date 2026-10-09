@@ -1,0 +1,1555 @@
+{
+  "reviewer_kind": "DELEGATED_AGENT",
+  "reviewer": "Codex",
+  "authorization": "用户已授权执行出锅口径修改；既有工程授权允许代理审核。非人工实测。",
+  "source_snapshot_id": "snapshot-16e326334a7888de6d9b0e1e78f3c5f10f6e35dded8cc32c4afdf4ec57ef49ea",
+  "review_date": "2026-10-07",
+  "precision": "基于审核原工序的计划边界；不拆没有时长依据的取出与点缀；珍珠末段采用热处理完成代理。",
+  "recipes": [
+    {
+      "ordinal": 1,
+      "recipe_id": "5d54bae2a9114174727c8b20",
+      "name": "鸡翅包饭",
+      "recipe_semantic_hash": "261352d6a03a7c905ae6cae3eca389134cf4ae4cf84c77a1b523c3dd555d3970",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_012_01",
+          "action": "UNLOAD",
+          "description": "打开烤箱门，将烤好的鸡翅包饭取出即可。"
+        }
+      ],
+      "rationale": "主体最终热加工后的取出/释放段结束；原段含点缀时保留整段粒度；后续冷却切分装盘仍完整排程。"
+    },
+    {
+      "ordinal": 2,
+      "recipe_id": "6510fb3545256c3ad7c25c9c",
+      "name": "苹果芒果派",
+      "recipe_semantic_hash": "3b6094f1bbf9c5da4ad6a443f1b432d65b9f9f8f00a1f2f7130cae6a4aff425a",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_014_01",
+          "action": "UNLOAD",
+          "description": "将烤好的派从烤箱中取出，把蜂蜜刷在表面即可。"
+        }
+      ],
+      "rationale": "主体最终热加工后的取出/释放段结束；原段含点缀时保留整段粒度；后续冷却切分装盘仍完整排程。"
+    },
+    {
+      "ordinal": 3,
+      "recipe_id": "5c8646fe98d5bc7e184a90bc",
+      "name": "鸡仔饼",
+      "recipe_semantic_hash": "9ee86b4156cbf6d9a75de2c00f5feafcc6b7aea5032c38f2ddd3a296906cacaf",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_007_01",
+          "action": "UNLOAD",
+          "description": "烹饪结束后取出即可。"
+        }
+      ],
+      "rationale": "主体最终热加工后的取出/释放段结束；原段含点缀时保留整段粒度；后续冷却切分装盘仍完整排程。"
+    },
+    {
+      "ordinal": 4,
+      "recipe_id": "6492a7a5933a4b7277dee0cf",
+      "name": "酿苦瓜",
+      "recipe_semantic_hash": "ac35dd7246c860dca658b8fc9a280ca1063d7bea749ce768fbc781c45e25eeb9",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_8001_01",
+          "action": "UNLOAD",
+          "description": "本次加工结束，移出食物并释放设备"
+        }
+      ],
+      "rationale": "主体最终热加工后的取出/释放段结束；原段含点缀时保留整段粒度；后续冷却切分装盘仍完整排程。"
+    },
+    {
+      "ordinal": 5,
+      "recipe_id": "61e6c51fec6e1d65587067e1",
+      "name": "低温牛排",
+      "recipe_semantic_hash": "9bcc90cbe594ea55010e88d3acc3ef594b24df4e0f414d7d4128aae91dae224b",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_8000_01",
+          "action": "UNLOAD",
+          "description": "本次加工结束，移出食物并释放设备"
+        }
+      ],
+      "rationale": "主体最终热加工后的取出/释放段结束；原段含点缀时保留整段粒度；后续冷却切分装盘仍完整排程。"
+    },
+    {
+      "ordinal": 6,
+      "recipe_id": "6577d480c458a177d8438637",
+      "name": "三味蒸鳗鱼&香茅烤鳗鱼同烹",
+      "recipe_semantic_hash": "57d55d0f8f7964a8439350e3a94d001dc77a2f0863532cb1c936e0e1531cebac",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_8001_01",
+          "action": "UNLOAD",
+          "description": "本次加工结束，移出食物并释放设备"
+        }
+      ],
+      "rationale": "主体最终热加工后的取出/释放段结束；原段含点缀时保留整段粒度；后续冷却切分装盘仍完整排程。"
+    },
+    {
+      "ordinal": 7,
+      "recipe_id": "65433a4245256c3ad7c2697f",
+      "name": "金龙吐瑞",
+      "recipe_semantic_hash": "4e40b7b894cd25118defe073c93cadce4f33b7464f410b79ec8751c36c327d3c",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_8000_01",
+          "action": "UNLOAD",
+          "description": "本次加工结束，移出食物并释放设备"
+        }
+      ],
+      "rationale": "主体最终热加工后的取出/释放段结束；原段含点缀时保留整段粒度；后续冷却切分装盘仍完整排程。"
+    },
+    {
+      "ordinal": 8,
+      "recipe_id": "5c8647b598d5bc7e184a90c3",
+      "name": "椰香苹果香蕉烤燕麦",
+      "recipe_semantic_hash": "e7edec696c7dd78fcad24460a808e2e7c61f8cc97ec5da36fe2b1230bd378eda",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_011_01",
+          "action": "UNLOAD",
+          "description": "烤好后取出即可食用。"
+        }
+      ],
+      "rationale": "主体最终热加工后的取出/释放段结束；原段含点缀时保留整段粒度；后续冷却切分装盘仍完整排程。"
+    },
+    {
+      "ordinal": 9,
+      "recipe_id": "58e70ae1a3fd4a750f4b75af",
+      "name": "双椒鳙鱼头",
+      "recipe_semantic_hash": "ba4d9ee142c70d8b9e72ac4e67ed89457dd5ebd2aae4700256f04d7e3297f38f",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_008_01",
+          "action": "UNLOAD",
+          "description": "取出蒸好的鱼头"
+        }
+      ],
+      "rationale": "主体鱼头取出；后续热油不计。"
+    },
+    {
+      "ordinal": 10,
+      "recipe_id": "5dad79866601a865649f9cb7",
+      "name": "家常鲈鱼",
+      "recipe_semantic_hash": "dedbfd2d87a3fbe4da705ef1bff6345de4f5c894c913155572bdce3773445bdd",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_007_01",
+          "action": "UNLOAD",
+          "description": "打开箱门，将蒸好的鲈鱼取出，将盘底的少量汁水慢慢地倒掉，将鱼背上的葱段和姜丝去掉，再撒上葱丝和干辣椒段。"
+        }
+      ],
+      "rationale": "鲈鱼取出合并倒汤撒葱，保守采用整段结束，后续热油不计。"
+    },
+    {
+      "ordinal": 11,
+      "recipe_id": "59cc89b47d21be2a79172c98",
+      "name": "豉汁蒸草鱼",
+      "recipe_semantic_hash": "673148650900307f5ef2330eabdd39826bd860f502842b124fb1a1e234b189fc",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_009_01",
+          "action": "UNLOAD",
+          "description": "待烹饪结束提示音响起后，取出平盘，滗去汤汁，淋上辅料中蒸鱼豉油、生抽，将青红椒丝、葱姜丝摆放在鱼上。"
+        }
+      ],
+      "rationale": "取第二段蒸制后取出；后续热油不计。"
+    },
+    {
+      "ordinal": 12,
+      "recipe_id": "6528fac845256c3ad7c26313",
+      "name": "椰汁红豆砵仔糕",
+      "recipe_semantic_hash": "302829ea49daab88d75f622b5d4febe4f8e7740637e197e6af17d70bb0c93b97",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_8001_01",
+          "action": "UNLOAD",
+          "description": "本次加工结束，移出食物并释放设备"
+        }
+      ],
+      "rationale": "主体最终热加工后的取出/释放段结束；原段含点缀时保留整段粒度；后续冷却切分装盘仍完整排程。"
+    },
+    {
+      "ordinal": 13,
+      "recipe_id": "5d56689fa9114174727c8bfb",
+      "name": "鸡蛋黄油饼干",
+      "recipe_semantic_hash": "00515b760013eaf3741e9e2a7876645b436d83b1b862ed118c5655ff1b1cf582",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_012_01",
+          "action": "UNLOAD",
+          "description": "开箱门，取出烤好的饼干即可。"
+        }
+      ],
+      "rationale": "主体最终热加工后的取出/释放段结束；原段含点缀时保留整段粒度；后续冷却切分装盘仍完整排程。"
+    },
+    {
+      "ordinal": 14,
+      "recipe_id": "661369554b3d03197733ac5a",
+      "name": "香烤排骨",
+      "recipe_semantic_hash": "4e1a4878dcaa30c34e3bc86444d65c5990560a2386bde0325a34abd2ed1a0943",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_8000_01",
+          "action": "UNLOAD",
+          "description": "本次加工结束，移出食物并释放设备"
+        }
+      ],
+      "rationale": "主体最终热加工后的取出/释放段结束；原段含点缀时保留整段粒度；后续冷却切分装盘仍完整排程。"
+    },
+    {
+      "ordinal": 15,
+      "recipe_id": "64f550ff255d3b02f695fd69",
+      "name": "栗子冰皮月饼",
+      "recipe_semantic_hash": "41c82b0ebfae182bca59499e1fc4a0e22c024f4b0eda0ec4404b71546fd1c51d",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_8001_01",
+          "action": "UNLOAD",
+          "description": "本次加工结束，移出食物并释放设备"
+        },
+        {
+          "operation_id": "op_012_01",
+          "action": "MIX",
+          "description": "取出蒸熟的冰皮，用筷子快速搅拌至顺滑。"
+        }
+      ],
+      "rationale": "栗子馅释放与蒸熟冰皮取出揉匀两个分支取最大，保留取出揉匀原段粒度。"
+    },
+    {
+      "ordinal": 16,
+      "recipe_id": "58e70b129f6429675ec80601",
+      "name": "麻辣对虾",
+      "recipe_semantic_hash": "c8c667a02e6fd960f9e7766a42241057235d079b4e2e13e22f46c114c1ecfc40",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_011_01",
+          "action": "UNLOAD",
+          "description": "烹饪结束后取出，撒上葱花即可食用。"
+        }
+      ],
+      "rationale": "主体最终热加工后的取出/释放段结束；原段含点缀时保留整段粒度；后续冷却切分装盘仍完整排程。"
+    },
+    {
+      "ordinal": 17,
+      "recipe_id": "5c875d0b98d5bc7e184a9166",
+      "name": "香菜黄油烤明虾",
+      "recipe_semantic_hash": "62ab99a1334845090ff9be7868adfcf64f2a6d9a410a007c3c6305a15363b8e8",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_010_01",
+          "action": "UNLOAD",
+          "description": "取出烤盘，用香菜点缀即可。"
+        }
+      ],
+      "rationale": "主体最终热加工后的取出/释放段结束；原段含点缀时保留整段粒度；后续冷却切分装盘仍完整排程。"
+    },
+    {
+      "ordinal": 18,
+      "recipe_id": "5d54ed01a9114174727c8b5c",
+      "name": "黄油小饼干",
+      "recipe_semantic_hash": "af89bb5a069e33967ac3e77f196894ee6d90f957196a9095cc38d823f97a071d",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_8000_01",
+          "action": "UNLOAD",
+          "description": "本次加工结束，移出食物并释放设备"
+        }
+      ],
+      "rationale": "主体最终热加工后的取出/释放段结束；原段含点缀时保留整段粒度；后续冷却切分装盘仍完整排程。"
+    },
+    {
+      "ordinal": 19,
+      "recipe_id": "5c8200d96dc6e123a037a202",
+      "name": "豆豉蒸腐竹",
+      "recipe_semantic_hash": "26fc8e29a4b837bbc4a69b5c7328daac45a49bb13315e351c2e3f4e58bb874a6",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_009_01",
+          "action": "UNLOAD",
+          "description": "烹饪结束后取出，撒上葱花即可。"
+        }
+      ],
+      "rationale": "主体最终热加工后的取出/释放段结束；原段含点缀时保留整段粒度；后续冷却切分装盘仍完整排程。"
+    },
+    {
+      "ordinal": 20,
+      "recipe_id": "5caf2ea3e78bfc455f2d5cad",
+      "name": "快手香蕉派",
+      "recipe_semantic_hash": "11c96366509b3cb3f5dedc77da3e0827f9bf069658c11bca83fae29ec9424ea6",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_8000_01",
+          "action": "UNLOAD",
+          "description": "本次加工结束，移出食物并释放设备"
+        }
+      ],
+      "rationale": "主体最终热加工后的取出/释放段结束；原段含点缀时保留整段粒度；后续冷却切分装盘仍完整排程。"
+    },
+    {
+      "ordinal": 21,
+      "recipe_id": "657951b7c458a177d84386bc",
+      "name": "芋头蛋卷",
+      "recipe_semantic_hash": "e3881eaeb97c86230a6f81dd038cf4e7ba9cfd03467ecd3b85c736a580dabe57",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_8001_01",
+          "action": "UNLOAD",
+          "description": "本次加工结束，移出食物并释放设备"
+        },
+        {
+          "operation_id": "op_007_01",
+          "action": "PREPARE",
+          "description": "将蛋皮盛起。"
+        }
+      ],
+      "rationale": "芋头释放与蛋皮余温加热后盛起取最大，后续卷切不计。"
+    },
+    {
+      "ordinal": 22,
+      "recipe_id": "5caf2f00e78bfc455f2d5cb7",
+      "name": "拿破仑酥",
+      "recipe_semantic_hash": "5e93075fa29e74366ba89e4087d9693e417309778ed6a03db9aac6ef411268e6",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_020_01",
+          "action": "UNLOAD",
+          "description": "烘烤完成后取出酥皮。"
+        }
+      ],
+      "rationale": "主体最终热加工后的取出/释放段结束；原段含点缀时保留整段粒度；后续冷却切分装盘仍完整排程。"
+    },
+    {
+      "ordinal": 23,
+      "recipe_id": "657951cac458a177d84387a1",
+      "name": "五味乌鸡煲",
+      "recipe_semantic_hash": "a4553c32b7d618452f5db234813eb66cd0ac76afc2293f0ef97decaa7678a4c8",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_007_01",
+          "action": "UNLOAD",
+          "description": "蒸好后取出，撒盐调味即可。"
+        }
+      ],
+      "rationale": "主体最终热加工后的取出/释放段结束；原段含点缀时保留整段粒度；后续冷却切分装盘仍完整排程。"
+    },
+    {
+      "ordinal": 24,
+      "recipe_id": "662f2c398b2aa2265e11548f",
+      "name": "榴莲酥",
+      "recipe_semantic_hash": "f79e9fa21da96cb0029372b4925b38ebd8f1bfa436fe60fbb40dfcddaf57ddbd",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_8000_01",
+          "action": "UNLOAD",
+          "description": "本次加工结束，移出食物并释放设备"
+        }
+      ],
+      "rationale": "主体最终热加工后的取出/释放段结束；原段含点缀时保留整段粒度；后续冷却切分装盘仍完整排程。"
+    },
+    {
+      "ordinal": 25,
+      "recipe_id": "6528fae945256c3ad7c2648f",
+      "name": "小碗蒸肉",
+      "recipe_semantic_hash": "1075a4d6fdf13556bf2e93f99dc1e3187e635169b142076044c21712e172f672",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_8003_01",
+          "action": "UNLOAD",
+          "description": "本次加工结束，移出食物并释放设备"
+        }
+      ],
+      "rationale": "主体最终热加工后的取出/释放段结束；原段含点缀时保留整段粒度；后续冷却切分装盘仍完整排程。"
+    },
+    {
+      "ordinal": 26,
+      "recipe_id": "5fe197175f8f38795ea6fe77",
+      "name": "豆豉蒸腐竹（台式）",
+      "recipe_semantic_hash": "e62f2bb63be7762e5c5e8664c55ee147d7205eb82bee8952f5fe32b049931e54",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_009_01",
+          "action": "UNLOAD",
+          "description": "烹饪结束后取出，撒上葱花即可。"
+        }
+      ],
+      "rationale": "主体最终热加工后的取出/释放段结束；原段含点缀时保留整段粒度；后续冷却切分装盘仍完整排程。"
+    },
+    {
+      "ordinal": 27,
+      "recipe_id": "5f5ecdaadad9417a1b793a9f",
+      "name": "广式月饼（台式）",
+      "recipe_semantic_hash": "526dd5b52ac08276659979c2b9c5d4bdf3f5d7eb2708200671e35c79133e6f84",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_012_01",
+          "action": "UNLOAD",
+          "description": "烘烤结束后取出月饼。"
+        }
+      ],
+      "rationale": "烘烤结束取出；保留1800秒冷却但不计入出锅。"
+    },
+    {
+      "ordinal": 28,
+      "recipe_id": "6492a7c6933a4b7277dee237",
+      "name": "Q弹果冻鸡蛋羹",
+      "recipe_semantic_hash": "382e02f43c465b8ee68082b2e47446a7ce9d70aa3c293d47c476e99dd99e8431",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_8000_01",
+          "action": "UNLOAD",
+          "description": "本次加工结束，移出食物并释放设备"
+        }
+      ],
+      "rationale": "主体最终热加工后的取出/释放段结束；原段含点缀时保留整段粒度；后续冷却切分装盘仍完整排程。"
+    },
+    {
+      "ordinal": 29,
+      "recipe_id": "58e70ae1a3fd4a750f4b75b0",
+      "name": "韩式泡菜鸦片鱼头",
+      "recipe_semantic_hash": "de77259873211ee24087f800f901cfd646820d38df3b7beb59a80fb503f42a3e",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_009_01",
+          "action": "UNLOAD",
+          "description": "烹饪结束后取出，趁热食用。"
+        }
+      ],
+      "rationale": "主体最终热加工后的取出/释放段结束；原段含点缀时保留整段粒度；后续冷却切分装盘仍完整排程。"
+    },
+    {
+      "ordinal": 30,
+      "recipe_id": "65795250c458a177d8438dea",
+      "name": "南瓜鸡腿煲",
+      "recipe_semantic_hash": "11f71dff2495d91b2a5a0bdc337246a07bbf420f6d8b5a53232e3dbd86d5407a",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_013_01",
+          "action": "UNLOAD",
+          "description": "取出撒上葱花即可食用。"
+        }
+      ],
+      "rationale": "主体最终热加工后的取出/释放段结束；原段含点缀时保留整段粒度；后续冷却切分装盘仍完整排程。"
+    },
+    {
+      "ordinal": 31,
+      "recipe_id": "5caf2ba9e78bfc455f2d5c55",
+      "name": "松子枣泥拉糕",
+      "recipe_semantic_hash": "ad59d37f0a9b1ff257b168e707f919967b2e1e1799dad6f6a0c190c10cc2bdfc",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_011_01",
+          "action": "UNLOAD",
+          "description": "烹饪结束后取出。"
+        }
+      ],
+      "rationale": "主体最终热加工后的取出/释放段结束；原段含点缀时保留整段粒度；后续冷却切分装盘仍完整排程。"
+    },
+    {
+      "ordinal": 32,
+      "recipe_id": "66715324bfbee338853895c7",
+      "name": "轻松一锅蒸",
+      "recipe_semantic_hash": "e70dfa071829aa4519575faa4f7b564af4014a1999cc634cbf03746ebf95d6c7",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_1000_01",
+          "action": "UNLOAD",
+          "description": "五道菜蒸好取出；鱼头和香干分别撒各自配方葱花，茄子浇预调酱醋汁，红枣南瓜淋糖桂花，腊味装盘。"
+        }
+      ],
+      "rationale": "五子菜取出与点缀合并的180秒原段，不能虚构纯取出时长。"
+    },
+    {
+      "ordinal": 33,
+      "recipe_id": "65433d5545256c3ad7c26fbb",
+      "name": "清蒸火焙鱼",
+      "recipe_semantic_hash": "6e295e5cb9d707522217a24270155a7421977007f0b71c80df6f0c1c0c67bda3",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_007_01",
+          "action": "UNLOAD",
+          "description": "取出淋上白醋即可。"
+        }
+      ],
+      "rationale": "主体最终热加工后的取出/释放段结束；原段含点缀时保留整段粒度；后续冷却切分装盘仍完整排程。"
+    },
+    {
+      "ordinal": 34,
+      "recipe_id": "5f73fee8a6daaa3b53ba043c",
+      "name": "美式薯条",
+      "recipe_semantic_hash": "57bf518c8da9e8d8bb53692600daab9935df27bcc41e0a46fcf3fbb234209bc0",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_003_01",
+          "action": "UNLOAD",
+          "description": "待烹饪结束后，取出薯条，即可食用。"
+        }
+      ],
+      "rationale": "主体最终热加工后的取出/释放段结束；原段含点缀时保留整段粒度；后续冷却切分装盘仍完整排程。"
+    },
+    {
+      "ordinal": 35,
+      "recipe_id": "5a38d6b3f254230b76e2b50f",
+      "name": "蒜香烤茄子",
+      "recipe_semantic_hash": "5878b9abc6dba726b038c5bdd9df42396a7d16393649a481a91db032b9182cca",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_008_01",
+          "action": "UNLOAD",
+          "description": "烘烤完成后取出，撒上葱花趁热食用。"
+        }
+      ],
+      "rationale": "主体最终热加工后的取出/释放段结束；原段含点缀时保留整段粒度；后续冷却切分装盘仍完整排程。"
+    },
+    {
+      "ordinal": 36,
+      "recipe_id": "58e70b139f6429675ec8060c",
+      "name": "葱香土豆泥",
+      "recipe_semantic_hash": "cd65880781179ca7c9414a1998dfecfa7320b88f4603106555cd2ef31fc0ceb9",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_8000_01",
+          "action": "UNLOAD",
+          "description": "本次加工结束，移出食物并释放设备"
+        }
+      ],
+      "rationale": "主体最终热加工后的取出/释放段结束；原段含点缀时保留整段粒度；后续冷却切分装盘仍完整排程。"
+    },
+    {
+      "ordinal": 37,
+      "recipe_id": "6528fad345256c3ad7c2638b",
+      "name": "酿莴苣",
+      "recipe_semantic_hash": "c91d33f2790805027e887f1e8f00f4d8d53e090bb3a871c355869e8a2a706d73",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_010_01",
+          "action": "UNLOAD",
+          "description": "蒸好取出，淋上香油。"
+        }
+      ],
+      "rationale": "主体最终热加工后的取出/释放段结束；原段含点缀时保留整段粒度；后续冷却切分装盘仍完整排程。"
+    },
+    {
+      "ordinal": 38,
+      "recipe_id": "65795251c458a177d8438e01",
+      "name": "虾米豆豉蒸排骨",
+      "recipe_semantic_hash": "4d465843214c9c5abb81241ffff0573229bff534e963bbddde3a40a463e36604",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_8000_01",
+          "action": "UNLOAD",
+          "description": "本次加工结束，移出食物并释放设备"
+        }
+      ],
+      "rationale": "主体最终热加工后的取出/释放段结束；原段含点缀时保留整段粒度；后续冷却切分装盘仍完整排程。"
+    },
+    {
+      "ordinal": 39,
+      "recipe_id": "64706f256f734220a4e24b47",
+      "name": "祛寒羊肉汤",
+      "recipe_semantic_hash": "d648e74db771a69e71e105918cd3e23a66614f34f66aa42a6e66039767f54500",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_8001_01",
+          "action": "UNLOAD",
+          "description": "本次加工结束，移出食物并释放设备"
+        }
+      ],
+      "rationale": "主体最终热加工后的取出/释放段结束；原段含点缀时保留整段粒度；后续冷却切分装盘仍完整排程。"
+    },
+    {
+      "ordinal": 40,
+      "recipe_id": "5c860d6298d5bc7e184a907c",
+      "name": "雪媚娘",
+      "recipe_semantic_hash": "5b0188fe59ed520036f7802cbe04e5a900400518161c2e849792265f6442a49f",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_005_01",
+          "action": "MIX",
+          "description": "取出蒸熟粉浆，趁热加入黄油，揉成光滑面团，封保鲜膜。"
+        }
+      ],
+      "rationale": "主粉浆蒸后取出揉黄油的原段；冷藏后取面团不属于出锅。"
+    },
+    {
+      "ordinal": 41,
+      "recipe_id": "5d565e87a9114174727c8bad",
+      "name": "半熟芝士蛋糕",
+      "recipe_semantic_hash": "f32f5b67a688cf0c4eb7b0a650be3dc4cb26aff2d369961785510f1f15c2026b",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_013_01",
+          "action": "UNLOAD",
+          "description": "打开箱门，戴上隔热手套，把烤好的蛋糕取出，脱模即可。"
+        }
+      ],
+      "rationale": "主体最终热加工后的取出/释放段结束；原段含点缀时保留整段粒度；后续冷却切分装盘仍完整排程。"
+    },
+    {
+      "ordinal": 42,
+      "recipe_id": "5cc5508e01ea5c2931c919f5",
+      "name": "黑森林蛋糕",
+      "recipe_semantic_hash": "1851793c7fce16cd3a27c1c435314efda3aed387f65dfa60ee3077996e1c0bb4",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_008_01",
+          "action": "UNLOAD",
+          "description": "烘烤结束后取出模具，倒扣在烤架上。"
+        }
+      ],
+      "rationale": "主体最终热加工后的取出/释放段结束；原段含点缀时保留整段粒度；后续冷却切分装盘仍完整排程。"
+    },
+    {
+      "ordinal": 43,
+      "recipe_id": "5fe1975b5f8f38795ea6fe81",
+      "name": "双椒鳙鱼头（台式）",
+      "recipe_semantic_hash": "1a0c8743316c3ffa9a7b69d7ebbf2dae567c462f8573861bb5136584925bb301",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_008_01",
+          "action": "UNLOAD",
+          "description": "取出蒸好的鱼头"
+        }
+      ],
+      "rationale": "主鱼头取出，后续热油不计。"
+    },
+    {
+      "ordinal": 44,
+      "recipe_id": "5fc5f9e15f8f38795ea6fca6",
+      "name": "广式叉烧",
+      "recipe_semantic_hash": "5e0bfaa99d5afc0a9e887f41909be94a8f9bb6ec8b325940e1988c419aaa050a",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_8000_01",
+          "action": "UNLOAD",
+          "description": "本次加工结束，移出食物并释放设备"
+        }
+      ],
+      "rationale": "主体最终热加工后的取出/释放段结束；原段含点缀时保留整段粒度；后续冷却切分装盘仍完整排程。"
+    },
+    {
+      "ordinal": 45,
+      "recipe_id": "5ff6ba8163f7535cecbfa247",
+      "name": "碳烤基围虾",
+      "recipe_semantic_hash": "38587b62ccbbeca6913deb62106a9abc12664e20d8ea47efa727d197fe758136",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_8001_01",
+          "action": "UNLOAD",
+          "description": "本次加工结束，移出食物并释放设备"
+        }
+      ],
+      "rationale": "主体最终热加工后的取出/释放段结束；原段含点缀时保留整段粒度；后续冷却切分装盘仍完整排程。"
+    },
+    {
+      "ordinal": 46,
+      "recipe_id": "58e70b0e9f6429675ec805d8",
+      "name": "清蒸鲈鱼",
+      "recipe_semantic_hash": "4c28c7b07b4328721af675c9fb9698d971e8db9f05953bff9af471c68c74956f",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_006_01",
+          "action": "UNLOAD",
+          "description": "烹饪结束后取出，轻轻倒掉盘内汤汁，将葱丝、姜丝撒在鲈鱼上，再均匀倒入蒸鱼豉油。"
+        }
+      ],
+      "rationale": "主体最终热加工后的取出/释放段结束；原段含点缀时保留整段粒度；后续冷却切分装盘仍完整排程。"
+    },
+    {
+      "ordinal": 47,
+      "recipe_id": "6510fb3445256c3ad7c25c93",
+      "name": "芝士番茄土豆泥",
+      "recipe_semantic_hash": "4ff8cceb8c6d3066808aa1304031b48bf0cf73a6ed842a0174a92bb36fd09002",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_013_01",
+          "action": "UNLOAD",
+          "description": "烤好后取出芝士番茄土豆泥。"
+        }
+      ],
+      "rationale": "主体最终热加工后的取出/释放段结束；原段含点缀时保留整段粒度；后续冷却切分装盘仍完整排程。"
+    },
+    {
+      "ordinal": 48,
+      "recipe_id": "5d638e17a9114174727c8d77",
+      "name": "草莓蛋挞",
+      "recipe_semantic_hash": "c5d72c3a58bbc69c9830e5b4cb1ad6003874d9e5b3021764a16f942b0956b5f3",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_011_01",
+          "action": "UNLOAD",
+          "description": "取出，再逐个放上草莓粒即可。"
+        }
+      ],
+      "rationale": "主体最终热加工后的取出/释放段结束；原段含点缀时保留整段粒度；后续冷却切分装盘仍完整排程。"
+    },
+    {
+      "ordinal": 49,
+      "recipe_id": "64706f406f734220a4e24b57",
+      "name": "竹荪排骨汤",
+      "recipe_semantic_hash": "2531253041273fb80d0f15937d2e3c61e4c34656c38c602e6f95dc1e10a8d3be",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_011_01",
+          "action": "UNLOAD",
+          "description": "蒸好取出，加入香油、食盐调味。"
+        }
+      ],
+      "rationale": "主体最终热加工后的取出/释放段结束；原段含点缀时保留整段粒度；后续冷却切分装盘仍完整排程。"
+    },
+    {
+      "ordinal": 50,
+      "recipe_id": "645c58f7614c1208ae1f5a60",
+      "name": "蒸茄龙",
+      "recipe_semantic_hash": "fa7e7697578506d2ef988c2fc8eb156c6c9723f53958c84ffcdaa80287590efe",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_8001_01",
+          "action": "UNLOAD",
+          "description": "本次加工结束，移出食物并释放设备"
+        }
+      ],
+      "rationale": "主菜茄子蒸熟释放；后续调酱锅不计。"
+    },
+    {
+      "ordinal": 51,
+      "recipe_id": "647ea23d85ea9528599ccb51",
+      "name": "香辣烤小龙虾",
+      "recipe_semantic_hash": "020366f93c9af8cbd24fd31ae54308c34f9e67e5acd19e6fe4e9ff17d471eb48",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_8001_01",
+          "action": "UNLOAD",
+          "description": "本次加工结束，移出食物并释放设备"
+        }
+      ],
+      "rationale": "主体最终热加工后的取出/释放段结束；原段含点缀时保留整段粒度；后续冷却切分装盘仍完整排程。"
+    },
+    {
+      "ordinal": 52,
+      "recipe_id": "5cc7e0404a21a4301960aef1",
+      "name": "糯米烧麦",
+      "recipe_semantic_hash": "c1ca96ebbfe6af77e2f3b317661f3f9726aab8ebc1d5ea2aa500ed74950cd018",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_023_01",
+          "action": "UNLOAD",
+          "description": "第二批完成后取出；两批均完成后才满足40个成品需求。"
+        }
+      ],
+      "rationale": "第二批取出后40个成品全部完成；保留两批。"
+    },
+    {
+      "ordinal": 53,
+      "recipe_id": "5caf2ec7e78bfc455f2d5cb0",
+      "name": "清蒸带鱼",
+      "recipe_semantic_hash": "14ebc77499dd57051227e658e4d7db5c7ff931c5c30b4ea2c3673ad2e0a8a361",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_007_01",
+          "action": "UNLOAD",
+          "description": "打开箱门，取出蒸好的带鱼，放上备好的葱丝，浇入适量生抽。"
+        }
+      ],
+      "rationale": "蒸带鱼取出；后续热油不计。"
+    },
+    {
+      "ordinal": 54,
+      "recipe_id": "65433d6a45256c3ad7c270ab",
+      "name": "手工鸡蛋豆腐",
+      "recipe_semantic_hash": "65327962291956d5ac61602a101abe2915b979474e415161486617c95cf9cb50",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_8000_01",
+          "action": "UNLOAD",
+          "description": "本次加工结束，移出食物并释放设备"
+        }
+      ],
+      "rationale": "主体最终热加工后的取出/释放段结束；原段含点缀时保留整段粒度；后续冷却切分装盘仍完整排程。"
+    },
+    {
+      "ordinal": 55,
+      "recipe_id": "645c5889614c1208ae1f5a24",
+      "name": "立夏饭",
+      "recipe_semantic_hash": "84c789291a5e88bafb2ef142d31898738d5aa9369e1b36e26e79c405b49deeee",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_8001_01",
+          "action": "UNLOAD",
+          "description": "本次加工结束，移出食物并释放设备"
+        }
+      ],
+      "rationale": "主体最终热加工后的取出/释放段结束；原段含点缀时保留整段粒度；后续冷却切分装盘仍完整排程。"
+    },
+    {
+      "ordinal": 56,
+      "recipe_id": "668759f0bfbee3388538968e",
+      "name": "嫩烤鸡胸肉",
+      "recipe_semantic_hash": "6868f62dae7b499be065651a4718f22bfc1285fc0eb41d8a58a93e22c9b79602",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_8001_01",
+          "action": "UNLOAD",
+          "description": "本次加工结束，移出食物并释放设备"
+        }
+      ],
+      "rationale": "主体最终热加工后的取出/释放段结束；原段含点缀时保留整段粒度；后续冷却切分装盘仍完整排程。"
+    },
+    {
+      "ordinal": 57,
+      "recipe_id": "5e6f131cd8dcd921c6736129",
+      "name": "蒸咸蛋酿苦瓜",
+      "recipe_semantic_hash": "417b82e825956dac68732ce06d62382a75aeb8d2d2ca10437d4f7ef03f023172",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_8001_01",
+          "action": "UNLOAD",
+          "description": "本次加工结束，移出食物并释放设备"
+        }
+      ],
+      "rationale": "主苦瓜蒸熟释放；咖喱味汁不计。"
+    },
+    {
+      "ordinal": 58,
+      "recipe_id": "5caf2e8fe78bfc455f2d5caa",
+      "name": "红豆糯米糕",
+      "recipe_semantic_hash": "aba711e29045ac8730f73aa5adeeeb55c8f1405206e7187d6deae654e4ba1dc0",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_8001_01",
+          "action": "UNLOAD",
+          "description": "本次加工结束，移出食物并释放设备"
+        }
+      ],
+      "rationale": "主体最终热加工后的取出/释放段结束；原段含点缀时保留整段粒度；后续冷却切分装盘仍完整排程。"
+    },
+    {
+      "ordinal": 59,
+      "recipe_id": "5caf2ddbe78bfc455f2d5c96",
+      "name": "糖霜饼干",
+      "recipe_semantic_hash": "046f807ab44877ebe767079d1c85f6015a5238ba4e252ccf6a34a2ba54a4d314",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_011_01",
+          "action": "UNLOAD",
+          "description": "烤制完成后取出饼干。"
+        }
+      ],
+      "rationale": "主体最终热加工后的取出/释放段结束；原段含点缀时保留整段粒度；后续冷却切分装盘仍完整排程。"
+    },
+    {
+      "ordinal": 60,
+      "recipe_id": "5c86417e98d5bc7e184a90a8",
+      "name": "抹茶红豆白玉卷",
+      "recipe_semantic_hash": "3cc7eac3fd1213d42f2a0814a7de377e5a46c1707a5a9cccbcfce52f89c45c90",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_8001_01",
+          "action": "UNLOAD",
+          "description": "本次加工结束，移出食物并释放设备"
+        },
+        {
+          "operation_id": "op_8002_01",
+          "action": "UNLOAD",
+          "description": "本次加工结束，移出食物并释放设备"
+        },
+        {
+          "operation_id": "op_014_01",
+          "action": "UNLOAD",
+          "description": "取出烤好的抹茶蛋糕放网架"
+        }
+      ],
+      "rationale": "红豆、糯米皮和蛋糕三个主体取最大；黄油为前处理，冷冻组装仍排程。"
+    },
+    {
+      "ordinal": 61,
+      "recipe_id": "5d664a986601a865649f9aba",
+      "name": "大理石饼干",
+      "recipe_semantic_hash": "5e8d6fff077f3b88e3483686c349e2179e962707be3069b88074c0d578ebb43a",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_018_01",
+          "action": "UNLOAD",
+          "description": "打开箱门，取出烤好的饼干即可。"
+        }
+      ],
+      "rationale": "主体最终热加工后的取出/释放段结束；原段含点缀时保留整段粒度；后续冷却切分装盘仍完整排程。"
+    },
+    {
+      "ordinal": 62,
+      "recipe_id": "65433a5545256c3ad7c26a5b",
+      "name": "莲藕虾肉饼",
+      "recipe_semantic_hash": "775812b5f32518833df0e40fc71324f8c9465b4510f10a81eac43d8c812af088",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_8000_01",
+          "action": "UNLOAD",
+          "description": "本次加工结束，移出食物并释放设备"
+        }
+      ],
+      "rationale": "主体最终热加工后的取出/释放段结束；原段含点缀时保留整段粒度；后续冷却切分装盘仍完整排程。"
+    },
+    {
+      "ordinal": 63,
+      "recipe_id": "6889acfbf5dd4d1e1f228e84",
+      "name": "沙参老鸭麦冬汤",
+      "recipe_semantic_hash": "0fdeb627aac6cbb2f5a6ba0bcf8a3c289c0a902e935d12c911a398c7f43b30ef",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_8001_01",
+          "action": "UNLOAD",
+          "description": "本次加工结束，移出食物并释放设备"
+        }
+      ],
+      "rationale": "主体最终热加工后的取出/释放段结束；原段含点缀时保留整段粒度；后续冷却切分装盘仍完整排程。"
+    },
+    {
+      "ordinal": 64,
+      "recipe_id": "5c81cf416dc6e123a037a1f0",
+      "name": "原味墨西哥面包",
+      "recipe_semantic_hash": "837471ae90b1f9b073e0107810e21fb91da7008ef0f12fa55968680b835d1c7d",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_8000_01",
+          "action": "UNLOAD",
+          "description": "本次加工结束，移出食物并释放设备"
+        }
+      ],
+      "rationale": "主体最终热加工后的取出/释放段结束；原段含点缀时保留整段粒度；后续冷却切分装盘仍完整排程。"
+    },
+    {
+      "ordinal": 65,
+      "recipe_id": "64f5510a255d3b02f695fde1",
+      "name": "腊味蒸素鸡",
+      "recipe_semantic_hash": "7175d11479442c56256979f8d6da4c0bcb343e2d20fc37368ac16487f499a3ef",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_007_01",
+          "action": "UNLOAD",
+          "description": "取出后撒上葱花即可食用。"
+        }
+      ],
+      "rationale": "主体最终热加工后的取出/释放段结束；原段含点缀时保留整段粒度；后续冷却切分装盘仍完整排程。"
+    },
+    {
+      "ordinal": 66,
+      "recipe_id": "5c8762bd98d5bc7e184a917c",
+      "name": "烤鱿鱼干",
+      "recipe_semantic_hash": "e2375eb567132d3526b7e2c4194d0fd7453d6203ffc97b0551db02992be5b347",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_8000_01",
+          "action": "UNLOAD",
+          "description": "本次加工结束，移出食物并释放设备"
+        }
+      ],
+      "rationale": "主体最终热加工后的取出/释放段结束；原段含点缀时保留整段粒度；后续冷却切分装盘仍完整排程。"
+    },
+    {
+      "ordinal": 67,
+      "recipe_id": "5fe1972d5f8f38795ea6fe7b",
+      "name": "秘制叉烧",
+      "recipe_semantic_hash": "4b6070491f1203304febca66189f084e15ca78e9cb5e2b4d40cc81c7732243c6",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_010_01",
+          "action": "UNLOAD",
+          "description": "待烹饪结束，取出即可食用。"
+        }
+      ],
+      "rationale": "主体最终热加工后的取出/释放段结束；原段含点缀时保留整段粒度；后续冷却切分装盘仍完整排程。"
+    },
+    {
+      "ordinal": 68,
+      "recipe_id": "65f7f4ee85eb6c79dfb992ff",
+      "name": "皂角银耳羹",
+      "recipe_semantic_hash": "720165b4567ae25dd387283246bfb704d1ec7f14c91a18d0dd577ee60d7cfa02",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_010_01",
+          "action": "UNLOAD",
+          "description": "蒸好后取出，撒上枸杞，可趁热食用。"
+        }
+      ],
+      "rationale": "原文取出合并撒枸杞的整段；不重写规范化设备释放关系。"
+    },
+    {
+      "ordinal": 69,
+      "recipe_id": "600e4f733f3ff83ca1e5191a",
+      "name": "柠檬干",
+      "recipe_semantic_hash": "a1034dbc5f605f40041f84ab94196b10a6cd7991636b44b6c329292d373a59f5",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_8000_01",
+          "action": "UNLOAD",
+          "description": "本次加工结束，移出食物并释放设备"
+        }
+      ],
+      "rationale": "主体最终热加工后的取出/释放段结束；原段含点缀时保留整段粒度；后续冷却切分装盘仍完整排程。"
+    },
+    {
+      "ordinal": 70,
+      "recipe_id": "5d5665cea9114174727c8be4",
+      "name": "培根披萨",
+      "recipe_semantic_hash": "14fa30d1c4a91ea15f26a4cf36181488256043d9f39e37d8e27c562a9e0072e2",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_017_04",
+          "action": "UNLOAD",
+          "description": "取出本步骤熟食"
+        }
+      ],
+      "rationale": "主体最终热加工后的取出/释放段结束；原段含点缀时保留整段粒度；后续冷却切分装盘仍完整排程。"
+    },
+    {
+      "ordinal": 71,
+      "recipe_id": "5cc7eb394a21a4301960af00",
+      "name": "银鱼蒸蛋",
+      "recipe_semantic_hash": "a66bf7920e114eb2b5c041dcd811a2be963ac757911909ff2c388da8a7d47d38",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_8000_01",
+          "action": "UNLOAD",
+          "description": "本次加工结束，移出食物并释放设备"
+        }
+      ],
+      "rationale": "主体最终热加工后的取出/释放段结束；原段含点缀时保留整段粒度；后续冷却切分装盘仍完整排程。"
+    },
+    {
+      "ordinal": 72,
+      "recipe_id": "5c871bef98d5bc7e184a90dd",
+      "name": "香烤鲫鱼",
+      "recipe_semantic_hash": "b9381b42fd9885955b53451e832ac6335c223240c16a25bbc38a203c74b52d61",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_007_01",
+          "action": "UNLOAD",
+          "description": "取出烤盘，放上葱花即可。"
+        }
+      ],
+      "rationale": "主体最终热加工后的取出/释放段结束；原段含点缀时保留整段粒度；后续冷却切分装盘仍完整排程。"
+    },
+    {
+      "ordinal": 73,
+      "recipe_id": "5cc7e58a4a21a4301960aefc",
+      "name": "温州鱼饼",
+      "recipe_semantic_hash": "2bc4e81794ca33cd95b98d16773f115d4fe44b25d7abba466afd1a68db52f8a4",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_8001_01",
+          "action": "UNLOAD",
+          "description": "本次加工结束，移出食物并释放设备"
+        }
+      ],
+      "rationale": "主体最终热加工后的取出/释放段结束；原段含点缀时保留整段粒度；后续冷却切分装盘仍完整排程。"
+    },
+    {
+      "ordinal": 74,
+      "recipe_id": "5d6656036601a865649f9ae1",
+      "name": "豆沙手撕包",
+      "recipe_semantic_hash": "c200bdd81e134fdc9e8cc86d44224fc4e8309549f58bbfeb9dfa82029c6e0c47",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_021_01",
+          "action": "UNLOAD",
+          "description": "打开箱门，取出即可。"
+        }
+      ],
+      "rationale": "主体最终热加工后的取出/释放段结束；原段含点缀时保留整段粒度；后续冷却切分装盘仍完整排程。"
+    },
+    {
+      "ordinal": 75,
+      "recipe_id": "66cec69b1142545e3856e07e",
+      "name": "亲朋欢聚套餐",
+      "recipe_semantic_hash": "3ccc0dccf7e9b2e2a946d0bf76ef6f881b9effc2f1dd50a0a54cf985248690ce",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_013_01",
+          "action": "UNLOAD",
+          "description": "程序结束后取出全部菜品。"
+        }
+      ],
+      "rationale": "主体最终热加工后的取出/释放段结束；原段含点缀时保留整段粒度；后续冷却切分装盘仍完整排程。"
+    },
+    {
+      "ordinal": 76,
+      "recipe_id": "5e4f4107d8dcd921c6735f7d",
+      "name": "披萨面团",
+      "recipe_semantic_hash": "6fa6565bd321341630eaa6c990bc82ae5bd01dc7728e265333c4c02359d163e3",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_005_08",
+          "action": "UNLOAD",
+          "description": "取出披萨"
+        }
+      ],
+      "rationale": "主体最终热加工后的取出/释放段结束；原段含点缀时保留整段粒度；后续冷却切分装盘仍完整排程。"
+    },
+    {
+      "ordinal": 77,
+      "recipe_id": "63495f5a728bf96da1acfa3a",
+      "name": "油醋汁剁肉饼蒸和乐蟹",
+      "recipe_semantic_hash": "ed37121ae648e0f70b6b14315f0cb02baef2134dda9e48d3149b3a8e61cc96c5",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_1001_01",
+          "action": "UNLOAD",
+          "description": "蒸熟肉饼蟹取出后淋油醋汁，作为真正最终合并点"
+        }
+      ],
+      "rationale": "主菜取出合并浇汁的原段，不用酱汁热锅。"
+    },
+    {
+      "ordinal": 78,
+      "recipe_id": "5c80d49c6dc6e123a037a1c5",
+      "name": "珍珠爆浆蛋糕",
+      "recipe_semantic_hash": "d3297d1e8d694b5071bb679f97801169d5824e2c607d0eedcb96dbb7c1b44786",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_009_01",
+          "action": "UNLOAD",
+          "description": "烘烤完成后取出蛋糕，倒扣。"
+        },
+        {
+          "operation_id": "op_017_01",
+          "action": "HEAT",
+          "description": "锅中放入红糖，加少许水，加热使红糖融化，捞出黑珍珠放入红糖中拌匀。"
+        }
+      ],
+      "rationale": "蛋糕取出与珍珠最终糖浆热处理取最大；珍珠末段无独立盛出节点，以有证据的热处理结束为代理，非实测纯出锅。"
+    },
+    {
+      "ordinal": 79,
+      "recipe_id": "6528fa7e45256c3ad7c25fcb",
+      "name": "豆沙松糕",
+      "recipe_semantic_hash": "b090c88a3e40b9819312ae0536844bef31daeef529228c6c1df2096e6242ceb5",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_010_01",
+          "action": "UNLOAD",
+          "description": "第二段蒸制结束后取出松糕。"
+        }
+      ],
+      "rationale": "主体最终热加工后的取出/释放段结束；原段含点缀时保留整段粒度；后续冷却切分装盘仍完整排程。"
+    },
+    {
+      "ordinal": 80,
+      "recipe_id": "662e07388b2aa2265e115477",
+      "name": "法式羊排",
+      "recipe_semantic_hash": "6929b5bfaf4e4874f0c90a819c340ab5577d188726877516bbf7864491d097ad",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_8000_01",
+          "action": "UNLOAD",
+          "description": "本次加工结束，移出食物并释放设备"
+        }
+      ],
+      "rationale": "主体最终热加工后的取出/释放段结束；原段含点缀时保留整段粒度；后续冷却切分装盘仍完整排程。"
+    },
+    {
+      "ordinal": 81,
+      "recipe_id": "68eefee6f5dd4d1e1f228fee",
+      "name": "茯苓饼干",
+      "recipe_semantic_hash": "32fe8bbebd54abd2763f4d3b40c243006c7f7b2f31c84d853ac2aa29dc676ee9",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_8001_01",
+          "action": "UNLOAD",
+          "description": "本次加工结束，移出食物并释放设备"
+        }
+      ],
+      "rationale": "主体最终热加工后的取出/释放段结束；原段含点缀时保留整段粒度；后续冷却切分装盘仍完整排程。"
+    },
+    {
+      "ordinal": 82,
+      "recipe_id": "6544c6c245256c3ad7c27455",
+      "name": "本帮白切鸡",
+      "recipe_semantic_hash": "e0473fb5614cf4b0e7ee61696cd7a068cf191f06301942e4798f804ae3d20187",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_015_01",
+          "action": "UNLOAD",
+          "description": "将蒸好的鸡取出，迅速放入冰水。"
+        }
+      ],
+      "rationale": "蒸鸡取出放冰水的整段；后续900秒冰浴不计出锅。"
+    },
+    {
+      "ordinal": 83,
+      "recipe_id": "6510fb7845256c3ad7c25cd8",
+      "name": "京韵酱香烤鸡",
+      "recipe_semantic_hash": "f5fd6f9019aa1179bbf553466c3e182f9288b288ff7aa30b6db4432f117d25fb",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_8000_01",
+          "action": "UNLOAD",
+          "description": "本次加工结束，移出食物并释放设备"
+        }
+      ],
+      "rationale": "主体最终热加工后的取出/释放段结束；原段含点缀时保留整段粒度；后续冷却切分装盘仍完整排程。"
+    },
+    {
+      "ordinal": 84,
+      "recipe_id": "65433d7145256c3ad7c270fb",
+      "name": "金银蒜蒸鸡胸肉",
+      "recipe_semantic_hash": "2c9120f53a01b07ef3cf2c6d374648e17f66f343b47200d746f19f28fa173e57",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_8001_01",
+          "action": "UNLOAD",
+          "description": "本次加工结束，移出食物并释放设备"
+        }
+      ],
+      "rationale": "主体最终热加工后的取出/释放段结束；原段含点缀时保留整段粒度；后续冷却切分装盘仍完整排程。"
+    },
+    {
+      "ordinal": 85,
+      "recipe_id": "5caf2ce0e78bfc455f2d5c7a",
+      "name": "土豆焖饭",
+      "recipe_semantic_hash": "34be38ca685c835ed4cd1bba519537fe265597d94642f268e65fd6106fa0c591",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_1001_01",
+          "action": "UNLOAD",
+          "description": "复蒸完成取出后撒葱花"
+        }
+      ],
+      "rationale": "复蒸后取出合并撒葱的整段。"
+    },
+    {
+      "ordinal": 86,
+      "recipe_id": "6543408e45256c3ad7c2744b",
+      "name": "蒜蓉粉丝烤茄子",
+      "recipe_semantic_hash": "7482c00c9704889a2afb1d2702eef8175821aef161cc8704e227d4c2c01dc9cf",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_016_01",
+          "action": "UNLOAD",
+          "description": "烤制完成 取出茄子 撒上葱花 放上小米辣装饰即可。"
+        }
+      ],
+      "rationale": "主体最终热加工后的取出/释放段结束；原段含点缀时保留整段粒度；后续冷却切分装盘仍完整排程。"
+    },
+    {
+      "ordinal": 87,
+      "recipe_id": "5dad486b6601a865649f9c15",
+      "name": "香菇烤芦笋",
+      "recipe_semantic_hash": "0a157f238e0e0ecefa9464e4b1bfd0d3b22d77f8838dc4b928b98f504f03c41f",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_8000_01",
+          "action": "UNLOAD",
+          "description": "本次加工结束，移出食物并释放设备"
+        },
+        {
+          "operation_id": "op_007_01",
+          "action": "UNLOAD",
+          "description": "把芦笋从烤盘中取出，放入长盘中，再放上香菇即可。"
+        }
+      ],
+      "rationale": "烤芦笋取出和煎香菇释放两主体取最大。"
+    },
+    {
+      "ordinal": 88,
+      "recipe_id": "5fe197255f8f38795ea6fe79",
+      "name": "麻辣对虾",
+      "recipe_semantic_hash": "5712e04a1b87bff490479d352f49530fc024803fe291d343f564b8363727c4e8",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_010_01",
+          "action": "UNLOAD",
+          "description": "烹饪结束后取出，撒上葱花即可食用。"
+        }
+      ],
+      "rationale": "主体最终热加工后的取出/释放段结束；原段含点缀时保留整段粒度；后续冷却切分装盘仍完整排程。"
+    },
+    {
+      "ordinal": 89,
+      "recipe_id": "65795214c458a177d8438b22",
+      "name": "血糯米仙草奶茶",
+      "recipe_semantic_hash": "41fbf200e460e539e013bf1894a0deac9845fd114eb5cb393598974ef71c1665",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_8000_01",
+          "action": "UNLOAD",
+          "description": "本次加工结束，移出食物并释放设备"
+        },
+        {
+          "operation_id": "op_8001_01",
+          "action": "UNLOAD",
+          "description": "本次加工结束，移出食物并释放设备"
+        },
+        {
+          "operation_id": "op_8002_01",
+          "action": "UNLOAD",
+          "description": "本次加工结束，移出食物并释放设备"
+        }
+      ],
+      "rationale": "奶茶、仙草糊、血糯米三热加工释放取最大，凝固冷却组装仍保留。"
+    },
+    {
+      "ordinal": 90,
+      "recipe_id": "5c8622ee98d5bc7e184a908b",
+      "name": "粉蒸藕丁",
+      "recipe_semantic_hash": "5568a419a06206a5999ccff844669f9ebaa47bbe87d2ea9d54093dddec0c2ee5",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_004_01",
+          "action": "UNLOAD",
+          "description": "烹饪结束后取出，即可趁热食用。"
+        }
+      ],
+      "rationale": "主体最终热加工后的取出/释放段结束；原段含点缀时保留整段粒度；后续冷却切分装盘仍完整排程。"
+    },
+    {
+      "ordinal": 91,
+      "recipe_id": "66dea6480d586d528ee9dd7c",
+      "name": "烹香酷炒汇",
+      "recipe_semantic_hash": "4664445c9a5600083e84be9cc6f10648eb90ce4712416bfee5d1354e09d815e0",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_025_01",
+          "action": "UNLOAD",
+          "description": "全部烹饪结束后取出。"
+        }
+      ],
+      "rationale": "主体最终热加工后的取出/释放段结束；原段含点缀时保留整段粒度；后续冷却切分装盘仍完整排程。"
+    },
+    {
+      "ordinal": 92,
+      "recipe_id": "5c82027a6dc6e123a037a209",
+      "name": "荷叶蒸蟹饭",
+      "recipe_semantic_hash": "8b27c13f3633737444d6bf15b5fd65cc170d14cd0ca84eb35f36d32a5fb7c1a4",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_012_03",
+          "action": "UNLOAD",
+          "description": "取出本步骤熟食"
+        }
+      ],
+      "rationale": "主体最终热加工后的取出/释放段结束；原段含点缀时保留整段粒度；后续冷却切分装盘仍完整排程。"
+    },
+    {
+      "ordinal": 93,
+      "recipe_id": "5d54ecfea9114174727c8b5b",
+      "name": "红枣酥饼",
+      "recipe_semantic_hash": "430c2aed0068f70c2f422fa1bb7af1d5f2634b6f6828b6dd91a7ee94114dc5bb",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_8000_01",
+          "action": "UNLOAD",
+          "description": "本次加工结束，移出食物并释放设备"
+        }
+      ],
+      "rationale": "主体最终热加工后的取出/释放段结束；原段含点缀时保留整段粒度；后续冷却切分装盘仍完整排程。"
+    },
+    {
+      "ordinal": 94,
+      "recipe_id": "5c80cea36dc6e123a037a1be",
+      "name": "香辣烤鸡爪",
+      "recipe_semantic_hash": "702ed446e705d17a8c3179fbc2ea2cfabe31433383bf022759bf1bc5e98bcf8a",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_8003_01",
+          "action": "UNLOAD",
+          "description": "本次加工结束，移出食物并释放设备"
+        }
+      ],
+      "rationale": "主体最终热加工后的取出/释放段结束；原段含点缀时保留整段粒度；后续冷却切分装盘仍完整排程。"
+    },
+    {
+      "ordinal": 95,
+      "recipe_id": "5fe197285f8f38795ea6fe7a",
+      "name": "玛格丽特",
+      "recipe_semantic_hash": "91171a9ddaa0ee146e181835b84934455b0f3cc4b1910e9c8c25aeccf79da39d",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_009_01",
+          "action": "UNLOAD",
+          "description": "烘烤结束后取出饼干。"
+        }
+      ],
+      "rationale": "主体最终热加工后的取出/释放段结束；原段含点缀时保留整段粒度；后续冷却切分装盘仍完整排程。"
+    },
+    {
+      "ordinal": 96,
+      "recipe_id": "6528fa4745256c3ad7c25d61",
+      "name": "紫甘蓝沙拉",
+      "recipe_semantic_hash": "bdf13ae09605c400841c834a39e1168fef206ad2d3862a4aa9cad5f17e84ad32",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_005_01",
+          "action": "UNLOAD",
+          "description": "蒸熟的藜麦，取出。"
+        }
+      ],
+      "rationale": "藜麦蒸熟取出是唯一热加工出锅，生蔬混合冷却装盘仍保留。"
+    },
+    {
+      "ordinal": 97,
+      "recipe_id": "65781f17c458a177d8438652",
+      "name": "巴斯克蛋糕",
+      "recipe_semantic_hash": "9946e5e66aaf3adecf49a792ca4bf52d914936c0d5dfc44273c50b02d3a9a497",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_007_01",
+          "action": "UNLOAD",
+          "description": "烹饪结束后取出蛋糕模具。"
+        }
+      ],
+      "rationale": "主体最终热加工后的取出/释放段结束；原段含点缀时保留整段粒度；后续冷却切分装盘仍完整排程。"
+    },
+    {
+      "ordinal": 98,
+      "recipe_id": "58e70b109f6429675ec805ed",
+      "name": "蒜蓉粉丝蒸扇贝",
+      "recipe_semantic_hash": "d269772cf9b8b4f612eab3b9da08fdd8cf752a20013b760229187683acd95307",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_010_01",
+          "action": "UNLOAD",
+          "description": "烹饪结束后取出，撒上葱花、红彩椒粒点缀，趁热食用。"
+        }
+      ],
+      "rationale": "主体最终热加工后的取出/释放段结束；原段含点缀时保留整段粒度；后续冷却切分装盘仍完整排程。"
+    },
+    {
+      "ordinal": 99,
+      "recipe_id": "5dad41646601a865649f9c06",
+      "name": "蔬菜塔",
+      "recipe_semantic_hash": "f2c8c0bb5ce32c1435bd4eabd540797b0e0f45314e9e86840f8ae1aa3f56468c",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_8001_01",
+          "action": "UNLOAD",
+          "description": "本次加工结束，移出食物并释放设备"
+        },
+        {
+          "operation_id": "op_8002_01",
+          "action": "UNLOAD",
+          "description": "本次加工结束，移出食物并释放设备"
+        }
+      ],
+      "rationale": "依资源预约：8002释放烤土豆、8001释放炒蔬菜，取两主体最大；不能按原文顺序猜测最后取出。"
+    },
+    {
+      "ordinal": 100,
+      "recipe_id": "6492a828933a4b7277dee6aa",
+      "name": "蜜豆卷馒头",
+      "recipe_semantic_hash": "bd9c49aa54aafc20fbe477b05c4c5a4fdd4248743a7ef8c8f790fe894335d444",
+      "kind": "OUT_OF_POT",
+      "anchors": [
+        {
+          "operation_id": "op_8000_01",
+          "action": "UNLOAD",
+          "description": "本次加工结束，移出食物并释放设备"
+        }
+      ],
+      "rationale": "主体最终热加工后的取出/释放段结束；原段含点缀时保留整段粒度；后续冷却切分装盘仍完整排程。"
+    }
+  ]
+}

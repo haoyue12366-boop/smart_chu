@@ -1,0 +1,25 @@
+{
+  "schema_version": "p3-preparation-cases-v1",
+  "knowledge_version": "development-v3-p3-preparation-v1",
+  "status": "IMPLEMENTATION_CASES_PREPARED_NOT_SHARED_ACCEPTANCE",
+  "real_menu": ["5c8200d96dc6e123a037a202", "5fe197175f8f38795ea6fe77"],
+  "cases": [
+    {"id":"T01","source":"SYNTHETIC_MUTATION_OF_REAL_SOURCE","expected":"规格或源内容变化后共享规则失效","current_test":"tests/unit/test_group_compatibility.py::test_changed_shape_or_quantity_invalidates_bound_rule"},
+    {"id":"T02","source":"REAL_RECIPES_DELEGATED_ESTIMATE","rule":"P3-S02-delegated-v1","expected":"一次共享加工、两个独立产物端口；240秒不预设提速","remaining":"P3-02/P3-03选中载体与精确覆盖验收"},
+    {"id":"T03","source":"SYNTHETIC_READY_TIME","expected":"晚就绪仍保留单独候选，共享可能无收益或更差","current_test":"tests/unit/test_group_compatibility.py::test_unknown_materials_and_impossible_window_are_rejected","remaining":"真实求解对比等待代价"},
+    {"id":"T04","source":"REAL_RECIPES_DELEGATED_ESTIMATE","rule":"P3-H02-delegated-v1","expected":"两菜有效热时长720秒，完整开发预约1500秒；10个源工序不能丢失","current_test":"tests/unit/test_p3_preflight.py::test_thermal_blueprint_includes_setup_and_full_outer_reservation","remaining":"P3-04/P3-05热批次端到端"},
+    {"id":"T05","source":"SYNTHETIC_THERMAL_DURATION","expected":"不同热时长不得统一取最大值","current_test":"tests/unit/test_group_compatibility.py::test_thermal_group_requires_equal_source_durations_and_common_device"},
+    {"id":"T06","source":"SYNTHETIC_CONFIGURATION","expected":"整组必须有共同配置；不同模式或温度不能因文本相似合批","current_test":"tests/unit/test_group_compatibility.py::test_pairwise_intersections_do_not_prove_three_way_compatibility","remaining":"蒸箱和烤箱不同模式/温湿度求解反例"},
+    {"id":"T07","source":"SYNTHETIC_RESOURCE_COMPETITION","expected":"保留唯一human_1及两个灶眼的真实占用","remaining":"P3选中共享载体与原单独任务共同竞争人工"},
+    {"id":"T14","source":"SYNTHETIC_EXECUTION_STATE","expected":"已加工成员不重新合并，余量须有真实库存依据","current_test":"tests/unit/test_group_compatibility.py::test_started_finished_or_failed_members_cannot_be_merged","remaining":"P4实际事件、余料账和加菜"},
+    {"id":"T15","source":"SYNTHETIC_EXECUTION_STATE","expected":"运行中热批次不接受自由中途加入","current_test":"tests/unit/test_group_compatibility.py::test_started_finished_or_failed_members_cannot_be_merged","remaining":"P4动态运行事件验收"}
+  ],
+  "ablation_modes": [
+    {"shared_prep":false,"strict_together_batch":false,"scope":"当前单独基线"},
+    {"shared_prep":true,"strict_together_batch":false,"scope":"P3接入后执行"},
+    {"shared_prep":false,"strict_together_batch":true,"scope":"P3接入后执行"},
+    {"shared_prep":true,"strict_together_batch":true,"scope":"P3接入后执行"}
+  ],
+  "comparison_controls": ["相同知识版本","相同菜单和份量","相同设备与人工","相同预算","保留无收益和失败记录"],
+  "claimed_shared_benefit": null
+}
