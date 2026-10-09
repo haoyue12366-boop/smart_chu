@@ -3471,3 +3471,7 @@ Ruling：原LOAD30秒仅绑定人工，按原文确为托盘放入设备，故�
 真实 Windows Edge/API：隔离 8012 端口及临时运行库，npm --prefix web run test:e2e -- tests/e2e/schedule_clock.spec.ts tests/e2e/competition_flow.spec.ts，2 项通过，33.3 秒；初排、同任务增量追加立即 v2、在途完成前重排、冻结记录不改、完成通知及刷新后版本保持均验证。报告 .tmp/render-read-20261009/browser-local/。修改 Python 文件 Ruff 检查/格式通过，3 个应用文件 mypy 通过；前端 TypeScript 与 Vite 生产构建通过。已检查变更范围，不提交本机运行证据、数据库或构建目录。
 
 公网验收待本次推送后执行；本地成功不代表免费实例任意负载都能满足预算。保留有界预算、独立校验及提交截止检查，不能用超时后发布冒充成功。Render 免费临时磁盘的部署/重启丢失数据问题仍属平台限制。
+
+补充公网证据：cf7c385 上线后（前端 index-BmQGgK5h.js）以酿苦瓜、金龙吐瑞、轻松一锅蒸真实初排，找到合法候选但发布回滚；归档 .tmp/render-read-20261009/cloud-new-deploy/post-1.json。编译2391ms、引擎5614ms、发布1107ms，系统总9505ms；求解预算仍7000ms且编译排除，不能将结果误报成功。旧固定600ms发布预留不足，还存在最后候选校验占用发布窗口的问题。
+
+引擎补充修复：每次独立候选扫描后，根据本请求最大实测校验/指标耗时，另外保留两次发布复核时间，并在Solver截止前再留最后候选扫描时间；所有截止只缩短，不扩总预算或放宽校验，已验证完整候选保留为合法回退。合成慢扫描200ms/次的反例在修改前只剩404ms，reserve-red.xml失败；修改后该项通过。相关慢SQLite通知事务与两条版本竞争累计预算回归最终3通过（reserve-final.xml），中间沙箱快照/临时目录PermissionError如实保留，仅提权读原测试快照重跑。新的引擎修改后两条真实浏览器再通过（browser-reserve/results.xml，32.9秒）。Ruff/格式和引擎mypy通过。继续等待补充提交的公网验收，不把第一轮已部署当作全面解决。

@@ -86,6 +86,25 @@ class PlanningEngine:
         stability_optimized = False
         allowance = self.computation_budget or ComputationBudget.from_spec(budget)
         quality_first = problem.policy.quality_first
+        solver_end = compute_end
+
+        def accept_candidate(
+            candidate: CandidateSchedule, stage: ObjectiveStage | None = None
+        ) -> bool:
+            nonlocal compute_end, solver_end
+            accepted_candidate = pool.add(candidate, stage)
+            # 发布还需独立扫描候选和串行参考，并写入预约、通知与回执。
+            # 静态预留覆盖存储，扫描预留按本请求实测开销增加；只缩短可选优化，
+            # 不扩大请求截止，也不复用旧 proof 跳过发布校验。
+            scan_ns = pool.max_validation_elapsed_ns
+            compute_end = min(
+                compute_end,
+                deadline.expires_at_ns - budget.publication_reserve_ms * 1_000_000 - scan_ns * 2,
+            )
+            # 最后一个 Solver 候选也要进入独立校验池，不能占用发布的时间。
+            solver_end = min(solver_end, compute_end - scan_ns * 2)
+            return accepted_candidate
+
         greedy_started = time.monotonic_ns()
         try:
             greedy_limit = Deadline(
@@ -118,7 +137,7 @@ class PlanningEngine:
             )
         finally:
             allowance.charge_greedy(time.monotonic_ns() - greedy_started)
-        if greedy.candidate is not None and pool.add(greedy.candidate):
+        if greedy.candidate is not None and accept_candidate(greedy.candidate):
             first_validated_ms = (time.monotonic_ns() - started) // 1_000_000
         fast_replan = (
             problem.policy.replan_search_mode == "FEASIBILITY_FIRST"
@@ -138,7 +157,7 @@ class PlanningEngine:
                 serial_reference_validation=empty.validation,
                 timings=greedy.timings,
             )
-        solver_end = min(compute_end, time.monotonic_ns() + allowance.solver_remaining_ns)
+        solver_end = min(solver_end, time.monotonic_ns() + allowance.solver_remaining_ns)
 
         def solve(
             stage: ObjectiveStage | None,
@@ -196,7 +215,7 @@ class PlanningEngine:
                 allowance.charge_solver(time.monotonic_ns() - solve_started)
             phases.append(result)
             if result.candidate is not None and time.monotonic_ns() < compute_end:
-                if pool.add(result.candidate, stage):
+                if accept_candidate(result.candidate, stage):
                     accepted.add(result.candidate.candidate_hash)
                     accepted_plans.add(
                         result.candidate.model_copy(update={"metrics": None}).candidate_hash
@@ -257,7 +276,7 @@ class PlanningEngine:
                 if (
                     reference_layout.candidate is not None
                     and serial_order_holds(reference_layout.candidate, problem)
-                    and pool.add(reference_layout.candidate)
+                    and accept_candidate(reference_layout.candidate)
                 ):
                     serial = next(
                         v
@@ -379,7 +398,7 @@ class PlanningEngine:
                             seed.candidate.model_copy(update={"metrics": None}).candidate_hash
                             in accepted_plans
                         )
-                        if pool.add(aligned):
+                        if accept_candidate(aligned):
                             if from_solver:
                                 accepted_plans.add(
                                     aligned.model_copy(update={"metrics": None}).candidate_hash
@@ -595,7 +614,7 @@ class PlanningEngine:
                     best.candidate.model_copy(update={"metrics": None}).candidate_hash
                     in accepted_plans
                 )
-                if pool.add(compacted):
+                if accept_candidate(compacted):
                     # 原求解阶段的候选、目标值和最优界保留；压紧另记计时，
                     # 最终计划重新校验，不将它冒充原 Solver 的最优性证据。
                     if from_solver:
@@ -628,7 +647,7 @@ class PlanningEngine:
                     best.candidate.model_copy(update={"metrics": None}).candidate_hash
                     in accepted_plans
                 )
-                if pool.add(tightened):
+                if accept_candidate(tightened):
                     best = next(
                         v
                         for v in pool.values.values()
