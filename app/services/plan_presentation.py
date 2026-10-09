@@ -1,6 +1,7 @@
 """公开图形投影使用实际端口、物理日历及冻结事实，界面不再推断批次偏移。"""
 
 from collections import Counter
+from dataclasses import replace
 
 from app.domain.candidates import stable_id
 from app.domain.carrier_timing import task_intervals
@@ -148,21 +149,19 @@ def presentation(plan: PublishedPlan, problem: SchedulingProblem) -> PlanPresent
     entries = entries_for(problem, assignments, include_fixed=True)
     if prepared_tasks:
         entries = tuple(
-            entry.model_copy(
-                update={
-                    "task_ids": tuple(task for task in entry.task_ids if task not in prepared_tasks)
-                }
+            replace(
+                entry,
+                task_ids=tuple(task for task in entry.task_ids if task not in prepared_tasks),
             )
             for entry in entries
             if not entry.task_ids or any(task not in prepared_tasks for task in entry.task_ids)
         )
     entries = tuple(
-        entry.model_copy(
-            update={
-                "use": entry.use.model_copy(
-                    update={"occupied_layer_indices": (), "layer_index": layer, "units": 1}
-                )
-            }
+        replace(
+            entry,
+            use=entry.use.model_copy(
+                update={"occupied_layer_indices": (), "layer_index": layer, "units": 1}
+            ),
         )
         if layer is not None
         else entry

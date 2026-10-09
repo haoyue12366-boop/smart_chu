@@ -122,6 +122,12 @@ class CpSatScheduler:
                 raise TimeoutError("求解调用前预算已耗尽")
             solver.parameters.num_search_workers = problem.policy.max_solver_search_workers
             solver.parameters.random_seed = 42
+            if builder.human_chain_enabled and problem.policy.max_solver_search_workers == 1:
+                # 单线程的连续人工模型主要靠时间/布尔传播；避免可选探测及
+                # 线性松弛抢占搜索时间。保留全部约束、精确目标和原预算，
+                # 求解器仍只在证明最优或共享截止到达时结束。
+                solver.parameters.cp_model_probing_level = 0
+                solver.parameters.linearization_level = 0
             status = solver.solve(builder.model)
             name = solver.status_name(status)
             self.last_build_report = report.model_copy(update={"solve_status": SolveStatus(name)})

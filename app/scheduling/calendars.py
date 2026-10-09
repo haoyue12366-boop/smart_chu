@@ -1,6 +1,10 @@
 """完整状态快照实现原子撤销；基线冻结事实永远不可撤销。"""
 
-from app.domain.base import content_hash
+import hashlib
+import json
+
+from pydantic import TypeAdapter
+
 from app.domain.resources import ResourceUse
 from app.domain.scheduling_problem import SchedulingProblem
 from app.scheduling.calendar_projection import entries_for, fixed_ports
@@ -11,6 +15,8 @@ from app.scheduling.calendar_types import (
     PlacementResult,
     VirtualOutput,
 )
+
+_SNAPSHOT_SERIALIZER = TypeAdapter(CalendarSnapshot)
 
 
 class CalendarState:
@@ -41,7 +47,16 @@ class CalendarState:
 
     @property
     def state_hash(self) -> str:
-        return content_hash(self.current)
+        # 完整值指纹仍用于撤销/排除状态；序列化内部 dataclass 不重复校验
+        # 已严格解码的领域对象。此指纹从不代替独立计划证明。
+        encoded = json.dumps(
+            _SNAPSHOT_SERIALIZER.dump_python(self.current, mode="json"),
+            ensure_ascii=False,
+            sort_keys=True,
+            separators=(",", ":"),
+            allow_nan=False,
+        )
+        return hashlib.sha256(encoded.encode("utf-8")).hexdigest()
 
     @property
     def material_allocations(self) -> tuple[MaterialAllocation, ...]:

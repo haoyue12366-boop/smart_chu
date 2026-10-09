@@ -20,6 +20,12 @@ def test_actual_device_occupation_is_visible_before_fault_or_recovery(tmp_path):
         )
         assert initial.status_code == 200, initial.text
         sid = initial.json()["session_id"]
+        plan = client.get(f"/api/v1/sessions/{sid}/plans/1").json()
+        first_device = min(
+            resource["start_sec"]
+            for resource in plan["presentation"]["resources"]
+            if resource["resource_id"] != "human_1" and resource["end_sec"] > resource["start_sec"]
+        )
         state = client.get(f"/api/v1/sessions/{sid}").json()
         result = client.post(
             f"/api/v1/sessions/{sid}/events",
@@ -29,7 +35,7 @@ def test_actual_device_occupation_is_visible_before_fault_or_recovery(tmp_path):
                 "source": "SIMULATED",
                 "expected_state_revision": state["runtime"]["state_revision"],
                 "base_plan_version": state["runtime"]["current_plan_version"],
-                "payload": {"advance_sec": 1},
+                "payload": {"advance_sec": first_device + 1},
             },
         )
         assert result.status_code == 200, result.text

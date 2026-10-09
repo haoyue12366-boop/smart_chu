@@ -195,7 +195,14 @@ def add_resource_constraints(builder: ModelBuilder) -> None:
                         (task,),
                     )
                 )
-    builder.human_intervals = [u for u in uses if u.use.resource_type == "HUMAN"]
+    # 零时长不消耗人工，也不能把两个真实休息段连接起来。资源及覆盖
+    # 约束仍保留；只从连续/累计人工目标中排除已证明为零的区间。
+    builder.human_intervals = [
+        use
+        for use in uses
+        if use.use.resource_type == "HUMAN"
+        and (use.interval.proto.interval.size.vars or use.interval.proto.interval.size.offset != 0)
+    ]
     hidden: set[int] = set()
     outer = []
     for reservation in problem.mandatory_programs.reservations:

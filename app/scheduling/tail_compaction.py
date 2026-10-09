@@ -1,6 +1,7 @@
 """在共享截止时间内提前出锅后的收尾；不改变出锅锚点、设备选择或实际事实。"""
 
 import time
+from dataclasses import replace
 
 from app.domain.carrier_timing import task_intervals
 from app.domain.ids import TaskId
@@ -48,13 +49,12 @@ def compact_cooking_tails(
         others = tuple(a for a in current.assignments if a.carrier_id != assignment.carrier_id)
         calendars = CalendarState(problem)
         ports = task_intervals(problem, others)
-        calendars.current = calendars.current.model_copy(
-            update={
-                "assignments": others,
-                "entries": calendars.current.entries + entries_for(problem, others),
-                "ports": calendars.current.ports
-                + tuple(TaskPort(task_id=task, interval=span) for task, span in ports.items()),
-            }
+        calendars.current = replace(
+            calendars.current,
+            assignments=others,
+            entries=calendars.current.entries + entries_for(problem, others),
+            ports=calendars.current.ports
+            + tuple(TaskPort(task_id=task, interval=span) for task, span in ports.items()),
         )
         layout = (
             assignment.model_copy(
@@ -72,22 +72,20 @@ def compact_cooking_tails(
                 if not assignment.resource_uses:
                     break
                 gap = problem.policy.objective.rest_gap_sec
-                calendars.current = calendars.current.model_copy(
-                    update={
-                        "entries": tuple(
-                            entry.model_copy(
-                                update={
-                                    "interval": Interval(
-                                        start_sec=max(0, entry.interval.start_sec - gap),
-                                        end_sec=entry.interval.end_sec + gap,
-                                    )
-                                }
-                            )
-                            if entry.use.resource_type == "HUMAN"
-                            else entry
-                            for entry in calendars.current.entries
+                calendars.current = replace(
+                    calendars.current,
+                    entries=tuple(
+                        replace(
+                            entry,
+                            interval=Interval(
+                                start_sec=max(0, entry.interval.start_sec - gap),
+                                end_sec=entry.interval.end_sec + gap,
+                            ),
                         )
-                    }
+                        if entry.use.resource_type == "HUMAN"
+                        else entry
+                        for entry in calendars.current.entries
+                    ),
                 )
             try:
                 placement = find_layout_placement(

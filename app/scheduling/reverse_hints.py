@@ -2,6 +2,7 @@
 
 import time
 from collections import defaultdict
+from dataclasses import replace
 
 from app.domain.carrier_timing import task_intervals
 from app.domain.ids import TaskId
@@ -64,17 +65,14 @@ def align_cooking_finishes(
             continue
         others = tuple(a for a in current.assignments if not set(a.task_ids) & block)
         calendars = CalendarState(problem)
-        calendars.current = calendars.current.model_copy(
-            update={
-                "assignments": others,
-                "entries": calendars.current.entries + entries_for(problem, others),
-                "ports": calendars.current.ports
-                + tuple(
-                    TaskPort(task_id=t, interval=span)
-                    for t, span in ports.items()
-                    if t not in block
-                ),
-            }
+        calendars.current = replace(
+            calendars.current,
+            assignments=others,
+            entries=calendars.current.entries + entries_for(problem, others),
+            ports=calendars.current.ports
+            + tuple(
+                TaskPort(task_id=t, interval=span) for t, span in ports.items() if t not in block
+            ),
         )
         try:
             placement = find_layout_placement(

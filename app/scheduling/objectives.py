@@ -9,6 +9,7 @@ from app.domain.ids import TaskId
 from app.domain.objectives import ObjectiveStage
 from app.domain.policy import SchedulingPolicy
 from app.domain.reports import SolverIndexMapping
+from app.scheduling.human_chain_bounds import HumanChainBounds
 
 if TYPE_CHECKING:
     from ortools.sat.python import cp_model
@@ -198,7 +199,8 @@ def _human_busy(builder: ModelBuilder) -> cp_model.IntVar:
     phases = builder.human_intervals
     if len(phases) > problem.policy.max_exact_human_phases:
         raise ValueError("人工精确阶段超过策略阈值")
-    maximum = model.new_int_var(0, problem.horizon_sec, "max-human-busy")
+    bounds = HumanChainBounds(builder)
+    maximum = model.new_int_var(bounds.minimum_busy_sec, problem.horizon_sec, "max-human-busy")
     if not phases:
         model.add(maximum == 0)
         return maximum
@@ -207,45 +209,61 @@ def _human_busy(builder: ModelBuilder) -> cp_model.IntVar:
         model.new_int_var(0, problem.horizon_sec, f"busy-start:{i}") for i in range(len(phases))
     ]
     spans = []
-    arcs: list[tuple[int, int, cp_model.IntVar]] = []
-    empty = model.new_bool_var("human-chain:empty")
-    arcs.append((0, 0, empty))
-    present_count = sum(p.presence for p in phases)
-    model.add(present_count == 0).only_enforce_if(empty)
-    model.add(present_count >= 1).only_enforce_if(empty.negated())
+    # 单人人工已由基础 NoOverlap 保护。任意两段之间不足休息阈值时，
+    # 后段的块起点不晚于前段的起点；连续相邻段的传递闭包给出真实块。
+    # 对每份合法排程，把起点设为真实块起点即可精确取值，因此不删任何
+    # 未来顺序。目标最优值/可行上限与原环路模型等价，无需搜索整条环路。
     for i, phase in enumerate(phases):
         builder.check_budget()
-        first = model.new_bool_var(f"human-chain:first:{i}")
-        last = model.new_bool_var(f"human-chain:last:{i}")
-        absent = model.new_bool_var(f"human-chain:absent:{i}")
-        model.add(absent + phase.presence == 1)
-        arcs.extend(((0, i + 1, first), (i + 1, 0, last), (i + 1, i + 1, absent)))
-        model.add(beginnings[i] == phase.start).only_enforce_if(first)
+        model.add(beginnings[i] <= phase.start).only_enforce_if(phase.presence)
         span = model.new_int_var(0, problem.horizon_sec, f"human-span:{i}")
         model.add(span == phase.end - beginnings[i]).only_enforce_if(phase.presence)
-        model.add(span == 0).only_enforce_if(absent)
+        model.add(span == 0).only_enforce_if(phase.presence.negated())
         spans.append(span)
-        for j, later in enumerate(phases):
-            if i == j:
-                continue
+    for i, phase in enumerate(phases):
+        for j in range(i + 1, len(phases)):
             builder.check_budget()
-            follows = model.new_bool_var(f"human-chain:{i}:{j}")
-            rested = model.new_bool_var(f"human-rest:{i}:{j}")
-            arcs.append((i + 1, j + 1, follows))
-            builder.sequence_arcs += 1
-            gap = later.start - phase.end
-            model.add(gap >= 0).only_enforce_if(follows)
-            model.add(gap >= problem.policy.objective.rest_gap_sec).only_enforce_if(
-                [follows, rested]
-            )
-            model.add(gap < problem.policy.objective.rest_gap_sec).only_enforce_if(
-                [follows, rested.negated()]
-            )
-            model.add(beginnings[j] == later.start).only_enforce_if([follows, rested])
-            model.add(beginnings[j] == beginnings[i]).only_enforce_if([follows, rested.negated()])
-    model.add_circuit(arcs)
+            forward, backward = bounds.can_follow(i, j), bounds.can_follow(j, i)
+            if not forward and not backward:
+                continue
+            active = [phase.presence, phases[j].presence]
+            orders: tuple[tuple[int, int, cp_model.LiteralT], ...]
+            if forward and backward:
+                before = model.new_bool_var(f"human-before:{i}:{j}")
+                orders = ((i, j, before), (j, i, before.negated()))
+            else:
+                orders = (
+                    ((i, j, model.new_constant(1)),)
+                    if forward
+                    else ((j, i, model.new_constant(1)),)
+                )
+            for first, second, ordered in orders:
+                _link_human_blocks(builder, beginnings, first, second, [*active, ordered])
     model.add_max_equality(maximum, spans)
     return maximum
+
+
+def _link_human_blocks(
+    builder: ModelBuilder,
+    beginnings: list[cp_model.IntVar],
+    first: int,
+    second: int,
+    enforcement: list[cp_model.LiteralT],
+) -> None:
+    model, problem = builder.model, builder.problem
+    phases = builder.human_intervals
+    builder.check_budget()
+    builder.sequence_arcs += 1
+    rested = model.new_bool_var(f"human-gap:{first}:{second}")
+    gap = phases[second].start - phases[first].end
+    model.add(gap >= 0).only_enforce_if(enforcement)
+    model.add(gap >= problem.policy.objective.rest_gap_sec).only_enforce_if([*enforcement, rested])
+    model.add(gap < problem.policy.objective.rest_gap_sec).only_enforce_if(
+        [*enforcement, rested.negated()]
+    )
+    model.add(beginnings[second] <= beginnings[first]).only_enforce_if(
+        [*enforcement, rested.negated()]
+    )
 
 
 def _stability(builder: ModelBuilder, stage: ObjectiveStage) -> cp_model.IntVar:

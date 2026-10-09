@@ -1,6 +1,7 @@
 """在出锅锚点不变时压紧设备预约内部空档，不用拖延取出来制造同步。"""
 
 import time
+from dataclasses import replace
 
 from app.domain.carrier_timing import task_intervals
 from app.domain.ids import CarrierId, TaskId
@@ -219,37 +220,34 @@ def _compact_group(
         return current
     others = tuple(a for a in current.assignments if a.carrier_id not in group)
     calendars = CalendarState(problem)
-    calendars.current = calendars.current.model_copy(
-        update={
-            "assignments": others,
-            "entries": calendars.current.entries + entries_for(problem, others),
-            "ports": calendars.current.ports
-            + tuple(
-                TaskPort(task_id=task, interval=span)
-                for task, span in task_intervals(problem, others).items()
-            ),
-        }
+    calendars.current = replace(
+        calendars.current,
+        assignments=others,
+        entries=calendars.current.entries + entries_for(problem, others),
+        ports=calendars.current.ports
+        + tuple(
+            TaskPort(task_id=task, interval=span)
+            for task, span in task_intervals(problem, others).items()
+        ),
     )
     # 最近空档可能恰好接上长人工段。保留真实休息后再试，不能直接放弃压紧。
     for preserve_rest in (False, True):
         if preserve_rest:
             gap = problem.policy.objective.rest_gap_sec
-            calendars.current = calendars.current.model_copy(
-                update={
-                    "entries": tuple(
-                        entry.model_copy(
-                            update={
-                                "interval": Interval(
-                                    start_sec=max(0, entry.interval.start_sec - gap),
-                                    end_sec=entry.interval.end_sec + gap,
-                                )
-                            }
-                        )
-                        if entry.use.resource_type == "HUMAN"
-                        else entry
-                        for entry in calendars.current.entries
+            calendars.current = replace(
+                calendars.current,
+                entries=tuple(
+                    replace(
+                        entry,
+                        interval=Interval(
+                            start_sec=max(0, entry.interval.start_sec - gap),
+                            end_sec=entry.interval.end_sec + gap,
+                        ),
                     )
-                }
+                    if entry.use.resource_type == "HUMAN"
+                    else entry
+                    for entry in calendars.current.entries
+                ),
             )
         placed = find_layout_placement(
             layout,

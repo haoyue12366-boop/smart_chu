@@ -33,8 +33,9 @@ def add_human_chain_hint(builder: ModelBuilder, hint: CandidateSchedule) -> None
             ):
                 start, end = phase.start.proto.domain[0], phase.end.proto.domain[0]
         elif (
-            phase.start.proto.domain[0] == phase.start.proto.domain[-1]
-            and phase.end.proto.domain[0] == phase.end.proto.domain[-1]
+            phase.start.proto.domain[0]
+            == phase.start.proto.domain[len(phase.start.proto.domain) - 1]
+            and phase.end.proto.domain[0] == phase.end.proto.domain[len(phase.end.proto.domain) - 1]
         ):
             start, end = phase.start.proto.domain[0], phase.end.proto.domain[0]
         else:
@@ -45,7 +46,6 @@ def add_human_chain_hint(builder: ModelBuilder, hint: CandidateSchedule) -> None
     order = sorted(spans, key=lambda i: (spans[i][0], spans[i][1], i))
     if any(spans[a][1] > spans[b][0] for a, b in zip(order, order[1:], strict=False)):
         return
-    following = set(zip(order, order[1:], strict=False))
     beginnings = {}
     block_start = 0
     prior_end = None
@@ -55,29 +55,24 @@ def add_human_chain_hint(builder: ModelBuilder, hint: CandidateSchedule) -> None
             block_start = start
         beginnings[i] = block_start
         prior_end = end
-    values = {
-        "human-chain:empty": int(not order),
-        "max-human-busy": max((spans[i][1] - beginnings[i] for i in order), default=0),
-    }
+    values = {"max-human-busy": max((spans[i][1] - beginnings[i] for i in order), default=0)}
     for i in range(len(builder.human_intervals)):
         builder.check_budget()
-        values[f"human-chain:first:{i}"] = int(bool(order) and i == order[0])
-        values[f"human-chain:last:{i}"] = int(bool(order) and i == order[-1])
-        values[f"human-chain:absent:{i}"] = int(i not in spans)
         values[f"busy-start:{i}"] = beginnings.get(i, 0)
         values[f"human-span:{i}"] = spans[i][1] - beginnings[i] if i in spans else 0
-        for j in range(len(builder.human_intervals)):
-            if i == j:
-                continue
-            values[f"human-chain:{i}:{j}"] = int((i, j) in following)
-            values[f"human-rest:{i}:{j}"] = int(
-                (i, j) in following
-                and spans[j][0] - spans[i][1] >= builder.problem.policy.objective.rest_gap_sec
-            )
     already = set(model.proto.solution_hint.vars)
     for index, variable in enumerate(model.proto.variables):
         if index % 64 == 0:
             builder.check_budget()
+        if variable.name.startswith(("human-before:", "human-gap:")):
+            kind, first, second = variable.name.split(":")
+            left, right = int(first), int(second)
+            values[variable.name] = int(
+                left in spans
+                and right in spans
+                and spans[right][0] - spans[left][1]
+                >= (0 if kind == "human-before" else builder.problem.policy.objective.rest_gap_sec)
+            )
         if index not in already and (index in variable_values or variable.name in values):
             model.add_hint(
                 model.get_int_var_from_proto_index(index),

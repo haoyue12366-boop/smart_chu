@@ -9,6 +9,7 @@ from app.domain.quantity import ScaledQuantity
 from app.domain.recovery import retained_input_tasks
 from app.validation.inventory import check_inventory_totals
 from app.validation.knowledge_materials import _share
+from app.validation.material_values import RequirementValue, requirement_value
 from app.validation.planned_materials import check_planned_allocations
 from app.validation.running_inputs import check_running_materials
 from app.validation.runtime_materials import check_actual_supply
@@ -38,7 +39,7 @@ def check_material_balance(scan: Scan) -> None:
     expected_supply_keys = set()
     # 全字段不可变值作为扫描内的比较键；保留数量、身份和来源，避免为每次
     # 供需/候选端口比较重复 JSON 编码及 SHA-256。这不是跨请求证明缓存。
-    expected_demands: Counter[tuple[TaskId, str, MaterialRequirement, Fraction, bool]] = Counter()
+    expected_demands: Counter[tuple[TaskId, str, RequirementValue, Fraction, bool]] = Counter()
     consumed: dict[str, Fraction] = defaultdict(Fraction)
     fixed = {
         t: e
@@ -67,7 +68,7 @@ def check_material_balance(scan: Scan) -> None:
             supply = supplies.get(key)
             if (
                 supply is None
-                or supply.requirement != requirement
+                or requirement_value(supply.requirement) != requirement_value(requirement)
                 or supply.producer_task_id != producer_task
             ):
                 scan.fail(
@@ -109,7 +110,9 @@ def check_material_balance(scan: Scan) -> None:
                 except (ValueError, ZeroDivisionError) as exc:
                     scan.fail("MATERIAL_QUANTITY", str(exc), task.root, requirement.spec_id)
                     continue
-                expected_demands[(task, supply.supply_id, requirement, share, is_loss)] += 1
+                expected_demands[
+                    (task, supply.supply_id, requirement_value(requirement), share, is_loss)
+                ] += 1
                 if task not in fixed and task not in supplied:
                     consumed[supply.supply_id] += share
                 producer_task = source[1]
@@ -130,7 +133,7 @@ def check_material_balance(scan: Scan) -> None:
         (
             d.task_id,
             d.supply_id,
-            d.requirement,
+            requirement_value(d.requirement),
             Fraction(d.share_numerator, d.share_denominator),
             d.is_loss,
         )
@@ -155,12 +158,12 @@ def check_material_balance(scan: Scan) -> None:
                     supply = supplies.get((task_model.recipe_instance_id, requirement.spec_id))
                     if supply is not None:
                         expected_ports.append(
-                            requirement.model_copy(
-                                update={"spec_id": supply.supply_id, "requirement_id": "port"}
+                            requirement_value(
+                                requirement, spec_id=supply.supply_id, requirement_id="port"
                             )
                         )
             actual_ports = [
-                r.model_copy(update={"requirement_id": "port"}) for r in getattr(carrier, port_name)
+                requirement_value(r, requirement_id="port") for r in getattr(carrier, port_name)
             ]
             if Counter(expected_ports) != Counter(actual_ports):
                 scan.fail("MATERIAL_BINDING", "候选物料端口偏离来源", carrier.carrier_id.root)

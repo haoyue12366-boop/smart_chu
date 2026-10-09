@@ -1,13 +1,15 @@
-"""Greedy 试排中的完整事务状态，时间仍为整数秒。"""
+"""Greedy 内部不可变事务值；对外候选仍由严格领域契约构造。"""
 
-from app.domain.base import FrozenModel, NonEmpty
+from dataclasses import dataclass
+
 from app.domain.ids import CarrierId, TaskId
 from app.domain.resources import ResourceUse
 from app.domain.schedule import ScheduledAssignment
 from app.domain.time import Interval
 
 
-class CalendarEntry(FrozenModel):
+@dataclass(frozen=True, slots=True, kw_only=True)
+class CalendarEntry:
     physical_key: tuple[str, str]
     interval: Interval
     use: ResourceUse
@@ -17,33 +19,38 @@ class CalendarEntry(FrozenModel):
     frozen: bool = False
 
 
-class TaskPort(FrozenModel):
+@dataclass(frozen=True, slots=True, kw_only=True)
+class TaskPort:
     task_id: TaskId
     interval: Interval
 
 
-class MaterialAllocation(FrozenModel):
-    demand_id: NonEmpty
-    supply_id: NonEmpty
+@dataclass(frozen=True, slots=True, kw_only=True)
+class MaterialAllocation:
+    demand_id: str
+    supply_id: str
     task_id: TaskId
 
 
-class VirtualOutput(FrozenModel):
-    supply_id: NonEmpty
+@dataclass(frozen=True, slots=True, kw_only=True)
+class VirtualOutput:
+    supply_id: str
     available_at_sec: int
 
 
-class PlacementResult(FrozenModel):
+@dataclass(frozen=True, slots=True, kw_only=True)
+class PlacementResult:
     assignments: tuple[ScheduledAssignment, ...] = ()
     entries: tuple[CalendarEntry, ...] = ()
     logical_time_mapping: tuple[TaskPort, ...] = ()
     material_allocations: tuple[MaterialAllocation, ...] = ()
     virtual_outputs: tuple[VirtualOutput, ...] = ()
-    rejection_reasons: tuple[NonEmpty, ...] = ()
+    rejection_reasons: tuple[str, ...] = ()
     gap_checks: int = 0
 
 
-class CalendarSnapshot(FrozenModel):
+@dataclass(frozen=True, slots=True, kw_only=True)
+class CalendarSnapshot:
     entries: tuple[CalendarEntry, ...] = ()
     assignments: tuple[ScheduledAssignment, ...] = ()
     ports: tuple[TaskPort, ...] = ()

@@ -61,7 +61,8 @@ def find_layout_placement(
         if t in tasks
     }
     frozen_instances.update(item.recipe_instance_id for item in problem.fixed_supply_fulfillments)
-    frozen_instances.update(item.recipe_instance_id for item in problem.advance_preparations)
+    # 提前备料仅声明供应已可用，不冻结整道菜的未来时间。实际在途/完成事实
+    # 仍锁定锚点；供应时刻、依赖和硬窗口继续在下面逐项限制插入范围。
     selected = {item.carrier_id for item in layout}
     supplied = {
         task
