@@ -241,6 +241,44 @@ afterEach(() => {
 });
 
 describe('authoritative plan clock workbench', () => {
+  it('keeps an addition selected during clock updates and submits a menu command', async () => {
+    const originalFetch = globalThis.fetch;
+    vi.stubGlobal('fetch', (input: string, init?: RequestInit) =>
+      String(input) === '/api/v1/recipes'
+        ? Promise.resolve(
+            Response.json({
+              ...catalog,
+              recipes: [
+                ...catalog.recipes,
+                {
+                  recipe_id: 'toy-addition',
+                  name: '合成追加菜',
+                  ingredient_names: [],
+                  operation_count: 1,
+                },
+              ],
+            }),
+          )
+        : originalFetch(input, init),
+    );
+    const wrapper = mountApp();
+    await flushPromises();
+    await wrapper.get('input[value="toy-addition"]').setValue(true);
+    current = { ...state(1, 31), runtime: { ...state(1, 31).runtime, state_revision: 8 } };
+    await vi.advanceTimersByTimeAsync(1000);
+    await flushPromises();
+    expect(wrapper.get<HTMLInputElement>('input[value="toy-addition"]').element.checked).toBe(true);
+    await wrapper.get('[data-testid=create-plan]').trigger('click');
+    await flushPromises();
+    expect(writes[0]?.path).toBe('/api/v1/sessions/toy-clock/recipes');
+    expect(writes[0]?.body).toMatchObject({
+      base_plan_version: 1,
+      recipes: [{ id: 'toy-addition', name: '合成追加菜' }],
+    });
+    expect(writes[0]?.body.expected_state_revision).toBeUndefined();
+    expect(writes[0]?.body.event_id).toBeTruthy();
+    wrapper.unmount();
+  });
   it('clears a recovered state-read error without keeping a stale red banner', async () => {
     const realFetch = globalThis.fetch;
     let offline = true;

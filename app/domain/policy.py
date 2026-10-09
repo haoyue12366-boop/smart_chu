@@ -14,6 +14,7 @@ class BudgetSpec(FrozenModel):
     solver_ms: PositiveInt
     publication_reserve_ms: PositiveInt
     compilation_ms: PositiveInt | None = Field(default=None, exclude_if=lambda value: value is None)
+    quality_ms: PositiveInt | None = Field(default=None, exclude_if=lambda value: value is None)
 
     @property
     def compilation_limit_ms(self) -> int:

@@ -4,7 +4,7 @@ from fastapi import APIRouter, Header, Request
 from fastapi.responses import JSONResponse
 from starlette.concurrency import run_in_threadpool
 
-from app.api.contracts import CreateSessionRequest, ReplanRequest
+from app.api.contracts import AddRecipeRequest, CreateSessionRequest, ReplanRequest
 from app.api.dependencies import container, deadline
 from app.domain.candidates import stable_id
 from app.domain.events import EventSource
@@ -50,6 +50,40 @@ async def create(body: CreateSessionRequest, request: Request) -> JSONResponse:
 @router.get("/{session_id}")
 def read(session_id: str, request: Request) -> dict[str, object]:
     return read_session(container(request), session_id)
+
+
+@router.post("/{session_id}/recipes")
+async def add_recipe(session_id: str, body: AddRecipeRequest, request: Request) -> JSONResponse:
+    """加菜按服务端当前时钟准入，仍核对计划版本并持久绑定请求身份。"""
+    services = container(request)
+    runtime, _ = await run_in_threadpool(services.for_session, session_id)
+    current = await run_in_threadpool(runtime.get, session_id)
+    preparation_budget = PreparationBudget(services.clock.monotonic_ns, request.state.started_ns)
+    record = await run_in_threadpool(
+        admit_menu,
+        services,
+        body.recipes,
+        stable_id("internal-add", session_id, body.event_id),
+        session_id=session_id,
+        base_plan_version=body.base_plan_version,
+        digest_payload={"session_id": session_id, **body.model_dump(mode="json")},
+        preparation_budget=preparation_budget,
+    )
+    result = await run_in_threadpool(
+        execute_request,
+        services,
+        record,
+        deadline(request, current.policy.replan_budget.total_ms),
+        preparation_budget=preparation_budget,
+    )
+    return JSONResponse(
+        status_code=202
+        if result.status == "PENDING"
+        else 409
+        if result.status == "EVENT_REJECTED"
+        else 200,
+        content=result.model_dump(mode="json"),
+    )
 
 
 @router.post("/{session_id}/replan")

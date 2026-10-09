@@ -29,7 +29,10 @@ const choices = computed(() =>
     .map((r) => ({ id: r.recipe_id, name: r.name })),
 );
 watch(
-  () => props.session?.runtime.state_revision,
+  [
+    () => props.session?.runtime.session_id,
+    () => props.session?.menu.map((recipe) => recipe.recipe_instance_id).join(','),
+  ],
   () => {
     selected.value = [];
   },

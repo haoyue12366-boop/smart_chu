@@ -54,6 +54,8 @@ def admit_menu(
     identity: str,
     *,
     task_id: str | None = None,
+    session_id: str | None = None,
+    base_plan_version: int | None = None,
     mode: EventSource = EventSource.MANUAL_CONFIRM,
     digest_payload: object | None = None,
     preparation_budget: PreparationBudget | None = None,
@@ -73,7 +75,9 @@ def admit_menu(
         old = requests.get(identity, digest)
         if old is not None:
             return old
-        existing_sid = requests.task_session(task_id) if task_id is not None else None
+        existing_sid = session_id or (
+            requests.task_session(task_id) if task_id is not None else None
+        )
     if existing_sid is not None:
         preparation_budget = preparation_budget or PreparationBudget(services.clock.monotonic_ns)
         with preparation_budget.measure(services.policy.replan_budget.total_ms) as clock_limit:
@@ -85,7 +89,7 @@ def admit_menu(
         if old is not None:
             return old
         repo = RuntimeRepository(tx)
-        sid = requests.task_session(task_id) if task_id is not None else None
+        sid = session_id or (requests.task_session(task_id) if task_id is not None else None)
         initial = sid is None
         if initial:
             sid = stable_id("session", identity)
@@ -99,6 +103,11 @@ def admit_menu(
             session = repo.get(sid)
             if session.status == "ENDED":
                 raise ServiceError("TASK_ENDED", "任务已经结束，请使用新的 task_id")
+            if (
+                base_plan_version is not None
+                and base_plan_version != session.runtime.current_plan_version
+            ):
+                raise ServiceError("STATE_CONFLICT", "计划版本已变化，请刷新后再追加")
             if len(recipes) != 1:
                 raise ServiceError("INVALID_REQUEST", "已有任务每次只能追加一道菜")
             cancelled = (

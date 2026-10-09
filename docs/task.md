@@ -3495,3 +3495,10 @@ Ruling：原LOAD30秒仅绑定人工，按原文确为托盘放入设备，故�
 验证：本轮107个不同测试身份最终都有通过结果；包含两组截图菜单的真实知识初排、加菜、纯重排，8菜/10菜完整初排与独立Validator，历史计划及冻结事实、时钟原点保留，真实进程退出恢复、慢结果传输、批量存储、会话读取、物料账本和事件幂等。Windows本机真实云配置链路4项305.89秒、8/10菜2项110.11秒；这些是整组测试时间，不是每请求耗时。中间失败及沙箱旧知识目录PermissionError全部保留，测试快照只经既有身份校验回退/提权读取；未改原目录权限和知识字节。另修正两个旧质量夹具显式采用其断言要求的TOTAL_HUMAN_WORK目标，以及旧协调夹具转发已有preparation_budget参数，原断言保留。Ruff检查/格式、mypy app 283文件与git diff --check通过。
 
 证据保留于本机 .tmp/render-budget-20261009/，临时运行库与报告不提交。当前仅完成本地验证，须推送后对新部署再执行公网初排、追加、纯重排及刷新；不替代完整P6/比赛实时预算验收，也不宣称免费磁盘具备持久恢复保障。
+
+
+首轮部署实测：d68b6c7 已推送并在 Render 上线（主页 Last-Modified 2026-10-09 13:41:17 UTC），上述四菜 HTTP200/PUBLISHED v1，独立Validator再次核验通过，worker ready200，约56.51秒；编译3789ms、引擎49217ms、发布2231ms。其中SERIAL_REFERENCE与C_MAKESPAN均OPTIMAL，E_QUALITY搜索约28002ms仍UNKNOWN、未返回候选。随后加菜被409拒绝，原始回复 state_revision 已自动推进；不能把初排成功报告为整链成功。本轮自建桌已RESET_SESSION结束，用户会话未操作；证据 public-api/。
+
+补充修复：联合质量阶段设置可选quality_ms上限，Render取10000ms，严格目标与放宽重试共享同一截止，仍扣原Solver累计余额；STANDARD不增加该字段，保持历史序列化和原阶段行为。策略升级为 :render-v2，已有v1桌不改绑定。新增工作台加菜命令 /api/v1/sessions/{session_id}/recipes 复用持久HTTP准入：服务器同步时钟后读取当前状态，客户端仍核对base_plan_version；同一event_id及请求体重试观察首次结果，不重复追加，重复菜与旧计划版本继续409。原/events中的人工事实反馈保持严格版本核对。前端勾选仅在桌次或菜单改变时清空，计时推进不清空选择。
+
+先失败证据：command-red.xml 的加菜命令404与联合质量调用超出200ms共享限时反例，frontend-command-red.xml 的计时刷新清空勾选反例。修复后command-green.xml的12项通过；其余5项质量回归因旧知识沙箱PermissionError，只读提权重跑command-quality-retry.xml为5通过。真实知识、JSON求解进程的最终Render配置6项通过（render-v2-green.xml，258.00秒），包括两组截图菜单初排、追加、重排、8/10菜完整初排、旧会话策略保留及进程恢复。本轮后端111个不同测试身份已有通过结果，前端47项通过，TypeScript、Vite生产构建、Ruff与mypy app通过。第二轮公网验收尚待新提交部署，不把本地成功写为已完全修复公网。

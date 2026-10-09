@@ -30,6 +30,12 @@ class ReplanRequest(SessionPayload):
     reason: NonEmpty = "请求重排剩余操作"
 
 
+class AddRecipeRequest(FrozenModel):
+    recipes: tuple[EventRecipe, ...] = Field(min_length=1, max_length=1)
+    event_id: NonEmpty
+    base_plan_version: NonNegativeInt
+
+
 class EventRequest(FrozenModel):
     event_id: NonEmpty
     event_type: EventType

@@ -87,7 +87,7 @@ def test_real_cloud_initial_addition_and_replan_keep_valid_history(cloud_client,
     after = client.get(f"/api/v1/sessions/{sid}").json()
     assert after["runtime"]["current_plan_version"] == 3
     assert after["schedule_clock"]["started_at"] == before["schedule_clock"]["started_at"]
-    assert after["policy"]["policy_version"].endswith(":render-v1")
+    assert after["policy"]["policy_version"].endswith(":render-v2")
     assert not after["requires_replan"]
     by_id = {e["execution_id"]: e for e in after["runtime"]["executions"]}
     for old in before["runtime"]["executions"]:
@@ -106,7 +106,7 @@ def test_cloud_restart_keeps_existing_session_budget(tmp_path, monkeypatch):
     monkeypatch.setenv("SMART_COOKING_PLANNING_PROFILE", "RENDER")
     with TestClient(create_app(AppSettings.from_environment())) as client:
         services = client.app.state.container
-        assert services.policy.policy_version.endswith(":render-v1")
+        assert services.policy.policy_version.endswith(":render-v2")
         assert services.for_session("old-session")[0].get("old-session").policy == old
 
 

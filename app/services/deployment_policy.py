@@ -16,10 +16,11 @@ def deployment_policy(
         solver_ms=45_000,
         publication_reserve_ms=25_000,
         compilation_ms=20_000,
+        quality_ms=10_000,
     )
     return policy.model_copy(
         update={
-            "policy_version": policy.policy_version + ":render-v1",
+            "policy_version": policy.policy_version + ":render-v2",
             "initial_budget": budget,
             "replan_budget": budget,
             "max_solver_search_workers": 1,

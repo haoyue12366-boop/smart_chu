@@ -159,6 +159,8 @@ class PlanningEngine:
             )
         solver_end = min(solver_end, time.monotonic_ns() + allowance.solver_remaining_ns)
 
+        quality_end: int | None = None
+
         def solve(
             stage: ObjectiveStage | None,
             cutoff: int,
@@ -166,7 +168,12 @@ class PlanningEngine:
             serial_menu: bool = False,
             seed_hint: ValidatedSchedule | None = None,
         ) -> SolveResult | None:
-            nonlocal first_validated_ms
+            nonlocal first_validated_ms, quality_end
+            if stage is not None and stage.name == "E_QUALITY" and budget.quality_ms is not None:
+                # 首次联合质量搜索及其放宽重试共享同一可选上限，不扩张总预算。
+                if quality_end is None:
+                    quality_end = time.monotonic_ns() + budget.quality_ms * 1_000_000
+                cutoff = min(cutoff, quality_end)
             if time.monotonic_ns() >= min(cutoff, solver_end) or allowance.solver_remaining_ns <= 0:
                 return None
             best = pool.best(cap, makespan_first=stage is None or stage.name == "A_MAKESPAN")

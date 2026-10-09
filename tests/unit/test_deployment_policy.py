@@ -36,13 +36,14 @@ def test_render_policy_preserves_rules_and_separately_bounds_compilation():
     original = SchedulingPolicy.model_validate_json(AppSettings().policy_path.read_bytes())
     before = original.model_dump_json()
     cloud = deployment_policy(original, "RENDER")
-    assert cloud.policy_version == original.policy_version + ":render-v1"
+    assert cloud.policy_version == original.policy_version + ":render-v2"
     for budget in (cloud.initial_budget, cloud.replan_budget):
         assert budget.total_ms == 90_000
         assert budget.greedy_ms == 10_000
         assert budget.solver_ms == 45_000
         assert budget.publication_reserve_ms == 25_000
         assert budget.compilation_limit_ms == 20_000
+        assert budget.quality_ms == 10_000
     assert cloud.max_solver_search_workers == 1
     assert (
         cloud.model_copy(
@@ -94,3 +95,33 @@ def test_serial_reference_phase_scales_with_authorized_cloud_budget(monkeypatch)
     assert result.status == "FAILED" and result.candidate is None
     assert calls[0][0]["serial_menu"]
     assert 10_000_000_000 < calls[0][1] <= 11_250_000_000
+
+
+def test_quality_retries_share_one_optional_search_limit():
+    knowledge, state, problem, _ = example()
+    cloud = deployment_policy(
+        problem.policy.model_copy(
+            update={"objective": ObjectiveSpec(stages=("SPREAD", "HUMAN_BUSY", "MAKESPAN"))}
+        ),
+        "RENDER",
+    )
+    budget = cloud.initial_budget.model_copy(update={"quality_ms": 200})
+    problem = problem.model_copy(
+        update={"policy": cloud.model_copy(update={"initial_budget": budget})}
+    )
+    limits = []
+
+    class UnavailableSolver:
+        def solve(self, problem, hint, limit, **kwargs):
+            if kwargs.get("stage") and kwargs["stage"].name == "E_QUALITY":
+                limits.append(limit.expires_at_ns)
+                assert 0 < limit.expires_at_ns - time.monotonic_ns() <= 200_000_000
+                time.sleep(0.03)
+            return SolveResult(status="UNKNOWN", problem_hash=problem.problem_hash)
+
+    result = PlanningEngine(validator=ScheduleValidator(), solver=UnavailableSolver()).plan(
+        problem, knowledge, state, deadline(90)
+    )
+    assert result.status == "VALIDATED" and result.validation.valid
+    assert len(limits) == 2 and limits[0] == limits[1]
+    assert not result.human_objective_optimized

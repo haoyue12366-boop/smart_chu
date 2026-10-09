@@ -291,7 +291,20 @@ export function useWorkbench() {
       sid,
     });
   };
-  const add = (recipe: RecipeChoice) => event('ADD_RECIPE', { recipes: [recipe] });
+  const add = (recipe: RecipeChoice) => {
+    if (!session.value) return Promise.resolve();
+    const sid = session.value.runtime.session_id;
+    return send({
+      path: `/api/v1/sessions/${encodeURIComponent(sid)}/recipes`,
+      body: {
+        recipes: [recipe],
+        event_id: crypto.randomUUID(),
+        base_plan_version: session.value.runtime.current_plan_version,
+      },
+      kind: 'event',
+      sid,
+    });
+  };
   const replan = () => {
     if (!session.value) return Promise.resolve();
     const sid = session.value.runtime.session_id;
