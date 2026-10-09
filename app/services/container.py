@@ -106,11 +106,21 @@ class ServiceContainer:
     def knowledge_for(self, session_id: str) -> MenuKnowledgeView:
         return self.for_session(session_id)[0].knowledge
 
-    def advance_clock(self, session_id: str, deadline: Deadline | None = None) -> RuntimeSession:
+    def advance_clock(
+        self,
+        session_id: str,
+        deadline: Deadline | None = None,
+        *,
+        persist_idle_progress: bool = True,
+    ) -> RuntimeSession:
         """在事件准入前或后台同步已流逝的时钟，串行处理同一会话的边界。"""
         with self.clock_locks.setdefault(session_id, Lock()):
             runtime, _ = self.for_session(session_id)
-            return ClockExecutionService(runtime).advance(session_id, deadline=deadline)
+            return ClockExecutionService(runtime).advance(
+                session_id,
+                deadline=deadline,
+                persist_idle_progress=persist_idle_progress,
+            )
 
     def clock_sessions(self) -> tuple[str, ...]:
         with self.store.engine.connect() as tx:
@@ -163,7 +173,7 @@ class ServiceContainer:
                 return
             if session_id not in unapplied:
                 with isolated_recovery(self.store, session_id):
-                    self.advance_clock(session_id)
+                    self.advance_clock(session_id, persist_idle_progress=False)
         for record in pending:
             if self.stopping.is_set() or self.foreground_requests:
                 return
@@ -183,7 +193,7 @@ class ServiceContainer:
             if self.stopping.is_set() or self.foreground_requests:
                 return
             with isolated_recovery(self.store, session_id):
-                self.advance_clock(session_id)
+                self.advance_clock(session_id, persist_idle_progress=False)
         for session_id in self.pending_sessions():
             if self.stopping.is_set() or self.foreground_requests:
                 return

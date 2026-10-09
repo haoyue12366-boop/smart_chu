@@ -18,6 +18,23 @@ export class ApiError extends Error {
   }
 }
 export async function request<T>(path: string, init?: RequestInit): Promise<T> {
+  const readOnly = !init?.method || init.method.toUpperCase() === 'GET';
+  for (let attempt = 0; ; attempt++) {
+    try {
+      return await requestOnce<T>(path, init);
+    } catch (error) {
+      const temporary =
+        error instanceof ApiError &&
+        (error.status === 0 ||
+          [502, 503, 504].includes(error.status) ||
+          (error.status === 200 && error.code === 'INVALID_RESPONSE'));
+      // 只重试无副作用的读取；写请求保留原身份由使用者查询确认。
+      if (!readOnly || !temporary || attempt >= 2 || init?.signal?.aborted) throw error;
+      await new Promise((resolve) => setTimeout(resolve, 250 * (attempt + 1)));
+    }
+  }
+}
+async function requestOnce<T>(path: string, init?: RequestInit): Promise<T> {
   let response: Response;
   try {
     response = await fetch(path, init);
@@ -28,9 +45,12 @@ export async function request<T>(path: string, init?: RequestInit): Promise<T> {
   try {
     data = await response.json();
   } catch {
+    const unavailable = [502, 503, 504].includes(response.status);
     throw new ApiError(
-      '服务返回的内容无法读取。',
-      'INVALID_RESPONSE',
+      unavailable
+        ? `服务暂时不可用（HTTP ${response.status}），请稍后重试。`
+        : `服务返回了无法解析的内容（HTTP ${response.status}），请刷新状态。`,
+      unavailable ? 'HTTP_UNAVAILABLE' : 'INVALID_RESPONSE',
       response.headers.get('X-Request-ID') ?? '',
       response.status,
     );

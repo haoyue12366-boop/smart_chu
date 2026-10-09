@@ -15,7 +15,12 @@ class ClockExecutionService:
         self.runtime = runtime
 
     def advance(
-        self, session_id: str, until_sec: int | None = None, deadline: Deadline | None = None
+        self,
+        session_id: str,
+        until_sec: int | None = None,
+        deadline: Deadline | None = None,
+        *,
+        persist_idle_progress: bool = True,
     ) -> RuntimeSession:
         session = self.runtime.get(session_id)
         if session.runtime.execution_mode != "SCHEDULE_CLOCK" or session.schedule_clock is None:
@@ -27,7 +32,12 @@ class ClockExecutionService:
         if deadline is not None and self.runtime.clock.monotonic_ns() >= deadline.expires_at_ns:
             raise TimeoutError("时钟推进预算耗尽，已落账的进度保留")
         cached = self.runtime.clock_scan_cache
-        if cached is not None and cached[0] == target and cached[1] == session:
+        if (
+            cached is not None
+            and cached[0] == target
+            and cached[1] == session
+            and (not persist_idle_progress or session.schedule_clock.processed_until_sec >= target)
+        ):
             return session
         actions = PublishedActions(self.runtime, session_id, namespace="clock")
         while True:
@@ -78,6 +88,11 @@ class ClockExecutionService:
                 ):
                     continue
                 raise ValueError("时钟推断未生效：" + str(result.rejection_reason))
+        # 后台空闲扫描无需每秒写回整桌状态；真实开始/完成已在上面的事件事务落账。
+        # 页面时钟直接由 started_at 推算，前台命令仍强制同步并保存当前偏移。
+        if not persist_idle_progress:
+            self.runtime.clock_scan_cache = target, session
+            return session
         # 纯时间经过不增加事实版本；同事务读取最新状态，避免覆盖并发人工修正。
         if clock is not None and target <= clock.processed_until_sec:
             self.runtime.clock_scan_cache = target, session
@@ -106,4 +121,6 @@ class ClockExecutionService:
                 self.runtime.clock_scan_cache = target, changed
                 return changed
         # 并发反馈使刚才的扫描失效；事务结束后重新扫描，不缓存未经处理的新状态。
-        return self.advance(session_id, target, deadline)
+        return self.advance(
+            session_id, target, deadline, persist_idle_progress=persist_idle_progress
+        )

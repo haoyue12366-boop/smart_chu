@@ -241,6 +241,69 @@ afterEach(() => {
 });
 
 describe('authoritative plan clock workbench', () => {
+  it('clears a recovered state-read error without keeping a stale red banner', async () => {
+    const realFetch = globalThis.fetch;
+    let offline = true;
+    vi.stubGlobal('fetch', (input: string, init?: RequestInit) =>
+      offline && String(input) === '/api/v1/sessions/toy-clock'
+        ? Promise.resolve(
+            Response.json(
+              { error: { code: 'NOT_FOUND', message: '临时读取失败' } },
+              { status: 404 },
+            ),
+          )
+        : realFetch(input, init),
+    );
+    const wrapper = mountApp();
+    await flushPromises();
+    expect(wrapper.text()).toContain('临时读取失败');
+    offline = false;
+    await vi.advanceTimersByTimeAsync(1000);
+    await flushPromises();
+    expect(wrapper.get('[data-testid=session-version]').text()).toContain('v1');
+    expect(wrapper.text()).not.toContain('临时读取失败');
+    wrapper.unmount();
+  });
+  it('replaces a pending-success message when background replanning fails', async () => {
+    const wrapper = mountApp();
+    await flushPromises();
+    await wrapper.get('[data-testid=replan-remaining]').trigger('click');
+    await flushPromises();
+    expect(wrapper.text()).toContain('请求已接受');
+    current = {
+      ...state(1, 35),
+      requires_replan: true,
+      dispatch_blocked: true,
+      last_planning_failure: '最终结果超过请求截止时间',
+    };
+    await vi.advanceTimersByTimeAsync(1000);
+    await flushPromises();
+    expect(wrapper.text()).toContain('最终结果超过请求截止时间');
+    expect(wrapper.text()).not.toContain('请求已接受，正在重排剩余操作，当前操作继续。');
+    wrapper.unmount();
+  });
+  it('does not erase an unresolved write failure when state reads recover', async () => {
+    const realFetch = globalThis.fetch;
+    vi.stubGlobal('fetch', (input: string, init?: RequestInit) =>
+      init?.method === 'POST'
+        ? Promise.resolve(
+            Response.json(
+              { error: { code: 'SERVICE_NOT_READY', message: '本次写入结果尚未确认' } },
+              { status: 503 },
+            ),
+          )
+        : realFetch(input, init),
+    );
+    const wrapper = mountApp();
+    await flushPromises();
+    await wrapper.get('[data-testid=replan-remaining]').trigger('click');
+    await flushPromises();
+    await vi.advanceTimersByTimeAsync(1000);
+    await flushPromises();
+    expect(wrapper.text()).toContain('本次写入结果尚未确认');
+    expect(wrapper.get('[data-testid=session-version]').text()).toContain('v1');
+    wrapper.unmount();
+  });
   it('shows persisted system overhead for initial and updated plans', async () => {
     const wrapper = mountApp();
     await flushPromises();

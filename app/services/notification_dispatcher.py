@@ -31,24 +31,31 @@ class NotificationDispatcher:
 
     def poll(self, session_id: str, after: int = 0) -> tuple[StreamMessage, ...]:
         runtime, _ = self.services.for_session(session_id)
+        missing_query = (
+            select(models.plans.c.body)
+            .where(
+                models.plans.c.session_id == session_id,
+                ~exists(
+                    select(models.notification_stream.c.cursor).where(
+                        models.notification_stream.c.deduplication_key
+                        == "plan-changed:" + models.plans.c.publication_id
+                    )
+                ),
+            )
+            .order_by(models.plans.c.version)
+        )
+        # SSE 的空轮询只读已提交记录，不申请 SQLite 唯一写锁。
+        # 有到期通知或历史补档时才进入写事务，并在锁内重新读取、核验。
+        with self.services.store.engine.connect() as tx:
+            missing = tx.execute(missing_query.limit(1)).first()
+            due = NotificationService().due(tx, session_id, runtime.clock.now())
+            if missing is None and not due:
+                return self._messages(tx, session_id, after)
         with self.services.store.transaction() as tx:
             repo = RuntimeRepository(tx)
             repo.get(session_id)
             # 旧数据库升级后仅补充尚未归档的历史发布；新计划已原子写入游标流。
-            missing = tx.execute(
-                select(models.plans.c.body)
-                .where(
-                    models.plans.c.session_id == session_id,
-                    ~exists(
-                        select(models.notification_stream.c.cursor).where(
-                            models.notification_stream.c.deduplication_key
-                            == "plan-changed:" + models.plans.c.publication_id
-                        )
-                    ),
-                )
-                .order_by(models.plans.c.version)
-            ).scalars()
-            for body in missing:
+            for body in tx.execute(missing_query).scalars():
                 self._plan_notice(tx, session_id, PublishedPlan.model_validate_json(body))
             service = NotificationService()
             for notice in service.due(tx, session_id, runtime.clock.now()):
@@ -59,15 +66,19 @@ class NotificationDispatcher:
                 text = operation_notice(problem, notice.task_ids, notice.kind, plan)
                 record = service.mark_sent(tx, notice.notification_id, runtime.clock.now())
                 self._notice(tx, record, text)
-            rows = tx.execute(
-                select(models.notification_stream.c.cursor, models.notification_stream.c.body)
-                .where(
-                    models.notification_stream.c.session_id == session_id,
-                    models.notification_stream.c.cursor > after,
-                )
-                .order_by(models.notification_stream.c.cursor)
-                .limit(200)
-            ).all()
+            return self._messages(tx, session_id, after)
+
+    @staticmethod
+    def _messages(tx: Connection, session_id: str, after: int) -> tuple[StreamMessage, ...]:
+        rows = tx.execute(
+            select(models.notification_stream.c.cursor, models.notification_stream.c.body)
+            .where(
+                models.notification_stream.c.session_id == session_id,
+                models.notification_stream.c.cursor > after,
+            )
+            .order_by(models.notification_stream.c.cursor)
+            .limit(200)
+        ).all()
         return tuple(StreamMessage(cursor=row.cursor, **json.loads(row.body)) for row in rows)
 
     @staticmethod

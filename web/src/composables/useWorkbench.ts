@@ -40,6 +40,7 @@ export function useWorkbench() {
   let stream: EventSource | undefined;
   let interval: ReturnType<typeof setInterval> | undefined;
   let refreshActive = false;
+  let errorSource: 'action' | 'refresh' = 'action';
   let selectedSid: string | null = null;
   let awaitingPublication: { sid: string; version: number; retry?: Pending } | null = null;
   const stale = computed(
@@ -48,7 +49,8 @@ export function useWorkbench() {
       ((session.value.dispatch_blocked && !session.value.requires_replan) ||
         !!session.value.last_planning_failure),
   );
-  function failure(reason: unknown) {
+  function failure(reason: unknown, source: 'action' | 'refresh' = 'action') {
+    errorSource = source;
     error.value = reason instanceof Error ? reason.message : '操作没有完成，请查看当前状态。';
     requestId.value = reason instanceof api.ApiError ? reason.requestId : '';
   }
@@ -76,7 +78,7 @@ export function useWorkbench() {
         )
           void refresh();
       } catch {
-        error.value = '有一条通知无法读取，请刷新会话。';
+        failure(new Error('有一条通知无法读取，请刷新会话。'));
       }
     });
   }
@@ -118,6 +120,14 @@ export function useWorkbench() {
       }
       session.value = value;
       notices.value = inbox.current(version);
+      if (errorSource === 'refresh' && !pending.value) {
+        error.value = '';
+        requestId.value = '';
+      }
+      if (awaitingPublication?.sid === sid && value.last_planning_failure) {
+        awaitingPublication = null;
+        resultText.value = '';
+      }
       if (
         awaitingPublication?.sid === sid &&
         !value.requires_replan &&
@@ -133,7 +143,7 @@ export function useWorkbench() {
         }
       }
     } catch (reason) {
-      failure(reason);
+      if (sid === selectedSid) failure(reason, 'refresh');
     } finally {
       refreshActive = false;
     }
