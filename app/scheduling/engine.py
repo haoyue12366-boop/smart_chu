@@ -372,6 +372,7 @@ class PlanningEngine:
                     solver_end,
                     seed_started + max(0, solver_end - seed_started) // 5,
                 )
+                spread_seed_result: SolveResult | None = None
                 solve(
                     ObjectiveStage(
                         name="C_MAKESPAN", makespan_cap_sec=cap, spread_excess_cap_sec=0
@@ -385,7 +386,7 @@ class PlanningEngine:
                     or objective_spread(seed.candidate.metrics, problem)
                     > problem.policy.objective.spread_target_sec
                 ):
-                    solve(
+                    spread_seed_result = solve(
                         ObjectiveStage(name="B_SPREAD", makespan_cap_sec=cap),
                         seed_started + max(0, solver_end - seed_started) * 2 // 5,
                     )
@@ -441,7 +442,22 @@ class PlanningEngine:
                         objective_spread(seed.candidate.metrics, problem)
                         - problem.policy.objective.spread_target_sec,
                     )
-                    if excess:
+                    spread_proven = (
+                        spread_seed_result is not None
+                        and spread_seed_result.status == "OPTIMAL"
+                        and spread_seed_result.objective_stage == "B_SPREAD"
+                        and spread_seed_result.problem_hash == problem.problem_hash
+                        and spread_seed_result.objective_value
+                        == spread_seed_result.best_bound
+                        == excess
+                        and spread_seed_result.candidate is not None
+                        and spread_seed_result.candidate.candidate_hash in accepted
+                        and seed.candidate.metrics.makespan_sec <= cap
+                    )
+                    # 前一阶段的域包含当前更紧流程界；已独立接纳的候选
+                    # 在新界内达到同一最优下界，重复优化极差不能更好。
+                    # 仍进入下面完整的联合人工/总流程搜索，不固定菜序。
+                    if excess and not spread_proven:
                         # 达标未果时，把一小段剩余预算专用于改善出锅差。
                         # 使用完整提示及现有流程界，不把难度转移为更长的整桌等待。
                         solve(
