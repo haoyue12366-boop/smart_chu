@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import logging
+import math
 import multiprocessing
 import os
 import queue
@@ -24,6 +26,8 @@ from app.domain.scheduling_problem import SchedulingProblem
 if TYPE_CHECKING:
     from multiprocessing.process import BaseProcess
     from multiprocessing.queues import Queue
+
+logger = logging.getLogger(__name__)
 
 
 class WorkerJob(FrozenModel):
@@ -90,7 +94,11 @@ class SolverWorker:
         self,
         *,
         target: Callable[[Queue[WorkerJob | str], Queue[WorkerResponse]], None] | None = None,
+        startup_timeout_sec: float = 10,
     ) -> None:
+        if not math.isfinite(startup_timeout_sec) or startup_timeout_sec <= 0:
+            raise ValueError("求解进程启动等待必须为有限正秒数")
+        self._startup_timeout_ns = int(startup_timeout_sec * 1_000_000_000)
         self._context = multiprocessing.get_context("spawn")
         self._target = target or _worker_loop
         self._process: BaseProcess | None = None
@@ -118,7 +126,10 @@ class SolverWorker:
         return self._process is not None and self._process.is_alive()
 
     def warmup(self, deadline: Deadline | None = None) -> bool:
-        deadline = deadline or Deadline(expires_at_ns=time.monotonic_ns() + 10_000_000_000)
+        # 生命周期预热使用独立启动上限；请求内恢复仍服从调用方的共享截止时间。
+        deadline = deadline or Deadline(
+            expires_at_ns=time.monotonic_ns() + self._startup_timeout_ns
+        )
         if time.monotonic_ns() >= deadline.expires_at_ns:
             return False
         if self.is_alive and self._ready:
@@ -133,7 +144,7 @@ class SolverWorker:
             self._process.start()
         assert self._startup_started_ns is not None and self._outbox is not None
         started = self._startup_started_ns
-        startup_end = started + 10_000_000_000
+        startup_end = started + self._startup_timeout_ns
         cutoff = min(deadline.expires_at_ns, startup_end)
         while time.monotonic_ns() < cutoff:
             if not self.is_alive:
@@ -151,6 +162,18 @@ class SolverWorker:
         # 此进程尚未接作业，阶段截止不使预热失效。后续阶段共用同一次
         # 有上限的预热；真实作业超时仍由 solve 终止并拒绝过期结果。
         if not self.is_alive or time.monotonic_ns() >= startup_end:
+            if self.is_alive:
+                logger.error(
+                    "求解进程预热超过启动等待上限 %.1f 秒（PID %s），已终止未就绪进程",
+                    self._startup_timeout_ns / 1e9,
+                    self.process_id,
+                )
+            else:
+                logger.error(
+                    "求解进程在就绪前退出（PID %s，exitcode=%s）",
+                    self.process_id,
+                    self._process.exitcode if self._process is not None else None,
+                )
             self._abort()
         return False
 

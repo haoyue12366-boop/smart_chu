@@ -22,6 +22,8 @@ uv run --no-sync uvicorn app.main:create_app --factory --host 0.0.0.0 --port $PO
 
 前端由同一 FastAPI 服务提供，健康检查路径为 `/health/ready`。比赛运行建议使用常驻付费实例，并挂载持久磁盘 `/var/data`，设置 `SMART_COOKING_DATABASE_PATH=/var/data/runtime.sqlite3`、`SMART_COOKING_LANGUAGE_ARCHIVE_PATH=/var/data/intent-runs`、`SMART_COOKING_TIMEZONE=Asia/Shanghai`。保持单实例和单个 API worker。只设置路径不会创建持久磁盘，必须在 Render 中配置实际挂载。
 
+免费实例试运行时，省略上述两个 `/var/data` 路径变量，使用项目默认可写目录；免费实例的休眠、重启、重新部署会丢失临时运行数据。在线服务默认最多等待求解进程预热 120 秒，可通过 `SMART_COOKING_SOLVER_STARTUP_TIMEOUT_SEC` 调整（有限正秒数，最大 600）。该上限仅用于进程准备，不扩大初排或重排的请求求解预算；进程未就绪仍会启动失败，日志区分预热超时和子进程提前退出。健康检查继续使用 `/health/ready`。
+
 大模型相关代码位于 `app/llm/`。结构化初排、加菜和重排默认使用本地知识与调度器；需要自然语言入口时设置 `SMART_COOKING_LANGUAGE_ENABLED=1`、`DEEPSEEK_API_KEY`，并按账号可用模型设置 `DEEPSEEK_MODEL`。密钥只通过平台环境变量提供，不写入仓库。
 
 Render 部署流程依据 [FastAPI 部署](https://render.com/docs/deploy-fastapi)、[原生运行环境](https://render.com/docs/native-runtimes)及[持久磁盘](https://render.com/docs/disks)。当前已有验收在 Windows 完成；GitHub 上传不等于 Render 或公网验收，首次云端部署后仍需检查首页、`/docs`、健康检查、初排、同任务加菜重排及重启后的任务恢复。

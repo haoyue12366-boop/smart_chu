@@ -3449,3 +3449,13 @@ Ruling：原LOAD30秒仅绑定人工，按原文确为托盘放入设备，故�
 新增 .gitattributes 禁止对 data 文件作换行转换，保护知识 manifest 的字节哈希；README 补充当前源码的 Render 构建、启动、持久磁盘及可选大模型环境变量说明。当前仓库尚无 Render 实际部署验收，不改变既有 Windows 验收边界。
 
 本次提交范围核对为 743 个文件，其中默认知识发布 41 个文件；常见令牌、API 密钥、私钥及 URL 内嵌凭据特征扫描未发现匹配项。暂存树通过 git archive 导出，41 个知识文件与工作目录原始字节逐一一致；从导出目录实际运行 scripts.check_snapshot --deny-network，通过加载 100 道菜、1562 道工序，网络调用 0 次。证据保存在本机 .tmp/github-upload-20261009/upload-audit.json 与 snapshot-check.json，不将本机验证产物提交到远端。本轮未修改调度业务代码，未重复运行完整应用测试。
+
+## 2026-10-09：Render 求解进程冷启动修复
+
+用户提供 Render 首次部署失败日志并要求继续处理：构建成功，ServiceContainer.start 在预热阶段报“求解进程未就绪”。定位到 SolverWorker 同时将默认等待和单个进程累计预热上限写死为 10 秒。以真实 JSON 工作进程合成延迟 11 秒启动，旧实现确实抛出相同 TimeoutError；失败证据为 .tmp/render-startup-20261009/red.xml（1 项失败），未伪造就绪消息或求解结果。
+
+在线服务独立设置启动等待，默认 120 秒，可由 SMART_COOKING_SOLVER_STARTUP_TIMEOUT_SEC 配置有限正秒数（最大 600）。保留单个进程累计启动上限、真实 ready 消息及健康检查，进程超时或提前退出仍回收并拒绝就绪，新增日志区分启动超时与退出码。请求内恢复继续取请求共享截止和启动上限中的较早者，不扩大初排、重排求解预算，不改变时钟、编译和求解计时口径。直接构造的离线 SolverWorker/JsonSolverWorker 仍默认 10 秒。README 与部署环境变量示例同步说明免费实例路径和该启动配置。
+
+验证：启动专项、应用生命周期、JSON 传输、进程故障注入和启动上下文共 26 项不同测试身份已有通过结果。首次相关回归 green.xml 为 16 通过、10 项旧知识目录 PermissionError；按既有测试机制使用 .tools/p2-regression/releases 同身份快照，SMART_COOKING_TEST_RELEASE_ROOT 的既有校验核对原 snapshot_id/release_id 后，仅重跑失败项，green-retry.xml 为 10 通过（65.03 秒）。未修改原知识权限、快照身份或通过项断言。实际慢启动后检查 /health/ready、100 道菜目录、真实求解和独立 Validator；同时验证短请求截止仍有效、多次预热不重置启动上限、超时进程回收和失败启动不发布 ready。Ruff 检查与格式检查通过，4 个修改应用文件的 mypy 通过。证据均保留于本机 .tmp/render-startup-20261009/，不提交缓存及报告。只有既有 Starlette/AnyIO 弃用警告，无新增验证失败。
+
+本次验证在 Windows 完成，未重复运行完整历史验收。Render 公网启动情况须以推送后新部署及实际 /health/ready 响应为准；本地回归不代表免费云实例已经通过性能或完整业务验收。未修改用户运行数据库、不可变知识发布和既有交付 ZIP。

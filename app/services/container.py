@@ -30,7 +30,7 @@ class ServiceContainer:
         self.settings = settings
         self.clock = SystemClock()
         self.repository = SnapshotKnowledgeRepository(settings.release_root)
-        self.worker = JsonSolverWorker()
+        self.worker = JsonSolverWorker(startup_timeout_sec=settings.solver_startup_timeout_sec)
         self.job_lock = Lock()
         self.runtimes: dict[str, RuntimeService] = {}
         self.planners: dict[str, PlanningService] = {}
@@ -70,7 +70,11 @@ class ServiceContainer:
             )
         self.knowledge = self.runtimes[self.settings.release_id].knowledge
         if not self.worker.warmup():
-            raise TimeoutError("求解进程未就绪")
+            raise TimeoutError(
+                "求解进程未就绪"
+                f"（启动等待上限 {self.settings.solver_startup_timeout_sec:g} 秒，"
+                "详见前面的预热超时或子进程退出日志）"
+            )
         self.ready = True
 
     @property

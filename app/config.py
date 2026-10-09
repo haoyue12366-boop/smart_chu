@@ -20,6 +20,7 @@ class AppSettings(FrozenModel):
     language_archive_path: Path = ROOT / "data/runtime/intent-runs"
     timezone: NonEmpty = "Asia/Shanghai"
     recovery_interval_sec: float = Field(default=0.5, gt=0)
+    solver_startup_timeout_sec: float = Field(default=120, gt=0, le=600, allow_inf_nan=False)
 
     @classmethod
     def from_environment(cls) -> "AppSettings":
@@ -32,6 +33,7 @@ class AppSettings(FrozenModel):
             "frontend_path",
             "language_archive_path",
             "timezone",
+            "solver_startup_timeout_sec",
         ):
             value = os.getenv("SMART_COOKING_" + name.upper())
             if value:

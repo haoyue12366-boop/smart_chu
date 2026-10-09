@@ -63,9 +63,9 @@ def _json_worker_loop(inbox: Queue[WorkerJob | str], outbox: Queue[WorkerRespons
 
 
 class JsonSolverWorker(SolverWorker):
-    def __init__(self) -> None:
+    def __init__(self, *, startup_timeout_sec: float = 10) -> None:
         # 仅显式构造在线工作进程时注册。纯对照/扰动脚本使用原 SolverWorker，
         # 不构造此适配器，也不改变它们的消息传输或预算。
         ForkingPickler.register(WorkerJob, _encode_job)
-        super().__init__(target=_json_worker_loop)
+        super().__init__(target=_json_worker_loop, startup_timeout_sec=startup_timeout_sec)
         self.cache_problem_messages = True
