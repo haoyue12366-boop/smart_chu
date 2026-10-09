@@ -24,6 +24,12 @@ uv run --no-sync uvicorn app.main:create_app --factory --host 0.0.0.0 --port $PO
 
 免费实例试运行时，省略上述两个 `/var/data` 路径变量，使用项目默认可写目录；免费实例的休眠、重启、重新部署会丢失临时运行数据。在线服务默认最多等待求解进程预热 120 秒，可通过 `SMART_COOKING_SOLVER_STARTUP_TIMEOUT_SEC` 调整（有限正秒数，最大 600）。该上限仅用于进程准备，不扩大初排或重排的请求求解预算；进程未就绪仍会启动失败，日志区分预热超时和子进程提前退出。健康检查继续使用 `/health/ready`。
 
+Render 会通过平台的 `RENDER=true` 自动启用宽预算演示配置，也可设置 `SMART_COOKING_PLANNING_PROFILE=RENDER` 显式启用。新桌的初排与重排各有 90 秒求解/发布总预算，其中 Greedy 上限 10 秒、CP-SAT 累计上限 45 秒、发布预留 25 秒；编译独立上限 20 秒，计算仅使用一个求解线程。串行参考的阶段时间随预算增加，候选仍需完整覆盖并通过独立核验。云端策略追加 `:render-v1` 版本，既有桌保留原绑定策略；更新后请点击“新的一桌”。此配置不代表达到比赛原实时预算。设置 `SMART_COOKING_PLANNING_PROFILE=STANDARD` 可使用原策略预算，其他平台默认保持原配置。平台识别依据见 [Render 默认环境变量](https://render.com/docs/environment-variables)。
+
+云端工作进程在共享截止内预留 3 秒传输求解结果，异常退出后由空闲恢复循环重新预热；健康检查在收到真实就绪消息后才通过。运行状态按表批量保存，选择会话运行时只读取当前绑定和时钟字段，减少大菜单的数据库调用与重复反序列化。Render 免费 Web 服务提供 0.1 CPU、512 MB 内存，算力与本机不同，宽预算是上限，实际耗时取决于菜单及负载，见 [Render 计算规格](https://render.com/docs/compute-plans)。
+
+云端工作进程在共享截止内预留 3 秒传输求解结果，异常退出后由空闲恢复循环重新预热；健康检查在收到真实就绪消息后才通过。运行状态按表批量保存，选择会话运行时只读取当前绑定和时钟字段，减少大菜单的数据库调用与重复反序列化。Render 免费 Web 服务提供 0.1 CPU、512 MB 内存，算力与本机不同，宽预算是上限，实际耗时取决于菜单及负载，见 [Render 计算规格](https://render.com/docs/compute-plans)。
+
 大模型相关代码位于 `app/llm/`。结构化初排、加菜和重排默认使用本地知识与调度器；需要自然语言入口时设置 `SMART_COOKING_LANGUAGE_ENABLED=1`、`DEEPSEEK_API_KEY`，并按账号可用模型设置 `DEEPSEEK_MODEL`。密钥只通过平台环境变量提供，不写入仓库。
 
 Render 部署流程依据 [FastAPI 部署](https://render.com/docs/deploy-fastapi)、[原生运行环境](https://render.com/docs/native-runtimes)及[持久磁盘](https://render.com/docs/disks)。当前已有验收在 Windows 完成；GitHub 上传不等于 Render 或公网验收，首次云端部署后仍需检查首页、`/docs`、健康检查、初排、同任务加菜重排及重启后的任务恢复。

@@ -1,6 +1,6 @@
 """仓储在调用方短事务内工作，只返回不可变领域对象。"""
 
-from sqlalchemy import Connection, Table, insert, select, update
+from sqlalchemy import Connection, Table, bindparam, insert, select, update
 
 from app.domain.events import EventApplyResult, RuntimeEvent
 from app.domain.knowledge import ReleaseRef
@@ -18,6 +18,8 @@ class RuntimeRepository:
     def __init__(self, connection: Connection) -> None:
         self.connection = connection
         self._prefetched: dict[tuple[str, str, str], tuple[str, str] | None] = {}
+        self._insertions: dict[Table, list[dict[str, str]]] = {}
+        self._updates: dict[tuple[Table, str], list[dict[str, str]]] = {}
 
     def remember_release(self, release: ReleaseRef) -> None:
         old = self.release(release.release_id)
@@ -69,6 +71,8 @@ class RuntimeRepository:
             if self.connection.execute(statement.values(**values)).rowcount != 1:
                 raise StateConflict("会话状态或计划已变化")
         self._prefetch_save_rows(value)
+        self._insertions.clear()
+        self._updates.clear()
         for item in value.menu:
             self._upsert(
                 m.recipes,
@@ -141,6 +145,21 @@ class RuntimeRepository:
                 sid,
                 reservation.model_dump_json(),
             )
+        self._flush_save_rows()
+
+    def _flush_save_rows(self) -> None:
+        """同一已锁定事务按表 executemany；身份核对完成后再批量落账。"""
+        for table, rows in self._insertions.items():
+            self.connection.execute(insert(table), rows)
+        for (table, key), rows in self._updates.items():
+            self.connection.execute(
+                update(table)
+                .where(table.c[key] == bindparam("_identity"))
+                .values(body=bindparam("_body")),
+                rows,
+            )
+        self._insertions.clear()
+        self._updates.clear()
 
     def _prefetch_save_rows(self, value: RuntimeSession) -> None:
         """同一事务按身份批量读取，不漏掉其他会话拥有的冲突身份。"""
@@ -204,22 +223,23 @@ class RuntimeRepository:
         column = table.c[key]
         lookup = table.name, key, identity
         if lookup in self._prefetched:
-            previous = self._prefetched.pop(lookup)
+            previous = self._prefetched[lookup]
         else:
             row = self.connection.execute(
                 select(table.c.body, table.c.session_id).where(column == identity)
             ).first()
             previous = None if row is None else (str(row.body), str(row.session_id))
         if previous is None:
-            self.connection.execute(
-                insert(table).values(
-                    **{key: identity, "session_id": session_id, "body": body, **(extra or {})}
-                )
+            self._insertions.setdefault(table, []).append(
+                {key: identity, "session_id": session_id, "body": body, **(extra or {})}
             )
         elif previous[1] != session_id or (immutable and previous[0] != body):
             raise StateConflict("持久身份不可复用或改写历史")
         elif previous[0] != body:
-            self.connection.execute(update(table).where(column == identity).values(body=body))
+            self._updates.setdefault((table, key), []).append(
+                {"_identity": identity, "_body": body}
+            )
+        self._prefetched[lookup] = body, session_id
 
     def event(self, event_id: str) -> tuple[str, EventApplyResult] | None:
         row = self.connection.execute(

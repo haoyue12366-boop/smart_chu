@@ -245,7 +245,9 @@ class PlanningEngine:
                     solver_end,
                     time.monotonic_ns()
                     + min(
-                        allowance.solver_remaining_ns if fast_replan else 1_200_000_000,
+                        allowance.solver_remaining_ns
+                        if fast_replan
+                        else max(1_200_000_000, budget.solver_ms * 1_000_000 // 4),
                         max(0, solver_end - time.monotonic_ns()) * 2 // 3,
                     ),
                 )
@@ -270,7 +272,12 @@ class PlanningEngine:
                 construction_started = time.monotonic_ns()
                 reference_layout = GreedyScheduler().solve_serial(
                     problem,
-                    Deadline(expires_at_ns=min(solver_end, construction_started + 400_000_000)),
+                    Deadline(
+                        expires_at_ns=min(
+                            solver_end,
+                            construction_started + max(400_000_000, budget.greedy_ms * 1_000_000),
+                        )
+                    ),
                 )
                 allowance.charge_solver(time.monotonic_ns() - construction_started)
                 if (

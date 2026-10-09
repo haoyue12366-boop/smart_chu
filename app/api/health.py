@@ -18,7 +18,7 @@ def live() -> dict[str, str]:
 @router.get("/health/ready")
 def ready(request: Request) -> JSONResponse:
     services = container(request)
-    available = services.ready and services.worker.is_alive
+    available = services.ready and services.worker.is_ready
     try:
         with services.store.engine.connect() as tx:
             available = available and tx.execute(text("SELECT 1")).scalar_one() == 1

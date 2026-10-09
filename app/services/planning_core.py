@@ -42,7 +42,7 @@ class PlanningCore:
             if runtime.details and runtime.details.planning_kind == "REPLAN"
             else request.policy.initial_budget
         )
-        with preparation_budget.measure(budget.total_ms) as compile_limit:
+        with preparation_budget.measure(budget.compilation_limit_ms) as compile_limit:
             problem = self.compiler.compile(
                 knowledge, request.menu, runtime, request.policy, compile_limit
             )

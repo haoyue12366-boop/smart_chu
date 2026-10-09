@@ -25,9 +25,9 @@ def test_recovery_cannot_claim_admitted_foreground_request_and_idle_queue_still_
         original_apply = services.planner.apply_event
         original_admit = competition.admit_menu
 
-        def counted_apply(event, deadline=None):
+        def counted_apply(event, deadline=None, **kwargs):
             calls.append(event.event_id.root)
-            return original_apply(event, deadline)
+            return original_apply(event, deadline, **kwargs)
 
         def scan_after_admission(*args, **kwargs):
             record = original_admit(*args, **kwargs)

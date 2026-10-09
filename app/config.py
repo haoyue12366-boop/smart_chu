@@ -2,6 +2,7 @@
 
 import os
 from pathlib import Path
+from typing import Literal
 
 from pydantic import Field
 
@@ -21,6 +22,7 @@ class AppSettings(FrozenModel):
     timezone: NonEmpty = "Asia/Shanghai"
     recovery_interval_sec: float = Field(default=0.5, gt=0)
     solver_startup_timeout_sec: float = Field(default=120, gt=0, le=600, allow_inf_nan=False)
+    planning_profile: Literal["STANDARD", "RENDER"] = "STANDARD"
 
     @classmethod
     def from_environment(cls) -> "AppSettings":
@@ -34,9 +36,12 @@ class AppSettings(FrozenModel):
             "language_archive_path",
             "timezone",
             "solver_startup_timeout_sec",
+            "planning_profile",
         ):
             value = os.getenv("SMART_COOKING_" + name.upper())
             if value:
                 fields[name] = value
         fields["language_enabled"] = os.getenv("SMART_COOKING_LANGUAGE_ENABLED", "0") == "1"
+        if "planning_profile" not in fields and os.getenv("RENDER") == "true":
+            fields["planning_profile"] = "RENDER"
         return cls.model_validate(fields)

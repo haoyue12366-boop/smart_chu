@@ -43,6 +43,17 @@ def test_quality_stage_keeps_all_mandatory_tasks():
 
 def test_proven_constant_human_work_is_removed_from_strict_objective():
     problem = witness().model_copy(update={"shared_prep_candidates": ()})
+    problem = problem.model_copy(
+        update={
+            "policy": problem.policy.model_copy(
+                update={
+                    "objective": problem.policy.objective.model_copy(
+                        update={"stages": ("SPREAD", "TOTAL_HUMAN_WORK", "MAKESPAN")}
+                    )
+                }
+            )
+        }
+    )
     result = CpSatScheduler().solve(
         problem, None, deadline(), stage=ObjectiveStage(name="E_QUALITY", spread_excess_cap_sec=0)
     )
@@ -94,6 +105,17 @@ def test_same_problem_builds_once_without_leaking_serial_order_or_caps(monkeypat
 
 def test_custom_makespan_before_human_priority_is_preserved():
     problem = witness()
+    problem = problem.model_copy(
+        update={
+            "policy": problem.policy.model_copy(
+                update={
+                    "objective": problem.policy.objective.model_copy(
+                        update={"stages": ("SPREAD", "TOTAL_HUMAN_WORK", "MAKESPAN")}
+                    )
+                }
+            )
+        }
+    )
     standalone = problem.model_copy(update={"shared_prep_candidates": ()})
     short = CpSatScheduler().solve(standalone, None, deadline()).candidate
     assert short is not None

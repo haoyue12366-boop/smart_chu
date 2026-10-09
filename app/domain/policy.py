@@ -13,6 +13,12 @@ class BudgetSpec(FrozenModel):
     greedy_ms: PositiveInt
     solver_ms: PositiveInt
     publication_reserve_ms: PositiveInt
+    compilation_ms: PositiveInt | None = Field(default=None, exclude_if=lambda value: value is None)
+
+    @property
+    def compilation_limit_ms(self) -> int:
+        """编译独立限时；旧策略沿用其原总预算上限。"""
+        return self.compilation_ms if self.compilation_ms is not None else self.total_ms
 
     @model_validator(mode="after")
     def fits(self) -> Self:

@@ -222,9 +222,9 @@ class PlanningService:
                 )
                 # 编译不扣求解余额，但仍消耗真实时间；其独立上限也要为新动作预留。
                 compile_ms = (
-                    session.policy.initial_budget.total_ms
+                    session.policy.initial_budget.compilation_limit_ms
                     if is_initial
-                    else session.policy.replan_budget.total_ms
+                    else session.policy.replan_budget.compilation_limit_ms
                 )
                 effective = (
                     now + (remaining_ns + compile_ms * 1_000_000 + 999_999_999) // 1_000_000_000 + 1

@@ -95,10 +95,14 @@ class SolverWorker:
         *,
         target: Callable[[Queue[WorkerJob | str], Queue[WorkerResponse]], None] | None = None,
         startup_timeout_sec: float = 10,
+        result_transport_reserve_sec: float = 0.15,
     ) -> None:
         if not math.isfinite(startup_timeout_sec) or startup_timeout_sec <= 0:
             raise ValueError("求解进程启动等待必须为有限正秒数")
+        if not math.isfinite(result_transport_reserve_sec) or result_transport_reserve_sec <= 0:
+            raise ValueError("求解结果传输预留必须为有限正秒数")
         self._startup_timeout_ns = int(startup_timeout_sec * 1_000_000_000)
+        self._result_transport_reserve_ns = int(result_transport_reserve_sec * 1_000_000_000)
         self._context = multiprocessing.get_context("spawn")
         self._target = target or _worker_loop
         self._process: BaseProcess | None = None
@@ -124,6 +128,10 @@ class SolverWorker:
     @property
     def is_alive(self) -> bool:
         return self._process is not None and self._process.is_alive()
+
+    @property
+    def is_ready(self) -> bool:
+        return self.is_alive and self._ready
 
     def warmup(self, deadline: Deadline | None = None) -> bool:
         # 生命周期预热使用独立启动上限；请求内恢复仍服从调用方的共享截止时间。
@@ -216,7 +224,8 @@ class SolverWorker:
             self.last_build_report = None
             sent_at_ns = time.monotonic_ns()
             child_deadline = Deadline(
-                expires_at_ns=deadline.expires_at_ns - min(150_000_000, remaining // 2)
+                expires_at_ns=deadline.expires_at_ns
+                - min(self._result_transport_reserve_ns, remaining // 2)
             )
             self._inbox.put(
                 WorkerJob(
@@ -272,9 +281,13 @@ class SolverWorker:
                         if self.cache_problem_messages and not use_cache
                         else transport_ns
                     )
-                    self._minimum_cached_job_ns = cached_transport + 150_000_000
+                    self._minimum_cached_job_ns = (
+                        cached_transport + self._result_transport_reserve_ns
+                    )
                     self._minimum_job_ns = (
-                        response.build_report.build_time_ms * 1_000_000 + transport_ns + 150_000_000
+                        response.build_report.build_time_ms * 1_000_000
+                        + transport_ns
+                        + self._result_transport_reserve_ns
                     )
                 return result
             self._abort()

@@ -58,6 +58,33 @@ def deadline_respecting_worker(inbox, outbox):
     inbox.get()
 
 
+def slow_response_worker(inbox, outbox):
+    outbox.put(WorkerResponse(job_id="ready", ready=True, worker_pid=os.getpid()))
+    job = inbox.get()
+    while time.monotonic_ns() < job.deadline.expires_at_ns:
+        time.sleep(0.001)
+    # 合成低算力上的结果序列化/传输延迟，不提供伪造可行计划。
+    time.sleep(0.3)
+    outbox.put(
+        WorkerResponse(
+            job_id=job.job_id,
+            worker_pid=os.getpid(),
+            result=SolveResult(status="UNKNOWN", problem_hash=job.problem.problem_hash),
+        )
+    )
+    inbox.get()
+
+
+def test_cloud_result_transport_reserve_keeps_worker_ready():
+    _, _, problem, _ = example()
+    with SolverWorker(target=slow_response_worker, result_transport_reserve_sec=0.6) as worker:
+        pid = worker.process_id
+        result = worker.solve(problem, None, deadline(1.2))
+        assert result.status == "UNKNOWN" and result.candidate is None
+        assert worker.is_alive and worker.process_id == pid
+        assert worker.restart_count == 0
+
+
 def test_cooperative_timeout_reserves_ipc_and_keeps_warm_worker():
     _, _, problem, _ = example()
     with SolverWorker(target=deadline_respecting_worker) as worker:

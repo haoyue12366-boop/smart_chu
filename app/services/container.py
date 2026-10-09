@@ -1,7 +1,9 @@
 """生命周期持有版本化知识、状态库和唯一求解工作进程。"""
 
 import json
+import logging
 from _thread import LockType
+from datetime import datetime
 from threading import Event, Lock
 
 from sqlalchemy import func, literal_column, select
@@ -18,11 +20,14 @@ from app.runtime.clock import SimulationClock, SystemClock
 from app.runtime.schedule_clock import ClockExecutionService
 from app.runtime.service import RuntimeService
 from app.scheduling.json_worker import JsonSolverWorker
+from app.services.deployment_policy import deployment_policy
 from app.services.planning import PlanningService
 from app.services.recovery_guard import isolated_recovery
 from app.storage import models
 from app.storage.repositories import RuntimeRepository
 from app.storage.unit_of_work import UnitOfWork
+
+logger = logging.getLogger(__name__)
 
 
 class ServiceContainer:
@@ -30,7 +35,10 @@ class ServiceContainer:
         self.settings = settings
         self.clock = SystemClock()
         self.repository = SnapshotKnowledgeRepository(settings.release_root)
-        self.worker = JsonSolverWorker(startup_timeout_sec=settings.solver_startup_timeout_sec)
+        self.worker = JsonSolverWorker(
+            startup_timeout_sec=settings.solver_startup_timeout_sec,
+            result_transport_reserve_sec=3 if settings.planning_profile == "RENDER" else 0.15,
+        )
         self.job_lock = Lock()
         self.runtimes: dict[str, RuntimeService] = {}
         self.planners: dict[str, PlanningService] = {}
@@ -47,8 +55,19 @@ class ServiceContainer:
 
     def start(self) -> None:
         self.stopping.clear()
-        self.policy = SchedulingPolicy.model_validate_json(
-            self.settings.policy_path.read_text(encoding="utf-8")
+        self.policy = deployment_policy(
+            SchedulingPolicy.model_validate_json(
+                self.settings.policy_path.read_text(encoding="utf-8")
+            ),
+            self.settings.planning_profile,
+        )
+        logger.info(
+            "排程配置 %s，策略 %s，初排/重排预算 %s/%s ms，求解线程 %s",
+            self.settings.planning_profile,
+            self.policy.policy_version,
+            self.policy.initial_budget.total_ms,
+            self.policy.replan_budget.total_ms,
+            self.policy.max_solver_search_workers,
         )
         self.store = UnitOfWork(self.settings.database_path)
         self.store.migrate()
@@ -87,19 +106,38 @@ class ServiceContainer:
 
     def for_session(self, session_id: str) -> tuple[RuntimeService, PlanningService]:
         with self.store.engine.connect() as tx:
-            session = RuntimeRepository(tx).get(session_id)
-        release_id = session.knowledge_release_id
+            # 选择运行时不需要反序列化整桌工序、物料、策略及历史。
+            # 绑定和模拟偏移仍从当前数据库读取，不缓存可变状态。
+            row = tx.execute(
+                select(
+                    func.json_extract(models.sessions.c.body, "$.knowledge_release_id").label(
+                        "release_id"
+                    ),
+                    func.json_extract(models.sessions.c.body, "$.runtime.execution_mode").label(
+                        "mode"
+                    ),
+                    func.json_extract(models.sessions.c.body, "$.runtime.now_offset_sec").label(
+                        "offset"
+                    ),
+                    func.json_extract(
+                        models.sessions.c.body, "$.runtime.time_origin.start_at"
+                    ).label("origin"),
+                ).where(models.sessions.c.session_id == session_id)
+            ).first()
+        if row is None:
+            raise KeyError("会话不存在：" + session_id)
+        release_id = row.release_id
         if release_id is None or release_id not in self.runtimes:
             raise ValueError("会话绑定的知识版本尚未加载")
-        if session.runtime.execution_mode == "SIMULATED":
+        if row.mode == "SIMULATED":
             if session_id not in self.simulated_sessions:
-                clock = SimulationClock(session.runtime.time_origin.start_at)
+                clock = SimulationClock(datetime.fromisoformat(row.origin))
                 runtime = RuntimeService(self.store, self.runtimes[release_id].knowledge, clock)
                 planner = PlanningService(runtime, self.worker, job_lock=self.job_lock)
                 self.simulated_sessions[session_id] = runtime, planner
             runtime, planner = self.simulated_sessions[session_id]
             assert isinstance(runtime.clock, SimulationClock)
-            runtime.clock.advance(max(runtime.clock.offset_sec, session.runtime.now_offset_sec))
+            runtime.clock.advance(max(runtime.clock.offset_sec, row.offset))
             return runtime, planner
         return self.runtimes[release_id], self.planners[release_id]
 
@@ -155,6 +193,12 @@ class ServiceContainer:
         # 不在 HTTP 准入与执行之间抢走作业；已登记队列仍由空闲扫描恢复。
         if self.stopping.is_set() or self.foreground_requests:
             return
+        if not self.worker.is_ready and self.job_lock.acquire(blocking=False):
+            try:
+                # 异常退出或有界作业超时后，在空闲轮询中渐进预热；不依赖下一次请求。
+                self.worker.warmup(Deadline(expires_at_ns=self.clock.monotonic_ns() + 500_000_000))
+            finally:
+                self.job_lock.release()
         # HTTP 准入已提交而事实尚未应用时，也必须从持久身份恢复。
         from app.services.request_execution import execute_request
         from app.storage.competition_tasks import HttpRequestRepository
