@@ -76,6 +76,28 @@ def test_cached_wire_reference_preserves_full_problem_and_rejects_missing_identi
         decode(*small)
 
 
+def test_cached_job_reuses_verified_problem_and_validates_all_new_parameters():
+    _, _, problem, candidate = example()
+    first = WorkerJob(job_id="verified-first", problem=problem, hint=candidate, deadline=deadline())
+    decode, full = _encode_job(first)
+    restored = decode(*full)
+    cached = first.model_copy(update={"job_id": "reuse-second", "use_cached_problem": True})
+    decode, small = _encode_job(cached)
+    # 模型对象来自首次完整 JSON 核验，后续消息不应再次复制整个问题。
+    repeated = decode(*small)
+    assert repeated.problem is restored.problem
+    assert repeated.hint == candidate
+    assert repeated.deadline == cached.deadline
+    altered = json.loads(small[0])
+    altered["job"]["deadline"]["expires_at_ns"] = True
+    with pytest.raises(ValidationError):
+        decode(json.dumps(altered))
+    altered = json.loads(small[0])
+    altered["job"]["problem"] = {"problem_id": "replacement"}
+    with pytest.raises(ValidationError):
+        decode(json.dumps(altered))
+
+
 def test_real_cached_json_job_and_cold_restart_are_independently_valid():
     knowledge, state, problem, candidate = example()
     with JsonSolverWorker() as worker:

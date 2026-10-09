@@ -17,6 +17,30 @@ from app.scheduling.model_builder import ModelBuilder
 from app.scheduling.solution_mapping import map_solution
 
 
+def _hint_within_bounds(
+    hint: CandidateSchedule, problem: SchedulingProblem, stage: ObjectiveStage
+) -> bool:
+    metrics = hint.metrics
+    if metrics is None:
+        return True
+    caps = [
+        (metrics.makespan_sec, stage.makespan_cap_sec),
+        (metrics.max_continuous_human_sec, stage.human_busy_cap_sec),
+        (metrics.total_human_work_sec, stage.total_human_cap_sec),
+    ]
+    if stage.spread_excess_cap_sec is not None:
+        caps.append(
+            (
+                max(
+                    0,
+                    objective_spread(metrics, problem) - problem.policy.objective.spread_target_sec,
+                ),
+                stage.spread_excess_cap_sec,
+            )
+        )
+    return all(cap is None or value <= cap for value, cap in caps)
+
+
 class CpSatScheduler:
     def __init__(self) -> None:
         self.last_build_report: SolverBuildReport | None = None
@@ -67,6 +91,29 @@ class CpSatScheduler:
                 from app.scheduling.objectives import apply_stage
 
                 apply_stage(builder, stage)
+            spread_floor = max(
+                0,
+                builder.finish_spread_lower_bound_sec - problem.policy.objective.spread_target_sec,
+            )
+            if stage is not None and stage.name == "B_SPREAD" and spread_floor:
+                # 容量下界只提示更有希望的目标，不把它当作必能达到的上界。
+                # 较差的完整候选仍由父进程保留，所有时间和加工备选自由搜索。
+                builder.model.add_hint(builder.objective_variable, spread_floor)
+                if (
+                    hint is not None
+                    and hint.metrics is not None
+                    and objective_spread(hint.metrics, problem)
+                    > spread_floor + problem.policy.objective.spread_target_sec
+                ):
+                    hint = None
+            if (
+                hint is not None
+                and stage is not None
+                and not _hint_within_bounds(hint, problem, stage)
+            ):
+                # 不符合本阶段目标界的完整候选仍由父进程保存；其路径选择
+                # 也可能拖慢提示修复，因此本轮由 Solver 自由选择所有备选。
+                hint = None
             if hint is not None and hint.problem_hash == identity:
                 hinted = {a.carrier_id: a for a in hint.assignments}
                 carriers = {c.carrier_id: c for c in builder.candidates}
@@ -123,11 +170,16 @@ class CpSatScheduler:
             solver.parameters.num_search_workers = problem.policy.max_solver_search_workers
             solver.parameters.random_seed = 42
             if builder.human_chain_enabled and problem.policy.max_solver_search_workers == 1:
-                # 单线程的连续人工模型主要靠时间/布尔传播；避免可选探测及
-                # 线性松弛抢占搜索时间。保留全部约束、精确目标和原预算，
-                # 求解器仍只在证明最优或共享截止到达时结束。
+                # 常用达标模型以时间/布尔传播为主。正超标量已被容量下界和
+                # 阶段上界固定时，启用基础线性松弛帮助证明剩余联合目标。
+                # 两种设置均保留全部约束、精确目标和原预算。
                 solver.parameters.cp_model_probing_level = 0
-                solver.parameters.linearization_level = 0
+                solver.parameters.linearization_level = int(
+                    stage is not None
+                    and stage.name == "E_QUALITY"
+                    and spread_floor > 0
+                    and stage.spread_excess_cap_sec == spread_floor
+                )
             status = solver.solve(builder.model)
             name = solver.status_name(status)
             self.last_build_report = report.model_copy(update={"solve_status": SolveStatus(name)})

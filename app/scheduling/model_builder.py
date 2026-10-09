@@ -52,6 +52,7 @@ class ModelBuilder:
         self.human_intervals: list[ResourceInterval] = []
         self.layer_choices: list[tuple[ResourceInterval, cp_model.IntVar]] = []
         self.human_chain_enabled = False
+        self.finish_spread_lower_bound_sec = 0
         self.sequence_arcs = 0
         self.objective_stage = "MAKESPAN"
         self.stage_parameters: ObjectiveStage | None = None
@@ -237,6 +238,9 @@ class ModelBuilder:
         from app.scheduling.resource_model import add_resource_constraints
 
         add_resource_constraints(self)
+        from app.scheduling.finish_spread_bounds import minimum_finish_spread
+
+        self.finish_spread_lower_bound_sec = minimum_finish_spread(self)
         self.check_budget()
         if not self.ends:
             raise ValueError("空菜单不能生成计划")

@@ -82,15 +82,9 @@ class CandidatePool:
         if not report.valid:
             self.rejections.append(report)
             return False
-        calculated = candidate.model_copy(
-            update={"metrics": compute_metrics(candidate, self.problem)}
-        )
-        if calculated != candidate:
-            report = self.validator.validate(self.knowledge, self.runtime, self.problem, calculated)
-            if not report.valid:
-                self.rejections.append(report)
-                return False
-        metrics = calculated.metrics
+        # 已携带的全部指标刚经独立 Validator 的时间扫描核对，不再重复
+        # 调用 Solver 侧指标函数、复制整个候选并做深层模型比较。
+        metrics = candidate.metrics
         assert metrics is not None
         if stage is not None:
             caps = (
@@ -122,8 +116,8 @@ class CandidatePool:
                     )
                 )
                 return False
-        self.values[calculated.candidate_hash] = ValidatedSchedule(
-            candidate=calculated, validation=report
+        self.values[candidate.candidate_hash] = ValidatedSchedule(
+            candidate=candidate, validation=report
         )
         return True
 

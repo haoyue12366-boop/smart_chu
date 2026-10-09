@@ -30,14 +30,24 @@ if TYPE_CHECKING:
 logger = logging.getLogger(__name__)
 
 
-class WorkerJob(FrozenModel):
+class _JobArguments(FrozenModel):
     job_id: NonEmpty
-    problem: SchedulingProblem
     hint: CandidateSchedule | None
     deadline: Deadline
     serial_menu: bool = False
     stage: ObjectiveStage | None = None
     use_cached_problem: bool = Field(default=False, exclude_if=lambda value: value is False)
+
+
+class WorkerJob(_JobArguments):
+    problem: SchedulingProblem
+
+
+def _attach_problem(problem: SchedulingProblem, arguments: _JobArguments) -> WorkerJob:
+    # 内部信封只连接已形成的不可变问题及已核验的本轮参数，不重新复制
+    # 整个问题。首条跨进程消息仍由完整 WorkerJob JSON 契约重新核验。
+    # 此路径不构造或批准候选，父进程/发布器的独立扫描保持不变。
+    return WorkerJob.model_construct(problem=problem, **arguments.__dict__)
 
 
 class WorkerResponse(FrozenModel):
@@ -228,14 +238,16 @@ class SolverWorker:
                 - min(self._result_transport_reserve_ns, remaining // 2)
             )
             self._inbox.put(
-                WorkerJob(
-                    job_id=job_id,
+                _attach_problem(
                     problem=problem,
-                    hint=hint,
-                    deadline=child_deadline,
-                    serial_menu=serial_menu,
-                    stage=stage,
-                    use_cached_problem=use_cache,
+                    arguments=_JobArguments(
+                        job_id=job_id,
+                        hint=hint,
+                        deadline=child_deadline,
+                        serial_menu=serial_menu,
+                        stage=stage,
+                        use_cached_problem=use_cache,
+                    ),
                 )
             )
             while time.monotonic_ns() < deadline.expires_at_ns:

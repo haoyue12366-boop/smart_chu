@@ -37,13 +37,19 @@ def test_default_five_dish_cooking_target_with_continuous_goal(tmp_path):
         result.model_dump_json(indent=2), encoding="utf-8"
     )
     assert result.status == "VALIDATED", result.failure
-    # 共用单蒸腔的90/15/12分钟三菜禁止不等长合批，出锅差至少15+12分钟。
-    # 不能把延后装盘当作五分钟达标；预算内应优于串行参考。
+    # 当前发布已采用三层蒸箱，允许同温兼容的菜独立进出。
+    # 旧单层互斥版本的1620秒下界在这里不成立；仍检查真实出锅时刻，
+    # 不把延后装盘当作集中出菜，并重新独立核验全部资源和物料。
+    steam = next(d for d in knowledge.devices if d.device_instance_id == "steam_oven_1")
+    assert steam.capacity == 3
     assert (
-        1620
+        0
         <= result.candidate.metrics.cooking_finish_spread_sec
+        <= policy.objective.spread_target_sec
         < result.serial_reference_candidate.metrics.cooking_finish_spread_sec
     )
+    proof = ScheduleValidator().validate(knowledge, state, problem, result.candidate)
+    assert proof.valid, proof.violations
     assert len(result.candidate.metrics.recipe_cooking_finishes) == 5
     assert not result.total_human_objective_optimized
     assert any(stage.objective_stage == "E_QUALITY" for stage in result.stage_results)

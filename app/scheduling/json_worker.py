@@ -7,7 +7,14 @@ from multiprocessing.queues import Queue
 from multiprocessing.reduction import ForkingPickler
 from typing import TYPE_CHECKING
 
-from app.scheduling.worker import SolverWorker, WorkerJob, WorkerResponse, _worker_loop
+from app.scheduling.worker import (
+    SolverWorker,
+    WorkerJob,
+    WorkerResponse,
+    _attach_problem,
+    _JobArguments,
+    _worker_loop,
+)
 
 if TYPE_CHECKING:
     from collections.abc import Callable
@@ -34,8 +41,10 @@ def _decode_cached_job(body: str) -> WorkerJob:
             or payload["cached_problem_hash"] != _cached_problem.problem_hash
         ):
             raise ValueError("工作进程缺少匹配的问题缓存，拒绝引用")
-        # 完整问题已校验且不可变；其余每轮参数仍按完整 WorkerJob 契约校验。
-        return WorkerJob.model_validate({**payload["job"], "problem": _cached_problem})
+        # 完整问题已在该进程首次 JSON 解码中核验。只核验本轮参数，
+        # 防止再次深层复制它，并拒绝引用消息携带替换问题或未知字段。
+        arguments = _JobArguments.model_validate(payload["job"])
+        return _attach_problem(_cached_problem, arguments)
     raise ValueError("非法问题缓存引用")
 
 

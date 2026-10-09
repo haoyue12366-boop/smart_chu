@@ -60,6 +60,11 @@ def apply_stage(builder: ModelBuilder, stage: ObjectiveStage) -> None:
         excess,
         [0, latest_completion - earliest_completion - problem.policy.objective.spread_target_sec],
     )
+    spread_lower = max(
+        0, builder.finish_spread_lower_bound_sec - problem.policy.objective.spread_target_sec
+    )
+    if spread_lower:
+        model.add(excess >= spread_lower)
     if stage.makespan_cap_sec is not None:
         model.add(builder.makespan <= stage.makespan_cap_sec)
     if stage.spread_excess_cap_sec is not None:

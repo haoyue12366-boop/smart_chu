@@ -7,6 +7,7 @@ from app.domain.reports import SolveResult
 from app.scheduling.candidate_pool import CandidatePool
 from app.scheduling.cp_sat import CpSatScheduler
 from app.scheduling.engine import PlanningEngine
+from app.scheduling.metrics import compute_metrics
 from app.scheduling.objectives import makespan_cap
 from app.validation.schedule import ScheduleValidator
 from tests.unit.test_cp_sat_model import deadline
@@ -39,6 +40,20 @@ def test_candidate_pool_rejects_invalid_or_wrong_state_candidate():
     assert pool.add(candidate)
     assert pool.best().validation.valid
     assert pool.best().candidate.metrics.makespan_sec == 120
+
+
+@pytest.mark.parametrize(
+    "field,value",
+    [("makespan_sec", 1), ("total_human_work_sec", 0), ("max_continuous_human_sec", 0)],
+)
+def test_candidate_pool_cannot_accept_understated_metrics(field, value):
+    knowledge, state, problem, candidate = example()
+    metrics = compute_metrics(candidate, problem)
+    altered = candidate.model_copy(update={"metrics": metrics.model_copy(update={field: value})})
+    pool = CandidatePool(problem, knowledge, state, ScheduleValidator())
+    assert not pool.add(altered)
+    assert pool.best() is None
+    assert "METRICS" in {issue.code for issue in pool.rejections[-1].violations}
 
 
 def test_exact_human_stage_matches_independent_metric():
