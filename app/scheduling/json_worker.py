@@ -19,6 +19,7 @@ from app.scheduling.worker import (
 if TYPE_CHECKING:
     from collections.abc import Callable
 
+    from app.domain.reports import SolverBuildReport
     from app.domain.scheduling_problem import SchedulingProblem
 
 _cached_problem: SchedulingProblem | None = None
@@ -73,7 +74,12 @@ def _json_worker_loop(inbox: Queue[WorkerJob | str], outbox: Queue[WorkerRespons
 
 class JsonSolverWorker(SolverWorker):
     def __init__(
-        self, *, startup_timeout_sec: float = 10, result_transport_reserve_sec: float = 0.15
+        self,
+        *,
+        startup_timeout_sec: float = 10,
+        result_transport_reserve_sec: float = 0.15,
+        report_sink: Callable[[SolverBuildReport], None] | None = None,
+        max_retained_build_reports: int | None = None,
     ) -> None:
         # 仅显式构造在线工作进程时注册。纯对照/扰动脚本使用原 SolverWorker，
         # 不构造此适配器，也不改变它们的消息传输或预算。
@@ -82,5 +88,7 @@ class JsonSolverWorker(SolverWorker):
             target=_json_worker_loop,
             startup_timeout_sec=startup_timeout_sec,
             result_transport_reserve_sec=result_transport_reserve_sec,
+            report_sink=report_sink,
+            max_retained_build_reports=max_retained_build_reports,
         )
         self.cache_problem_messages = True

@@ -98,6 +98,42 @@ def test_cached_job_reuses_verified_problem_and_validates_all_new_parameters():
         decode(json.dumps(altered))
 
 
+def test_archived_build_reports_are_bounded_without_losing_diagnostics():
+    knowledge, state, problem, candidate = example()
+    archived = []
+    with JsonSolverWorker(report_sink=archived.append, max_retained_build_reports=1) as worker:
+        for stage in (None, ObjectiveStage(name="B_SPREAD"), ObjectiveStage(name="A_MAKESPAN")):
+            result = worker.solve(problem, candidate, deadline(5), stage=stage)
+            assert result.status == "OPTIMAL", result
+            assert ScheduleValidator().validate(knowledge, state, problem, result.candidate).valid
+            assert len(worker.build_reports) == 1
+            assert worker.build_reports[0] == archived[-1]
+            assert archived[-1].solver_build_id == result.build_report_ref
+            assert archived[-1].problem_hash == problem.problem_hash
+        assert len(archived) == 3
+        assert [r.objective_stage for r in archived] == ["MAKESPAN", "B_SPREAD", "A_MAKESPAN"]
+        assert all(r.constraint_mappings for r in archived)
+
+
+def test_failed_report_archive_keeps_unsaved_diagnostics_in_memory():
+    _, _, problem, candidate = example()
+    calls = []
+
+    def unavailable(report):
+        calls.append(report)
+        raise OSError("synthetic archive unavailable")
+
+    with JsonSolverWorker(report_sink=unavailable, max_retained_build_reports=1) as worker:
+        first = worker.solve(problem, candidate, deadline(5))
+        second = worker.solve(
+            problem, candidate, deadline(5), stage=ObjectiveStage(name="B_SPREAD")
+        )
+        assert first.status == second.status == "OPTIMAL"
+        assert "归档" in second.diagnostic_message
+        assert len(worker.build_reports) == len(calls) == 2
+        assert worker.is_ready
+
+
 def test_real_cached_json_job_and_cold_restart_are_independently_valid():
     knowledge, state, problem, candidate = example()
     with JsonSolverWorker() as worker:

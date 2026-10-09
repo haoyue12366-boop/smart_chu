@@ -1,5 +1,6 @@
 """Render 宽预算走真实知识、工作进程、独立校验及 SQLite 发布。"""
 
+import hashlib
 from uuid import uuid4
 
 import pytest
@@ -7,6 +8,7 @@ from fastapi.testclient import TestClient
 
 from app.config import AppSettings
 from app.domain.policy import SchedulingPolicy
+from app.domain.reports import SolverBuildReport
 from app.main import create_app
 from app.runtime.clock import SimulationClock
 from app.storage.repositories import RuntimeRepository
@@ -46,6 +48,20 @@ def check_publication(client, result, count):
     )
     assert proof.valid, proof.violations
     assert result["planning"]["serial_reference_validation"]["valid"]
+    assert len(services.worker.build_reports) == 1
+    archive = services.settings.database_path.parent / "solver-build-reports"
+    for stage in result["planning"]["stage_results"]:
+        reference = stage.get("build_report_ref")
+        if reference is None:
+            continue
+        prefix = hashlib.sha256(reference.encode("utf-8")).hexdigest()[:16]
+        files = tuple(archive.glob(prefix + "-*.json"))
+        assert files, reference
+        for path in files:
+            report = SolverBuildReport.model_validate_json(path.read_bytes())
+            assert report.problem_hash == problem.problem_hash
+            assert report.solver_build_id == reference
+            assert report.constraint_mappings
     assert client.get("/health/ready").status_code == 200
     return sid
 

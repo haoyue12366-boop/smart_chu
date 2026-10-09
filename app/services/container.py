@@ -25,6 +25,7 @@ from app.services.planning import PlanningService
 from app.services.recovery_guard import isolated_recovery
 from app.storage import models
 from app.storage.repositories import RuntimeRepository
+from app.storage.solver_reports import SolverReportArchive
 from app.storage.unit_of_work import UnitOfWork
 
 logger = logging.getLogger(__name__)
@@ -38,6 +39,8 @@ class ServiceContainer:
         self.worker = JsonSolverWorker(
             startup_timeout_sec=settings.solver_startup_timeout_sec,
             result_transport_reserve_sec=3 if settings.planning_profile == "RENDER" else 0.15,
+            report_sink=SolverReportArchive(settings.database_path.parent / "solver-build-reports"),
+            max_retained_build_reports=1,
         )
         self.job_lock = Lock()
         self.runtimes: dict[str, RuntimeService] = {}

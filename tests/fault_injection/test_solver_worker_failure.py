@@ -3,7 +3,10 @@
 import os
 import time
 
-from app.domain.reports import SolveResult
+import pytest
+
+from app.domain.policy import ModelSize
+from app.domain.reports import SolverBuildReport, SolveResult
 from app.scheduling.engine import PlanningEngine
 from app.scheduling.worker import SolverWorker, WorkerResponse
 from app.validation.schedule import ScheduleValidator
@@ -21,6 +24,81 @@ def hung_worker(inbox, outbox):
     outbox.put(WorkerResponse(job_id="ready", ready=True, worker_pid=os.getpid()))
     inbox.get()
     time.sleep(10)
+
+
+def wrong_report_worker(inbox, outbox):
+    outbox.put(WorkerResponse(job_id="ready", ready=True, worker_pid=os.getpid()))
+    job = inbox.get()
+    report = SolverBuildReport(
+        problem_hash="0" * 64 if job.serial_menu else job.problem.problem_hash,
+        solver_build_id="synthetic-report",
+        objective_stage="SYNTHETIC",
+        solver_version="synthetic",
+        actual_model_size=ModelSize(),
+    )
+    outbox.put(
+        WorkerResponse(
+            job_id=job.job_id,
+            worker_pid=os.getpid(),
+            result=SolveResult(
+                status="UNKNOWN",
+                problem_hash=job.problem.problem_hash,
+                build_report_ref="synthetic-report" if job.serial_menu else "wrong-reference",
+            ),
+            build_report=report,
+        )
+    )
+    inbox.get()
+
+
+@pytest.mark.parametrize("wrong_problem", [True, False])
+def test_unbound_build_report_is_rejected_before_archiving(wrong_problem):
+    _, _, problem, _ = example()
+    archived = []
+    with SolverWorker(target=wrong_report_worker, report_sink=archived.append) as worker:
+        result = worker.solve(problem, None, deadline(5), serial_menu=wrong_problem)
+        assert result.status == "MODEL_INVALID"
+        assert "报告身份" in result.diagnostic_message
+        assert not archived and not worker.build_reports
+        assert not worker.is_alive
+
+
+def quick_report_worker(inbox, outbox):
+    outbox.put(WorkerResponse(job_id="ready", ready=True, worker_pid=os.getpid()))
+    job = inbox.get()
+    outbox.put(
+        WorkerResponse(
+            job_id=job.job_id,
+            worker_pid=os.getpid(),
+            result=SolveResult(status="UNKNOWN", problem_hash=job.problem.problem_hash),
+            build_report=SolverBuildReport(
+                problem_hash=job.problem.problem_hash,
+                solver_build_id="synthetic-fast-report",
+                objective_stage="SYNTHETIC",
+                solver_version="synthetic",
+                actual_model_size=ModelSize(),
+            ),
+        )
+    )
+    inbox.get()
+
+
+def test_slow_archive_still_consumes_shared_deadline_without_killing_idle_worker():
+    _, _, problem, _ = example()
+    archived = []
+
+    def slow(report):
+        time.sleep(1.1)
+        archived.append(report)
+
+    with SolverWorker(target=quick_report_worker, report_sink=slow) as worker:
+        pid = worker.process_id
+        result = worker.solve(problem, None, deadline(1))
+        assert result.status == "UNKNOWN" and result.candidate is None
+        assert "结果处理" in result.diagnostic_message
+        assert len(archived) == 1
+        assert worker.process_id == pid and worker.is_ready
+        assert worker.restart_count == 0
 
 
 def slow_ready_worker(inbox, outbox):

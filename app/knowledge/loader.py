@@ -110,7 +110,10 @@ def load_release(root: Path, ref: ReleaseRef) -> LoadedRelease:
             and sources.get(evidence.artifact_ref.path) != evidence.artifact_ref.sha256
         ):
             raise ValueError("证据内容引用与归档不一致")
-    return LoadedRelease(manifest=manifest, snapshot=snapshot, index=index)
+    # 三项分别来自完整、严格的 JSON 解码；上面的内容哈希、版本、索引、
+    # 来源及计划绑定也已全部核对。内部读取信封只连接这些不可变引用，
+    # 避免再复制整个100菜快照；LoadedRelease 的普通构造/JSON契约仍严格。
+    return LoadedRelease.model_construct(manifest=manifest, snapshot=snapshot, index=index)
 
 
 def read_release_ref(root: Path, release_id: str) -> ReleaseRef:

@@ -106,11 +106,22 @@ class SolverWorker:
         target: Callable[[Queue[WorkerJob | str], Queue[WorkerResponse]], None] | None = None,
         startup_timeout_sec: float = 10,
         result_transport_reserve_sec: float = 0.15,
+        report_sink: Callable[[SolverBuildReport], None] | None = None,
+        max_retained_build_reports: int | None = None,
     ) -> None:
         if not math.isfinite(startup_timeout_sec) or startup_timeout_sec <= 0:
             raise ValueError("求解进程启动等待必须为有限正秒数")
         if not math.isfinite(result_transport_reserve_sec) or result_transport_reserve_sec <= 0:
             raise ValueError("求解结果传输预留必须为有限正秒数")
+        if max_retained_build_reports is not None and (
+            type(max_retained_build_reports) is not int
+            or max_retained_build_reports <= 0
+            or report_sink is None
+        ):
+            raise ValueError("限制内存建模报告必须配置完整归档及正整数保留数量")
+        self._report_sink = report_sink
+        self._max_retained_build_reports = max_retained_build_reports
+        self._report_archive_failed = False
         self._startup_timeout_ns = int(startup_timeout_sec * 1_000_000_000)
         self._result_transport_reserve_ns = int(result_transport_reserve_sec * 1_000_000_000)
         self._context = multiprocessing.get_context("spawn")
@@ -275,6 +286,19 @@ class SolverWorker:
                         problem_hash=identity,
                         diagnostic_message="工作进程结果身份不匹配",
                     )
+                if response.build_report is not None and (
+                    response.build_report.problem_hash != identity
+                    or (
+                        result.build_report_ref is not None
+                        and result.build_report_ref != response.build_report.solver_build_id
+                    )
+                ):
+                    self._abort()
+                    return SolveResult(
+                        status="MODEL_INVALID",
+                        problem_hash=identity,
+                        diagnostic_message="工作进程建模报告身份不匹配",
+                    )
                 # 解码成功已替换子进程的输入缓存，即使建模失败、未生成报告。
                 # 传输身份与基础模型的计时身份分别记忆，避免 A → 失败 B → A 错引。
                 if self.cache_problem_messages:
@@ -285,6 +309,28 @@ class SolverWorker:
                     self._estimated_problem_hash = None
                 if response.build_report is not None:
                     self.build_reports.append(response.build_report)
+                    if self._report_sink is not None:
+                        try:
+                            self._report_sink(response.build_report)
+                        except OSError:
+                            # 归档失效时不丢未保存的追溯材料；显式诊断故障。
+                            self._report_archive_failed = True
+                            logger.exception("建模报告归档失败，完整历史暂存内存")
+                            result = result.model_copy(
+                                update={
+                                    "diagnostic_message": (
+                                        (result.diagnostic_message + "；")
+                                        if result.diagnostic_message
+                                        else ""
+                                    )
+                                    + "建模报告归档失败，完整历史暂存内存"
+                                }
+                            )
+                        if (
+                            not self._report_archive_failed
+                            and self._max_retained_build_reports is not None
+                        ):
+                            del self.build_reports[: -self._max_retained_build_reports]
                     compute_ns = sum(t.elapsed_ms for t in result.timings) * 1_000_000
                     transport_ns = max(50_000_000, time.monotonic_ns() - sent_at_ns - compute_ns)
                     self._estimated_problem_hash = identity
@@ -301,6 +347,8 @@ class SolverWorker:
                         + transport_ns
                         + self._result_transport_reserve_ns
                     )
+                if time.monotonic_ns() >= deadline.expires_at_ns:
+                    return unknown("结果处理已耗尽本轮共享截止，工作进程保持空闲就绪")
                 return result
             self._abort()
             self.restart_count += 1

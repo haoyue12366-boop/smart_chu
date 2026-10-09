@@ -10,12 +10,30 @@ from pathlib import Path
 import pytest
 
 from app.domain.ids import RecipeId
-from app.knowledge.loader import read_release_ref
+from app.knowledge.loader import LoadedRelease, load_release, read_release_ref
 from app.knowledge.repository import SnapshotKnowledgeRepository
+from app.knowledge.snapshot import SchedulingKnowledgeSnapshot
 from app.pipeline.publish import publish_release
 from tests.integration.test_release_activation import bundle
 
 ROOT = Path(__file__).resolve().parents[2]
+
+
+def test_loaded_envelope_keeps_the_fully_validated_snapshot_without_copying(tmp_path, monkeypatch):
+    releases = tmp_path / "releases"
+    ref = publish_release(bundle(tmp_path / "input"), releases)
+    decoded = []
+    original = SchedulingKnowledgeSnapshot.model_validate_json
+
+    def observed(cls, body, **kwargs):
+        result = original(body, **kwargs)
+        decoded.append(result)
+        return result
+
+    monkeypatch.setattr(SchedulingKnowledgeSnapshot, "model_validate_json", classmethod(observed))
+    loaded = load_release(releases, ref)
+    assert loaded.snapshot is decoded[-1]
+    assert LoadedRelease.model_validate_json(loaded.model_dump_json()) == loaded
 
 
 def test_new_process_reads_with_database_imports_and_network_blocked(tmp_path):
