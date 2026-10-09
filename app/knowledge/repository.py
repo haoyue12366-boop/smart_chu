@@ -84,3 +84,11 @@ class SnapshotKnowledgeRepository:
                 raise ValueError("仍被当前版本或活动会话引用，不能卸载")
             self._cache.pop(release, None)
             self._references.pop(release, None)
+
+    def trim_unused_cache(self) -> int:
+        """仅释放无租约的物化对象；当前发布绑定不变，后续重新加载仍完整核验。"""
+        with self._lock:
+            unused = tuple(ref for ref in self._cache if not self._references.get(ref, 0))
+            for ref in unused:
+                del self._cache[ref]
+            return len(unused)

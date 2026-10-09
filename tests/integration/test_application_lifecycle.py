@@ -26,6 +26,16 @@ def test_cold_start_ready_without_neo4j_and_shutdown(tmp_path: Path) -> None:
     assert not worker.is_alive
 
 
+def test_online_start_keeps_full_runtime_view_without_duplicate_snapshot_cache(tmp_path):
+    app = create_app(settings(tmp_path))
+    with TestClient(app) as client:
+        services = app.state.container
+        assert len(services.knowledge.recipes) == 100
+        assert services.repository._cache == {}
+        assert len(client.get("/api/v1/recipes").json()["recipes"]) == 100
+        assert client.get("/health/ready").status_code == 200
+
+
 def test_corrupt_release_does_not_claim_ready(tmp_path: Path) -> None:
     app = create_app(settings(tmp_path).model_copy(update={"release_root": tmp_path / "missing"}))
     with pytest.raises((FileNotFoundError, ValueError)):

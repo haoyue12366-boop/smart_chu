@@ -5,6 +5,7 @@ import os
 import socket
 import subprocess
 import sys
+import weakref
 from pathlib import Path
 
 import pytest
@@ -80,6 +81,46 @@ def test_pinned_old_snapshot_survives_switch_and_cannot_be_evicted(tmp_path):
     assert repository.select((RecipeId("synthetic"),)).release == second
     with pytest.raises(ValueError, match="菜谱"):
         repository.select((RecipeId("missing"),))
+
+
+def test_trim_protects_active_lease_and_reloads_current_with_full_validation(tmp_path):
+    releases = tmp_path / "releases"
+    first = publish_release(bundle(tmp_path / "input"), releases)
+    repository = SnapshotKnowledgeRepository(releases)
+    repository.load(first)
+    source = weakref.ref(repository._cache[first])
+    snapshot = weakref.ref(repository._cache[first].snapshot)
+    with repository.acquire(first) as lease:
+        view = lease.select((RecipeId("synthetic"),))
+        assert repository.trim_unused_cache() == 0
+        assert source() is not None
+    del lease
+    assert repository.trim_unused_cache() == 1
+    assert source() is None
+    assert snapshot() is None
+    assert len(view.recipes) == 1 and view.release == first
+    assert repository.select((RecipeId("synthetic"),)) == view
+    assert repository.trim_unused_cache() == 1
+    with pytest.raises(ValueError, match="引用"):
+        repository.unload(first)
+    (releases / first.release_id / "snapshot.json").write_text("{}", encoding="utf-8")
+    with pytest.raises(ValueError):
+        repository.select((RecipeId("synthetic"),))
+    assert len(view.recipes) == 1 and view.release == first
+
+
+def test_trim_keeps_active_old_version_lease_after_current_release_switch(tmp_path):
+    releases = tmp_path / "releases"
+    first = publish_release(bundle(tmp_path / "input", "old"), releases)
+    second = publish_release(bundle(tmp_path / "input-2", "new"), releases)
+    repository = SnapshotKnowledgeRepository(releases)
+    repository.load(first)
+    with repository.acquire(first) as lease:
+        repository.load(second)
+        assert repository.trim_unused_cache() == 1
+        assert set(repository._cache) == {first}
+        assert lease.select((RecipeId("synthetic"),)).release == first
+        assert repository.select((RecipeId("synthetic"),)).release == second
 
 
 @pytest.mark.offline_neo4j

@@ -87,6 +87,7 @@ class ServiceContainer:
                 knowledge = lease.select(
                     tuple(r.recipe_id for r in lease.loaded.snapshot.knowledge.recipes)
                 )
+            del lease
             runtime = RuntimeService(self.store, knowledge, self.clock)
             self.runtimes[release_id] = runtime
             self.planners[release_id] = PlanningService(
@@ -96,6 +97,8 @@ class ServiceContainer:
                 on_compute_finished=self.worker.release_problem,
             )
         self.knowledge = self.runtimes[self.settings.release_id].knowledge
+        # Runtime持有经严格构造的完整视图；原快照物化缓存已不在在线读取路径。
+        self.repository.trim_unused_cache()
         if not self.worker.warmup():
             raise TimeoutError(
                 "求解进程未就绪"
