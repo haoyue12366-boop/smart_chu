@@ -17,6 +17,7 @@ from app.compiler.material_flow import (
     build_material_allocations,
     compile_material_flow,
 )
+from app.compiler.menu_knowledge import candidate_menu_knowledge
 from app.compiler.model_stats import estimate_model_size
 from app.compiler.phase_expansion import expand_required_programs
 from app.compiler.pruning import PruningResult, deduplicate
@@ -113,7 +114,7 @@ class ProblemCompiler:
             context = SharedCandidateContext(
                 instantiated=instantiated,
                 group=GroupContext(
-                    knowledge=knowledge,
+                    knowledge=candidate_menu_knowledge(knowledge, menu),
                     runtime=runtime,
                     menu=menu,
                     allow_delegated_estimates=policy.allow_delegated_shared_estimates,
