@@ -1,5 +1,6 @@
 """独立计划校验入口，绝不依赖 Compiler 或求解器的约束生成函数。"""
 
+from app.domain.base import content_hash
 from app.domain.knowledge import MenuKnowledgeView
 from app.domain.runtime_snapshot import RuntimeSnapshot
 from app.domain.schedule import CandidateSchedule
@@ -38,7 +39,8 @@ class ScheduleValidator:
         check_resources(scan)
         check_thermal_programs(scan)
         check_metrics(scan)
-        candidate_hash = candidate.candidate_hash
+        # 校验报告重新绑定实际正文，不信任调用方的指纹复用。
+        candidate_hash = content_hash(candidate)
         return ValidationReport(
             report_id="validation-" + candidate_hash,
             problem_hash=scan.problem_hash,

@@ -8,6 +8,7 @@ from app.domain.runtime_session import NotificationRecord, RuntimeSession
 from app.domain.schedule import PublishedPlan
 from app.domain.scheduling_problem import SchedulingProblem
 from app.storage import models as m
+from app.storage.decoded_models import decode_model
 
 
 class StateConflict(ValueError):
@@ -45,7 +46,7 @@ class RuntimeRepository:
         ).scalar_one_or_none()
         if body is None:
             raise KeyError("会话不存在：" + session_id)
-        return RuntimeSession.model_validate_json(body)
+        return decode_model(self.connection, RuntimeSession, body)
 
     def save(
         self,
@@ -271,7 +272,7 @@ class RuntimeRepository:
         body = self.connection.execute(
             select(m.plans.c.body).where(m.plans.c.publication_id == publication_id)
         ).scalar_one_or_none()
-        return None if body is None else PublishedPlan.model_validate_json(body)
+        return None if body is None else decode_model(self.connection, PublishedPlan, body)
 
     def plan(self, session_id: str, version: int) -> PublishedPlan | None:
         body = self.connection.execute(
@@ -279,7 +280,7 @@ class RuntimeRepository:
                 m.plans.c.session_id == session_id, m.plans.c.version == version
             )
         ).scalar_one_or_none()
-        return None if body is None else PublishedPlan.model_validate_json(body)
+        return None if body is None else decode_model(self.connection, PublishedPlan, body)
 
     def notification_records(self, session_id: str) -> tuple[NotificationRecord, ...]:
         return tuple(
@@ -295,4 +296,4 @@ class RuntimeRepository:
                 m.plans.c.session_id == session_id, m.plans.c.version == version
             )
         ).scalar_one()
-        return SchedulingProblem.model_validate_json(body)
+        return decode_model(self.connection, SchedulingProblem, body)

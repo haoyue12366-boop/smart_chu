@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from typing import Self
+from weakref import ReferenceType, ref
 
 from pydantic import AwareDatetime, Field, model_validator
 
@@ -10,6 +11,14 @@ from app.domain.planning_timing import PlanningOverhead
 from app.domain.resources import ResourceUse
 from app.domain.time import Interval, TimeOrigin
 from app.domain.validation_contract import ValidationReport
+
+_CANDIDATE_IDENTITIES: dict[int, tuple[ReferenceType[CandidateSchedule], str]] = {}
+
+
+def _forget_candidate(identity: int, reference: ReferenceType[CandidateSchedule]) -> None:
+    entry = _CANDIDATE_IDENTITIES.get(identity)
+    if entry is not None and entry[0] is reference:
+        _CANDIDATE_IDENTITIES.pop(identity, None)
 
 
 class ScheduledAssignment(FrozenModel):
@@ -66,7 +75,15 @@ class CandidateSchedule(FrozenModel):
 
     @property
     def candidate_hash(self) -> str:
-        return content_hash(self)
+        # 按不可变对象身份复用；副本/再校验产生新身份，不进入 JSON 或相等比较。
+        identity = id(self)
+        cached = _CANDIDATE_IDENTITIES.get(identity)
+        if cached is not None and cached[0]() is self:
+            return cached[1]
+        digest = content_hash(self)
+        reference = ref(self, lambda pointer: _forget_candidate(identity, pointer))
+        _CANDIDATE_IDENTITIES[identity] = reference, digest
+        return digest
 
 
 class ValidatedSchedule(FrozenModel):

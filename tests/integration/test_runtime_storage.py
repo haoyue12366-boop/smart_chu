@@ -47,7 +47,8 @@ def test_version_upgrade_preserves_history_and_adds_lookup_indexes(tmp_path):
             tx.scalar(text("SELECT body FROM audit_records WHERE audit_id='old'")) == "历史不能删除"
         )
         assert (
-            tx.scalar(text("SELECT version_num FROM alembic_version")) == "0008_simulation_control"
+            tx.scalar(text("SELECT version_num FROM alembic_version"))
+            == "0009_pending_recovery_indexes"
         )
         assert "future_material_allocations" in inspect(tx).get_table_names()
         assert "inventory_fulfillments" in inspect(tx).get_table_names()
@@ -56,6 +57,12 @@ def test_version_upgrade_preserves_history_and_adds_lookup_indexes(tmp_path):
         assert "client_body" in {c["name"] for c in inspect(tx).get_columns("http_requests")}
         indexes = inspect(tx).get_indexes("runtime_events")
         assert any(i["column_names"] == ["session_id"] for i in indexes)
+        assert "ix_sessions_pending_recovery" in {
+            index["name"] for index in inspect(tx).get_indexes("cooking_sessions")
+        }
+        assert "ix_http_pending_recovery" in {
+            index["name"] for index in inspect(tx).get_indexes("http_requests")
+        }
 
 
 def test_sqlite_write_lock_has_finite_wait_and_no_event_side_effect(tmp_path):

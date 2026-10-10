@@ -9,6 +9,8 @@ from alembic import command
 from alembic.config import Config
 from sqlalchemy import Connection, create_engine, event
 
+from app.storage.decoded_models import release_decoded_models
+
 
 class UnitOfWork:
     def __init__(self, path: Path, *, busy_timeout_ms: int = 100) -> None:
@@ -45,4 +47,5 @@ class UnitOfWork:
                 raise
 
     def close(self) -> None:
+        release_decoded_models(self.engine)
         self.engine.dispose()
