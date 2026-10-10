@@ -5,17 +5,24 @@ import type {
   RuntimeSession,
 } from '../api/types';
 
+const dateFormatters = new Map<string, Intl.DateTimeFormat>();
 export function fullDate(origin: string, seconds: number, timezone = 'Asia/Shanghai'): string {
-  return new Intl.DateTimeFormat('zh-CN', {
-    timeZone: timezone,
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-    hour: '2-digit',
-    minute: '2-digit',
-    second: '2-digit',
-    hourCycle: 'h23',
-  }).format(new Date(Date.parse(origin) + seconds * 1000));
+  let formatter = dateFormatters.get(timezone);
+  if (!formatter) {
+    formatter = new Intl.DateTimeFormat('zh-CN', {
+      timeZone: timezone,
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hourCycle: 'h23',
+    });
+    if (dateFormatters.size >= 8) dateFormatters.delete(dateFormatters.keys().next().value!);
+    dateFormatters.set(timezone, formatter);
+  }
+  return formatter.format(new Date(Date.parse(origin) + seconds * 1000));
 }
 export const displayMinutes = (seconds: number): string =>
   (Math.floor(seconds / 6 + 0.5) / 10).toFixed(1);

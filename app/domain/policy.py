@@ -65,6 +65,9 @@ class GreedySearchLimits(FrozenModel):
 
 class SchedulingPolicy(FrozenModel):
     policy_version: NonEmpty
+    search_strategy: Literal["FULL_QUALITY", "FT_KITCHEN"] = Field(
+        default="FULL_QUALITY", exclude_if=lambda value: value == "FULL_QUALITY"
+    )
     advance_preparation_mode: Literal["SCHEDULE_ALL", "ASSUME_READY"] = Field(
         default="SCHEDULE_ALL", exclude_if=lambda value: value == "SCHEDULE_ALL"
     )

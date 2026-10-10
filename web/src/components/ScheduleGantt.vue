@@ -30,6 +30,20 @@ const rows = computed(() =>
   ganttRows(props.envelope.presentation, scope.value, props.historical ? null : props.session),
 );
 const origin = computed(() => props.envelope.presentation.time_origin.start_at);
+const formatTime = computed(() => {
+  const originValue = origin.value;
+  const timezone = props.timezone;
+  const labels = new Map<number, string>();
+  return (seconds: number) => {
+    let label = labels.get(seconds);
+    if (label === undefined) {
+      label = fullDate(originValue, seconds, timezone);
+      if (labels.size >= 2048) labels.clear();
+      labels.set(seconds, label);
+    }
+    return label;
+  };
+});
 const lanes = computed(() =>
   scope.value === 'resource' && props.envelope.presentation.resource_lanes?.length
     ? props.envelope.presentation.resource_lanes
@@ -59,7 +73,7 @@ const windowEnd = computed(() =>
     ? Math.min(props.envelope.presentation.range_end_sec, zoomAnchor.value + zoom.value)
     : props.envelope.presentation.range_end_sec,
 );
-// 会话每秒轮询。只在实际显示内容变化时更新，保留悬浮卡与用户缩放。
+// 只在实际显示内容变化时更新，保留悬浮卡与用户缩放。
 const renderKey = computed(() =>
   JSON.stringify([
     scope.value,
@@ -88,8 +102,7 @@ function draw() {
   const drawRows = rows.value;
   const drawLanes = lanes.value;
   const drawRecipes = recipeById.value;
-  const drawOrigin = origin.value;
-  const drawTimezone = props.timezone;
+  const drawTime = formatTime.value;
   const drawHistorical = props.historical;
   const range = Math.max(1, props.envelope.presentation.range_end_sec);
   const end = windowEnd.value;
@@ -126,13 +139,13 @@ function draw() {
           const reuse = item.reuse_intervals
             .map(
               (interval) =>
-                `${escapeHtml(fullDate(drawOrigin, interval.start_sec, drawTimezone))} → ${escapeHtml(fullDate(drawOrigin, interval.end_sec, drawTimezone))}`,
+                `${escapeHtml(drawTime(interval.start_sec))} → ${escapeHtml(drawTime(interval.end_sec))}`,
             )
             .join('<br />');
           return `${dishes}<div class="gantt-tooltip-title">${escapeHtml(item.title)}</div>
             <div>${escapeHtml(item.lane)} · ${item.status}${item.shared ? ' · 共同批次' : ''}${reuse ? ' · 复用' : ''}${item.frozen ? ' · 冻结' : ''}${drawHistorical ? ' · 历史计划' : ''}</div>
-            <div>开始：${escapeHtml(fullDate(drawOrigin, item.start_sec, drawTimezone))}</div>
-            <div>结束：${escapeHtml(fullDate(drawOrigin, item.end_sec, drawTimezone))}</div>
+            <div>开始：${escapeHtml(drawTime(item.start_sec))}</div>
+            <div>结束：${escapeHtml(drawTime(item.end_sec))}</div>
             <div>时长：${displayMinutes(item.end_sec - item.start_sec)} 分钟</div>
             ${reuse ? `<div>设备复用区间：<br />${reuse}</div>` : ''}
             ${item.configuration ? `<div class="gantt-tooltip-configuration">${escapeHtml(item.configuration)}</div>` : ''}`;
@@ -143,7 +156,7 @@ function draw() {
         min: 0,
         max: range,
         axisLabel: {
-          formatter: (n: number) => fullDate(drawOrigin, n, drawTimezone).replace(' ', '\n'),
+          formatter: (n: number) => drawTime(n).replace(' ', '\n'),
           fontSize: 10,
         },
       },
@@ -366,19 +379,15 @@ onBeforeUnmount(() => {
           <tbody>
             <tr v-for="row in rows" :key="row.id">
               <td>{{ row.lane }}<br />{{ row.title }}</td>
-              <td>
-                {{ fullDate(origin, row.start_sec, timezone) }}<br />{{
-                  fullDate(origin, row.end_sec, timezone)
-                }}
-              </td>
+              <td>{{ formatTime(row.start_sec) }}<br />{{ formatTime(row.end_sec) }}</td>
               <td>{{ displayMinutes(row.end_sec - row.start_sec) }} 分钟</td>
               <td>
                 {{ row.status }}{{ row.shared ? ' · 共同批次' : ''
                 }}{{ row.reuse_intervals.length ? ' · 复用' : '' }}{{ row.frozen ? ' · 冻结' : ''
                 }}<br />{{ row.configuration }}
                 <div v-for="interval in row.reuse_intervals" :key="interval.start_sec">
-                  复用：{{ fullDate(origin, interval.start_sec, timezone) }} →
-                  {{ fullDate(origin, interval.end_sec, timezone) }}
+                  复用：{{ formatTime(interval.start_sec) }} →
+                  {{ formatTime(interval.end_sec) }}
                 </div>
               </td>
             </tr>

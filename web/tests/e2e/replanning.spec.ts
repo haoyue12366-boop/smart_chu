@@ -5,7 +5,7 @@ const steak = { id: '61e6c51fec6e1d65587067e1', name: '低温牛排' };
 
 async function confirmWrite(page: Page, submit: () => Promise<void>) {
   const matches = (url: string) =>
-    /\/api\/v1\/sessions(?:\/[^/]+\/events)?$/.test(new URL(url).pathname);
+    /\/api\/v1\/sessions(?:\/[^/]+\/(?:events|recipes))?$/.test(new URL(url).pathname);
   const received = page.waitForResponse(
     (response) => response.request().method() === 'POST' && matches(response.url()),
   );

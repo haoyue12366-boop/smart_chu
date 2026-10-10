@@ -99,7 +99,12 @@ export interface PublishedPlan {
 }
 export interface PlanEnvelope {
   plan: PublishedPlan;
-  problem: unknown;
+  problem?: unknown;
+  optimization?: {
+    strategy: 'FULL_QUALITY' | 'FT_KITCHEN';
+    spread_basis: 'WORKFLOW_FINISH' | 'COOKING_FINISH';
+    rest_gap_sec: number;
+  };
   presentation: PlanPresentation;
 }
 export interface DeviceState {
@@ -151,6 +156,7 @@ export interface MenuItem {
   status?: string;
 }
 export interface RuntimeSession {
+  status?: 'CREATED' | 'ACTIVE' | 'ENDED';
   clock_progress?: {
     enabled: boolean;
     started_at: string | null;
@@ -217,6 +223,7 @@ export interface EventRequest {
   occurred_at?: string;
 }
 export interface PlanningResult {
+  planning?: { timings?: { stage: string; elapsed_ms: number }[] } | null;
   session_id?: string;
   status: 'PUBLISHED' | 'NO_REPLAN' | 'PENDING' | 'FAILED' | 'EVENT_REJECTED';
   event?: { status: string; first_applied: boolean; rejection_reason?: string | null } | null;

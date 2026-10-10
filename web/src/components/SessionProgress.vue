@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue';
 import type { PlanEnvelope, RuntimeSession } from '../api/types';
 import { fullDate, taskStatus } from '../model/presentation';
 import ReplanStatusNotice from './ReplanStatusNotice.vue';
@@ -26,8 +26,30 @@ const completed = computed(
         operation.inventory_supplied || taskStatus([operation.task_id], props.session) === '已完成',
     ).length,
 );
+const tick = ref(0);
+const sampledAt = ref(performance.now());
+watch(
+  () => props.session,
+  () => {
+    sampledAt.value = performance.now();
+    tick.value = 0;
+  },
+);
+let timer: ReturnType<typeof setInterval> | undefined;
+onMounted(() => {
+  timer = setInterval(() => {
+    tick.value = Math.max(0, Math.floor((performance.now() - sampledAt.value) / 1000));
+  }, 1000);
+});
+onBeforeUnmount(() => {
+  if (timer) clearInterval(timer);
+});
 const offset = computed(
-  () => clock.value?.current_offset_sec ?? props.session.runtime.now_offset_sec,
+  () =>
+    (clock.value?.current_offset_sec ?? props.session.runtime.now_offset_sec) +
+    (automatic.value && clock.value?.started_at && props.session.status !== 'ENDED'
+      ? tick.value
+      : 0),
 );
 </script>
 <template>

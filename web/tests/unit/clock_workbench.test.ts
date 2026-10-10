@@ -179,14 +179,14 @@ beforeEach(() => {
   writes = [];
   competitionPending = false;
   rejectEvent = false;
-  vi.useFakeTimers({ toFake: ['setInterval', 'clearInterval', 'Date'] });
+  vi.useFakeTimers({ toFake: ['setInterval', 'clearInterval', 'Date', 'performance'] });
   vi.setSystemTime('2026-10-08T00:00:30Z');
   vi.stubGlobal('EventSource', NotificationStream);
   vi.stubGlobal('fetch', async (input: string, init?: RequestInit) => {
-    const path = String(input);
+    const path = String(input).split('?')[0]!;
     if (init?.method === 'POST') {
       const body = JSON.parse(init.body as string) as Record<string, unknown>;
-      writes.push({ path, body, headers: init.headers });
+      writes.push({ path: String(input), body, headers: init.headers });
       if (path.startsWith('/api/competition/plan')) {
         if (competitionPending) {
           current = state(1, 30, true);
@@ -241,6 +241,82 @@ afterEach(() => {
 });
 
 describe('authoritative plan clock workbench', () => {
+  it('uses healthy SSE to avoid per-second reads while the display clock advances locally', async () => {
+    const originalFetch = globalThis.fetch;
+    const reads = vi.fn((input: string, init?: RequestInit) => originalFetch(input, init));
+    vi.stubGlobal('fetch', reads);
+    const wrapper = mountApp();
+    await flushPromises();
+    const stream = NotificationStream.opened[0] as unknown as { onopen?: () => void };
+    expect(stream.onopen).toBeTypeOf('function');
+    stream.onopen?.();
+    await flushPromises();
+    const before = reads.mock.calls.length;
+    await vi.advanceTimersByTimeAsync(10_000);
+    await flushPromises();
+    expect(reads.mock.calls.length).toBe(before);
+    expect(wrapper.get('[data-testid=clock-progress]').text()).toContain('0 分 40 秒');
+    expect(current.runtime.now_offset_sec).toBe(30);
+    wrapper.unmount();
+  });
+  it('resynchronizes on SSE reconnect without waiting for the slow healthy-stream timer', async () => {
+    const wrapper = mountApp();
+    await flushPromises();
+    const stream = NotificationStream.opened[0] as unknown as {
+      onopen?: () => void;
+      onerror?: () => void;
+    };
+    stream.onopen?.();
+    await flushPromises();
+    stream.onerror?.();
+    current = state(2, 61);
+    stream.onopen?.();
+    await flushPromises();
+    expect(wrapper.get('[data-testid=session-version]').text()).toContain('v2');
+    wrapper.unmount();
+  });
+  it('distinguishes the outstanding request from loading its published plan', async () => {
+    const wrapper = mountApp();
+    await flushPromises();
+    const originalFetch = globalThis.fetch;
+    let accept!: (value: Response) => void;
+    let publish!: (value: Response) => void;
+    const response = new Promise<Response>((resolve) => {
+      accept = resolve;
+    });
+    const display = new Promise<Response>((resolve) => {
+      publish = resolve;
+    });
+    vi.stubGlobal('fetch', (input: string, init?: RequestInit) => {
+      if (init?.method === 'POST') return response;
+      if (String(input).split('?')[0]?.endsWith('/plans/2')) return display;
+      return originalFetch(input, init);
+    });
+    await wrapper.get('[data-testid=replan-remaining]').trigger('click');
+    expect(wrapper.get('[data-testid=request-phase]').attributes('data-phase')).toBe('REQUESTING');
+    current = state(2, 61);
+    accept(Response.json({ status: 'PUBLISHED', session_id: 'toy-clock', plan: plan(2).plan }));
+    await flushPromises();
+    expect(wrapper.get('[data-testid=request-phase]').attributes('data-phase')).toBe(
+      'WAITING_PUBLICATION',
+    );
+    expect(wrapper.get('[data-testid=session-version]').text()).toContain('v1');
+    publish(Response.json(plan(2)));
+    await flushPromises();
+    expect(wrapper.get('[data-testid=request-phase]').attributes('data-phase')).toBe('SUCCEEDED');
+    expect(wrapper.get('[data-testid=session-version]').text()).toContain('v2');
+    wrapper.unmount();
+  });
+  it('keeps manual progress authoritative while local display timers run', async () => {
+    current.runtime.execution_mode = 'MANUAL_CONFIRM';
+    current.clock_progress = undefined;
+    const wrapper = mountApp();
+    await flushPromises();
+    await vi.advanceTimersByTimeAsync(3000);
+    await flushPromises();
+    expect(wrapper.get('[data-testid=clock-progress]').text()).toContain('0 分 30 秒');
+    wrapper.unmount();
+  });
   it('keeps an addition selected during clock updates and submits a menu command', async () => {
     const originalFetch = globalThis.fetch;
     vi.stubGlobal('fetch', (input: string, init?: RequestInit) =>
@@ -283,7 +359,7 @@ describe('authoritative plan clock workbench', () => {
     const realFetch = globalThis.fetch;
     let offline = true;
     vi.stubGlobal('fetch', (input: string, init?: RequestInit) =>
-      offline && String(input) === '/api/v1/sessions/toy-clock'
+      offline && String(input).split('?')[0] === '/api/v1/sessions/toy-clock'
         ? Promise.resolve(
             Response.json(
               { error: { code: 'NOT_FOUND', message: '临时读取失败' } },
@@ -317,6 +393,7 @@ describe('authoritative plan clock workbench', () => {
     await vi.advanceTimersByTimeAsync(1000);
     await flushPromises();
     expect(wrapper.text()).toContain('最终结果超过请求截止时间');
+    expect(wrapper.get('[data-testid=request-phase]').attributes('data-phase')).toBe('FAILED');
     expect(wrapper.text()).not.toContain('请求已接受，正在重排剩余操作，当前操作继续。');
     wrapper.unmount();
   });
@@ -385,8 +462,9 @@ describe('authoritative plan clock workbench', () => {
       rejectHistory = reject;
     });
     vi.stubGlobal('fetch', async (input: string, init?: RequestInit) => {
-      if (String(input).endsWith('/plans/2')) return history;
-      if (String(input).endsWith('/plans/3')) {
+      const path = String(input).split('?')[0]!;
+      if (path.endsWith('/plans/2')) return history;
+      if (path.endsWith('/plans/3')) {
         const value = plan(3);
         value.presentation.operations[1]!.title = '重新安排烹饪';
         return Response.json(value);
@@ -419,6 +497,7 @@ describe('authoritative plan clock workbench', () => {
     expect(wrapper.get('[data-testid=running-operations]').text()).toContain('合成菜 · 切配');
     await wrapper.get('[data-testid=replan-remaining]').trigger('click');
     await flushPromises();
+    expect(wrapper.get('[data-testid=request-phase]').attributes('data-phase')).toBe('SOLVING');
     expect(writes[0]?.path).toBe('/api/v1/sessions/toy-clock/replan');
     expect(writes[0]?.body).toEqual({});
     expect(writes[0]?.headers).toHaveProperty('Idempotency-Key');
@@ -436,6 +515,7 @@ describe('authoritative plan clock workbench', () => {
     expect(wrapper.find('[data-testid=replan-status]').exists()).toBe(false);
     expect(wrapper.get('[data-testid=execution-progress]').text()).toContain('1 / 2');
     expect(wrapper.text()).toContain('剩余操作的新计划已发布');
+    expect(wrapper.get('[data-testid=request-phase]').attributes('data-phase')).toBe('SUCCEEDED');
     expect(wrapper.findAll('button').some((button) => button.text() === '查询原请求结果')).toBe(
       false,
     );

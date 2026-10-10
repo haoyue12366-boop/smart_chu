@@ -86,6 +86,7 @@ class PlanningEngine:
         stability_optimized = False
         allowance = self.computation_budget or ComputationBudget.from_spec(budget)
         quality_first = problem.policy.quality_first
+        ft_strategy = problem.policy.search_strategy == "FT_KITCHEN"
         solver_end = compute_end
 
         def accept_candidate(
@@ -124,10 +125,13 @@ class PlanningEngine:
                 )
             construct = (
                 GreedyScheduler().solve_serial
-                if quality_first
-                and not problem.fixed_executions
-                and not problem.fixed_supply_fulfillments
-                and not problem.advance_preparations
+                if ft_strategy
+                or (
+                    quality_first
+                    and not problem.fixed_executions
+                    and not problem.fixed_supply_fulfillments
+                    and not problem.advance_preparations
+                )
                 else GreedyScheduler().solve
             )
             greedy = (
@@ -169,7 +173,11 @@ class PlanningEngine:
             seed_hint: ValidatedSchedule | None = None,
         ) -> SolveResult | None:
             nonlocal first_validated_ms, quality_end
-            if stage is not None and stage.name == "E_QUALITY" and budget.quality_ms is not None:
+            if (
+                stage is not None
+                and (stage.name == "E_QUALITY" or (ft_strategy and stage.name == "D_HUMAN"))
+                and budget.quality_ms is not None
+            ):
                 # 首次联合质量搜索及其放宽重试共享同一可选上限，不扩张总预算。
                 if quality_end is None:
                     quality_end = time.monotonic_ns() + budget.quality_ms * 1_000_000
@@ -239,7 +247,7 @@ class PlanningEngine:
         reference_started = time.monotonic_ns()
         greedy_best = pool.best(makespan_first=True)
         if (
-            (fast_replan or quality_first)
+            (fast_replan or quality_first or ft_strategy)
             and greedy_best is not None
             and serial_order_holds(greedy_best.candidate, problem)
         ):
@@ -365,8 +373,9 @@ class PlanningEngine:
                 else None
             )
             if "HUMAN_BUSY" in problem.policy.objective.stages:
-                # 人工连续段含顺序变量。先用较轻模型保留出锅达标的完整方案，
-                # 再在同一预算中搜索连续人工，避免复杂阶段超时只剩串行方案。
+                # 人工连续段含顺序变量。先取得出锅达标的完整可行方案，
+                # 不在这里额外证明最低优先级的总流程最优；后续E阶段仍
+                # 按完整出锅/连续人工/总流程词典序搜索所有加工备选。
                 seed_started = time.monotonic_ns()
                 seed_end = min(
                     solver_end,
@@ -374,9 +383,7 @@ class PlanningEngine:
                 )
                 spread_seed_result: SolveResult | None = None
                 solve(
-                    ObjectiveStage(
-                        name="C_MAKESPAN", makespan_cap_sec=cap, spread_excess_cap_sec=0
-                    ),
+                    ObjectiveStage(name="B_SPREAD", makespan_cap_sec=cap, spread_excess_cap_sec=0),
                     seed_end,
                 )
                 seed = pool.best()
@@ -541,15 +548,21 @@ class PlanningEngine:
                 - problem.policy.objective.spread_target_sec,
             )
             current = time.monotonic_ns()
-            solve(
-                ObjectiveStage(
-                    name="C_MAKESPAN", makespan_cap_sec=cap, spread_excess_cap_sec=excess
-                ),
-                current + max(0, solver_end - current) * 2 // 3,
-            )
+            if not ft_strategy:
+                solve(
+                    ObjectiveStage(
+                        name="C_MAKESPAN", makespan_cap_sec=cap, spread_excess_cap_sec=excess
+                    ),
+                    current + max(0, solver_end - current) * 2 // 3,
+                )
             best = pool.best(cap)
             assert best is not None and best.candidate.metrics is not None
-            human_count = human_phase_count(problem)
+            human_count = human_phase_count(
+                problem,
+                selected_carriers={a.carrier_id for a in best.candidate.assignments}
+                if ft_strategy
+                else None,
+            )
             stability_enabled = (
                 self.previous_plan is not None and "STABILITY" in problem.policy.objective.stages
             )
@@ -579,6 +592,14 @@ class PlanningEngine:
             assert best.candidate.metrics is not None
             if (
                 "HUMAN_BUSY" in problem.policy.objective.stages
+                and (
+                    not ft_strategy
+                    or (
+                        runtime.details.planning_kind == "REPLAN"
+                        if runtime.details
+                        else bool(runtime.now_offset_sec)
+                    )
+                )
                 and human_count <= problem.policy.max_exact_human_phases
                 and solver_end - time.monotonic_ns()
                 >= problem.policy.minimum_exact_human_budget_ms * 1_000_000
@@ -592,6 +613,7 @@ class PlanningEngine:
                         total_human_cap_sec=best.candidate.metrics.total_human_work_sec
                         if total_enabled
                         else None,
+                        thermal_seed=best.candidate if ft_strategy else None,
                     ),
                     (time.monotonic_ns() + max(0, solver_end - time.monotonic_ns()) // 2)
                     if stability_enabled

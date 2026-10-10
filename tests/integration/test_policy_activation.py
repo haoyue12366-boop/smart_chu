@@ -7,17 +7,17 @@ from fastapi.testclient import TestClient
 from app.config import ROOT, AppSettings
 from app.domain.policy import SchedulingPolicy
 from app.main import create_app
+from app.services.deployment_policy import scheduling_strategy_policy
 from tests.contract.test_competition_endpoint import STEAK
 
 
-def test_default_service_adopts_approved_quality_budget_and_preserves_old_sessions(tmp_path):
-    approved = SchedulingPolicy.model_validate_json(
-        (ROOT / "data/policies/p6-cook-continuous-v1.json").read_bytes()
-    )
+def test_default_ft_service_preserves_policy_and_budget_of_restored_original_sessions(tmp_path):
+    settings = AppSettings(database_path=tmp_path / "policy-activation.sqlite3")
+    original = SchedulingPolicy.model_validate_json(settings.policy_path.read_bytes())
+    approved = scheduling_strategy_policy(original, "FT_KITCHEN")
     old = SchedulingPolicy.model_validate_json(
         (ROOT / "data/policies/p6-quality-v1.json").read_bytes()
     )
-    settings = AppSettings(database_path=tmp_path / "policy-activation.sqlite3")
     with TestClient(create_app(settings)) as client:
         services = client.app.state.container
         assert services.policy == approved
@@ -29,8 +29,9 @@ def test_default_service_adopts_approved_quality_budget_and_preserves_old_sessio
         new_session_id = created.json()["session_id"]
         actual = services.for_session(new_session_id)[0].get(new_session_id).policy
         assert actual == approved
-        assert actual.initial_budget.total_ms == 7000
-        assert actual.replan_budget.total_ms == 5000
+        assert actual.search_strategy == "FT_KITCHEN"
+        assert actual.initial_budget == original.initial_budget
+        assert actual.replan_budget == original.replan_budget
         services.runtime.create_session("old-policy-session", "SIMULATED", datetime.now(UTC), old)
     with TestClient(create_app(settings)) as client:
         services = client.app.state.container

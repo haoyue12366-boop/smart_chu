@@ -288,8 +288,8 @@ def test_continuous_search_timeout_keeps_a_cooking_aligned_candidate():
         problem, knowledge, problem.runtime, deadline()
     )
     assert result.status == "VALIDATED", result
-    assert "C_MAKESPAN" in seen
-    assert seen.index("C_MAKESPAN") < seen.index("E_QUALITY")
+    assert "B_SPREAD" in seen
+    assert seen.index("B_SPREAD") < seen.index("E_QUALITY")
     assert result.candidate.metrics.cooking_finish_spread_sec <= 300
     assert not result.human_objective_optimized
 

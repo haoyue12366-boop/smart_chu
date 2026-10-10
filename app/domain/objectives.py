@@ -26,9 +26,14 @@ class ObjectiveStage(FrozenModel):
     quality_upper_bound: NonNegativeInt | None = Field(
         default=None, exclude_if=lambda value: value is None
     )
+    thermal_seed: CandidateSchedule | None = Field(
+        default=None, exclude_if=lambda value: value is None
+    )
 
     @model_validator(mode="after")
     def quality_bound_stage(self) -> Self:
         if self.quality_upper_bound is not None and self.name != "E_QUALITY":
             raise ValueError("联合质量上界仅属于E_QUALITY阶段")
+        if self.thermal_seed is not None and self.name != "D_HUMAN":
+            raise ValueError("固定热工序的局部搜索仅属于D_HUMAN阶段")
         return self

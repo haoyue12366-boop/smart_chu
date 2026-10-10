@@ -83,6 +83,34 @@ def check_publication(client, result, count):
     return sid
 
 
+def test_workbench_views_keep_published_display_and_omit_solver_and_policy_payloads(cloud_client):
+    client = cloud_client
+    result = client.post(
+        "/api/v1/sessions",
+        json={
+            "event_id": "workbench-view",
+            "mode": "SIMULATED",
+            "recipes": menu(client, ["美式薯条"]),
+        },
+    ).json()
+    sid = check_publication(client, result, 1)
+    full = client.get(f"/api/v1/sessions/{sid}/plans/1").json()
+    light = client.get(f"/api/v1/sessions/{sid}/plans/1?view=workbench").json()
+    assert "problem" not in light
+    assert light["presentation"] == full["presentation"]
+    assert light["plan"]["validated"]["candidate"] == {
+        "metrics": full["plan"]["validated"]["candidate"]["metrics"]
+    }
+    assert light["plan"]["plan_version"] == full["plan"]["plan_version"]
+    state = client.get(f"/api/v1/sessions/{sid}").json()
+    visible = client.get(f"/api/v1/sessions/{sid}?view=workbench").json()
+    assert "policy" not in visible and "bindings" not in visible and "ledger" not in visible
+    assert visible["runtime"]["state_revision"] == state["runtime"]["state_revision"]
+    assert visible["runtime"]["executions"] == state["runtime"]["executions"]
+    assert visible["menu"] == state["menu"]
+    assert visible["clock_progress"] == state["clock_progress"]
+
+
 @pytest.mark.parametrize(
     ("names", "addition"),
     [
@@ -120,7 +148,9 @@ def test_real_cloud_initial_addition_and_replan_keep_valid_history(cloud_client,
     after = client.get(f"/api/v1/sessions/{sid}").json()
     assert after["runtime"]["current_plan_version"] == 3
     assert after["schedule_clock"]["started_at"] == before["schedule_clock"]["started_at"]
-    assert after["policy"]["policy_version"].endswith(":render-v2")
+    assert after["policy"]["policy_version"].endswith(":render-v2:ft-kitchen-v1")
+    assert after["policy"]["search_strategy"] == "FT_KITCHEN"
+    assert after["policy"]["initial_budget"]["total_ms"] == 90_000
     assert not after["requires_replan"]
     by_id = {e["execution_id"]: e for e in after["runtime"]["executions"]}
     for old in before["runtime"]["executions"]:
@@ -139,7 +169,7 @@ def test_cloud_restart_keeps_existing_session_budget(tmp_path, monkeypatch):
     monkeypatch.setenv("SMART_COOKING_PLANNING_PROFILE", "RENDER")
     with TestClient(create_app(AppSettings.from_environment())) as client:
         services = client.app.state.container
-        assert services.policy.policy_version.endswith(":render-v2")
+        assert services.policy.policy_version.endswith(":render-v2:ft-kitchen-v1")
         assert services.for_session("old-session")[0].get("old-session").policy == old
 
 

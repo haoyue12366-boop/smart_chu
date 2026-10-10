@@ -23,6 +23,17 @@ def candidate_rank(
         else None
     )
     quality_first = problem.policy.quality_first and not makespan_first
+    if problem.policy.search_strategy == "FT_KITCHEN":
+        return (
+            metrics.makespan_sec,
+            objective_spread(metrics, problem) if "SPREAD" in stages else 0,
+            metrics.max_continuous_human_sec if "HUMAN_BUSY" in stages else 0,
+            0,
+            0,
+            0,
+            0,
+            candidate.candidate_hash,
+        )
     return (
         metrics.makespan_sec if makespan_first else excess if "SPREAD" in stages else 0,
         metrics.total_human_work_sec

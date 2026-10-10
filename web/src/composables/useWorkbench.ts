@@ -27,6 +27,29 @@ export function useWorkbench() {
   const currentPlan = shallowRef<PlanEnvelope | null>(null);
   const previousPlan = shallowRef<PlanEnvelope | null>(null);
   const busy = ref(false);
+  const actionPhase = ref<
+    'IDLE' | 'REQUESTING' | 'SOLVING' | 'WAITING_PUBLICATION' | 'SUCCEEDED' | 'FAILED'
+  >('IDLE');
+  const requestTiming = shallowRef<api.RequestTiming | null>(null);
+  const serverPhases = shallowRef<{ stage: string; elapsed_ms: number }[]>([]);
+  const phase = computed(() => {
+    if (!busy.value && (actionPhase.value === 'FAILED' || session.value?.last_planning_failure))
+      return 'FAILED';
+    if (!busy.value && session.value?.requires_replan)
+      return session.value.clock_progress?.waiting_for_boundary ? 'WAITING_PUBLICATION' : 'SOLVING';
+    return actionPhase.value;
+  });
+  const phaseText = computed(
+    () =>
+      ({
+        IDLE: '',
+        REQUESTING: '请求处理中',
+        SOLVING: '正在生成排程，当前操作继续',
+        WAITING_PUBLICATION: '等待新计划发布',
+        SUCCEEDED: '操作已完成',
+        FAILED: '本次操作未完成，请查看详情',
+      })[phase.value],
+  );
   const error = ref('');
   const resultText = ref('');
   const requestId = ref('');
@@ -40,6 +63,10 @@ export function useWorkbench() {
   let stream: EventSource | undefined;
   let interval: ReturnType<typeof setInterval> | undefined;
   let refreshActive = false;
+  let refreshQueued = false;
+  let streamHealthy = false;
+  let lastRefreshAt = 0;
+  let disposed = false;
   let errorSource: 'action' | 'refresh' = 'action';
   let selectedSid: string | null = null;
   let awaitingPublication: { sid: string; version: number; retry?: Pending } | null = null;
@@ -56,6 +83,7 @@ export function useWorkbench() {
   }
   function connect(sid: string, taskId: string | null) {
     stream?.close();
+    streamHealthy = false;
     inbox = NotificationInbox.restore(localStorage.getItem(`cook.inbox.${sid}`));
     notices.value = inbox.current(session.value?.runtime.current_plan_version ?? 0);
     stream = new EventSource(
@@ -63,6 +91,16 @@ export function useWorkbench() {
         ? `/api/competition/notifications/stream?task_id=${encodeURIComponent(taskId)}&after=${inbox.cursor}`
         : `/api/v1/sessions/${encodeURIComponent(sid)}/notifications/stream?after=${inbox.cursor}`,
     );
+    const connected = stream;
+    stream.onopen = () => {
+      if (selectedSid === sid && stream === connected) {
+        streamHealthy = true;
+        void refresh(sid);
+      }
+    };
+    stream.onerror = () => {
+      if (selectedSid === sid && stream === connected) streamHealthy = false;
+    };
     stream.addEventListener('notification', (event: MessageEvent<string>) => {
       if (selectedSid !== sid) return;
       try {
@@ -72,7 +110,7 @@ export function useWorkbench() {
         notices.value = inbox.current(session.value?.runtime.current_plan_version ?? 0);
         if (fresh && message.kind === 'OPERATION_COMPLETED') latestCompletion.value = message;
         if (
-          (fresh && message.kind === 'OPERATION_COMPLETED') ||
+          fresh ||
           (message.kind === 'PLAN_CHANGED' &&
             message.plan_version > (session.value?.runtime.current_plan_version ?? 0))
         )
@@ -83,7 +121,11 @@ export function useWorkbench() {
     });
   }
   async function refresh(sid = selectedSid): Promise<void> {
-    if (!sid || refreshActive) return;
+    if (!sid || disposed) return;
+    if (refreshActive) {
+      refreshQueued = true;
+      return;
+    }
     refreshActive = true;
     try {
       const value = await api.session(sid);
@@ -119,6 +161,13 @@ export function useWorkbench() {
             });
       }
       session.value = value;
+      if (
+        actionPhase.value === 'WAITING_PUBLICATION' &&
+        !value.requires_replan &&
+        !value.dispatch_blocked &&
+        currentPlan.value?.plan.plan_version === version
+      )
+        actionPhase.value = 'SUCCEEDED';
       notices.value = inbox.current(version);
       if (errorSource === 'refresh' && !pending.value) {
         error.value = '';
@@ -126,6 +175,7 @@ export function useWorkbench() {
       }
       if (awaitingPublication?.sid === sid && value.last_planning_failure) {
         awaitingPublication = null;
+        actionPhase.value = 'FAILED';
         resultText.value = '';
       }
       if (
@@ -139,13 +189,21 @@ export function useWorkbench() {
           const accepted = awaitingPublication;
           awaitingPublication = null;
           if (accepted.retry) void send(accepted.retry);
-          else resultText.value = '剩余操作的新计划已发布。';
+          else {
+            resultText.value = '剩余操作的新计划已发布。';
+            actionPhase.value = 'SUCCEEDED';
+          }
         }
       }
     } catch (reason) {
       if (sid === selectedSid) failure(reason, 'refresh');
     } finally {
       refreshActive = false;
+      lastRefreshAt = performance.now();
+      if (refreshQueued && !disposed) {
+        refreshQueued = false;
+        void refresh();
+      }
     }
   }
   async function attach(sid: string, taskId: string | null = null) {
@@ -191,6 +249,9 @@ export function useWorkbench() {
       return;
     }
     busy.value = true;
+    actionPhase.value = 'REQUESTING';
+    requestTiming.value = null;
+    serverPhases.value = [];
     pending.value = write;
     error.value = '';
     requestId.value = '';
@@ -199,7 +260,15 @@ export function useWorkbench() {
     if (write.kind === 'competition') competitionResult.value = '';
     try {
       if (write.kind === 'competition') {
-        const response = await api.post<unknown>(write.path, write.body, write.headers);
+        const response = await api.post<unknown>(
+          write.path,
+          write.body,
+          write.headers,
+          (timing) => {
+            requestTiming.value = timing;
+          },
+        );
+        actionPhase.value = 'WAITING_PUBLICATION';
         competitionResult.value = JSON.stringify(response, null, 2);
         if (write.taskId) await attachTask(write.taskId);
         resultText.value = '比赛接口已返回五字段结果。';
@@ -209,7 +278,9 @@ export function useWorkbench() {
           | PlanningResult
           | { status: 'NEEDS_CLARIFICATION'; question?: string; options?: string[] }
           | { status: 'NOT_UNDERSTOOD'; question?: string; options?: string[] }
-        >(write.path, write.body, write.headers);
+        >(write.path, write.body, write.headers, (timing) => {
+          requestTiming.value = timing;
+        });
         if (result.status === 'NEEDS_CLARIFICATION' || result.status === 'NOT_UNDERSTOOD') {
           clarification.value = {
             question: result.question ?? '请补充具体菜品或明确时间。',
@@ -217,7 +288,17 @@ export function useWorkbench() {
           };
           resultText.value = '尚未执行，请澄清指令。';
           pending.value = null;
+          actionPhase.value = 'IDLE';
         } else {
+          serverPhases.value = result.planning?.timings ?? [];
+          actionPhase.value =
+            result.status === 'PUBLISHED'
+              ? 'WAITING_PUBLICATION'
+              : result.status === 'PENDING'
+                ? 'SOLVING'
+                : result.status === 'FAILED' || result.status === 'EVENT_REJECTED'
+                  ? 'FAILED'
+                  : 'SUCCEEDED';
           const sid = result.session_id ?? write.sid;
           if (write.kind === 'competition-replan' && write.taskId) await attachTask(write.taskId);
           else if (sid) await attach(sid, sid === selectedSid ? competitionTaskId.value : null);
@@ -244,6 +325,7 @@ export function useWorkbench() {
         reason instanceof api.ApiError &&
         reason.code === 'PLANNING_PENDING'
       ) {
+        actionPhase.value = 'WAITING_PUBLICATION';
         try {
           await attachTask(write.taskId);
           if (session.value)
@@ -259,6 +341,7 @@ export function useWorkbench() {
         return;
       }
       failure(reason);
+      actionPhase.value = 'FAILED';
       if (reason instanceof api.ApiError && reason.status >= 400 && reason.status < 500)
         pending.value = null;
       if (write.sid) await refresh(write.sid);
@@ -353,6 +436,8 @@ export function useWorkbench() {
   };
   const newMeal = () => {
     stream?.close();
+    streamHealthy = false;
+    refreshQueued = false;
     selectedSid = null;
     session.value = null;
     currentPlan.value = null;
@@ -364,6 +449,9 @@ export function useWorkbench() {
     competitionResult.value = '';
     awaitingPublication = null;
     resultText.value = '';
+    actionPhase.value = 'IDLE';
+    requestTiming.value = null;
+    serverPhases.value = [];
     error.value = '';
     localStorage.removeItem('cook.session');
     localStorage.removeItem('cook.competitionTask');
@@ -374,6 +462,7 @@ export function useWorkbench() {
     } catch (reason) {
       failure(reason);
     }
+    if (disposed) return;
     const saved = localStorage.getItem('cook.session');
     let taskId: string | null = null;
     try {
@@ -387,13 +476,32 @@ export function useWorkbench() {
       localStorage.removeItem('cook.competitionTask');
     }
     if (saved) await attach(saved, taskId);
+    if (disposed) return;
     interval = setInterval(() => {
-      if (!busy.value) void refresh();
+      const period =
+        streamHealthy &&
+        !awaitingPublication &&
+        !session.value?.requires_replan &&
+        actionPhase.value !== 'WAITING_PUBLICATION'
+          ? 30_000
+          : 1000;
+      if (!busy.value && performance.now() - lastRefreshAt >= period) void refresh();
     }, 1000);
+    window.addEventListener('focus', onFocus);
+    document.addEventListener('visibilitychange', onVisibility);
   });
+  function onFocus() {
+    if (!busy.value) void refresh();
+  }
+  function onVisibility() {
+    if (document.visibilityState === 'visible') onFocus();
+  }
   onBeforeUnmount(() => {
+    disposed = true;
     stream?.close();
     if (interval) clearInterval(interval);
+    window.removeEventListener('focus', onFocus);
+    document.removeEventListener('visibilitychange', onVisibility);
   });
   return {
     catalog,
@@ -401,6 +509,10 @@ export function useWorkbench() {
     currentPlan,
     previousPlan,
     busy,
+    phase,
+    phaseText,
+    requestTiming,
+    serverPhases,
     error,
     requestId,
     resultText,

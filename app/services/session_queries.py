@@ -1,13 +1,19 @@
 """只读会话展示；设备可用性观测和实际执行占用分别投影。"""
 
 from datetime import timedelta
+from typing import Literal
 
 from app.domain.presentation import DevicePresentation
 from app.domain.runtime_clock import clock_offset
 from app.services.container import ServiceContainer
 
 
-def read_session(services: ServiceContainer, session_id: str) -> dict[str, object]:
+def read_session(
+    services: ServiceContainer,
+    session_id: str,
+    *,
+    view: Literal["full", "workbench"] = "full",
+) -> dict[str, object]:
     runtime, _ = services.for_session(session_id)
     session = runtime.get(session_id)
     state = session.runtime
@@ -79,8 +85,36 @@ def read_session(services: ServiceContainer, session_id: str) -> dict[str, objec
         "replan_not_before_at": boundary_at.isoformat() if boundary_at else None,
         "waiting_for_boundary": boundary is not None and current < boundary,
     }
+    visible = (
+        session.model_dump(
+            mode="json",
+            include={
+                "runtime": {
+                    "session_id": True,
+                    "state_revision": True,
+                    "current_plan_version": True,
+                    "knowledge_version": True,
+                    "time_origin": True,
+                    "now_offset_sec": True,
+                    "execution_mode": True,
+                    "executions": True,
+                    "device_states": True,
+                    "material_lots": True,
+                    "details": {"cancelled_instance_ids", "lots"},
+                },
+                "menu": True,
+                "status": True,
+                "requires_replan": True,
+                "dispatch_blocked": True,
+                "last_planning_failure": True,
+                "replan_reasons": True,
+            },
+        )
+        if view == "workbench"
+        else session.model_dump(mode="json")
+    )
     return {
-        **session.model_dump(mode="json"),
+        **visible,
         "device_presentation": devices,
         "clock_progress": progress,
     }

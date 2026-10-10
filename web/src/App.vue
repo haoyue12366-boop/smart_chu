@@ -30,6 +30,10 @@ const {
   competitionResult,
   competitionTaskId,
   clarification,
+  phase,
+  phaseText,
+  requestTiming,
+  serverPhases,
 } = work;
 const tab = ref<'plan' | 'execute' | 'history' | 'competition'>('plan');
 const recipeGraph = ref<RecipeGraph | null>(null);
@@ -37,6 +41,22 @@ const graphError = ref('');
 const graphLoading = ref(false);
 const graphOpen = ref(false);
 const metrics = computed(() => currentPlan.value?.plan.validated.candidate.metrics);
+const phaseLabels: Record<string, string> = {
+  COMPILATION: '整理本次工艺',
+  GREEDY: '构造参考方案',
+  CP_SAT: '优化排程',
+  SERIAL_REFERENCE: '串行参考',
+  SERIAL_CONSTRUCTION: '构造串行参考',
+  PREVIOUS_PLAN_EXTENSION: '构造加菜候选',
+  VALIDATION_AND_METRICS: '独立校验与指标',
+  PLANNING_ENGINE: '排程处理总计',
+  PLANNING_CORE: '工艺与排程总计',
+  PUBLICATION: '核验并发布',
+  REVERSE_COOKING_HINT: '出锅集中候选',
+  TAIL_COMPACTION: '收紧收尾',
+  HEATING_SLACK_COMPACTION: '收紧加热安排',
+  FEEDBACK_FEASIBILITY_RETURN: '反馈后的可行方案',
+};
 const saving = computed(() => {
   const serial = currentPlan.value?.plan.serial_reference?.candidate.metrics?.makespan_sec;
   return serial !== undefined && serial !== null && metrics.value
@@ -129,6 +149,30 @@ async function showGraph(id: string) {
         ><button v-if="pending" :disabled="busy" @click="work.retry()">用原请求身份重试</button
         ><button v-else :disabled="busy" @click="work.refresh()">刷新状态</button>
       </div>
+      <p
+        v-if="phase !== 'IDLE'"
+        class="muted"
+        role="status"
+        data-testid="request-phase"
+        :data-phase="phase"
+      >
+        {{ phaseText }}
+      </p>
+      <details v-if="requestTiming" class="muted" data-testid="request-timing">
+        <summary>
+          本次请求 {{ requestTiming.client_elapsed_ms }} 毫秒<span
+            v-if="requestTiming.server_elapsed_ms !== null"
+          >
+            · 服务端 {{ requestTiming.server_elapsed_ms.toFixed(0) }} 毫秒</span
+          >
+        </summary>
+        <p v-if="requestTiming.request_id">请求 {{ requestTiming.request_id }}</p>
+        <ul v-if="serverPhases.length">
+          <li v-for="(timing, index) in serverPhases" :key="index">
+            {{ phaseLabels[timing.stage] ?? '其他处理' }}：{{ timing.elapsed_ms }} 毫秒
+          </li>
+        </ul>
+      </details>
       <p v-if="resultText" class="banner" role="status">
         {{ resultText
         }}<button v-if="pending && !error" :disabled="busy" @click="work.retry()">
@@ -163,6 +207,14 @@ async function showGraph(id: string) {
         :timezone="catalog?.timezone"
         @replan="work.replan()"
       />
+      <p v-if="currentPlan?.optimization" class="muted" data-testid="optimization-strategy">
+        {{
+          currentPlan.optimization.strategy === 'FT_KITCHEN'
+            ? '总流程优先，再集中菜品完成时间'
+            : '出锅与人工优先'
+        }}
+        · 人工休息按 {{ currentPlan.optimization.rest_gap_sec / 60 }} 分钟间隔统计
+      </p>
       <div v-if="currentPlan && metrics" class="metrics">
         <article>
           <small>预计结束</small
@@ -183,17 +235,31 @@ async function showGraph(id: string) {
         </article>
         <article>
           <small>{{
-            metrics.cooking_finish_spread_sec == null ? '全流程完成差（旧版）' : '出锅时间差'
+            currentPlan.optimization?.spread_basis === 'WORKFLOW_FINISH'
+              ? '全流程完成差'
+              : metrics.cooking_finish_spread_sec == null
+                ? '全流程完成差（旧版）'
+                : '出锅时间差'
           }}</small
           ><strong
             >{{
-              displayMinutes(metrics.cooking_finish_spread_sec ?? metrics.completion_spread_sec)
+              displayMinutes(
+                currentPlan.optimization?.spread_basis === 'WORKFLOW_FINISH'
+                  ? metrics.completion_spread_sec
+                  : (metrics.cooking_finish_spread_sec ?? metrics.completion_spread_sec),
+              )
             }}
             <em>分钟</em></strong
           >
-          <small v-if="metrics.cooking_finish_spread_sec != null">{{
-            metrics.cooking_finish_spread_sec <= 300 ? '满足 5 分钟目标' : '超过 5 分钟目标'
-          }}</small>
+          <small
+            v-if="
+              metrics.cooking_finish_spread_sec != null &&
+              currentPlan.optimization?.spread_basis !== 'WORKFLOW_FINISH'
+            "
+            >{{
+              metrics.cooking_finish_spread_sec <= 300 ? '满足 5 分钟目标' : '超过 5 分钟目标'
+            }}</small
+          >
         </article>
         <article>
           <small>最长连续人工</small

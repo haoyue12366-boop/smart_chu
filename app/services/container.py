@@ -20,7 +20,7 @@ from app.runtime.clock import SimulationClock, SystemClock
 from app.runtime.schedule_clock import ClockExecutionService
 from app.runtime.service import RuntimeService
 from app.scheduling.json_worker import JsonSolverWorker
-from app.services.deployment_policy import deployment_policy
+from app.services.deployment_policy import deployment_policy, scheduling_strategy_policy
 from app.services.planning import PlanningService
 from app.services.recovery_guard import isolated_recovery
 from app.services.resource_monitor import ResourceMonitor
@@ -60,11 +60,14 @@ class ServiceContainer:
 
     def start(self) -> None:
         self.stopping.clear()
-        self.policy = deployment_policy(
-            SchedulingPolicy.model_validate_json(
-                self.settings.policy_path.read_text(encoding="utf-8")
+        self.policy = scheduling_strategy_policy(
+            deployment_policy(
+                SchedulingPolicy.model_validate_json(
+                    self.settings.policy_path.read_text(encoding="utf-8")
+                ),
+                self.settings.planning_profile,
             ),
-            self.settings.planning_profile,
+            self.settings.scheduling_strategy,
         )
         logger.info(
             "排程配置 %s，策略 %s，初排/重排预算 %s/%s ms，求解线程 %s",

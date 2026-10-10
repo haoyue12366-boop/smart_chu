@@ -26,6 +26,15 @@ test('dish legend, wrapped hover card and zoom survive live session polling', as
   const result = await created.json();
   expect(result.status).toBe('PUBLISHED');
   const sid = result.session_id as string;
+  const syncView = () =>
+    Promise.all([
+      page.waitForResponse(
+        (response) =>
+          response.request().method() === 'GET' &&
+          new URL(response.url()).pathname === `/api/v1/sessions/${sid}`,
+      ),
+      page.evaluate(() => window.dispatchEvent(new Event('focus'))),
+    ]);
   const state = await (await request.get(`/api/v1/sessions/${sid}`)).json();
   const envelope = await (await request.get(`/api/v1/sessions/${sid}/plans/1`)).json();
   await testInfo.attach('scheduled-plan.json', {
@@ -83,7 +92,8 @@ test('dish legend, wrapped hover card and zoom survive live session polling', as
   page.on('pageerror', (e) => errors.push(e.message));
   await page.addInitScript((id) => localStorage.setItem('cook.session', id), sid);
   await page.goto('/');
-  await expect(page.getByText('出锅时间差', { exact: true })).toBeVisible();
+  await expect(page.getByText('全流程完成差', { exact: true })).toBeVisible();
+  await expect(page.getByTestId('optimization-strategy')).toContainText('总流程优先');
   const checklist = page.getByTestId('advance-preparations');
   await expect(checklist.locator('summary')).toContainText('开工前准备');
   await checklist.locator('summary').click();
@@ -201,11 +211,9 @@ test('dish legend, wrapped hover card and zoom survive live session polling', as
   const tip = chart.locator('.gantt-tooltip');
   await expect(tip).toBeVisible();
   await expect(tip.locator('.gantt-tooltip-title')).toContainText(longRow.title);
-  // 跨过至少三个实际一秒刷新周期，验证未被轮询销毁。
+  // 连续三次真实状态同步不销毁悬浮卡；健康SSE下由返回页面触发读取。
   for (let i = 0; i < 3; i++) {
-    await page.waitForResponse(
-      (r) => r.request().method() === 'GET' && r.url().endsWith(`/api/v1/sessions/${sid}`),
-    );
+    await syncView();
     await expect(tip).toBeVisible();
   }
   expect(await blockColors()).toEqual(beforeHover);
@@ -223,7 +231,8 @@ test('dish legend, wrapped hover card and zoom survive live session polling', as
   expect(layout.titleHeight).toBeGreaterThan(layout.lineHeight * 2);
   await tip.hover();
   await page.waitForResponse(
-    (r) => r.request().method() === 'GET' && r.url().endsWith(`/api/v1/sessions/${sid}`),
+    (r) =>
+      r.request().method() === 'GET' && new URL(r.url()).pathname === `/api/v1/sessions/${sid}`,
   );
   await expect(tip).toBeVisible();
   await chart.screenshot({ path: testInfo.outputPath('gantt-hover.png') });
@@ -269,9 +278,7 @@ test('dish legend, wrapped hover card and zoom survive live session polling', as
       .evaluateAll((els) => els.map((el) => getComputedStyle(el).backgroundColor)),
   ).toEqual(colors);
   await page.getByLabel('时间缩放').selectOption('1800');
-  await page.waitForResponse(
-    (r) => r.request().method() === 'GET' && r.url().endsWith(`/api/v1/sessions/${sid}`),
-  );
+  await syncView();
   await expect(page.getByLabel('时间缩放')).toHaveValue('1800');
   const after = await (await request.get(`/api/v1/sessions/${sid}`)).json();
   expect(after.runtime.executions).toEqual([]);

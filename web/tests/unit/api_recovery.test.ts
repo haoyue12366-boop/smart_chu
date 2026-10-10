@@ -2,6 +2,29 @@
 import { afterEach, expect, it, vi } from 'vitest';
 import { post, request } from '../../src/api/client';
 
+it('records client elapsed time separately from server time and keeps the request identity', async () => {
+  vi.useFakeTimers();
+  vi.stubGlobal('fetch', async () => {
+    await new Promise((resolve) => setTimeout(resolve, 40));
+    return Response.json(
+      { status: 'PUBLISHED' },
+      {
+        headers: { 'Server-Timing': 'application;dur=25.5', 'X-Request-ID': 'timed-write' },
+      },
+    );
+  });
+  const observed = vi.fn();
+  const result = post('/api/v1/sessions', { event_id: 'timed-write' }, undefined, observed);
+  await vi.advanceTimersByTimeAsync(40);
+  await expect(result).resolves.toEqual({ status: 'PUBLISHED' });
+  expect(observed).toHaveBeenCalledOnce();
+  expect(observed).toHaveBeenCalledWith({
+    client_elapsed_ms: 40,
+    server_elapsed_ms: 25.5,
+    request_id: 'timed-write',
+  });
+});
+
 afterEach(() => {
   vi.useRealTimers();
   vi.unstubAllGlobals();

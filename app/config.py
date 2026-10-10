@@ -23,6 +23,7 @@ class AppSettings(FrozenModel):
     recovery_interval_sec: float = Field(default=0.5, gt=0)
     solver_startup_timeout_sec: float = Field(default=120, gt=0, le=600, allow_inf_nan=False)
     planning_profile: Literal["STANDARD", "RENDER"] = "STANDARD"
+    scheduling_strategy: Literal["FULL_QUALITY", "FT_KITCHEN"] = "FT_KITCHEN"
 
     @classmethod
     def from_environment(cls) -> "AppSettings":
@@ -37,6 +38,7 @@ class AppSettings(FrozenModel):
             "timezone",
             "solver_startup_timeout_sec",
             "planning_profile",
+            "scheduling_strategy",
         ):
             value = os.getenv("SMART_COOKING_" + name.upper())
             if value:

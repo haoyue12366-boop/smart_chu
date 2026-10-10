@@ -1,5 +1,7 @@
 """会话初排、当前状态和版本读取。"""
 
+from typing import Literal
+
 from fastapi import APIRouter, Header, Request
 from fastapi.responses import JSONResponse
 from starlette.concurrency import run_in_threadpool
@@ -48,8 +50,10 @@ async def create(body: CreateSessionRequest, request: Request) -> JSONResponse:
 
 
 @router.get("/{session_id}")
-def read(session_id: str, request: Request) -> dict[str, object]:
-    return read_session(container(request), session_id)
+def read(
+    session_id: str, request: Request, view: Literal["full", "workbench"] = "full"
+) -> dict[str, object]:
+    return read_session(container(request), session_id, view=view)
 
 
 @router.post("/{session_id}/recipes")

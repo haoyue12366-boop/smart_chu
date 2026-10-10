@@ -103,6 +103,10 @@ class CpSatScheduler:
                     raise ValueError("串行参考不能同时接受并行优化阶段")
                 from app.scheduling.objectives import apply_stage
 
+                if stage.thermal_seed is not None:
+                    from app.scheduling.thermal_neighborhood import add_thermal_neighborhood
+
+                    add_thermal_neighborhood(builder, stage.thermal_seed)
                 apply_stage(builder, stage)
             spread_floor = max(
                 0,
@@ -182,6 +186,18 @@ class CpSatScheduler:
                 raise TimeoutError("求解调用前预算已耗尽")
             solver.parameters.num_search_workers = problem.policy.max_solver_search_workers
             solver.parameters.random_seed = 42
+            if stage is not None and (
+                (stage.name == "B_SPREAD" and stage.spread_excess_cap_sec == 0)
+                or (
+                    problem.policy.search_strategy == "FT_KITCHEN"
+                    and stage.name in {"A_MAKESPAN", "B_SPREAD"}
+                )
+            ):
+                # FT时间目标和固定为0的出锅可行性目标采用轻量搜索。
+                # 保留全部约束、备选、目标和原截止时间；旧策略的自由
+                # 出锅优化及后续完整质量阶段仍使用各自的原参数。
+                solver.parameters.cp_model_probing_level = 0
+                solver.parameters.linearization_level = 0
             if builder.human_chain_enabled and problem.policy.max_solver_search_workers == 1:
                 # 常用达标模型以时间/布尔传播为主。正超标量已被容量下界和
                 # 阶段上界固定时，启用基础线性松弛帮助证明剩余联合目标。
