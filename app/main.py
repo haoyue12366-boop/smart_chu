@@ -28,6 +28,7 @@ from app.api import (
 from app.api.errors import install_error_handlers
 from app.config import AppSettings
 from app.services.container import ServiceContainer
+from app.storage.decoded_models import decoded_models_scope
 
 logger = logging.getLogger(__name__)
 
@@ -35,6 +36,10 @@ logger = logging.getLogger(__name__)
 def create_app(settings: AppSettings | None = None) -> FastAPI:
     settings = settings or AppSettings.from_environment()
     services = ServiceContainer(settings)
+
+    def recover_with_decoded_models() -> None:
+        with decoded_models_scope():
+            services.recover_pending()
 
     async def recovery_loop(stop: asyncio.Event) -> None:
         while not stop.is_set():
@@ -44,7 +49,7 @@ def create_app(settings: AppSettings | None = None) -> FastAPI:
             except TimeoutError:
                 pass
             try:
-                await run_in_threadpool(services.recover_pending)
+                await run_in_threadpool(recover_with_decoded_models)
             except Exception:
                 logger.exception("持久待重排作业恢复失败")
 
@@ -82,7 +87,8 @@ def create_app(settings: AppSettings | None = None) -> FastAPI:
         if mutation:
             services.foreground_requests += 1
         try:
-            response = await call_next(request)
+            with decoded_models_scope():
+                response = await call_next(request)
         finally:
             if mutation:
                 services.foreground_requests -= 1
