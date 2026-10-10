@@ -8,7 +8,6 @@ from app.domain.ports import Deadline
 from app.domain.schedule import CandidateSchedule
 from app.domain.scheduling_problem import SchedulingProblem
 from app.domain.serial_order import serial_task_groups
-from app.scheduling.cp_sat import CpSatScheduler
 
 
 class SerialReferenceResult(FrozenModel):
@@ -18,6 +17,8 @@ class SerialReferenceResult(FrozenModel):
 
 
 def build_serial_reference(problem: SchedulingProblem, deadline: Deadline) -> SerialReferenceResult:
+    from app.scheduling.cp_sat import CpSatScheduler
+
     result = CpSatScheduler().solve(problem, None, deadline, serial_menu=True)
     if result.candidate is None:
         return SerialReferenceResult(

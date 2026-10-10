@@ -60,17 +60,25 @@ class ServiceContainer:
 
     def start(self) -> None:
         self.stopping.clear()
+        search_workers = self.settings.solver_search_workers
+        if (
+            search_workers is None
+            and self.settings.planning_profile == "RENDER"
+            and self.settings.scheduling_strategy == "FT_KITCHEN"
+        ):
+            search_workers = 4
         self.policy = scheduling_strategy_policy(
             deployment_policy(
                 SchedulingPolicy.model_validate_json(
                     self.settings.policy_path.read_text(encoding="utf-8")
                 ),
                 self.settings.planning_profile,
+                search_workers=search_workers,
             ),
             self.settings.scheduling_strategy,
         )
         logger.info(
-            "排程配置 %s，策略 %s，初排/重排预算 %s/%s ms，求解线程 %s",
+            "排程配置 %s，策略 %s，初排/重排预算 %s/%s ms，求解线程上限 %s",
             self.settings.planning_profile,
             self.policy.policy_version,
             self.policy.initial_budget.total_ms,
@@ -125,6 +133,12 @@ class ServiceContainer:
             cache_release_requests=self.worker.cache_release_requests,
             cache_release_failures=self.worker.cache_release_failures,
         )
+        policy = getattr(self, "policy", None)
+        if policy is not None:
+            result.update(
+                solver_search_workers_max=policy.max_solver_search_workers,
+                solver_worker_strategy=policy.solver_worker_strategy,
+            )
         return result
 
     @property

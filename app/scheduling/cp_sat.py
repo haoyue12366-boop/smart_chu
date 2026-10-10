@@ -15,6 +15,7 @@ from app.scheduling.build_report import make_build_report
 from app.scheduling.metrics import objective_spread
 from app.scheduling.model_builder import ModelBuilder
 from app.scheduling.objectives import continuous_quality_value
+from app.scheduling.search_workers import search_worker_count
 from app.scheduling.solution_mapping import map_solution
 
 
@@ -175,7 +176,10 @@ class CpSatScheduler:
                     status="MODEL_INVALID", problem_hash=identity, diagnostic_message=error
                 )
             builder.check_budget()
-            report = make_build_report(builder, (time.monotonic_ns() - started) // 1_000_000)
+            search_workers = search_worker_count(problem, stage)
+            report = make_build_report(
+                builder, (time.monotonic_ns() - started) // 1_000_000
+            ).model_copy(update={"search_workers": search_workers})
             self.last_build_report = report
             builder.check_budget()
             solver = cp_model.CpSolver()
@@ -184,7 +188,7 @@ class CpSatScheduler:
             ) / 1e9
             if solver.parameters.max_time_in_seconds <= 0:
                 raise TimeoutError("求解调用前预算已耗尽")
-            solver.parameters.num_search_workers = problem.policy.max_solver_search_workers
+            solver.parameters.num_search_workers = search_workers
             solver.parameters.random_seed = 42
             if stage is not None and (
                 (stage.name == "B_SPREAD" and stage.spread_excess_cap_sec == 0)
@@ -198,7 +202,7 @@ class CpSatScheduler:
                 # 出锅优化及后续完整质量阶段仍使用各自的原参数。
                 solver.parameters.cp_model_probing_level = 0
                 solver.parameters.linearization_level = 0
-            if builder.human_chain_enabled and problem.policy.max_solver_search_workers == 1:
+            if builder.human_chain_enabled and search_workers == 1:
                 # 常用达标模型以时间/布尔传播为主。正超标量已被容量下界和
                 # 阶段上界固定时，启用基础线性松弛帮助证明剩余联合目标。
                 # 两种设置均保留全部约束、精确目标和原预算。
@@ -232,6 +236,7 @@ class CpSatScheduler:
                     objective_stage=builder.objective_stage,
                     objective_value=value,
                     best_bound=bound,
+                    search_workers=search_workers,
                     build_report_ref=report.solver_build_id,
                     timings=timings,
                 )
@@ -240,6 +245,7 @@ class CpSatScheduler:
                 problem_hash=identity,
                 objective_stage=builder.objective_stage,
                 build_report_ref=report.solver_build_id,
+                search_workers=search_workers,
                 timings=timings,
             )
         except TimeoutError as exc:

@@ -20,7 +20,6 @@ from app.runtime.service import RuntimeService
 from app.scheduling.budget import ComputationBudget
 from app.services.preparation_budget import PreparationBudget
 from app.services.publishing import PlanPublisher
-from app.services.replanning import ReplanningService
 from app.services.session_knowledge import session_knowledge
 from app.storage.repositories import RuntimeRepository
 
@@ -267,6 +266,9 @@ class PlanningService:
                     }
                 )
             previous = self._plan(session)
+            # 首次真正计算时加载编译和规划实现；后续导入复用sys.modules。
+            from app.services.replanning import ReplanningService
+
             planner = ReplanningService(
                 session_knowledge(self.runtime.knowledge, session.menu),
                 self.solver,

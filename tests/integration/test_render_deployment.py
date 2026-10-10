@@ -43,6 +43,8 @@ def test_resource_diagnostics_are_read_only_and_exclude_other_environment(
     assert data["solver_ready"] is True
     assert data["retained_build_reports"] == 0
     assert data["cache_release_requests"] == 0
+    assert data["solver_search_workers_max"] == 4
+    assert data["solver_worker_strategy"] == "FT_ADAPTIVE"
     assert "do-not-expose" not in response.text
     assert cloud_client.get("/health/ready").status_code == 200
 
@@ -79,6 +81,14 @@ def check_publication(client, result, count):
             assert report.problem_hash == problem.problem_hash
             assert report.solver_build_id == reference
             assert report.constraint_mappings
+            expected_workers = (
+                4
+                if problem.runtime.details.planning_kind == "REPLAN"
+                and count >= 4
+                and stage["objective_stage"] in {"A_MAKESPAN", "B_SPREAD"}
+                else 1
+            )
+            assert report.search_workers == stage["search_workers"] == expected_workers
     assert client.get("/health/ready").status_code == 200
     return sid
 
@@ -148,7 +158,8 @@ def test_real_cloud_initial_addition_and_replan_keep_valid_history(cloud_client,
     after = client.get(f"/api/v1/sessions/{sid}").json()
     assert after["runtime"]["current_plan_version"] == 3
     assert after["schedule_clock"]["started_at"] == before["schedule_clock"]["started_at"]
-    assert after["policy"]["policy_version"].endswith(":render-v2:ft-kitchen-v1")
+    assert after["policy"]["policy_version"].endswith(":render-v2:workers-4:ft-kitchen-v2")
+    assert after["policy"]["solver_worker_strategy"] == "FT_ADAPTIVE"
     assert after["policy"]["search_strategy"] == "FT_KITCHEN"
     assert after["policy"]["initial_budget"]["total_ms"] == 90_000
     assert not after["requires_replan"]
@@ -163,14 +174,27 @@ def test_cloud_restart_keeps_existing_session_budget(tmp_path, monkeypatch):
     monkeypatch.setenv("SMART_COOKING_DATABASE_PATH", str(tmp_path / "restart.sqlite3"))
     monkeypatch.setenv("SMART_COOKING_PLANNING_PROFILE", "STANDARD")
     old = SchedulingPolicy(policy_version="synthetic-old-session")
+    old_ft = old.model_copy(
+        update={
+            "policy_version": "synthetic:render-v2:ft-kitchen-v1",
+            "search_strategy": "FT_KITCHEN",
+            "max_solver_search_workers": 1,
+        }
+    )
+    old_ft_body = old_ft.model_dump_json()
     with TestClient(create_app(AppSettings.from_environment())) as client:
         services = client.app.state.container
         services.runtime.create_session("old-session", "MANUAL_CONFIRM", ORIGIN, old)
+        services.runtime.create_session("old-ft-session", "MANUAL_CONFIRM", ORIGIN, old_ft)
     monkeypatch.setenv("SMART_COOKING_PLANNING_PROFILE", "RENDER")
     with TestClient(create_app(AppSettings.from_environment())) as client:
         services = client.app.state.container
-        assert services.policy.policy_version.endswith(":render-v2:ft-kitchen-v1")
+        assert services.policy.policy_version.endswith(":render-v2:workers-4:ft-kitchen-v2")
         assert services.for_session("old-session")[0].get("old-session").policy == old
+        restored_ft = services.for_session("old-ft-session")[0].get("old-ft-session").policy
+        assert restored_ft.model_dump_json() == old_ft_body
+        assert restored_ft.max_solver_search_workers == 1
+        assert restored_ft.solver_worker_strategy == "FIXED"
 
 
 def test_idle_recovery_rewarms_real_solver_after_exit(cloud_client):

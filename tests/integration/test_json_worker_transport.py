@@ -76,6 +76,23 @@ def test_release_problem_reuses_warm_pid_and_next_job_has_full_verified_input():
         assert ScheduleValidator().validate(knowledge, state, problem, second.candidate).valid
 
 
+@pytest.mark.parametrize("workers", [1, 4, 8])
+def test_native_thread_configuration_crosses_json_worker_and_retains_warm_pid(workers):
+    knowledge, state, problem, _ = example()
+    policy = problem.policy.model_copy(update={"max_solver_search_workers": workers})
+    problem = problem.model_copy(update={"policy": policy})
+    with JsonSolverWorker() as worker:
+        pid = worker.process_id
+        for _ in range(2):
+            result = worker.solve(problem, None, deadline())
+            assert result.status == "OPTIMAL"
+            assert worker.last_build_report.search_workers == workers
+            assert result.search_workers == workers
+            assert ScheduleValidator().validate(knowledge, state, problem, result.candidate).valid
+            assert worker.process_id == pid and worker.restart_count == 0
+            worker.release_problem()
+
+
 def test_cleared_json_input_rejects_old_cache_reference():
     _, _, problem, candidate = example()
     first = WorkerJob(job_id="clear-input", problem=problem, hint=candidate, deadline=deadline())

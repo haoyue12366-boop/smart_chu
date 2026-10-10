@@ -12,7 +12,6 @@ from app.domain.schedule import CandidateSchedule, ValidatedSchedule
 from app.domain.scheduling_problem import SchedulingProblem
 from app.scheduling.budget import ComputationBudget
 from app.scheduling.candidate_pool import CandidatePool
-from app.scheduling.cp_sat import CpSatScheduler
 from app.scheduling.greedy import GreedyScheduler
 from app.scheduling.heating_compaction import compact_heating_slack
 from app.scheduling.human_phases import human_phase_count
@@ -33,7 +32,11 @@ class PlanningEngine:
         computation_budget: ComputationBudget | None = None,
     ) -> None:
         self.validator = validator
-        self.solver: SolverPort = solver if solver is not None else CpSatScheduler()
+        if solver is None:
+            from app.scheduling.cp_sat import CpSatScheduler
+
+            solver = CpSatScheduler()
+        self.solver: SolverPort = solver
         self.previous_plan = previous_plan
         self.computation_budget = computation_budget
 

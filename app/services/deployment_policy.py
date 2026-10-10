@@ -6,10 +6,17 @@ from app.domain.policy import BudgetSpec, SchedulingPolicy
 
 
 def deployment_policy(
-    policy: SchedulingPolicy, profile: Literal["STANDARD", "RENDER"]
+    policy: SchedulingPolicy,
+    profile: Literal["STANDARD", "RENDER"],
+    *,
+    search_workers: int | None = None,
 ) -> SchedulingPolicy:
+    if search_workers is not None and (
+        type(search_workers) is not int or not 1 <= search_workers <= 8
+    ):
+        raise ValueError("求解线程必须是1至8的整数")
     if profile == "STANDARD":
-        return policy
+        return _with_search_workers(policy, search_workers)
     budget = BudgetSpec(
         total_ms=90_000,
         greedy_ms=10_000,
@@ -18,12 +25,26 @@ def deployment_policy(
         compilation_ms=20_000,
         quality_ms=10_000,
     )
+    return _with_search_workers(
+        policy.model_copy(
+            update={
+                "policy_version": policy.policy_version + ":render-v2",
+                "initial_budget": budget,
+                "replan_budget": budget,
+                "max_solver_search_workers": 1,
+            }
+        ),
+        search_workers,
+    )
+
+
+def _with_search_workers(policy: SchedulingPolicy, workers: int | None) -> SchedulingPolicy:
+    if workers is None:
+        return policy
     return policy.model_copy(
         update={
-            "policy_version": policy.policy_version + ":render-v2",
-            "initial_budget": budget,
-            "replan_budget": budget,
-            "max_solver_search_workers": 1,
+            "policy_version": policy.policy_version + f":workers-{workers}",
+            "max_solver_search_workers": workers,
         }
     )
 
@@ -36,8 +57,9 @@ def scheduling_strategy_policy(
         return policy
     return policy.model_copy(
         update={
-            "policy_version": policy.policy_version + ":ft-kitchen-v1",
+            "policy_version": policy.policy_version + ":ft-kitchen-v2",
             "search_strategy": "FT_KITCHEN",
+            "solver_worker_strategy": "FT_ADAPTIVE",
             "objective": policy.objective.model_copy(
                 update={
                     "stages": ("MAKESPAN", "SPREAD", "HUMAN_BUSY"),

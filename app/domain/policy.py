@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Literal, Self
+from typing import Annotated, Literal, Self
 
 from pydantic import Field, StrictInt, model_validator
 
@@ -127,7 +127,10 @@ class SchedulingPolicy(FrozenModel):
     api_instances: Literal[1] = 1
     concurrent_planning_jobs: Literal[1] = 1
     solver_worker_processes: Literal[1] = 1
-    max_solver_search_workers: PositiveInt = Field(default=4, le=4)
+    max_solver_search_workers: Annotated[int, Field(strict=True, gt=0, le=8)] = 4
+    solver_worker_strategy: Literal["FIXED", "FT_ADAPTIVE"] = Field(
+        default="FIXED", exclude_if=lambda value: value == "FIXED"
+    )
     sqlite_busy_timeout_ms: PositiveInt = 100
     sqlite_max_write_retries: NonNegativeInt = 2
     diagnostic_total_budget_ms: PositiveInt = 2000

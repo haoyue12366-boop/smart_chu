@@ -5,7 +5,7 @@ from typing import Literal, Self
 
 from pydantic import AwareDatetime, Field, model_validator
 
-from app.domain.base import Digest, FrozenModel, NonEmpty, NonNegativeInt
+from app.domain.base import Digest, FrozenModel, NonEmpty, NonNegativeInt, PositiveInt
 from app.domain.errors import ErrorCode
 from app.domain.objectives import ObjectiveStage
 from app.domain.policy import ModelSize
@@ -53,6 +53,7 @@ class SolverBuildReport(FrozenModel):
     constraints_by_type: dict[str, NonNegativeInt] = {}
     stage_parameters: ObjectiveStage | None = None
     solve_status: SolveStatus | None = None
+    search_workers: PositiveInt | None = Field(default=None, exclude_if=lambda value: value is None)
 
 
 class PlanningFailure(FrozenModel):
@@ -81,6 +82,7 @@ class SolveResult(FrozenModel):
     objective_stage: NonEmpty = "FEASIBILITY"
     objective_value: NonNegativeInt | None = None
     best_bound: NonNegativeInt | None = None
+    search_workers: PositiveInt | None = Field(default=None, exclude_if=lambda value: value is None)
     optimal_for_retained_candidates_only: bool = True
     build_report_ref: NonEmpty | None = None
     diagnostic_ref: NonEmpty | None = None

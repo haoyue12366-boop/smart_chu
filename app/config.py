@@ -24,6 +24,7 @@ class AppSettings(FrozenModel):
     solver_startup_timeout_sec: float = Field(default=120, gt=0, le=600, allow_inf_nan=False)
     planning_profile: Literal["STANDARD", "RENDER"] = "STANDARD"
     scheduling_strategy: Literal["FULL_QUALITY", "FT_KITCHEN"] = "FT_KITCHEN"
+    solver_search_workers: int | None = Field(default=None, strict=True, gt=0, le=8)
 
     @classmethod
     def from_environment(cls) -> "AppSettings":
@@ -39,10 +40,11 @@ class AppSettings(FrozenModel):
             "solver_startup_timeout_sec",
             "planning_profile",
             "scheduling_strategy",
+            "solver_search_workers",
         ):
             value = os.getenv("SMART_COOKING_" + name.upper())
             if value:
-                fields[name] = value
+                fields[name] = int(value) if name == "solver_search_workers" else value
         fields["language_enabled"] = os.getenv("SMART_COOKING_LANGUAGE_ENABLED", "0") == "1"
         if "planning_profile" not in fields and os.getenv("RENDER") == "true":
             fields["planning_profile"] = "RENDER"
