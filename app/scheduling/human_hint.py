@@ -43,6 +43,17 @@ def add_human_chain_hint(builder: ModelBuilder, hint: CandidateSchedule) -> None
         spans[i] = start, end
         variable_values[phase.start.index] = start
         variable_values[phase.end.index] = end
+    if builder.human_chain_members:
+        grouped_spans = {}
+        for i, members in enumerate(builder.human_chain_members):
+            present = [spans[j] for j in members if j in spans]
+            if len(present) > 1:
+                return  # 完整合法候选不能同时选择严格互斥的组成员。
+            phase = builder.human_chain_intervals[i]
+            variable_values[phase.presence.index] = int(bool(present))
+            if present:
+                grouped_spans[i] = present[0]
+        spans = grouped_spans
     order = sorted(spans, key=lambda i: (spans[i][0], spans[i][1], i))
     if any(spans[a][1] > spans[b][0] for a, b in zip(order, order[1:], strict=False)):
         return
@@ -56,7 +67,7 @@ def add_human_chain_hint(builder: ModelBuilder, hint: CandidateSchedule) -> None
         beginnings[i] = block_start
         prior_end = end
     values = {"max-human-busy": max((spans[i][1] - beginnings[i] for i in order), default=0)}
-    for i in range(len(builder.human_intervals)):
+    for i in range(len(builder.human_chain_intervals or builder.human_intervals)):
         builder.check_budget()
         values[f"busy-start:{i}"] = beginnings.get(i, 0)
         values[f"human-span:{i}"] = spans[i][1] - beginnings[i] if i in spans else 0

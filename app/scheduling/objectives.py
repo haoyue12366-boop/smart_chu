@@ -10,11 +10,14 @@ from app.domain.objectives import ObjectiveStage
 from app.domain.policy import SchedulingPolicy
 from app.domain.reports import SolverIndexMapping
 from app.scheduling.human_chain_bounds import HumanChainBounds
+from app.scheduling.human_objective_groups import HumanObjectiveGroups
+from app.scheduling.metrics import objective_spread
 
 if TYPE_CHECKING:
     from ortools.sat.python import cp_model
 
-    from app.domain.scheduling_problem import CandidateCarrier
+    from app.domain.schedule import ScheduleMetrics
+    from app.domain.scheduling_problem import CandidateCarrier, SchedulingProblem
     from app.scheduling.model_builder import ModelBuilder
 
 
@@ -30,6 +33,17 @@ def makespan_cap(
     extra = ((reference_sec * ratio + 10_000 * grid - 1) // (10_000 * grid)) * grid
     cap = reference_sec + min(policy.objective.makespan_extra_cap_sec, extra)
     return min(cap, serial_sec) if serial_sec is not None else cap
+
+
+def continuous_quality_value(problem: SchedulingProblem, metrics: ScheduleMetrics) -> int | None:
+    """与精确联合目标相同的整数值；只用本问题已独立核验的完整指标生成界。"""
+    weight = problem.horizon_sec + 1
+    excess = max(0, objective_spread(metrics, problem) - problem.policy.objective.spread_target_sec)
+    value = (
+        excess * weight * weight + metrics.max_continuous_human_sec * weight + metrics.makespan_sec
+    )
+    # 可选上界不能将原有Solver的安全整数拒绝/合法候选回退变成API异常。
+    return value if value <= MAX_INT else None
 
 
 def apply_stage(builder: ModelBuilder, stage: ObjectiveStage) -> None:
@@ -137,6 +151,12 @@ def apply_stage(builder: ModelBuilder, stage: ObjectiveStage) -> None:
             )
     if objective is None:
         raise ValueError("优化目标尚未构造")
+    if stage.quality_upper_bound is not None:
+        if not continuous_quality:
+            raise ValueError("联合质量上界要求连续人工质量目标")
+        # 已校验完整候选提供可行上界，仅排除更差的词典序目标；
+        # 不单独锁定尚未证明最优的出锅差或人工值。
+        model.add(objective <= stage.quality_upper_bound)
     builder.objective_variable = objective
     model.minimize(objective)
     builder.additional_mappings.append(
@@ -210,7 +230,12 @@ def _human_busy(builder: ModelBuilder) -> cp_model.IntVar:
         raise ValueError("人工精确阶段超过策略阈值")
     stage = builder.stage_parameters
     optimize_links = stage is None or stage.name != "E_QUALITY" or stage.spread_excess_cap_sec == 0
-    bounds = HumanChainBounds(builder, include_rest_bounds=optimize_links)
+    bounds = HumanObjectiveGroups(
+        builder, HumanChainBounds(builder, include_rest_bounds=optimize_links)
+    )
+    phases = bounds.phases
+    builder.human_chain_intervals = phases
+    builder.human_chain_members = bounds.members
     compact_pairs = optimize_links and len(phases) >= _COMPACT_HUMAN_PAIR_MIN_PHASES
     maximum = model.new_int_var(bounds.minimum_busy_sec, problem.horizon_sec, "max-human-busy")
     if not phases:
@@ -275,7 +300,7 @@ def _compact_human_pair(
     active: list[cp_model.IntVar],
 ) -> None:
     """用一个非负间隔精确绑定实际先后及休息；不选中的阶段不约束时间。"""
-    model, phases = builder.model, builder.human_intervals
+    model, phases = builder.model, builder.human_chain_intervals
     builder.check_budget()
     builder.sequence_arcs += 2
     gap = model.new_int_var(0, builder.problem.horizon_sec, f"human-distance:{first}:{second}")
@@ -304,7 +329,7 @@ def _link_human_blocks(
     guaranteed_rest: bool = False,
 ) -> None:
     model, problem = builder.model, builder.problem
-    phases = builder.human_intervals
+    phases = builder.human_chain_intervals
     builder.check_budget()
     builder.sequence_arcs += 1
     gap = phases[second].start - phases[first].end

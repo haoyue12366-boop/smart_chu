@@ -17,7 +17,7 @@ from app.scheduling.greedy import GreedyScheduler
 from app.scheduling.heating_compaction import compact_heating_slack
 from app.scheduling.human_phases import human_phase_count
 from app.scheduling.metrics import objective_spread
-from app.scheduling.objectives import makespan_cap
+from app.scheduling.objectives import continuous_quality_value, makespan_cap
 from app.scheduling.reverse_hints import align_cooking_finishes
 from app.scheduling.serial_reference import serial_order_holds
 from app.scheduling.tail_compaction import compact_cooking_tails
@@ -472,6 +472,7 @@ class PlanningEngine:
             # 先搜索达标区间，避免软惩罚在短时搜索中先找到很差的出菜差。
             # 没有取得独立合法解时再放松目标；UNKNOWN 不代表目标不可行。
             quality_spread_cap = 0
+            quality_upper_bound = None
             if "HUMAN_BUSY" in problem.policy.objective.stages:
                 seed = pool.best(cap)
                 if seed and seed.candidate.metrics:
@@ -480,9 +481,16 @@ class PlanningEngine:
                         objective_spread(seed.candidate.metrics, problem)
                         - problem.policy.objective.spread_target_sec,
                     )
+                    if quality_spread_cap > 0:
+                        quality_upper_bound = continuous_quality_value(
+                            problem, seed.candidate.metrics
+                        )
             result = solve(
                 ObjectiveStage(
-                    name="E_QUALITY", makespan_cap_sec=cap, spread_excess_cap_sec=quality_spread_cap
+                    name="E_QUALITY",
+                    makespan_cap_sec=cap,
+                    spread_excess_cap_sec=quality_spread_cap,
+                    quality_upper_bound=quality_upper_bound,
                 ),
                 solver_end,
             )

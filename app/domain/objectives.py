@@ -1,8 +1,8 @@
 """每轮优化附加界独立于原始不可变 SchedulingProblem。"""
 
-from typing import Literal
+from typing import Literal, Self
 
-from pydantic import Field
+from pydantic import Field, model_validator
 
 from app.domain.base import FrozenModel, NonNegativeInt
 from app.domain.schedule import CandidateSchedule
@@ -23,3 +23,12 @@ class ObjectiveStage(FrozenModel):
     human_busy_cap_sec: NonNegativeInt | None = None
     total_human_cap_sec: NonNegativeInt | None = Field(default=None, exclude_if=lambda v: v is None)
     previous_plan: CandidateSchedule | None = None
+    quality_upper_bound: NonNegativeInt | None = Field(
+        default=None, exclude_if=lambda value: value is None
+    )
+
+    @model_validator(mode="after")
+    def quality_bound_stage(self) -> Self:
+        if self.quality_upper_bound is not None and self.name != "E_QUALITY":
+            raise ValueError("联合质量上界仅属于E_QUALITY阶段")
+        return self

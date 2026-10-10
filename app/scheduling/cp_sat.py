@@ -14,6 +14,7 @@ from app.domain.scheduling_problem import SchedulingProblem
 from app.scheduling.build_report import make_build_report
 from app.scheduling.metrics import objective_spread
 from app.scheduling.model_builder import ModelBuilder
+from app.scheduling.objectives import continuous_quality_value
 from app.scheduling.solution_mapping import map_solution
 
 
@@ -22,7 +23,11 @@ def _hint_within_bounds(
 ) -> bool:
     metrics = hint.metrics
     if metrics is None:
-        return True
+        return stage.quality_upper_bound is None
+    if stage.quality_upper_bound is not None:
+        value = continuous_quality_value(problem, metrics)
+        if value is None or value > stage.quality_upper_bound:
+            return False
     caps = [
         (metrics.makespan_sec, stage.makespan_cap_sec),
         (metrics.max_continuous_human_sec, stage.human_busy_cap_sec),

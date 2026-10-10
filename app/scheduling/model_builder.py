@@ -50,6 +50,8 @@ class ModelBuilder:
                 for identity in identities:
                     self.constraint_lookup[record.category, kind, identity].add(ordinal)
         self.human_intervals: list[ResourceInterval] = []
+        self.human_chain_intervals: list[ResourceInterval] = []
+        self.human_chain_members: list[tuple[int, ...]] = []
         self.layer_choices: list[tuple[ResourceInterval, cp_model.IntVar]] = []
         self.human_chain_enabled = False
         self.finish_spread_lower_bound_sec = 0
