@@ -73,6 +73,19 @@ def add_human_chain_hint(builder: ModelBuilder, hint: CandidateSchedule) -> None
                 and spans[right][0] - spans[left][1]
                 >= (0 if kind == "human-before" else builder.problem.policy.objective.rest_gap_sec)
             )
+        elif variable.name.startswith(("human-distance:", "human-rest:")):
+            kind, first, second = variable.name.split(":")
+            left, right = int(first), int(second)
+            gap = (
+                max(spans[right][0] - spans[left][1], spans[left][0] - spans[right][1])
+                if left in spans and right in spans
+                else 0
+            )
+            values[variable.name] = (
+                gap
+                if kind == "human-distance"
+                else int(gap >= builder.problem.policy.objective.rest_gap_sec)
+            )
         if index not in already and (index in variable_values or variable.name in values):
             model.add_hint(
                 model.get_int_var_from_proto_index(index),

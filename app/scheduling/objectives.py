@@ -18,6 +18,10 @@ if TYPE_CHECKING:
     from app.scheduling.model_builder import ModelBuilder
 
 
+# 表示选择只影响求解开销。小模型保留原变量，避免辅助整数域增加搜索成本。
+_COMPACT_HUMAN_PAIR_MIN_PHASES = 32
+
+
 def makespan_cap(
     reference_sec: int, policy: SchedulingPolicy, serial_sec: int | None = None
 ) -> int:
@@ -204,7 +208,10 @@ def _human_busy(builder: ModelBuilder) -> cp_model.IntVar:
     phases = builder.human_intervals
     if len(phases) > problem.policy.max_exact_human_phases:
         raise ValueError("人工精确阶段超过策略阈值")
-    bounds = HumanChainBounds(builder)
+    stage = builder.stage_parameters
+    optimize_links = stage is None or stage.name != "E_QUALITY" or stage.spread_excess_cap_sec == 0
+    bounds = HumanChainBounds(builder, include_rest_bounds=optimize_links)
+    compact_pairs = optimize_links and len(phases) >= _COMPACT_HUMAN_PAIR_MIN_PHASES
     maximum = model.new_int_var(bounds.minimum_busy_sec, problem.horizon_sec, "max-human-busy")
     if not phases:
         model.add(maximum == 0)
@@ -231,21 +238,60 @@ def _human_busy(builder: ModelBuilder) -> cp_model.IntVar:
             forward, backward = bounds.can_follow(i, j), bounds.can_follow(j, i)
             if not forward and not backward:
                 continue
+            forward_rest = not forward or (optimize_links and bounds.must_rest(i, j))
+            backward_rest = not backward or (optimize_links and bounds.must_rest(j, i))
+            if forward_rest and backward_rest:
+                # 所有可能方向的间隔均达到阈值，无需直接连接这两个操作。
+                # 间隔内若有其他操作填入，真实连续块仍由相邻短间隔传递。
+                continue
             active = [phase.presence, phases[j].presence]
-            orders: tuple[tuple[int, int, cp_model.LiteralT], ...]
+            orders: tuple[tuple[int, int, cp_model.LiteralT, bool], ...]
             if forward and backward:
                 before = model.new_bool_var(f"human-before:{i}:{j}")
-                orders = ((i, j, before), (j, i, before.negated()))
+                if compact_pairs and not forward_rest and not backward_rest:
+                    _compact_human_pair(builder, beginnings, i, j, before, active)
+                    continue
+                orders = ((i, j, before, forward_rest), (j, i, before.negated(), backward_rest))
             else:
                 orders = (
-                    ((i, j, model.new_constant(1)),)
+                    ((i, j, model.new_constant(1), forward_rest),)
                     if forward
-                    else ((j, i, model.new_constant(1)),)
+                    else ((j, i, model.new_constant(1), backward_rest),)
                 )
-            for first, second, ordered in orders:
-                _link_human_blocks(builder, beginnings, first, second, [*active, ordered])
+            for first, second, ordered, rested in orders:
+                _link_human_blocks(
+                    builder, beginnings, first, second, [*active, ordered], guaranteed_rest=rested
+                )
     model.add_max_equality(maximum, spans)
     return maximum
+
+
+def _compact_human_pair(
+    builder: ModelBuilder,
+    beginnings: list[cp_model.IntVar],
+    first: int,
+    second: int,
+    before: cp_model.IntVar,
+    active: list[cp_model.IntVar],
+) -> None:
+    """用一个非负间隔精确绑定实际先后及休息；不选中的阶段不约束时间。"""
+    model, phases = builder.model, builder.human_intervals
+    builder.check_budget()
+    builder.sequence_arcs += 2
+    gap = model.new_int_var(0, builder.problem.horizon_sec, f"human-distance:{first}:{second}")
+    rested = model.new_bool_var(f"human-rest:{first}:{second}")
+    model.add(gap == phases[second].start - phases[first].end).only_enforce_if([*active, before])
+    model.add(gap == phases[first].start - phases[second].end).only_enforce_if(
+        [*active, before.negated()]
+    )
+    model.add(gap >= builder.problem.policy.objective.rest_gap_sec).only_enforce_if(rested)
+    model.add(gap < builder.problem.policy.objective.rest_gap_sec).only_enforce_if(rested.negated())
+    model.add(beginnings[second] <= beginnings[first]).only_enforce_if(
+        [*active, before, rested.negated()]
+    )
+    model.add(beginnings[first] <= beginnings[second]).only_enforce_if(
+        [*active, before.negated(), rested.negated()]
+    )
 
 
 def _link_human_blocks(
@@ -254,14 +300,19 @@ def _link_human_blocks(
     first: int,
     second: int,
     enforcement: list[cp_model.LiteralT],
+    *,
+    guaranteed_rest: bool = False,
 ) -> None:
     model, problem = builder.model, builder.problem
     phases = builder.human_intervals
     builder.check_budget()
     builder.sequence_arcs += 1
-    rested = model.new_bool_var(f"human-gap:{first}:{second}")
     gap = phases[second].start - phases[first].end
     model.add(gap >= 0).only_enforce_if(enforcement)
+    if guaranteed_rest:
+        # 另一方向可能短间隔时仍绑定顺序，避免布尔变量选取虚假的休息方向。
+        return
+    rested = model.new_bool_var(f"human-gap:{first}:{second}")
     model.add(gap >= problem.policy.objective.rest_gap_sec).only_enforce_if([*enforcement, rested])
     model.add(gap < problem.policy.objective.rest_gap_sec).only_enforce_if(
         [*enforcement, rested.negated()]

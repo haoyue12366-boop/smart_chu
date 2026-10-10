@@ -5,6 +5,7 @@ from itertools import product
 import pytest
 from ortools.sat.python import cp_model
 
+from app.scheduling import objectives
 from app.scheduling.model_builder import ModelBuilder
 from app.scheduling.objectives import _human_busy
 from app.scheduling.resource_model import ResourceInterval
@@ -36,6 +37,7 @@ def enumerated_optimum(durations, earliest, latest, rest, optional):
     return best
 
 
+@pytest.mark.parametrize("compact", [False, True])
 @pytest.mark.parametrize(
     "earliest,latest,rest,optional",
     [
@@ -50,7 +52,12 @@ def enumerated_optimum(durations, earliest, latest, rest, optional):
         ((0, 3, 3), (2, 6, 6), 2, True),
     ],
 )
-def test_human_objective_matches_full_enumeration(earliest, latest, rest, optional):
+def test_human_objective_matches_full_enumeration(
+    earliest, latest, rest, optional, compact, monkeypatch
+):
+    monkeypatch.setattr(
+        objectives, "_COMPACT_HUMAN_PAIR_MIN_PHASES", 0 if compact else 10000, raising=False
+    )
     _, problem = prepared_menu()
     objective = problem.policy.objective.model_copy(update={"rest_gap_sec": rest})
     problem = problem.model_copy(
